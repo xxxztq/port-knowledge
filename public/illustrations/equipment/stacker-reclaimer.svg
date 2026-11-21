@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="equipment-stacker-reclaimer" width="800" height="480" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="equipment-stacker-reclaimer-title equipment-stacker-reclaimer-desc">
+  <title id="equipment-stacker-reclaimer-title">堆取料机 · 教学示意，非工程图</title>
+  <desc id="equipment-stacker-reclaimer-desc">斗轮式堆取料设备教学外形，长臂架连接右侧斗轮与中央机体，背部设平衡结构，下方与堆场输送线连接。 教学示意，非工程图；结构、比例与配置经过简化，不代表具体型号或现场操作方案。编号1、2、3对应页面知识点。</desc>
+  <metadata>原创港口设备结构插图；知识依据：src/data/knowledge.js，eq-stacker；不含尺寸、型号或额定能力。</metadata>
+  <style>
+    #equipment-stacker-reclaimer { color: #252624; }
+    #equipment-stacker-reclaimer path, #equipment-stacker-reclaimer rect, #equipment-stacker-reclaimer circle, #equipment-stacker-reclaimer polygon, #equipment-stacker-reclaimer ellipse { stroke: #252624; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
+    #equipment-stacker-reclaimer .line { fill: none; }
+    #equipment-stacker-reclaimer .fine { fill: none; stroke: #656660; stroke-width: .85; }
+    #equipment-stacker-reclaimer .paper { fill: #faf9f6; }
+    #equipment-stacker-reclaimer .pale { fill: #efeee9; }
+    #equipment-stacker-reclaimer .shade { fill: #d8d9d2; }
+    #equipment-stacker-reclaimer .mid { fill: #969992; }
+    #equipment-stacker-reclaimer .dark { fill: #363834; }
+    #equipment-stacker-reclaimer .ground { fill: none; stroke: #a8aaa2; stroke-width: .85; }
+    #equipment-stacker-reclaimer .water { fill: none; stroke: #92968e; stroke-width: .85; }
+    #equipment-stacker-reclaimer .route { fill: none; stroke: #92968e; stroke-width: 1; }
+    #equipment-stacker-reclaimer .leader { fill: none; stroke: #888c83; stroke-width: 1; }
+    #equipment-stacker-reclaimer .material { fill: none; stroke: #646860; stroke-width: 3; }
+    #equipment-stacker-reclaimer .pipe { fill: none; stroke: #353832; stroke-width: 10; }
+    #equipment-stacker-reclaimer .pipe-inner { fill: none; stroke: #eeeee8; stroke-width: 6.5; }
+    #equipment-stacker-reclaimer .paper-line { fill: none; stroke: #faf9f6; stroke-width: 1; }
+    #equipment-stacker-reclaimer .marker { fill: #faf9f6; stroke: #252624; stroke-width: 1.5; }
+    #equipment-stacker-reclaimer .number { fill: #252624; font: 600 13px Arial, sans-serif; text-anchor: middle; }
+  </style>
+  <g id="equipment-stacker-reclaimer-drawing" aria-hidden="true">
+<path d="M70 410h660" class="ground" /><polygon points="465,405 510,365 555,348 604,300 650,290 692,337 728,405" class="pale"/><path d="M490 397l31 -23 20 -7M558 358l37 -28 20 -11M652 313l14 16 16 6M636 348l24 21M569 386l21 -16M680 382l17 14" class="fine" /><path d="M244 417h216M255 423h216" class="line" /><rect x="279" y="369" width="127" height="20" rx="2" class="shade"/><circle cx="290" cy="400" r="11" class="dark"/><circle cx="290" cy="400" r="6.27" class="paper"/><circle cx="290" cy="400" r="2.5300000000000002" class="mid"/><circle cx="315" cy="400" r="11" class="dark"/><circle cx="315" cy="400" r="6.27" class="paper"/><circle cx="315" cy="400" r="2.5300000000000002" class="mid"/><circle cx="366" cy="400" r="11" class="dark"/><circle cx="366" cy="400" r="6.27" class="paper"/><circle cx="366" cy="400" r="2.5300000000000002" class="mid"/><circle cx="392" cy="400" r="11" class="dark"/><circle cx="392" cy="400" r="6.27" class="paper"/><circle cx="392" cy="400" r="2.5300000000000002" class="mid"/><polygon points="300,366 322,310 367,310 389,366" class="paper"/><path d="M309 357l58 -37M379 357l-54 -37" class="fine" /><rect x="311" y="297" width="72" height="16" rx="4" class="shade"/><circle cx="346" cy="288" r="25" class="pale"/><rect x="288" y="250" width="99" height="43" rx="0" class="paper"/><rect x="303" y="235" width="43" height="18" rx="0" class="pale"/><rect x="299" y="258" width="36" height="20" rx="0" class="pale"/><path d="M341 260h34m-34 8h34m-34 8h34" class="fine" /><polygon points="180,237 333,259 330,278 176,257" class="shade"/><rect x="147" y="229" width="52" height="36" rx="0" class="paper"/><path d="M154 236h38M154 244h38M154 252h38" class="fine" /><polygon points="335,258 635,228 645,255 343,286" class="paper"/><path d="M343 263l285 -28M346 280l285 -29" class="fine" /><path d="M349 278l12 -19 19 16" class="fine" />
+<path d="M380 274.9l12 -19 19 16" class="fine" />
+<path d="M411 271.8l12 -19 19 16" class="fine" />
+<path d="M442 268.7l12 -19 19 16" class="fine" />
+<path d="M473 265.6l12 -19 19 16" class="fine" />
+<path d="M504 262.5l12 -19 19 16" class="fine" />
+<path d="M535 259.4l12 -19 19 16" class="fine" />
+<path d="M566 256.3l12 -19 19 16" class="fine" />
+<path d="M597 253.2l12 -19 19 16" class="fine" /><polygon points="343,147 357,147 369,255 331,255" class="paper"/><path d="M350 153L188 235M353 153l267 76M344 192l-8 53h28z" class="fine" /><circle cx="642" cy="286" r="48" class="shade"/><circle cx="642" cy="286" r="37" class="paper"/><g transform="rotate(0 642 286)"><polygon points="632,229 651,229 657,240 646,246 633,242" class="pale"/></g><g transform="rotate(36 642 286)"><polygon points="632,229 651,229 657,240 646,246 633,242" class="pale"/></g><g transform="rotate(72 642 286)"><polygon points="632,229 651,229 657,240 646,246 633,242" class="pale"/></g><g transform="rotate(108 642 286)"><polygon points="632,229 651,229 657,240 646,246 633,242" class="pale"/></g><g transform="rotate(144 642 286)"><polygon points="632,229 651,229 657,240 646,246 633,242" class="pale"/></g><g transform="rotate(180 642 286)"><polygon points="632,229 651,229 657,240 646,246 633,242" class="pale"/></g><g transform="rotate(216 642 286)"><polygon points="632,229 651,229 657,240 646,246 633,242" class="pale"/></g><g transform="rotate(252 642 286)"><polygon points="632,229 651,229 657,240 646,246 633,242" class="pale"/></g><g transform="rotate(288 642 286)"><polygon points="632,229 651,229 657,240 646,246 633,242" class="pale"/></g><g transform="rotate(324 642 286)"><polygon points="632,229 651,229 657,240 646,246 633,242" class="pale"/></g><circle cx="642" cy="286" r="11" class="shade"/><path d="M642 274v-25" class="line" transform="rotate(0 642 286)"/><path d="M642 274v-25" class="line" transform="rotate(45 642 286)"/><path d="M642 274v-25" class="line" transform="rotate(90 642 286)"/><path d="M642 274v-25" class="line" transform="rotate(135 642 286)"/><path d="M642 274v-25" class="line" transform="rotate(180 642 286)"/><path d="M642 274v-25" class="line" transform="rotate(225 642 286)"/><path d="M642 274v-25" class="line" transform="rotate(270 642 286)"/><path d="M642 274v-25" class="line" transform="rotate(315 642 286)"/><polygon points="75,352 286,352 306,340 95,340" class="pale"/><rect x="75" y="352" width="211" height="15" rx="0" class="paper"/><path d="M90 360h186M101 367v36M257 367v36" class="fine" /><path d="M632 158v40l9 28M426 96h-46l-28 50M150 336h34l26 15" class="leader" />
+  </g>
+  <g id="equipment-stacker-reclaimer-points" aria-hidden="true" pointer-events="none">
+    <g id="equipment-stacker-reclaimer-point-1" data-point="1"><circle class="marker" cx="632" cy="144" r="14"/><text class="number" x="632" y="144" dy=".35em">1</text></g>
+    <g id="equipment-stacker-reclaimer-point-2" data-point="2"><circle class="marker" cx="440" cy="96" r="14"/><text class="number" x="440" y="96" dy=".35em">2</text></g>
+    <g id="equipment-stacker-reclaimer-point-3" data-point="3"><circle class="marker" cx="136" cy="336" r="14"/><text class="number" x="136" y="336" dy=".35em">3</text></g>
+  </g>
+</svg>

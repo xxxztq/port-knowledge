@@ -1,10 +1,22 @@
 ---
-import Layout from '../layouts/Layout.astro';import PageIntro from '../components/PageIntro.astro';import ArticleCard from '../components/ArticleCard.astro';import Icon from '../components/Icon.astro';import {articles} from '../data/knowledge.js';
-const equipment=articles.filter(a=>a.kind==='设备');const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import EquipmentCard from '../components/EquipmentCard.astro';
+import Icon from '../components/Icon.astro';
+import {articles} from '../data/knowledge.js';
+import {equipmentVisuals} from '../data/equipment-visuals.js';
+const equipment=articles.filter(a=>a.kind==='设备');
+const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const categories=['全部设备','船岸装卸','堆场作业','水平运输','散液货','闸口交接'];
+const pairs=[{title:'RTG 与 RMG',ids:['eq-rtg','eq-rmg'],question:'都叫场桥，移动方式有什么不同？'},{title:'正面吊与空箱堆高机',ids:['eq-reachstacker','eq-empty-handler'],question:'看着像大叉车，接的任务一样吗？'}];
 ---
-<Layout title="设备图鉴" active="equipment" description="认识岸桥、场桥、集卡、输送机与闸口设备，以及它们在生产链条上的作用。"><div class="container"><PageIntro eyebrow="EQUIPMENT ATLAS" title="每一台设备，都接着下一步。" description="看设备不能只记名字。还要知道它搬什么、在哪里工作、从谁接任务、把什么交给下一环，以及停机后会影响谁。"/><div class="page-content">
-<div class="equipment-chain" aria-label="集装箱码头典型设备衔接">{[['ship','船舶与泊位','提供船岸作业界面'],['crane','岸桥','完成船与岸之间吊装'],['route','水平运输','把箱接送到堆场'],['grid','场桥／堆场设备','落箱、堆存与提取'],['gate','闸口与车辆','核对陆侧交接']].map(([icon,title,desc],i)=><div><span class="chain-number">0{i+1}</span><Icon name={icon} size={31}/><h3>{title}</h3><p>{desc}</p></div>)}</div>
-<div class="notice">这是一条典型集装箱作业链。散货更多使用抓斗、漏斗与输送系统；液体货物依赖装卸臂、管线与储罐；滚装车辆通过跳板衔接。不同货种不应套用同一套设备流程。</div>
-<div class="article-grid">{equipment.map(article=><ArticleCard article={article}/>)}</div>
-<div class="learning-banner"><div><h2>设备故障时，谁先接住问题？</h2><p>看现场、中控、工程与计划怎样处理一次岸桥故障。</p></div><a class="button light" href={base+'roles/#collaboration-quay-crane-failure'}>查看协作案例 <Icon name="arrow"/></a></div>
-</div></div></Layout>
+<Layout title="设备图鉴" active="equipment" description="用十二张原创黑白结构图，认识港口设备的位置、部位和业务交接。"><div class="container"><PageIntro eyebrow="THE EQUIPMENT ATLAS / 设备观察手册" title="先认出设备，再看懂它的工作。" description="12 张黑白结构示意，连接船边、堆场、运输与闸口。点开一台设备，看看它的关键部位、收到的任务，以及交给下一环的结果。"/><div class="page-content">
+<div class="atlas-intro"><span class="atlas-index">01—12</span><div><strong>一张图，三个观察点</strong><p>从外形认设备，从任务懂业务。所有插图均为原创教学示意，不按实物比例绘制。</p></div><a class="text-link" href="#equipment-compare">先看相似设备对比 ↓</a></div>
+<div class="equipment-chain" aria-label="集装箱码头典型设备衔接">{[['ship','船舶与泊位','船岸作业界面'],['crane','岸桥','船与岸之间吊装'],['route','水平运输','接送到堆场'],['grid','堆场设备','落箱、堆存与提取'],['gate','闸口与车辆','核对陆侧交接']].map(([icon,title,desc],i)=><div><span class="chain-number">0{i+1}</span><Icon name={icon} size={28}/><h3>{title}</h3><p>{desc}</p></div>)}</div>
+<div class="atlas-toolbar"><div class="filter-bar" aria-label="按作业位置筛选设备">{categories.map((c,i)=><button class="filter-chip" data-equipment-filter={c} aria-pressed={i===0?'true':'false'}>{c}</button>)}</div><span class="small-copy" id="equipment-count" aria-live="polite">共 12 台设备</span></div>
+<div class="article-grid equipment-grid" id="equipment-results">{equipment.map(article=><EquipmentCard article={article}/>)}</div>
+<section class="comparison-section section-anchor" id="equipment-compare"><div class="section-heading"><div><span class="eyebrow muted">SIDE BY SIDE</span><h2>长得像，工作却不同。</h2></div><span class="small-copy">选择一组，一起看差别</span></div><div class="filter-bar" aria-label="选择设备对比">{pairs.map((p,i)=><button class="filter-chip" data-compare-select={i} aria-controls={'compare-'+i} aria-pressed={i===0?'true':'false'}>{p.title}</button>)}</div>{pairs.map((pair,i)=><div class="compare-panel" id={'compare-'+i} hidden={i!==0}><h3>{pair.question}</h3><div class="compare-grid">{pair.ids.map(id=>{const v=equipmentVisuals.find(x=>x.id===id);return v&&<article><div class="compare-art"><img src={base+v.image} alt={v.shortName+'结构示意'} width="800" height="480" loading="lazy"/></div><div class="compare-copy"><span class="eyebrow">{v.english}</span><h3>{v.shortName}</h3><p class="compare-difference">{v.comparison}</p><dl>{v.facts.map(f=><div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}</dl><a class="text-link" href={base+'knowledge/'+id+'/'}>看结构与工作方式 <Icon name="arrow" size={16}/></a></div></article>})}</div></div>)}</section>
+<div class="notice">设备配置随货种、场地与作业方式变化。这些图用于识别典型结构与分工，不表示所有港口均使用相同配置。</div><div class="learning-banner"><div><h2>设备故障时，谁先接住问题？</h2><p>看现场、中控、工程与计划怎样处理一次岸桥故障。</p></div><a class="button light" href={base+'roles/#collaboration-quay-crane-failure'}>查看协作案例 <Icon name="arrow"/></a></div></div></div>
+<script>
+const cards=[...document.querySelectorAll<HTMLElement>('#equipment-results [data-equipment-category]')];document.querySelectorAll<HTMLButtonElement>('[data-equipment-filter]').forEach(button=>button.addEventListener('click',()=>{const category=button.dataset.equipmentFilter;let count=0;cards.forEach(card=>{const show=category==='全部设备'||card.dataset.equipmentCategory===category;card.hidden=!show;if(show)count++;});document.querySelectorAll<HTMLButtonElement>('[data-equipment-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));document.querySelector('#equipment-count')!.textContent='显示 '+count+' 台设备';}));document.querySelectorAll<HTMLButtonElement>('[data-compare-select]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll<HTMLButtonElement>('[data-compare-select]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));document.querySelectorAll<HTMLElement>('.compare-panel').forEach(panel=>panel.hidden=panel.id!=='compare-'+button.dataset.compareSelect);}));
+</script></Layout>

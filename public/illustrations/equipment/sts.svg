@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="equipment-sts" width="800" height="480" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="equipment-sts-title equipment-sts-desc">
+  <title id="equipment-sts-title">岸桥 · 教学示意，非工程图</title>
+  <desc id="equipment-sts-desc">侧向展开的集装箱岸桥：外伸臂架跨过船舶，绳索下悬吊具与箱体，门架下方安排岸侧车辆。 教学示意，非工程图；结构、比例与配置经过简化，不代表具体型号或现场操作方案。编号1、2、3对应页面知识点。</desc>
+  <metadata>原创港口设备结构插图；知识依据：src/data/knowledge.js，eq-sts；不含尺寸、型号或额定能力。</metadata>
+  <style>
+    #equipment-sts { color: #252624; }
+    #equipment-sts path, #equipment-sts rect, #equipment-sts circle, #equipment-sts polygon, #equipment-sts ellipse { stroke: #252624; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
+    #equipment-sts .line { fill: none; }
+    #equipment-sts .fine { fill: none; stroke: #656660; stroke-width: .85; }
+    #equipment-sts .paper { fill: #faf9f6; }
+    #equipment-sts .pale { fill: #efeee9; }
+    #equipment-sts .shade { fill: #d8d9d2; }
+    #equipment-sts .mid { fill: #969992; }
+    #equipment-sts .dark { fill: #363834; }
+    #equipment-sts .ground { fill: none; stroke: #a8aaa2; stroke-width: .85; }
+    #equipment-sts .water { fill: none; stroke: #92968e; stroke-width: .85; }
+    #equipment-sts .route { fill: none; stroke: #92968e; stroke-width: 1; }
+    #equipment-sts .leader { fill: none; stroke: #888c83; stroke-width: 1; }
+    #equipment-sts .material { fill: none; stroke: #646860; stroke-width: 3; }
+    #equipment-sts .pipe { fill: none; stroke: #353832; stroke-width: 10; }
+    #equipment-sts .pipe-inner { fill: none; stroke: #eeeee8; stroke-width: 6.5; }
+    #equipment-sts .paper-line { fill: none; stroke: #faf9f6; stroke-width: 1; }
+    #equipment-sts .marker { fill: #faf9f6; stroke: #252624; stroke-width: 1.5; }
+    #equipment-sts .number { fill: #252624; font: 600 13px Arial, sans-serif; text-anchor: middle; }
+  </style>
+  <g id="equipment-sts-drawing" aria-hidden="true">
+<path d="M345 410h387" class="ground" /><path d="M58 422h60m22 0h60m22 0h60m22 0h24" class="water" /><path d="M336 350v60h390" class="ground" /><polygon points="70,347 326,347 304,400 100,400" class="pale"/><path d="M83 363h233M112 390h177" class="fine" /><g><polygon points="108,315 120,306 211,306 199,315" class="pale"/><polygon points="199,315 211,306 211,337 199,346" class="shade"/><rect x="108" y="315" width="91" height="31" rx="0" class="paper"/><path d="M122 320v21" class="fine" />
+<path d="M136 320v21" class="fine" />
+<path d="M150 320v21" class="fine" />
+<path d="M164 320v21" class="fine" />
+<path d="M178 320v21" class="fine" /><path d="M112 319h83M112 342h83" class="fine" /></g><g><polygon points="205,315 217,306 308,306 296,315" class="pale"/><polygon points="296,315 308,306 308,337 296,346" class="shade"/><rect x="205" y="315" width="91" height="31" rx="0" class="paper"/><path d="M219 320v21" class="fine" />
+<path d="M233 320v21" class="fine" />
+<path d="M247 320v21" class="fine" />
+<path d="M261 320v21" class="fine" />
+<path d="M275 320v21" class="fine" /><path d="M209 319h83M209 342h83" class="fine" /></g><g><polygon points="162,282 174,273 265,273 253,282" class="pale"/><polygon points="253,282 265,273 265,304 253,313" class="shade"/><rect x="162" y="282" width="91" height="31" rx="0" class="paper"/><path d="M176 287v21" class="fine" />
+<path d="M190 287v21" class="fine" />
+<path d="M204 287v21" class="fine" />
+<path d="M218 287v21" class="fine" />
+<path d="M232 287v21" class="fine" /><path d="M166 286h83M166 309h83" class="fine" /></g><polygon points="428,167 449,156 419,368 398,380" class="shade"/><polygon points="538,163 558,151 603,369 583,380" class="shade"/><polygon points="411,170 433,170 390,378 367,378" class="paper"/><polygon points="514,170 536,170 583,378 560,378" class="paper"/><path d="M399 224h153M391 263h170M399 224l161 39M552 224l-161 39" class="fine" /><rect x="377" y="371" width="48" height="14" rx="0" class="shade"/><rect x="550" y="371" width="56" height="14" rx="0" class="shade"/><circle cx="380" cy="392" r="8" class="dark"/><circle cx="380" cy="392" r="4.56" class="paper"/><circle cx="380" cy="392" r="1.84" class="mid"/><circle cx="397" cy="392" r="8" class="dark"/><circle cx="397" cy="392" r="4.56" class="paper"/><circle cx="397" cy="392" r="1.84" class="mid"/><circle cx="415" cy="392" r="8" class="dark"/><circle cx="415" cy="392" r="4.56" class="paper"/><circle cx="415" cy="392" r="1.84" class="mid"/><circle cx="555" cy="392" r="8" class="dark"/><circle cx="555" cy="392" r="4.56" class="paper"/><circle cx="555" cy="392" r="1.84" class="mid"/><circle cx="574" cy="392" r="8" class="dark"/><circle cx="574" cy="392" r="4.56" class="paper"/><circle cx="574" cy="392" r="1.84" class="mid"/><circle cx="595" cy="392" r="8" class="dark"/><circle cx="595" cy="392" r="4.56" class="paper"/><circle cx="595" cy="392" r="1.84" class="mid"/><path d="M350 402h274M351 406h273" class="fine" /><polygon points="444,59 462,59 479,150 426,150" class="paper"/><path d="M451 78l-12 58h26zM444 59L116 147M462 59l229 88M454 94L286 147" class="fine" /><polygon points="108,148 684,148 708,132 132,132" class="pale"/><rect x="108" y="148" width="576" height="25" rx="0" class="paper"/><polygon points="684,148 708,132 708,157 684,173" class="shade"/><path d="M112 171l20 -20 20 20" class="fine" />
+<path d="M152 171l20 -20 20 20" class="fine" />
+<path d="M192 171l20 -20 20 20" class="fine" />
+<path d="M232 171l20 -20 20 20" class="fine" />
+<path d="M272 171l20 -20 20 20" class="fine" />
+<path d="M312 171l20 -20 20 20" class="fine" />
+<path d="M352 171l20 -20 20 20" class="fine" />
+<path d="M392 171l20 -20 20 20" class="fine" />
+<path d="M432 171l20 -20 20 20" class="fine" />
+<path d="M472 171l20 -20 20 20" class="fine" />
+<path d="M512 171l20 -20 20 20" class="fine" />
+<path d="M552 171l20 -20 20 20" class="fine" />
+<path d="M592 171l20 -20 20 20" class="fine" />
+<path d="M632 171l20 -20 20 20" class="fine" /><rect x="422" y="128" width="99" height="25" rx="2" class="shade"/><rect x="239" y="174" width="45" height="14" rx="2" class="dark"/><circle cx="247" cy="174" r="5" class="paper"/><circle cx="276" cy="174" r="5" class="paper"/><path d="M246 188v71M275 188v71" class="line" /><rect x="228" y="259" width="69" height="8" rx="0" class="shade"/><g><polygon points="225,270 239,262 314,262 300,270" class="pale"/><polygon points="300,270 314,262 314,306 300,314" class="shade"/><rect x="225" y="270" width="75" height="44" rx="0" class="paper"/><path d="M239 275v34" class="fine" />
+<path d="M253 275v34" class="fine" />
+<path d="M267 275v34" class="fine" />
+<path d="M281 275v34" class="fine" /><path d="M229 274h67M229 310h67" class="fine" /></g><path d="M233 267v5m59 -5v5" class="line" /><rect x="580" y="332" width="89" height="15" rx="0" class="pale"/><path d="M576 348h102l11 13v18H575z" class="paper" /><rect x="648" y="329" width="30" height="31" rx="2" class="paper"/><path d="M654 334h17l5 17h-22z" class="pale" /><circle cx="592" cy="379" r="11" class="dark"/><circle cx="592" cy="379" r="6.27" class="paper"/><circle cx="592" cy="379" r="2.5300000000000002" class="mid"/><circle cx="664" cy="379" r="11" class="dark"/><circle cx="664" cy="379" r="6.27" class="paper"/><circle cx="664" cy="379" r="2.5300000000000002" class="mid"/><path d="M120 110v23l37 14M182 240h29l35 23M634 384h-14l-29 -10" class="leader" />
+  </g>
+  <g id="equipment-sts-points" aria-hidden="true" pointer-events="none">
+    <g id="equipment-sts-point-1" data-point="1"><circle class="marker" cx="120" cy="96" r="14"/><text class="number" x="120" y="96" dy=".35em">1</text></g>
+    <g id="equipment-sts-point-2" data-point="2"><circle class="marker" cx="168" cy="240" r="14"/><text class="number" x="168" y="240" dy=".35em">2</text></g>
+    <g id="equipment-sts-point-3" data-point="3"><circle class="marker" cx="648" cy="384" r="14"/><text class="number" x="648" y="384" dy=".35em">3</text></g>
+  </g>
+</svg>

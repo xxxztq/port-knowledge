@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="equipment-belt-conveyor" width="800" height="480" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="equipment-belt-conveyor-title equipment-belt-conveyor-desc">
+  <title id="equipment-belt-conveyor-title">皮带输送机 · 教学示意，非工程图</title>
+  <desc id="equipment-belt-conveyor-desc">带料斗的倾斜皮带输送机，支腿与桁架支承上下带面，右侧通过溜槽把物料交给下一段水平皮带；局部结构简化。 教学示意，非工程图；结构、比例与配置经过简化，不代表具体型号或现场操作方案。编号1、2、3对应页面知识点。</desc>
+  <metadata>原创港口设备结构插图；知识依据：src/data/knowledge.js，eq-conveyor；不含尺寸、型号或额定能力。</metadata>
+  <style>
+    #equipment-belt-conveyor { color: #252624; }
+    #equipment-belt-conveyor path, #equipment-belt-conveyor rect, #equipment-belt-conveyor circle, #equipment-belt-conveyor polygon, #equipment-belt-conveyor ellipse { stroke: #252624; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
+    #equipment-belt-conveyor .line { fill: none; }
+    #equipment-belt-conveyor .fine { fill: none; stroke: #656660; stroke-width: .85; }
+    #equipment-belt-conveyor .paper { fill: #faf9f6; }
+    #equipment-belt-conveyor .pale { fill: #efeee9; }
+    #equipment-belt-conveyor .shade { fill: #d8d9d2; }
+    #equipment-belt-conveyor .mid { fill: #969992; }
+    #equipment-belt-conveyor .dark { fill: #363834; }
+    #equipment-belt-conveyor .ground { fill: none; stroke: #a8aaa2; stroke-width: .85; }
+    #equipment-belt-conveyor .water { fill: none; stroke: #92968e; stroke-width: .85; }
+    #equipment-belt-conveyor .route { fill: none; stroke: #92968e; stroke-width: 1; }
+    #equipment-belt-conveyor .leader { fill: none; stroke: #888c83; stroke-width: 1; }
+    #equipment-belt-conveyor .material { fill: none; stroke: #646860; stroke-width: 3; }
+    #equipment-belt-conveyor .pipe { fill: none; stroke: #353832; stroke-width: 10; }
+    #equipment-belt-conveyor .pipe-inner { fill: none; stroke: #eeeee8; stroke-width: 6.5; }
+    #equipment-belt-conveyor .paper-line { fill: none; stroke: #faf9f6; stroke-width: 1; }
+    #equipment-belt-conveyor .marker { fill: #faf9f6; stroke: #252624; stroke-width: 1.5; }
+    #equipment-belt-conveyor .number { fill: #252624; font: 600 13px Arial, sans-serif; text-anchor: middle; }
+  </style>
+  <g id="equipment-belt-conveyor-drawing" aria-hidden="true">
+<path d="M70 410h660" class="ground" /><polygon points="98,155 217,155 241,141 122,141" class="pale"/><polygon points="98,155 217,155 190,226 126,226" class="paper"/><polygon points="217,155 241,141 209,213 190,226" class="shade"/><rect x="143" y="226" width="31" height="31" rx="0" class="shade"/><path d="M110 187v109M222 175v109M110 279h112M111 213l110 66M222 213l-111 66" class="fine" /><polygon points="113,303 570,177 591,193 133,320" class="paper"/><polygon points="112,293 567,167 587,176 132,303" class="pale"/><path d="M128 301l448 -124M137 313l441 -122" class="line" /><path d="M148 309l7 -20 25 12" class="fine" />
+<path d="M180 300.15l7 -20 25 12" class="fine" />
+<path d="M212 291.3l7 -20 25 12" class="fine" />
+<path d="M244 282.45l7 -20 25 12" class="fine" />
+<path d="M276 273.6l7 -20 25 12" class="fine" />
+<path d="M308 264.75l7 -20 25 12" class="fine" />
+<path d="M340 255.9l7 -20 25 12" class="fine" />
+<path d="M372 247.05l7 -20 25 12" class="fine" />
+<path d="M404 238.2l7 -20 25 12" class="fine" />
+<path d="M436 229.35000000000002l7 -20 25 12" class="fine" />
+<path d="M468 220.5l7 -20 25 12" class="fine" />
+<path d="M500 211.65l7 -20 25 12" class="fine" />
+<path d="M532 202.8l7 -20 25 12" class="fine" /><circle cx="126" cy="301" r="9" class="shade"/><circle cx="577" cy="180" r="9" class="shade"/><path d="M129 292l33 -9M167 281l39 -10M211 269l29 -8M247 258l31 -8M286 248l34 -10M329 236l35 -10M373 224l34 -9M418 211l33 -9M461 200l31 -8M500 189l32 -9" class="material" /><path d="M220 296v107M234 293v110M393 249v154M407 245v158M543 208v195M557 204v199" class="line" /><path d="M220 327l14 46M393 292l14 71M543 257l14 96" class="fine" /><rect x="211" y="403" width="31" height="7" rx="0" class="shade"/><rect x="384" y="403" width="31" height="7" rx="0" class="shade"/><rect x="534" y="403" width="31" height="7" rx="0" class="shade"/><polygon points="592,174 621,174 621,285 603,305 584,291 600,276 600,198 584,198" class="paper"/><path d="M610 185v99l-15 15" class="fine" /><polygon points="533,328 707,328 731,313 557,313" class="pale"/><rect x="533" y="328" width="174" height="18" rx="0" class="paper"/><polygon points="707,328 731,313 731,330 707,346" class="shade"/><path d="M543 338h152M551 346v57M687 346v57" class="line" /><circle cx="545" cy="337" r="5" class="shade"/><circle cx="696" cy="337" r="5" class="shade"/><path d="M583 320l11 -4 17 5 19 -3 18 5" class="material" /><rect x="556" y="213" width="38" height="22" rx="4" class="shade"/><path d="M565 217v14m7 -14v14m7 -14v14" class="fine" /><path d="M144 96v32l10 13M382 144v38l-38 29M682 240h-36l-27 25" class="leader" />
+  </g>
+  <g id="equipment-belt-conveyor-points" aria-hidden="true" pointer-events="none">
+    <g id="equipment-belt-conveyor-point-1" data-point="1"><circle class="marker" cx="144" cy="96" r="14"/><text class="number" x="144" y="96" dy=".35em">1</text></g>
+    <g id="equipment-belt-conveyor-point-2" data-point="2"><circle class="marker" cx="384" cy="144" r="14"/><text class="number" x="384" y="144" dy=".35em">2</text></g>
+    <g id="equipment-belt-conveyor-point-3" data-point="3"><circle class="marker" cx="696" cy="240" r="14"/><text class="number" x="696" y="240" dy=".35em">3</text></g>
+  </g>
+</svg>

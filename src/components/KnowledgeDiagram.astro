@@ -1,0 +1,246 @@
+---
+import { randomUUID } from 'node:crypto';
+import { articleDiagrams } from '../data/article-diagrams.js';
+
+interface Props { articleId: string }
+const { articleId } = Astro.props;
+const diagram = articleDiagrams.find((item) => item.id === articleId);
+const instanceId = 'knowledge-diagram-' + randomUUID();
+const links = diagram?.links ?? [];
+const type = diagram?.type ?? 'flow';
+const typeNames = { flow: '流转与交接', parallel: '并行条件与职责', comparison: '概念对照', cycle: '反馈与循环' };
+const number = (index: number) => String(index + 1).padStart(2, '0');
+// Equal-height HTML rows keep the SVG aligned, including when JavaScript is disabled.
+// The rail letters refer to the full HTML relationship labels alongside the drawing.
+const occupiedLabelRows: number[] = [];
+const edges = links.map((link, index) => {
+  const startY = (link.from + 0.5) * 100;
+  const endY = (link.to + 0.5) * 100;
+  const direction = endY > startY ? 1 : -1;
+  const railX = 735 + index * (220 / Math.max(1, links.length - 1));
+  const middleY = (startY + endY) / 2;
+  const labelY = [0, 24, -24, 48, -48, 72, -72]
+    .map((offset) => middleY + offset)
+    .find((position) => position > Math.min(startY, endY) + 12 && position < Math.max(startY, endY) - 12 && occupiedLabelRows.every((used) => Math.abs(used - position) >= 24)) ?? middleY;
+  occupiedLabelRows.push(labelY);
+  return {
+    ...link,
+    key: String.fromCharCode(65 + index),
+    railX,
+    labelY,
+    path: 'M 680 ' + startY + ' H ' + (railX - 10) + ' Q ' + railX + ' ' + startY + ' ' + railX + ' ' + (startY + direction * 10) + ' V ' + (endY - direction * 10) + ' Q ' + railX + ' ' + endY + ' ' + (railX - 10) + ' ' + endY + ' H 680',
+  };
+});
+---
+{diagram && (
+  <figure class="knowledge-diagram" data-knowledge-diagram data-diagram-type={type} data-diagram-article={articleId} aria-labelledby={instanceId + '-title'}>
+    <figcaption class="kd-heading">
+      <div class="kd-eyebrow"><span class="kd-eyebrow-mark" aria-hidden="true"></span><span>一图读懂</span><span class="kd-type">{typeNames[type]}</span></div>
+      <h2 id={instanceId + '-title'}>{diagram.title}</h2>
+      <p class="kd-caption">{diagram.caption}</p>
+    </figcaption>
+
+    <div class="kd-layout">
+      <div class="kd-map-column">
+        <p class="kd-map-key">编号定位节点 · 字母对应关系标签</p>
+        <div class="kd-map" style={'--kd-count:' + diagram.nodes.length}>
+          <svg class="kd-connectors" viewBox={'0 0 1000 ' + diagram.nodes.length * 100} preserveAspectRatio="none" fill="none" aria-hidden="true" focusable="false">
+            <defs>
+              <marker id={instanceId + '-arrow'} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="currentColor" stroke-width="1.4" /></marker>
+            </defs>
+            {edges.map((edge) => (
+              <path class:list={['kd-wire', { 'kd-return': type === 'cycle' && edge.to < edge.from }]} d={edge.path} vector-effect="non-scaling-stroke" marker-end={type === 'comparison' ? undefined : 'url(#' + instanceId + '-arrow)'} data-diagram-edge data-from={edge.from} data-to={edge.to} data-connected={String(edge.from === 0 || edge.to === 0)} />
+            ))}
+          </svg>
+          <ol class="kd-nodes" aria-label="图解节点；编号用于定位，不代表必然的操作顺序">
+            {diagram.nodes.map((node, index) => (
+              <li class="kd-node" data-diagram-node data-node-index={index} data-selected={String(index === 0)}>
+                <button class="kd-node-button" type="button" data-diagram-select={index} aria-pressed={String(index === 0)} aria-controls={instanceId + '-detail'} aria-label={'节点 ' + number(index) + '：' + node.label} disabled>
+                  <span aria-hidden="true">{number(index)}</span>
+                </button>
+                <div class="kd-node-copy"><h3 data-diagram-label>{node.label}</h3><p class="kd-node-detail" data-diagram-description>{node.detail}</p></div>
+                <span class="kd-node-port" aria-hidden="true"></span>
+              </li>
+            ))}
+          </ol>
+          {edges.map((edge) => (
+            <span class="kd-edge-key" style={'left:' + edge.railX / 10 + '%;top:' + edge.labelY / diagram.nodes.length + '%'} aria-hidden="true" data-diagram-edge data-from={edge.from} data-to={edge.to} data-connected={String(edge.from === 0 || edge.to === 0)}>{edge.key}</span>
+          ))}
+        </div>
+      </div>
+
+      <div class="kd-reading">
+        <div class="kd-detail" data-diagram-panel hidden>
+          <p class="kd-detail-kicker">正在理解 <span data-diagram-current-number>01</span><span aria-hidden="true"> / {number(diagram.nodes.length - 1)}</span></p>
+          <div id={instanceId + '-detail'} class="kd-live" role="status" aria-live="polite" aria-atomic="true">
+            <h3 data-diagram-current-label>{diagram.nodes[0].label}</h3>
+            <p data-diagram-current-description>{diagram.nodes[0].detail}</p>
+          </div>
+          <p class="kd-interaction-hint">点击编号展开说明；聚焦后可用方向键切换，Home / End 到首尾。</p>
+        </div>
+
+        {edges.length > 0 && (
+          <div class="kd-relationships">
+            <h3 class="kd-relationships-title">沿线看关系<span>{type === 'comparison' ? '对照，不代表先后' : type === 'parallel' ? '按标签理解，非固定顺序' : '箭头说明交接方向'}</span></h3>
+            <ul class="kd-links" aria-label="节点之间的具体关系">
+              {edges.map((edge) => (
+                <li class="kd-link" data-diagram-edge data-from={edge.from} data-to={edge.to} data-connected={String(edge.from === 0 || edge.to === 0)}>
+                  <span class="kd-link-key" aria-hidden="true">{edge.key}</span>
+                  <div class="kd-link-body">
+                    <p class="kd-link-endpoints"><span><b>{number(edge.from)}</b> {diagram.nodes[edge.from].label}</span><span class="kd-link-direction" aria-label={type === 'comparison' ? '与' : '到'}>{type === 'comparison' ? '—' : '→'}</span><span><b>{number(edge.to)}</b> {diagram.nodes[edge.to].label}</span></p>
+                    <p class="kd-link-label">{edge.label}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+    <div class="kd-note"><span class="kd-note-mark" aria-hidden="true">※</span><p><strong>读图提醒</strong>{diagram.note}</p></div>
+  </figure>
+)}
+
+<script>
+  function initializeKnowledgeDiagrams() {
+    document.querySelectorAll<HTMLElement>('[data-knowledge-diagram]').forEach((root) => {
+      if (root.dataset.diagramReady === 'true') return;
+      const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-diagram-select]'));
+      const nodes = Array.from(root.querySelectorAll<HTMLElement>('[data-diagram-node]'));
+      const panel = root.querySelector<HTMLElement>('[data-diagram-panel]');
+      const title = root.querySelector<HTMLElement>('[data-diagram-current-label]');
+      const description = root.querySelector<HTMLElement>('[data-diagram-current-description]');
+      const counter = root.querySelector<HTMLElement>('[data-diagram-current-number]');
+      const edges = Array.from(root.querySelectorAll<HTMLElement | SVGElement>('[data-diagram-edge]'));
+      if (!buttons.length || nodes.length !== buttons.length || !panel || !title || !description || !counter) return;
+
+      function selectNode(index: number, focus = false) {
+        const node = nodes[index];
+        if (!node) return;
+        buttons.forEach((button, position) => button.setAttribute('aria-pressed', String(position === index)));
+        nodes.forEach((item, position) => { item.dataset.selected = String(position === index); });
+        edges.forEach((edge) => {
+          edge.dataset.connected = String(Number(edge.dataset.from) === index || Number(edge.dataset.to) === index);
+        });
+        title!.textContent = node.querySelector('[data-diagram-label]')?.textContent ?? '';
+        description!.textContent = node.querySelector('[data-diagram-description]')?.textContent ?? '';
+        counter!.textContent = String(index + 1).padStart(2, '0');
+        if (focus) buttons[index].focus();
+      }
+
+      buttons.forEach((button, index) => {
+        button.disabled = false;
+        button.addEventListener('click', () => selectNode(index));
+        button.addEventListener('keydown', (event) => {
+          let target: number;
+          if (event.key === 'ArrowDown' || event.key === 'ArrowRight') target = (index + 1) % buttons.length;
+          else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') target = (index - 1 + buttons.length) % buttons.length;
+          else if (event.key === 'Home') target = 0;
+          else if (event.key === 'End') target = buttons.length - 1;
+          else return; // Native buttons handle Tab, Enter and Space.
+          event.preventDefault();
+          selectNode(target, true);
+        });
+      });
+      selectNode(0);
+      root.dataset.diagramReady = 'true';
+      panel.hidden = false;
+    });
+  }
+  initializeKnowledgeDiagrams();
+  document.addEventListener('astro:page-load', initializeKnowledgeDiagrams);
+</script>
+
+<style>
+  .knowledge-diagram {
+    --kd-ink: #20201e;
+    --kd-muted: #62615a;
+    --kd-line: #d6d3c9;
+    --kd-paper: #f7f5ee;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 2.5rem 0;
+    padding: clamp(1rem, 3vw, 2rem);
+    border: 1px solid var(--kd-line);
+    border-radius: 4px;
+    background: var(--kd-paper);
+    color: var(--kd-ink);
+    overflow-wrap: anywhere;
+    isolation: isolate;
+  }
+  .knowledge-diagram *, .knowledge-diagram *::before, .knowledge-diagram *::after { box-sizing: border-box; }
+  .kd-heading { margin: 0 0 1.5rem; }
+  .kd-eyebrow { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; font-size: .75rem; font-weight: 600; letter-spacing: .08em; }
+  .kd-eyebrow-mark { width: .55rem; height: .55rem; background: var(--kd-ink); transform: rotate(45deg); }
+  .kd-type { margin-left: auto; color: var(--kd-muted); font-weight: 400; letter-spacing: .02em; }
+  .kd-heading h2 { margin: 1rem 0 .65rem; padding: 0; border: 0; color: var(--kd-ink); font-size: clamp(1.25rem, 2.6vw, 1.65rem); font-weight: 600; line-height: 1.45; letter-spacing: -.02em; }
+  .kd-caption { margin: 0; color: var(--kd-muted); font-size: .875rem; line-height: 1.85; }
+  .kd-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+  .kd-map-column, .kd-reading { min-width: 0; }
+  .kd-map-key { margin: 0 0 .65rem; color: var(--kd-muted); font-size: .75rem; line-height: 1.65; }
+  .kd-map { position: relative; min-width: 0; background-image: radial-gradient(#c9c6bc 0.7px, transparent 0.7px); background-size: 12px 12px; }
+  .kd-connectors { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; color: var(--kd-ink); pointer-events: none; }
+  .kd-wire { stroke: var(--kd-ink); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .kd-return { stroke-dasharray: 4 4; }
+  .kd-nodes { display: grid; grid-template-rows: repeat(var(--kd-count), minmax(100px, 1fr)); gap: 0; list-style: none; margin: 0; padding: 0; }
+  .kd-node { position: relative; display: flex; align-items: center; gap: .75rem; width: 68%; min-width: 0; margin: 8px 0; padding: .85rem .8rem; border: 1px solid var(--kd-line); border-radius: 3px; background: var(--kd-paper); }
+  .kd-node-button { display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; margin: 0; padding: 0; border: 1px solid var(--kd-ink); border-radius: 50%; background: transparent; color: var(--kd-ink); font: inherit; font-size: .875rem; font-weight: 500; font-variant-numeric: tabular-nums; line-height: 1; cursor: pointer; touch-action: manipulation; }
+  .kd-node-button:disabled { opacity: 1; cursor: default; }
+  .kd-node-button[aria-pressed='true'] { background: var(--kd-ink); color: var(--kd-paper); }
+  .kd-node-button:focus-visible { outline: 2px solid var(--kd-ink); outline-offset: 4px; }
+  .kd-node-button:not(:disabled):hover { box-shadow: 0 0 0 3px #20201e14; }
+  .kd-node-copy { min-width: 0; }
+  .kd-node h3 { margin: 0; padding: 0; border: 0; color: var(--kd-ink); font-size: .9375rem; font-weight: 600; line-height: 1.65; }
+  .kd-node-detail { margin: .45rem 0 0; color: var(--kd-muted); font-size: .875rem; line-height: 1.85; }
+  .kd-node-port { position: absolute; right: -3px; top: 50%; width: 5px; height: 5px; border-radius: 50%; background: var(--kd-ink); transform: translateY(-50%); }
+  .kd-edge-key { position: absolute; display: grid; place-items: center; width: 20px; height: 20px; transform: translate(-50%, -50%); border: 1px solid var(--kd-ink); border-radius: 50%; background: var(--kd-paper); color: var(--kd-ink); font-size: .6875rem; font-weight: 600; line-height: 1; pointer-events: none; }
+  .kd-reading { display: grid; gap: 1.4rem; }
+  .kd-detail { padding: 1.1rem 1.2rem 1rem; border-top: 2px solid var(--kd-ink); background: #fffdf7; }
+  .kd-detail[hidden] { display: none; }
+  .kd-detail-kicker { display: flex; align-items: center; gap: .4rem; margin: 0 0 .7rem; color: var(--kd-muted); font-size: .75rem; line-height: 1.6; }
+  .kd-detail-kicker [data-diagram-current-number] { margin-left: auto; color: var(--kd-ink); font-variant-numeric: tabular-nums; }
+  .kd-live h3 { margin: 0 0 .6rem; color: var(--kd-ink); font-size: 1.0625rem; font-weight: 600; line-height: 1.6; }
+  .kd-live p { margin: 0; color: var(--kd-ink); font-size: .9375rem; line-height: 1.9; }
+  .kd-interaction-hint { margin: .9rem 0 0; padding-top: .75rem; border-top: 1px solid var(--kd-line); color: var(--kd-muted); font-size: .75rem; line-height: 1.8; }
+  .kd-relationships-title { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem .75rem; margin: 0 0 .6rem; color: var(--kd-ink); font-size: .8125rem; font-weight: 600; line-height: 1.8; }
+  .kd-relationships-title span { color: var(--kd-muted); font-size: .75rem; font-weight: 400; }
+  .kd-links { display: grid; gap: 0; list-style: none; margin: 0; padding: 0; }
+  .kd-link { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: .65rem; margin: 0; padding: .7rem 0; border-top: 1px solid var(--kd-line); }
+  .kd-link-key { display: grid; place-items: center; width: 20px; height: 20px; margin-top: 2px; border: 1px solid currentColor; border-radius: 50%; color: var(--kd-muted); font-size: .6875rem; font-weight: 600; line-height: 1; }
+  .kd-link-body { min-width: 0; }
+  .kd-link-endpoints { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .4rem; margin: 0; color: var(--kd-ink); font-size: .8125rem; line-height: 1.75; }
+  .kd-link-endpoints b { font-size: .6875rem; font-weight: 500; color: var(--kd-muted); font-variant-numeric: tabular-nums; }
+  .kd-link-direction { flex: 0 0 auto; color: var(--kd-muted); }
+  .kd-link-label { margin: .2rem 0 0; color: var(--kd-muted); font-size: .8125rem; line-height: 1.8; }
+  .kd-note { display: flex; align-items: baseline; gap: .65rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--kd-line); }
+  .kd-note-mark { flex: 0 0 auto; font-size: 1rem; }
+  .kd-note p { margin: 0; color: var(--kd-muted); font-size: .8125rem; line-height: 1.9; }
+  .kd-note strong { margin-right: .65rem; color: var(--kd-ink); font-weight: 600; }
+  [data-diagram-ready='true'] .kd-node-detail { display: none; }
+  [data-diagram-ready='true'] .kd-node[data-selected='true'] { border-color: var(--kd-ink); }
+  [data-diagram-ready='true'] .kd-wire[data-connected='false'] { stroke: #b8b4aa; }
+  [data-diagram-ready='true'] .kd-edge-key[data-connected='true'], [data-diagram-ready='true'] .kd-link[data-connected='true'] .kd-link-key { background: var(--kd-ink); border-color: var(--kd-ink); color: var(--kd-paper); }
+  @media (min-width: 760px) {
+    .kd-layout { grid-template-columns: minmax(0, 1fr) minmax(0, .95fr); gap: 1.75rem; }
+    .kd-live { min-height: 10rem; }
+  }
+  @media (max-width: 420px) {
+    .knowledge-diagram { padding: .9rem; }
+    .kd-node { gap: .5rem; padding: .7rem .5rem; }
+    .kd-node h3 { font-size: .875rem; }
+    .kd-edge-key { width: 17px; height: 17px; font-size: .625rem; }
+    .kd-type { letter-spacing: 0; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .kd-node-button { transition: background-color 140ms ease, color 140ms ease, box-shadow 140ms ease; }
+  }
+  @media print {
+    .knowledge-diagram { break-inside: avoid; background: white; border-color: #999; }
+    [data-diagram-ready='true'] .kd-node-detail { display: block; }
+    .kd-detail, .kd-interaction-hint { display: none; }
+    .kd-layout { grid-template-columns: minmax(0, 1fr); }
+    .kd-map { background: none; }
+    .kd-node-button { border-color: black; }
+  }
+</style>

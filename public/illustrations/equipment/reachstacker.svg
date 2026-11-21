@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="equipment-reachstacker" width="800" height="480" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="equipment-reachstacker-title equipment-reachstacker-desc">
+  <title id="equipment-reachstacker-title">正面吊 · 教学示意，非工程图</title>
+  <desc id="equipment-reachstacker-desc">正面吊侧视结构，斜向伸缩臂从带驾驶室的轮式底盘伸出，顶部吊具连接右侧悬起的箱体。 教学示意，非工程图；结构、比例与配置经过简化，不代表具体型号或现场操作方案。编号1、2、3对应页面知识点。</desc>
+  <metadata>原创港口设备结构插图；知识依据：src/data/knowledge.js，eq-reachstacker；不含尺寸、型号或额定能力。</metadata>
+  <style>
+    #equipment-reachstacker { color: #252624; }
+    #equipment-reachstacker path, #equipment-reachstacker rect, #equipment-reachstacker circle, #equipment-reachstacker polygon, #equipment-reachstacker ellipse { stroke: #252624; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
+    #equipment-reachstacker .line { fill: none; }
+    #equipment-reachstacker .fine { fill: none; stroke: #656660; stroke-width: .85; }
+    #equipment-reachstacker .paper { fill: #faf9f6; }
+    #equipment-reachstacker .pale { fill: #efeee9; }
+    #equipment-reachstacker .shade { fill: #d8d9d2; }
+    #equipment-reachstacker .mid { fill: #969992; }
+    #equipment-reachstacker .dark { fill: #363834; }
+    #equipment-reachstacker .ground { fill: none; stroke: #a8aaa2; stroke-width: .85; }
+    #equipment-reachstacker .water { fill: none; stroke: #92968e; stroke-width: .85; }
+    #equipment-reachstacker .route { fill: none; stroke: #92968e; stroke-width: 1; }
+    #equipment-reachstacker .leader { fill: none; stroke: #888c83; stroke-width: 1; }
+    #equipment-reachstacker .material { fill: none; stroke: #646860; stroke-width: 3; }
+    #equipment-reachstacker .pipe { fill: none; stroke: #353832; stroke-width: 10; }
+    #equipment-reachstacker .pipe-inner { fill: none; stroke: #eeeee8; stroke-width: 6.5; }
+    #equipment-reachstacker .paper-line { fill: none; stroke: #faf9f6; stroke-width: 1; }
+    #equipment-reachstacker .marker { fill: #faf9f6; stroke: #252624; stroke-width: 1.5; }
+    #equipment-reachstacker .number { fill: #252624; font: 600 13px Arial, sans-serif; text-anchor: middle; }
+  </style>
+  <g id="equipment-reachstacker-drawing" aria-hidden="true">
+<path d="M70 410h660" class="ground" /><g><polygon points="581,326 599,314 701,314 683,326" class="pale"/><polygon points="683,326 701,314 701,380 683,392" class="shade"/><rect x="581" y="326" width="102" height="66" rx="0" class="pale"/><path d="M595 331v56" class="fine" />
+<path d="M609 331v56" class="fine" />
+<path d="M623 331v56" class="fine" />
+<path d="M637 331v56" class="fine" />
+<path d="M651 331v56" class="fine" />
+<path d="M665 331v56" class="fine" /><path d="M585 330h94M585 388h94" class="fine" /></g><polygon points="154,327 186,302 303,302 332,329 436,329 457,360 451,382 156,382" class="paper"/><path d="M160 337h100v27H160z" class="pale" /><path d="M175 345h58M175 352h58M176 359h31" class="fine" /><polygon points="309,323 315,260 352,246 390,259 398,324" class="paper"/><polygon points="322,270 351,257 378,266 385,298 320,298" class="pale"/><path d="M353 257v41M319 306h67M364 314h12" class="fine" /><polygon points="202,310 218,330 450,191 433,164" class="shade"/><polygon points="346,233 358,250 513,163 501,146" class="paper"/><path d="M356 237l141 -80M243 308l133 -75" class="fine" /><polygon points="272,316 279,326 413,241 408,232" class="pale"/><circle cx="215" cy="314" r="10" class="paper"/><circle cx="411" cy="236" r="5" class="paper"/><circle cx="508" cy="156" r="9" class="paper"/><rect x="503" y="163" width="13" height="26" rx="0" class="shade"/><polygon points="474,194 498,180 676,180 652,194" class="pale"/><rect x="474" y="194" width="178" height="8" rx="0" class="shade"/><g><polygon points="476,207 499,194 676,194 653,207" class="pale"/><polygon points="653,207 676,194 676,287 653,300" class="shade"/><rect x="476" y="207" width="177" height="93" rx="0" class="paper"/><path d="M490 212v83" class="fine" />
+<path d="M504 212v83" class="fine" />
+<path d="M518 212v83" class="fine" />
+<path d="M532 212v83" class="fine" />
+<path d="M546 212v83" class="fine" />
+<path d="M560 212v83" class="fine" />
+<path d="M574 212v83" class="fine" />
+<path d="M588 212v83" class="fine" />
+<path d="M602 212v83" class="fine" />
+<path d="M616 212v83" class="fine" />
+<path d="M630 212v83" class="fine" /><path d="M480 211h169M480 296h169" class="fine" /></g><path d="M483 201v7m160 -7v7" class="line" /><circle cx="211" cy="378" r="32" class="dark"/><circle cx="211" cy="378" r="18.24" class="paper"/><circle cx="211" cy="378" r="7.36" class="mid"/><circle cx="412" cy="378" r="34" class="dark"/><circle cx="412" cy="378" r="19.38" class="paper"/><circle cx="412" cy="378" r="7.82" class="mid"/><path d="M312 110v32l49 74M666 192h-9M126 384h44" class="leader" />
+  </g>
+  <g id="equipment-reachstacker-points" aria-hidden="true" pointer-events="none">
+    <g id="equipment-reachstacker-point-1" data-point="1"><circle class="marker" cx="312" cy="96" r="14"/><text class="number" x="312" y="96" dy=".35em">1</text></g>
+    <g id="equipment-reachstacker-point-2" data-point="2"><circle class="marker" cx="680" cy="192" r="14"/><text class="number" x="680" y="192" dy=".35em">2</text></g>
+    <g id="equipment-reachstacker-point-3" data-point="3"><circle class="marker" cx="112" cy="384" r="14"/><text class="number" x="112" y="384" dy=".35em">3</text></g>
+  </g>
+</svg>

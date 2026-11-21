@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="equipment-ship-unloader" width="800" height="480" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="equipment-ship-unloader-title equipment-ship-unloader-desc">
+  <title id="equipment-ship-unloader-title">卸船机 · 教学示意，非工程图</title>
+  <desc id="equipment-ship-unloader-desc">抓斗式散货卸船机跨在船舱与岸侧之间，钢索悬挂双瓣抓斗，岸侧漏斗下接水平输送机。 教学示意，非工程图；结构、比例与配置经过简化，不代表具体型号或现场操作方案。编号1、2、3对应页面知识点。</desc>
+  <metadata>原创港口设备结构插图；知识依据：src/data/knowledge.js，eq-unloader；不含尺寸、型号或额定能力。</metadata>
+  <style>
+    #equipment-ship-unloader { color: #252624; }
+    #equipment-ship-unloader path, #equipment-ship-unloader rect, #equipment-ship-unloader circle, #equipment-ship-unloader polygon, #equipment-ship-unloader ellipse { stroke: #252624; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
+    #equipment-ship-unloader .line { fill: none; }
+    #equipment-ship-unloader .fine { fill: none; stroke: #656660; stroke-width: .85; }
+    #equipment-ship-unloader .paper { fill: #faf9f6; }
+    #equipment-ship-unloader .pale { fill: #efeee9; }
+    #equipment-ship-unloader .shade { fill: #d8d9d2; }
+    #equipment-ship-unloader .mid { fill: #969992; }
+    #equipment-ship-unloader .dark { fill: #363834; }
+    #equipment-ship-unloader .ground { fill: none; stroke: #a8aaa2; stroke-width: .85; }
+    #equipment-ship-unloader .water { fill: none; stroke: #92968e; stroke-width: .85; }
+    #equipment-ship-unloader .route { fill: none; stroke: #92968e; stroke-width: 1; }
+    #equipment-ship-unloader .leader { fill: none; stroke: #888c83; stroke-width: 1; }
+    #equipment-ship-unloader .material { fill: none; stroke: #646860; stroke-width: 3; }
+    #equipment-ship-unloader .pipe { fill: none; stroke: #353832; stroke-width: 10; }
+    #equipment-ship-unloader .pipe-inner { fill: none; stroke: #eeeee8; stroke-width: 6.5; }
+    #equipment-ship-unloader .paper-line { fill: none; stroke: #faf9f6; stroke-width: 1; }
+    #equipment-ship-unloader .marker { fill: #faf9f6; stroke: #252624; stroke-width: 1.5; }
+    #equipment-ship-unloader .number { fill: #252624; font: 600 13px Arial, sans-serif; text-anchor: middle; }
+  </style>
+  <g id="equipment-ship-unloader-drawing" aria-hidden="true">
+<path d="M375 414h361" class="ground" /><path d="M61 427h64m19 0h61m19 0h61m19 0h45" class="water" /><polygon points="76,350 352,350 328,408 103,408" class="pale"/><path d="M103 366h226M123 392h183" class="fine" /><polygon points="114,350 147,320 191,334 242,310 309,349" class="shade"/><path d="M155 337l11 -4m29 9l10 -5m32 -14l12 7m22 8l12 4" class="fine" /><polygon points="436,169 456,157 441,382 420,394" class="shade"/><polygon points="634,169 655,157 696,382 675,394" class="shade"/><polygon points="416,166 438,166 414,395 392,395" class="paper"/><polygon points="615,166 638,166 679,395 657,395" class="paper"/><path d="M418 213h229M416 225h234" class="fine" /><rect x="425" y="100" width="68" height="63" rx="0" class="paper"/><path d="M434 110h49v18h-49zM432 143h56" class="fine" /><polygon points="171,139 647,139 673,123 197,123" class="pale"/><rect x="171" y="139" width="476" height="27" rx="0" class="paper"/><polygon points="647,139 673,123 673,150 647,166" class="shade"/><path d="M177 164l20 -22 20 22" class="fine" />
+<path d="M219 164l20 -22 20 22" class="fine" />
+<path d="M261 164l20 -22 20 22" class="fine" />
+<path d="M303 164l20 -22 20 22" class="fine" />
+<path d="M345 164l20 -22 20 22" class="fine" />
+<path d="M387 164l20 -22 20 22" class="fine" />
+<path d="M429 164l20 -22 20 22" class="fine" />
+<path d="M471 164l20 -22 20 22" class="fine" />
+<path d="M513 164l20 -22 20 22" class="fine" />
+<path d="M555 164l20 -22 20 22" class="fine" />
+<path d="M597 164l20 -22 20 22" class="fine" /><path d="M454 69v31M455 73L183 136M455 73l198 63" class="line" /><rect x="222" y="167" width="51" height="12" rx="0" class="shade"/><path d="M234 179v79M261 179v79" class="line" /><rect x="236" y="254" width="24" height="14" rx="2" class="shade"/><path d="M248 267l-35 26M248 267l34 26" class="line" /><path d="M213 286q-22 28 5 49l30 -24z" class="paper" /><path d="M282 286q22 28 -5 49l-29 -24z" class="paper" /><path d="M218 335l22 -22M277 335l-21 -22" class="fine" /><polygon points="492,241 613,241 636,227 515,227" class="pale"/><polygon points="492,241 613,241 581,313 525,313" class="paper"/><polygon points="613,241 636,227 601,301 581,313" class="shade"/><rect x="537" y="313" width="36" height="24" rx="0" class="shade"/><path d="M505 273v94M606 264v103M505 350h101M506 298l99 52M605 298l-99 52" class="fine" /><polygon points="501,352 716,352 733,342 518,342" class="pale"/><rect x="501" y="352" width="215" height="17" rx="0" class="paper"/><path d="M510 361h196M525 369v26M684 369v26" class="fine" /><circle cx="402" cy="401" r="9" class="dark"/><circle cx="402" cy="401" r="5.13" class="paper"/><circle cx="402" cy="401" r="2.0700000000000003" class="mid"/><circle cx="423" cy="401" r="9" class="dark"/><circle cx="423" cy="401" r="5.13" class="paper"/><circle cx="423" cy="401" r="2.0700000000000003" class="mid"/><circle cx="662" cy="401" r="9" class="dark"/><circle cx="662" cy="401" r="5.13" class="paper"/><circle cx="662" cy="401" r="2.0700000000000003" class="mid"/><circle cx="684" cy="401" r="9" class="dark"/><circle cx="684" cy="401" r="5.13" class="paper"/><circle cx="684" cy="401" r="2.0700000000000003" class="mid"/><path d="M158 240h32l40 47M674 240h-37M666 384h-21l-35 -18" class="leader" />
+  </g>
+  <g id="equipment-ship-unloader-points" aria-hidden="true" pointer-events="none">
+    <g id="equipment-ship-unloader-point-1" data-point="1"><circle class="marker" cx="144" cy="240" r="14"/><text class="number" x="144" y="240" dy=".35em">1</text></g>
+    <g id="equipment-ship-unloader-point-2" data-point="2"><circle class="marker" cx="688" cy="240" r="14"/><text class="number" x="688" y="240" dy=".35em">2</text></g>
+    <g id="equipment-ship-unloader-point-3" data-point="3"><circle class="marker" cx="680" cy="384" r="14"/><text class="number" x="680" y="384" dy=".35em">3</text></g>
+  </g>
+</svg>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="equipment-pump-tank" width="800" height="480" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="equipment-pump-tank-title equipment-pump-tank-desc">
+  <title id="equipment-pump-tank-title">泵管罐系统 · 教学示意，非工程图</title>
+  <desc id="equipment-pump-tank-desc">液货教学连接示意：左侧船岸装卸接口经管线连接泵及驱动，经过阀门与计量示意后进入右侧立式储罐；不代表工艺设计。 教学示意，非工程图；结构、比例与配置经过简化，不代表具体型号或现场操作方案。编号1、2、3对应页面知识点。</desc>
+  <metadata>原创港口设备结构插图；知识依据：src/data/knowledge.js，eq-pump-tank；不含尺寸、型号或额定能力。</metadata>
+  <style>
+    #equipment-pump-tank { color: #252624; }
+    #equipment-pump-tank path, #equipment-pump-tank rect, #equipment-pump-tank circle, #equipment-pump-tank polygon, #equipment-pump-tank ellipse { stroke: #252624; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
+    #equipment-pump-tank .line { fill: none; }
+    #equipment-pump-tank .fine { fill: none; stroke: #656660; stroke-width: .85; }
+    #equipment-pump-tank .paper { fill: #faf9f6; }
+    #equipment-pump-tank .pale { fill: #efeee9; }
+    #equipment-pump-tank .shade { fill: #d8d9d2; }
+    #equipment-pump-tank .mid { fill: #969992; }
+    #equipment-pump-tank .dark { fill: #363834; }
+    #equipment-pump-tank .ground { fill: none; stroke: #a8aaa2; stroke-width: .85; }
+    #equipment-pump-tank .water { fill: none; stroke: #92968e; stroke-width: .85; }
+    #equipment-pump-tank .route { fill: none; stroke: #92968e; stroke-width: 1; }
+    #equipment-pump-tank .leader { fill: none; stroke: #888c83; stroke-width: 1; }
+    #equipment-pump-tank .material { fill: none; stroke: #646860; stroke-width: 3; }
+    #equipment-pump-tank .pipe { fill: none; stroke: #353832; stroke-width: 10; }
+    #equipment-pump-tank .pipe-inner { fill: none; stroke: #eeeee8; stroke-width: 6.5; }
+    #equipment-pump-tank .paper-line { fill: none; stroke: #faf9f6; stroke-width: 1; }
+    #equipment-pump-tank .marker { fill: #faf9f6; stroke: #252624; stroke-width: 1.5; }
+    #equipment-pump-tank .number { fill: #252624; font: 600 13px Arial, sans-serif; text-anchor: middle; }
+  </style>
+  <g id="equipment-pump-tank-drawing" aria-hidden="true">
+<path d="M70 410h660" class="ground" /><path d="M76 417h66m17 0h58" class="water" /><polygon points="69,338 212,338 195,389 91,389" class="pale"/><path d="M91 354h109" class="fine" /><rect x="108" y="310" width="48" height="28" rx="0" class="paper"/><path d="M130 310v-79l34 -57 41 8 23 52" class="line" /><path d="M142 310v-76l27 -46 27 5 20 43" class="line" /><circle cx="136" cy="234" r="8" class="paper"/><circle cx="166" cy="181" r="8" class="paper"/><circle cx="200" cy="188" r="8" class="paper"/><path d="M222 235v71q0 21 22 21h43" class="pipe" /><path d="M222 235v71q0 21 22 21h43" class="pipe-inner" /><rect x="279" y="361" width="137" height="13" rx="2" class="shade"/><circle cx="308" cy="333" r="28" class="paper"/><circle cx="308" cy="333" r="12" class="pale"/><path d="M304 344q-13 -13 0 -24q16 -9 22 5" class="fine" /><rect x="334" y="319" width="68" height="34" rx="5" class="paper"/><path d="M340 325h55m-55 6h55m-55 6h55m-55 6h55" class="fine" /><rect x="340" y="354" width="11" height="7" rx="0" class="shade"/><rect x="385" y="354" width="11" height="7" rx="0" class="shade"/><rect x="329" y="330" width="7" height="13" rx="0" class="dark"/><path d="M308 306v-19h219q15 0 15 17v23h17" class="pipe" /><path d="M308 306v-19h219q15 0 15 17v23h17" class="pipe-inner" /><polygon points="431,279 444,287 431,295" class="paper"/><polygon points="457,279 444,287 457,295" class="paper"/><path d="M444 279v-19m-12 0h24" class="line" /><circle cx="388" cy="268" r="10" class="paper"/><path d="M388 278v9M388 268l4 -4" class="fine" /><ellipse cx="624" cy="363" rx="86" ry="19" class="shade"/><path d="M538 180v181c0 26 172 26 172 0V180" class="paper" /><ellipse cx="624" cy="180" rx="86" ry="23" class="pale"/><path d="M538 180l86 -27 86 27" class="line" /><path d="M547 245c25 16 126 16 156 0M547 301c25 16 126 16 156 0" class="fine" /><path d="M694 199v154m9 -157v153" class="line" /><path d="M694 204h9" class="fine" />
+<path d="M694 215h9" class="fine" />
+<path d="M694 226h9" class="fine" />
+<path d="M694 237h9" class="fine" />
+<path d="M694 248h9" class="fine" />
+<path d="M694 259h9" class="fine" />
+<path d="M694 270h9" class="fine" />
+<path d="M694 281h9" class="fine" />
+<path d="M694 292h9" class="fine" />
+<path d="M694 303h9" class="fine" />
+<path d="M694 314h9" class="fine" />
+<path d="M694 325h9" class="fine" />
+<path d="M694 336h9" class="fine" /><rect x="559" y="321" width="14" height="13" rx="0" class="shade"/><path d="M624 153v-16h15M561 199h125" class="fine" /><path d="M542 329h17" class="pipe" /><path d="M542 329h17" class="pipe-inner" /><path d="M278 240h30v63M448 230v28M666 120h-24l-18 33" class="leader" />
+  </g>
+  <g id="equipment-pump-tank-points" aria-hidden="true" pointer-events="none">
+    <g id="equipment-pump-tank-point-1" data-point="1"><circle class="marker" cx="264" cy="240" r="14"/><text class="number" x="264" y="240" dy=".35em">1</text></g>
+    <g id="equipment-pump-tank-point-2" data-point="2"><circle class="marker" cx="448" cy="216" r="14"/><text class="number" x="448" y="216" dy=".35em">2</text></g>
+    <g id="equipment-pump-tank-point-3" data-point="3"><circle class="marker" cx="680" cy="120" r="14"/><text class="number" x="680" y="120" dy=".35em">3</text></g>
+  </g>
+</svg>
