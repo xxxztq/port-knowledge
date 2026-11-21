@@ -33,7 +33,7 @@ npm run preview
 
 ## GitHub Pages
 
-配置目标为仓库 xxxztq/port-knowledge，预期网址 https://xxxztq.github.io/port-knowledge/ 。仓库创建、首次推送和 Pages 开启后才能访问；源代码中的目标地址不表示已经发布。
+网站已于 2026-11-21 发布：[在线访问](https://xxxztq.github.io/port-knowledge/) · [源码仓库](https://github.com/xxxztq/port-knowledge)。
 
 在仓库 Settings → Pages 中选择 GitHub Actions；向 main 分支推送后，.github/workflows/deploy.yml 自动安装依赖、执行校验、构建并发布。细节见 [发布指南](docs/GITHUB_PAGES.md)。
 

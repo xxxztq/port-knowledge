@@ -2,9 +2,9 @@
 
 目标账户：xxxztq
 建议仓库：port-knowledge（公开独立仓库）
-预期网址：https://xxxztq.github.io/port-knowledge/
+线上网址：https://xxxztq.github.io/port-knowledge/
 
-该网址是发布目标。只有 GitHub 部署成功且页面实际可访问，才算完成上线。
+已于 2026-11-21 完成首次部署，构建与发布均成功，并已打开线上页面核验。以下首次发布步骤供迁移或重新搭建时参考。
 
 ## 首次发布
 

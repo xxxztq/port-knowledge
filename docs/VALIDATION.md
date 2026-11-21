@@ -19,4 +19,15 @@
 - 手机视口检查：首页、闸口、知识百科、角色、设备、流程、经营、来源以及文章和场景详情，无横向溢出；手机菜单可展开，闸口按钮可操作。
 - 浏览器测试未记录到脚本错误。
 
-截图保存在本地 artifacts/（不进入 Git）。GitHub Pages 线上部署需另行确认，不能用本地验证替代上线验收。
+截图保存在本地 artifacts/（不进入 Git）。GitHub Pages 线上验收见下节。
+
+## GitHub Pages 线上验收
+
+- 2026-11-21，仓库 xxxztq/port-knowledge 创建并公开发布。
+- 首次发布版本：15fb167dfe2190a677f7c528d5615ccc588dae8c。
+- Actions：https://github.com/xxxztq/port-knowledge/actions/runs/44895487169 ，build 与 deploy 均成功。
+- 线上网址：https://xxxztq.github.io/port-knowledge/ ，已在浏览器打开核验。
+- 线上全文搜索及设备过滤分别返回 8 篇和 3 篇岸桥相关卡片；文章详情刷新成功。
+- 线上进口出闸示例在监管条件未满足时阻断，恢复条件后完整通过授权、抬杆、通行与回执。
+- 线上经营滑块结果由 330 变为 -480（万元／月的虚构教学结果），恢复假设正常。
+- 上述线上验收未记录到浏览器脚本错误；截图为本地 artifacts/published-home.jpg。
