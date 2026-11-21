@@ -1,0 +1,7 @@
+---
+import Icon from './Icon.astro';
+const { article, number } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<a class="article-card" href={base + 'knowledge/' + article.id + '/'} data-search-card data-kind={article.kind} data-domain={article.domain} data-search={[article.title, article.subtitle, article.summary, ...article.tags].join(' ').toLowerCase()} data-id={article.id}>
+<div class="card-top"><span class="tag">{article.kind}</span>{number && <span class="card-number">{String(number).padStart(2,'0')}</span>}</div><h3>{article.title}</h3><p>{article.summary}</p><div class="card-bottom"><span>{article.level} · {article.tags.slice(0,2).join(' / ')}</span><Icon name="arrow" size={18}/></div></a>

@@ -1,0 +1,4 @@
+---
+import Layout from '../layouts/Layout.astro';const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<Layout title="没有找到这页"><div class="container empty-state" style="margin-block:70px"><span class="eyebrow">404 / NO BERTH FOUND</span><h1>这一页，还没有靠岸。</h1><p>链接可能已变更。回到知识地图，继续寻找你感兴趣的港口业务。</p><a class="button primary" href={base}>返回首页</a> <a class="button outline" href={base+'library/'}>打开知识百科</a></div></Layout>

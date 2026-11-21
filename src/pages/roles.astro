@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import {articles} from '../data/knowledge.js';
+import {collaboration} from '../data/scenarios.js';
+const roles=articles.filter(a=>a.kind==='岗位');
+---
+<Layout title="角色协作" active="roles" description="从操作、中控到工程，看一项任务怎样在港口内外完成交接。"><div class="container"><PageIntro eyebrow="PEOPLE & COLLABORATION" title="港口不是一个人在忙。" description="操作负责把作业做成，中控协调执行，工程保障设备可用；计划、业务、安环和外部参与方，把各自负责的信息接起来。岗位名称与权限随企业而变化。"/>
+<div class="page-content"><div class="two-column"><div class="panel"><h2>内部：从安排到执行</h2><p>业务接收需求 → 计划安排泊位、设备与堆场 → 中控协调执行 → 现场操作与理货反馈实绩 → 财务按服务记录核算。工程、安环与信息部门贯穿各环节。</p></div><div class="panel"><h2>外部：各有自己的责任</h2><p>货主提出运输需求，货代组织委托事项，船公司及代理安排运输与商业交付，车队衔接陆运，海关依法实施监管。委托可以代办事项，但不会让所有权限归到同一方。</p></div></div>
+<div class="section-heading section-top"><div><div class="eyebrow">ROLE ATLAS</div><h2>先认识岗位，再看交接</h2></div></div><div class="article-grid">{roles.map(article=><ArticleCard article={article}/>)}</div>
+<div class="section-heading section-top" id="collaboration"><div><div class="eyebrow">HANDOFF IN PRACTICE</div><h2>部门是怎样交互的？</h2></div><span class="external-note">输入 → 判断 → 交付</span></div>
+{collaboration.map(c=><section class="collaboration-card" id={c.id}><span class="pill">协作案例</span><h3>{c.title}</h3><p><strong>触发：</strong>{c.trigger}</p><div class="lanes">{c.lanes.map(l=><div class="lane"><strong>{l.role}</strong><div><small>收到什么</small>{l.receive}</div><div><small>判断什么</small>{l.decide}</div><div><small>交给谁什么</small>{l.deliver}</div></div>)}</div><p class="notice"><strong>完成标志：</strong>{c.result}</p><div class="exception"><strong>异常怎么接</strong>{c.exception}</div></section>)}
+</div></div></Layout>

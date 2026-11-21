@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';import PageIntro from '../components/PageIntro.astro';import ArticleCard from '../components/ArticleCard.astro';import Icon from '../components/Icon.astro';import {articles} from '../data/knowledge.js';
+const equipment=articles.filter(a=>a.kind==='设备');const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<Layout title="设备图鉴" active="equipment" description="认识岸桥、场桥、集卡、输送机与闸口设备，以及它们在生产链条上的作用。"><div class="container"><PageIntro eyebrow="EQUIPMENT ATLAS" title="每一台设备，都接着下一步。" description="看设备不能只记名字。还要知道它搬什么、在哪里工作、从谁接任务、把什么交给下一环，以及停机后会影响谁。"/><div class="page-content">
+<div class="equipment-chain" aria-label="集装箱码头典型设备衔接">{[['ship','船舶与泊位','提供船岸作业界面'],['crane','岸桥','完成船与岸之间吊装'],['route','水平运输','把箱接送到堆场'],['grid','场桥／堆场设备','落箱、堆存与提取'],['gate','闸口与车辆','核对陆侧交接']].map(([icon,title,desc],i)=><div><span class="chain-number">0{i+1}</span><Icon name={icon} size={31}/><h3>{title}</h3><p>{desc}</p></div>)}</div>
+<div class="notice">这是一条典型集装箱作业链。散货更多使用抓斗、漏斗与输送系统；液体货物依赖装卸臂、管线与储罐；滚装车辆通过跳板衔接。不同货种不应套用同一套设备流程。</div>
+<div class="article-grid">{equipment.map(article=><ArticleCard article={article}/>)}</div>
+<div class="learning-banner"><div><h2>设备故障时，谁先接住问题？</h2><p>看现场、中控、工程与计划怎样处理一次岸桥故障。</p></div><a class="button light" href={base+'roles/#collaboration-quay-crane-failure'}>查看协作案例 <Icon name="arrow"/></a></div>
+</div></div></Layout>
