@@ -1,0 +1,21 @@
+<section class="infra-lab" aria-labelledby="bay-lab-title" id="bay-lab"><div class="infra-lab-heading"><span class="eyebrow">LOCATION LAB / 动手找一个箱位</span><h2 id="bay-lab-title">船上一个位置，要用三个方向来描述。</h2><p>先选箱长，再变动贝、排、层。高亮表示这个虚构船格中的占位；上方是水平投影，下方显示所在层。</p></div><div class="bay-controls"><label>箱长<select id="bay-length"><option value="20">20 尺</option><option value="40">40 尺</option></select></label><label>贝 Bay<select id="bay-number"><option>01</option><option>03</option><option>05</option><option>07</option></select></label><label>排 Row<select id="bay-row"><option value="02">02 · 左舷</option><option value="00" selected>00 · 中线</option><option value="01">01 · 右舷</option></select></label><label>层 Tier<select id="bay-tier"><option value="02">02 · 舱内</option><option value="04">04 · 舱内</option><option value="82" selected>82 · 甲板上</option><option value="84">84 · 甲板上</option></select></label></div><div class="bay-workbench"><div><div class="bay-orientation"><span>船首方向 ←</span><span>沿船长：贝 BAY</span></div><div class="bay-map" role="group" aria-label="教学船格水平投影">{['01','00','02'].map(row=><div class="bay-map-row"><span>{row==='02'?'左舷':row==='00'?'中线':'右舷'}<small>排 {row}</small></span>{['01','03','05','07'].map(bay=><button type="button" data-bay-cell={bay} data-row={row} aria-label={'选择20尺贝'+bay+' 排'+row} aria-pressed={bay==='01'&&row==='00'?'true':'false'}><strong>{bay}</strong><small>20′ 位</small></button>)}</div>)}</div><p class="infra-caption">点击格子改变水平位置；40 尺示例横跨两个相邻的 20 尺位置。</p><div class="bay-tiers" aria-label="当前层位">{['84','82','04','02'].map(tier=><div data-tier-marker={tier} class:list={{'is-selected':tier==='82'}}><span>{Number(tier)>=80?'甲板上':'舱内'}</span><strong>层 {tier}</strong><span data-tier-state>{tier==='82'?'← 当前层':''}</span></div>)}</div></div><aside class="bay-readout"><span>当前位置 · 示意编码 BBBRRTT</span><output id="bay-code" aria-live="polite">0010082</output><dl><div><dt>贝：沿船长定位</dt><dd id="bay-output">01 · 单个 20 尺位置</dd></div><div><dt>排：沿船宽定位</dt><dd id="row-output">00 · 中线</dd></div><div><dt>层：沿高度定位</dt><dd id="tier-output">82 · 甲板上</dd></div></dl><p id="bay-footprint">本例占用 01 贝的一格。</p></aside></div><p class="infra-boundary">教学模型：这些贝、排、层号只描述本图。实际船型、中心排、舱面层号、长箱配对和可用位置要看船舶箱位图与相应报文规则；本图不判断重量、稳性、危险品隔离或可装载性。</p><noscript><p>当前显示 20 尺箱位示例：贝 01／排 00／层 82。启用 JavaScript 可改变位置。</p></noscript></section>
+<script>
+import {shipOptions,shipLocation} from '../lib/location-model.mjs';
+const length=document.querySelector<HTMLSelectElement>('#bay-length');
+if(length){
+ const bay=document.querySelector<HTMLSelectElement>('#bay-number')!,row=document.querySelector<HTMLSelectElement>('#bay-row')!,tier=document.querySelector<HTMLSelectElement>('#bay-tier')!;
+ const cells=[...document.querySelectorAll<HTMLButtonElement>('[data-bay-cell]')];
+ function render(){const size=Number(length!.value);const value=shipLocation({length:size,bay:bay.value,row:row.value,tier:tier.value});
+ document.querySelector('#bay-code')!.textContent=value.code;
+ document.querySelector('#bay-output')!.textContent=bay.value+' · '+(size===40?'配对的 40 尺位置':'单个 20 尺位置');
+ document.querySelector('#row-output')!.textContent=row.value+' · '+value.side;
+ document.querySelector('#tier-output')!.textContent=tier.value+' · '+value.level;
+ document.querySelector('#bay-footprint')!.textContent='本例占用 '+value.columns.join(' + ')+' 贝的'+value.columns.length+'格。';
+ cells.forEach(c=>{c.setAttribute('aria-pressed',String(value.columns.includes(c.dataset.bayCell!)&&row.value===c.dataset.row));const target=size===40?(['01','03'].includes(c.dataset.bayCell!)?'02':'06'):c.dataset.bayCell;c.setAttribute('aria-label','选择'+size+'尺贝'+target+' 排'+c.dataset.row);});
+ document.querySelectorAll<HTMLElement>('[data-tier-marker]').forEach(m=>{const selected=m.dataset.tierMarker===tier.value;m.classList.toggle('is-selected',selected);m.querySelector('[data-tier-state]')!.textContent=selected?'← 当前层':'';});
+ }
+ length.addEventListener('change',()=>{bay.replaceChildren(...shipOptions[Number(length.value)].map((v:string)=>new Option(v,v)));render()});
+ [bay,row,tier].forEach(s=>s.addEventListener('change',render));
+ cells.forEach(c=>c.addEventListener('click',()=>{bay.value=length.value==='40'?(['01','03'].includes(c.dataset.bayCell!)?'02':'06'):c.dataset.bayCell!;row.value=c.dataset.row!;render()}));render();
+}
+</script>

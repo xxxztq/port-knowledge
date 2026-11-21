@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-labelledby="it-room-title it-room-desc">
+  <title id="it-room-title">港口 IT 机房与硬件职责示意</title>
+  <desc id="it-room-desc">暖白底黑白线稿。左侧机柜包含服务器、本地盘、共享存储和 PDU；中间分别展示光纤配线、交换机、路由器、防火墙与现场边缘网关；右侧展示 UPS、制冷和设施监控。实线仅示意数据联系，虚线仅示意环境支持，不表示真实拓扑、数量、规格、接线顺序或施工方案。硬件分组标识与教学图鉴对应。</desc>
+  <defs>
+    <style>
+      .ink { fill: none; stroke: #282621; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+      .paper { fill: #fffdf7; }
+      .label { fill: #282621; font-family: 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; font-size: 12px; }
+      .small { font-size: 10px; }
+      .heading { font-size: 14px; font-weight: 600; }
+      .support { stroke-dasharray: 4 5; }
+    </style>
+  </defs>
+  <rect width="720" height="360" fill="#faf8f1"/>
+  <text x="28" y="30" class="label heading">港口 IT 机房与硬件</text>
+  <text x="692" y="29" text-anchor="end" class="label small">认识职责 · 不代表实际部署</text>
+  <path d="M28 43H692" class="ink"/>
+  <text x="38" y="68" class="label heading">计算与存储</text>
+  <text x="284" y="68" class="label heading">连接与边界</text>
+  <text x="490" y="68" class="label heading">供电与环境</text>
+
+  <g id="hw-rack-monitoring" data-hardware-id="rack-monitoring">
+    <title>机柜与设施监控：组织设备，发现环境异常</title>
+    <rect x="30" y="81" width="208" height="204" rx="7" class="ink"/>
+    <path d="M39 89V276M229 89V276M49 285V291M219 285V291" class="ink"/>
+    <circle cx="39" cy="98" r="1.4" fill="#282621"/>
+    <circle cx="229" cy="98" r="1.4" fill="#282621"/>
+    <rect x="485" y="222" width="199" height="42" rx="4" class="ink paper"/>
+    <rect x="497" y="231" width="35" height="23" rx="2" class="ink"/>
+    <path d="M501 246H508L512 236L517 249L521 242H528" class="ink"/>
+    <text x="544" y="240" class="label">设施监控</text>
+    <text x="544" y="254" class="label small">发现异常 → 人员响应</text>
+  </g>
+
+  <g id="hw-server" data-hardware-id="server">
+    <title>服务器：CPU 计算，RAM 暂存运行数据</title>
+    <rect x="48" y="96" width="137" height="69" rx="3" class="ink paper"/>
+    <path d="M48 126H185M57 108H67M57 115H67" class="ink"/>
+    <circle cx="171" cy="111" r="3" class="ink"/>
+    <text x="78" y="116" class="label">服务器</text>
+    <rect x="57" y="136" width="34" height="19" rx="2" class="ink"/>
+    <text x="74" y="149" text-anchor="middle" class="label small">CPU</text>
+    <rect x="104" y="136" width="37" height="19" rx="2" class="ink"/>
+    <text x="122.5" y="149" text-anchor="middle" class="label small">RAM</text>
+    <path d="M150 139H175M150 145H175M150 151H168" class="ink"/>
+  </g>
+  <g id="hw-local-storage" data-hardware-id="local-storage">
+    <title>本地盘：直接连接服务器的存储</title>
+    <rect x="48" y="180" width="137" height="35" rx="3" class="ink paper"/>
+    <rect x="57" y="188" width="27" height="19" rx="2" class="ink"/>
+    <circle cx="70.5" cy="197.5" r="5" class="ink"/>
+    <path d="M72 196L79 191" class="ink"/>
+    <text x="96" y="202" class="label">本地盘</text>
+  </g>
+  <g id="hw-shared-storage" data-hardware-id="shared-storage">
+    <title>共享存储：NAS 文件访问与 SAN 块访问</title>
+    <rect x="48" y="231" width="137" height="40" rx="3" class="ink paper"/>
+    <path d="M57 240H80V247H57ZM57 254H80V261H57Z" class="ink"/>
+    <text x="91" y="246" class="label">共享存储</text>
+    <text x="91" y="261" class="label small">NAS / SAN</text>
+  </g>
+  <g id="hw-pdu" data-hardware-id="pdu">
+    <title>PDU：分配电力；不同插口不等于独立电源</title>
+    <rect x="198" y="96" width="22" height="175" rx="3" class="ink paper"/>
+    <text x="209" y="110" text-anchor="middle" class="label small">PDU</text>
+    <g class="ink">
+      <rect x="203" y="122" width="12" height="16" rx="2"/>
+      <path d="M207 127V132M211 127V132"/>
+      <rect x="203" y="148" width="12" height="16" rx="2"/>
+      <path d="M207 153V158M211 153V158"/>
+      <rect x="203" y="174" width="12" height="16" rx="2"/>
+      <path d="M207 179V184M211 179V184"/>
+      <rect x="203" y="200" width="12" height="16" rx="2"/>
+      <path d="M207 205V210M211 205V210"/>
+      <rect x="203" y="226" width="12" height="16" rx="2"/>
+      <path d="M207 231V236M211 231V236"/>
+    </g>
+  </g>
+
+  <g id="hw-fiber-panel" data-hardware-id="fiber-panel">
+    <title>光纤配线：端接、标识和整理物理连接</title>
+    <rect x="280" y="82" width="160" height="34" rx="3" class="ink paper"/>
+    <path d="M289 91H298V99H289ZM302 91H311V99H302ZM315 91H324V99H315ZM293 99V107M307 99V107M319 99V107" class="ink"/>
+    <text x="336" y="103" class="label">光纤配线</text>
+  </g>
+  <g id="hw-switch" data-hardware-id="switch">
+    <title>交换机：连接网络内的设备</title>
+    <rect x="280" y="127" width="160" height="34" rx="3" class="ink paper"/>
+    <path d="M289 138H298V149H289ZM302 138H311V149H302ZM315 138H324V149H315Z" class="ink"/>
+    <text x="336" y="149" class="label">交换机</text>
+  </g>
+  <g id="hw-router" data-hardware-id="router">
+    <title>路由器：在网络之间转发数据</title>
+    <rect x="280" y="172" width="160" height="34" rx="3" class="ink paper"/>
+    <path d="M289 184H324M320 180L324 184L320 188M324 195H289M293 191L289 195L293 199" class="ink"/>
+    <text x="336" y="194" class="label">路由器</text>
+  </g>
+  <g id="hw-firewall" data-hardware-id="firewall">
+    <title>防火墙：按策略控制通信，不代替业务授权</title>
+    <rect x="280" y="217" width="160" height="34" rx="3" class="ink paper"/>
+    <path d="M293 225L307 221L321 225V233Q321 243 307 247Q293 243 293 233ZM300 233L305 238L314 228" class="ink"/>
+    <text x="336" y="239" class="label">防火墙</text>
+  </g>
+  <g id="hw-edge-gateway" data-hardware-id="edge-gateway">
+    <title>边缘网关：靠近现场采集、转换和处理；动作权限另有边界</title>
+    <rect x="280" y="267" width="160" height="35" rx="3" class="ink paper"/>
+    <rect x="289" y="275" width="24" height="18" rx="2" class="ink"/>
+    <path d="M294 279H308M294 284H304M294 289H308M317 284H325M321 280L325 284L321 288" class="ink"/>
+    <text x="336" y="282" class="label">边缘网关</text>
+    <text x="336" y="295" class="label small">靠近现场</text>
+  </g>
+
+  <g id="hw-ups" data-hardware-id="ups">
+    <title>UPS：提供有限的后备电力与过渡时间</title>
+    <rect x="485" y="82" width="199" height="57" rx="4" class="ink paper"/>
+    <rect x="498" y="94" width="30" height="33" rx="3" class="ink"/>
+    <path d="M507 90H519M514 99L507 112H516L511 122" class="ink"/>
+    <text x="544" y="105" class="label">UPS</text>
+    <text x="544" y="122" class="label small">有限后备 · 衔接供电或停机</text>
+  </g>
+  <g id="hw-cooling" data-hardware-id="cooling">
+    <title>制冷：带走设备热量，配合气流组织</title>
+    <rect x="485" y="151" width="199" height="58" rx="4" class="ink paper"/>
+    <circle cx="513" cy="179" r="16" class="ink"/>
+    <circle cx="513" cy="179" r="3" class="ink"/>
+    <path d="M513 176Q500 161 502 176L510 181M516 179Q535 175 523 169L514 176M512 182Q507 200 521 192L516 181" class="ink"/>
+    <text x="544" y="175" class="label">制冷与气流</text>
+    <text x="544" y="193" class="label small">持续带走热量</text>
+  </g>
+
+  <path d="M238 144H280" class="ink"/>
+  <path d="M238 189H262V284H280" class="ink"/>
+  <path d="M684 111H695V314H134V285M684 180H695M684 243H695" class="ink support"/>
+  <rect x="513" y="304" width="134" height="18" fill="#faf8f1"/>
+  <text x="580" y="317" text-anchor="middle" class="label small">供电、散热与环境支持</text>
+  <path d="M28 337H55" class="ink"/>
+  <text x="63" y="341" class="label small">数据联系（概念）</text>
+  <path d="M190 337H217" class="ink support"/>
+  <text x="225" y="341" class="label small">设施支持（概念）</text>
+  <text x="692" y="341" text-anchor="end" class="label small">不表示接线顺序、规格或施工方案</text>
+</svg>

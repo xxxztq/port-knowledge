@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-labelledby="ev-title ev-desc">
+<title id="ev-title">新能源汽车：车辆与运输模式的业务示意</title>
+<desc id="ev-desc">原创黑白线稿，以港口车辆、滚装船和独立的集装箱符号展示不同运输模式。车辆按VIN识别，装箱时还需关联箱号。各元素不按真实比例绘制，不表示装载、系固或危险货物分类方案。</desc>
+<rect width="720" height="360" fill="#f7f5ef"/>
+<style>text{font-family:'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif;fill:#202827}.small{font-size:12px}.label{font-size:14px}.heading{font-size:20px;font-weight:600}.muted{fill:#596360}</style>
+<g fill="none" stroke="#202827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M32 77H688" stroke="#b9bdb5"/>
+<path d="M56 170H367L345 193H82Z" fill="#f7f5ef"/>
+<path d="M83 170V120H292V170M292 135H329L343 170M106 120V107H153V120M126 107V94M307 135V124H323V135"/>
+<path d="M97 134H278M97 148H278M97 161H278M106 134V140M123 134V140M140 134V140M157 134V140M174 134V140M191 134V140M208 134V140M225 134V140M242 134V140M259 134V140" stroke-width="1.4"/>
+<path d="M311 146H326L333 159H311Z" fill="#285b56"/>
+<path d="M42 203H353M64 210H111M166 210H230M284 210H329" stroke="#9ca59e" stroke-width="1.2"/>
+<path d="M392 113L446 94H644L590 113ZM392 113H590V210H392ZM590 113L644 94V192L590 210" fill="#f7f5ef"/>
+<path d="M404 123V199M416 123V199M428 123V199M440 123V199M452 123V199M464 123V199M476 123V199M488 123V199M500 123V199M512 123V199M524 123V199M536 123V199M548 123V199M560 123V199M572 123V199M607 116V192M629 109V184" stroke="#9ca59e" stroke-width="1.3"/>
+<rect x="453" y="145" width="82" height="30" rx="3" fill="#f7f5ef"/>
+<path d="M604 155L610 153M626 149L632 147"/>
+<path d="M39 278H680" stroke="#b9bdb5"/>
+<path d="M65 251L72 231Q76 224 91 221L123 216L158 184Q167 177 184 177H244Q256 177 269 186L308 216L345 223Q359 226 364 239L367 258H332Q326 233 304 233Q283 233 277 258H158Q151 233 130 233Q108 233 102 258H68Q61 258 65 251Z" fill="#f7f5ef" stroke-width="2.6"/>
+<path d="M142 214L171 187H201V214ZM213 187H241Q252 187 262 195L286 214Z" fill="#e5e8df"/>
+<path d="M205 222V252M285 221L291 229M178 224H190M256 224H268M77 233H99L95 240H74M342 231H354M160 258H273M168 266H267" stroke-width="1.6"/>
+<circle cx="130" cy="258" r="20" fill="#202827"/>
+<circle cx="130" cy="258" r="10" fill="#f7f5ef"/>
+<circle cx="304" cy="258" r="20" fill="#202827"/>
+<circle cx="304" cy="258" r="10" fill="#f7f5ef"/>
+<rect x="196" y="235" width="31" height="12" rx="2" fill="#285b56" stroke="none"/>
+<rect x="419" y="232" width="229" height="47" rx="5" fill="#f7f5ef"/>
+<path d="M437 243V267M442 243V267M449 243V267M454 243V267M462 243V267M470 243V267" stroke-width="2"/>
+<path d="M32 319H688" stroke="#b9bdb5" stroke-width="1"/>
+</g>
+<text x="32" y="37" class="small" letter-spacing="2">CARGO / 01</text>
+<text x="32" y="63" class="heading">新能源汽车</text>
+<text x="688" y="55" text-anchor="end" class="label muted">先辨运输模式，再核接收条件</text>
+<text x="494" y="165" text-anchor="middle" class="small">箱号关联</text>
+<text x="487" y="261" class="label">VIN · 一车一身份</text>
+<text x="65" y="301" class="small muted">滚装车辆管理 / VIN</text>
+<text x="419" y="301" class="small muted">装箱运输 / TOS 箱号 + 车辆关联</text>
+<text x="32" y="342" class="small muted">原创教学示意 · 非真实比例 · 非配载或操作图</text>
+<text x="688" y="342" text-anchor="end" class="small" fill="#285b56">PORT / CARGO</text>
+</svg>

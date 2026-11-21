@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-labelledby="storage-title storage-desc">
+<title id="storage-title">储能柜与电池储能系统：外形不等于运输分类</title>
+<desc id="storage-desc">原创黑白线稿，分别展示柜体外形和货物运输组件外形，旁边放置技术资料卡。示意强调柜体序列号、运输形态和技术资料；不把储能柜或箱形外壳一律归为UN3536。各物体不按真实比例绘制，不展示电气连接、吊装或处置方法。</desc>
+<rect width="720" height="360" fill="#f7f5ef"/>
+<style>text{font-family:'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif;fill:#202827}.small{font-size:12px}.label{font-size:14px}.heading{font-size:20px;font-weight:600}.muted{fill:#596360}</style>
+<g fill="none" stroke="#202827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M32 77H688" stroke="#b9bdb5"/>
+<path d="M67 145L105 128H208L171 145ZM67 145H171V280H67ZM171 145L208 128V263L171 280" fill="#f7f5ef"/>
+<path d="M81 158H156V263H81ZM143 202V221M179 159L197 151M179 167L197 159M179 175L197 167M179 183L197 175M179 191L197 183"/>
+<rect x="94" y="170" width="43" height="18" rx="2" fill="#285b56" stroke="none"/>
+<path d="M97 231H137M97 238H137M97 245H137M75 280V286H91V280M147 280V286H163V280" stroke-width="1.5"/>
+<path d="M221 155L246 143H315L290 155ZM221 155H290V280H221ZM290 155L315 143V269L290 280" fill="#f7f5ef"/>
+<path d="M230 168H279V263H230ZM269 207V224M237 240H262M237 247H262" stroke-width="1.5"/>
+<rect x="238" y="179" width="23" height="13" rx="2" fill="#285b56" stroke="none"/>
+<path d="M222 280V286H233V280M277 280V286H288V280M49 286H329" stroke="#9ca59e"/>
+<path d="M373 127L419 104H658L612 127ZM373 127H612V214H373ZM612 127L658 104V191L612 214" fill="#f7f5ef"/>
+<path d="M388 138V202M400 138V202M412 138V202M424 138V202M436 138V202M448 138V202M460 138V202M472 138V202M484 138V202M496 138V202M508 138V202M520 138V202M532 138V202M544 138V202M556 138V202M568 138V202M580 138V202M592 138V202M628 130V196M646 121V187" stroke="#9ca59e" stroke-width="1.3"/>
+<rect x="454" y="151" width="78" height="35" rx="3" fill="#f7f5ef"/>
+<path d="M388 214V221H404V214M582 214V221H598V214M371 225H661" stroke="#9ca59e" stroke-width="1.5"/>
+<path d="M391 244H631V288H391Z" fill="#f7f5ef"/>
+<path d="M416 253V279M421 253V279M428 253V279M436 253V279M441 253V279M448 253V279M456 253V279" stroke-width="1.5"/>
+<path d="M32 319H688" stroke="#b9bdb5" stroke-width="1"/>
+</g>
+<text x="32" y="37" class="small" letter-spacing="2">CARGO / 02</text>
+<text x="32" y="63" class="heading">储能柜与电池储能系统</text>
+<text x="688" y="55" text-anchor="end" class="label muted">外形不能决定运输分类</text>
+<text x="493" y="173" text-anchor="middle" class="small">运输组件</text>
+<text x="478" y="271" class="label">序列号 + 技术资料</text>
+<text x="67" y="305" class="small muted">柜体 / 系统 / 附件分别对应</text>
+<text x="391" y="305" class="small muted">实际结构与供电用途须核实</text>
+<text x="32" y="342" class="small muted">原创教学示意 · 非真实比例 · 非分类结论或操作图</text>
+<text x="688" y="342" text-anchor="end" class="small">PORT / CARGO</text>
+</svg>

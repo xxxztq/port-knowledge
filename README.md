@@ -14,6 +14,11 @@
 - 48 篇非设备文章配交互关系图，区分流程、并行职责、概念对照与循环；支持键盘操作和无脚本阅读。
 - 3 类虚构单证教学样张、逐栏解释；26 条流程的步骤导览；首页地图节点预览。
 - 7 站进口集装箱互动旅程，地图可切换货物、设备和系统图层；包含 3 个异常演练与可展开的业务细节。
+- 箱型与货类入口：12 种集装箱结构线稿、12 个识别概念，可筛选、切换和直接分享箱型锚点。
+- 6 个货类业务档案、30 个业务节点：新能源汽车、储能柜、风电叶片、重大件、冷链和包装危险货物；关联岗位、系统、交接、闸口校验与服务成本。
+- 3 张新能源／项目货原创示意、4 道理解练习；百科新增 18 个箱型与货类入口，加上运行基础专题，共可搜索 81 个知识卡与专题入口。
+- 港口运行基础：贝位与箱位、堆场组织与演进、IT 机房与硬件，共 3 个专题、18 章、72 个知识点，配 3 张原创结构图和 21 条来源。
+- 贝位坐标与 20／40 尺占位演示、可操作翻箱练习、6 种堆场组织方式比较，以及 12 类带线稿图标的机房硬件图鉴；各专题说明岗位交接与信息校验。
 - 港口系统专题：13 类系统／参与方，交互协作关系图，集装箱与件杂货对照，以及对外消息与状态说明。
 - 采用用户提供头像的方案 A 品牌标识、移动图标与分享封面，补充阅读进度和返回页首。
 
@@ -53,6 +58,14 @@ npm run preview
 | src/data/document-examples.js | 虚构单证样张与字段解释 |
 | public/illustrations/equipment/ | 12 张原创 SVG 教学示意 |
 | src/data/container-journey.js | 进口集装箱旅程与异常演练 |
+| src/data/container-types.js | 12 种箱型、12 个识别概念与 13 条来源 |
+| src/data/cargo-business.js | 6 个货类档案、业务链与 18 条来源 |
+| src/data/cargo-learning.js、cargo-search.js | 货类覆盖地图、理解练习、搜索别名与专题索引 |
+| public/illustrations/containers/、cargo/ | 箱型与货类的原创 SVG 教学线稿 |
+| src/scripts/cargo-choices.ts、src/styles/cargo.css | 箱型／货类的渐进增强交互与视觉样式 |
+| src/data/infrastructure.js、bay-knowledge.js、yard-knowledge.js、it-infrastructure.js | 运行基础专题、堆场模式、硬件条目与来源 |
+| src/lib/location-model.mjs | 虚构船格位置与翻箱教学状态模型 |
+| public/illustrations/infrastructure/、src/components/HardwareSymbol.astro | 运行基础结构图与硬件线稿图标 |
 | src/data/port-systems.js | 系统职责、协作关系与官方参考来源 |
 | src/lib/journey-model.mjs | 旅程导航与异常练习状态 |
 | src/data/scenarios.js | 场景、部门协作与闸口任务 |
@@ -63,8 +76,10 @@ npm run preview
 | scripts/check-content.mjs | 内容结构、引用完整性校验 |
 | scripts/check-visuals.mjs | 图解覆盖、连线、编号及资源完整性校验 |
 | scripts/check-experiences.mjs | 旅程、系统、来源及跨页关联检查 |
+| scripts/check-cargo.mjs | 箱型、货类、阶段、来源、题目与 SVG 完整性检查 |
+| scripts/check-infrastructure.mjs | 专题章节、堆场模式、硬件、来源与插图检查 |
 | scripts/check-links.mjs | 静态页面链接、锚点、资源路径校验 |
-| tests/models.test.mjs、journey.test.mjs | 闸口、测算与旅程状态边界测试 |
+| tests/models.test.mjs、journey.test.mjs、location.test.mjs | 闸口、测算、旅程、贝位与翻箱状态边界测试 |
 
 新增知识卡后应补齐范围、来源、检查项、常见误区与相关链接，再运行 npm run verify。具体文件夹组织和校审建议见 [内容维护](docs/CONTENT.md)。
 

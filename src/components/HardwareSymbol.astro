@@ -1,0 +1,17 @@
+---
+const {id}=Astro.props;
+---
+<svg viewBox="0 0 96 64" class="hardware-line-art" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+{id==='server'&&<><rect x="12" y="10" width="72" height="44" rx="3"/><path d="M12 31H84M21 20H41M21 42H41M58 18V23M64 18V23M58 39V44M64 39V44"/><circle cx="75" cy="20" r="2"/><circle cx="75" cy="42" r="2"/></>}
+{id==='local-storage'&&<><rect x="25" y="7" width="46" height="49" rx="3"/><circle cx="48" cy="29" r="15"/><circle cx="48" cy="29" r="4"/><path d="M49 27L64 15L56 33M33 50H61"/></>}
+{id==='shared-storage'&&<><rect x="10" y="12" width="76" height="40" rx="3"/>{[19,33,47,61].map(x=><><rect x={x} y="20" width="10" height="23" rx="1"/><path d={'M'+(x+3)+' 36H'+(x+7)}/></>)}<circle cx="78" cy="25" r="2"/></>}
+{id==='switch'&&<><rect x="9" y="19" width="78" height="28" rx="3"/>{[18,30,42,54,66].map(x=><rect x={x} y="30" width="8" height="8"/>)}<path d="M21 24H27M37 24H43M53 24H59M18 53H78M48 47V53"/></>}
+{id==='router'&&<><rect x="22" y="20" width="52" height="26" rx="8"/><path d="M31 33H65M31 33L37 28M31 33L37 38M65 33L59 28M65 33L59 38M48 6V20M48 46V58M6 33H22M74 33H90"/></>}
+{id==='firewall'&&<><path d="M47 7L72 17V33C72 46 59 53 47 58C35 53 22 46 22 33V17Z"/><path d="M25 25H69M25 35H69M32 45H62M39 17V25M55 25V35M39 35V45"/></>}
+{id==='fiber-panel'&&<><rect x="9" y="13" width="78" height="18" rx="2"/>{[18,32,46,60,74].map(x=><rect x={x} y="19" width="5" height="6"/>)}<path d="M20 31V42Q20 53 32 53H61Q75 53 75 41V31M48 31V47"/></>}
+{id==='ups'&&<><rect x="25" y="6" width="46" height="51" rx="3"/><rect x="33" y="13" width="30" height="12" rx="1"/><path d="M49 30L42 40H50L46 49M31 57V60M65 57V60M37 19H44"/></>}
+{id==='pdu'&&<><rect x="9" y="21" width="78" height="23" rx="3"/>{[18,36,54].map(x=><><rect x={x} y="26" width="12" height="13" rx="2"/><path d={'M'+(x+4)+' 30V34M'+(x+8)+' 30V34'}/></>)}<path d="M79 27V37M9 33H3V52H14"/></>}
+{id==='cooling'&&<><rect x="22" y="5" width="52" height="54" rx="3"/><circle cx="48" cy="28" r="15"/><circle cx="48" cy="28" r="3"/><path d="M48 25Q34 14 39 34M51 29Q67 21 49 15M46 30Q47 48 60 33M31 49H65M31 53H65"/></>}
+{id==='rack-monitoring'&&<><rect x="11" y="6" width="40" height="52" rx="3"/><path d="M17 15H45M17 23H45M17 31H45M17 39H45M17 47H36"/><rect x="56" y="21" width="31" height="24" rx="2"/><path d="M60 35H66L69 27L74 39L79 32H83M71 45V52M63 52H79"/></>}
+{id==='edge-gateway'&&<><rect x="26" y="16" width="44" height="33" rx="3"/><path d="M32 22H64M32 27H64M35 39H40M47 39H52M59 39H63M27 7V16M36 7V16M45 7V16M54 7V16M63 7V16M26 33H12V51M70 33H84V13"/><circle cx="12" cy="55" r="3"/><circle cx="84" cy="9" r="3"/></>}
+</svg>

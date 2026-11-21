@@ -1,4 +1,5 @@
 ---
+import InfrastructureEntry from '../components/InfrastructureEntry.astro';
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import SystemNetwork from '../components/SystemNetwork.astro';
@@ -32,6 +33,7 @@ const messageSteps = [
   <div class="container systems-page">
     <PageIntro eyebrow="PORT SYSTEMS / 看懂系统与协作" title="货物在移动，信息也在交接。" description="一个港口没有包办一切的系统。先看谁掌握什么信息、谁有权作出什么决定，再理解一只箱或一票货为什么能继续向前。" />
     <div class="page-content">
+      <InfrastructureEntry/>
       <nav class="systems-index" aria-label="本页目录"><a href="#system-network">系统关系图</a><a href="#system-authority">三种独立判断</a><a href="#system-cargo-compare">两类生产管理</a><a href="#system-window-guide">分清三个窗口概念</a><a href="#system-message-chain">消息如何交接</a><a href="#system-sources">官方来源</a></nav>
 
       <section class="flow-lens" aria-label="货物流、信息流与权限的区别">

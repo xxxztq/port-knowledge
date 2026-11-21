@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="yard-organisation" width="720" height="360" viewBox="0 0 720 360" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="yard-title yard-desc">
+  <title id="yard-title">开放堆场与轨道箱区对照 · 教学示意，非工程图</title>
+  <desc id="yard-desc">左侧是开放式箱区：底盘停放、地面箱列与跨运车共用示意空间，虚线表示组织通道。右侧是固定轨道箱区：门架跨越箱列，轨道限定服务范围，车辆在前方交接。两种布局用于比较空间与作业关系，不表示年代、优劣、容量比例或具体自动化程度。教学示意，非工程图，结构与比例均经简化。</desc>
+  <metadata>原创港口教学线稿。知识依据见 src/data/yard-knowledge.js；不包含尺寸、堆高限值、承载或安全距离。不用于工程设计与现场作业。</metadata>
+  <defs>
+    <style>
+      #yard-organisation { color: #272925; }
+      .ink { fill: none; stroke: #272925; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+      .fine { fill: none; stroke: #797a72; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; }
+      .paper { fill: #faf9f6; }
+      .shade { fill: #eae9e2; }
+      .panel { fill: #f5f4ef; stroke: #d5d4ca; stroke-width: 1; }
+      .lane { fill: none; stroke: #9a9b92; stroke-width: 1.2; stroke-dasharray: 5 5; stroke-linecap: round; }
+      text { font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif; fill: #272925; }
+      .heading { font-size: 17px; font-weight: 600; }
+      .caption { font-size: 12px; }
+      .note { font-size: 11px; fill: #66685f; }
+    </style>
+    <g id="yard-box" class="ink">
+      <path class="paper" d="M0 0 18-10H78L60 0Z"/>
+      <path class="shade" d="M60 0 78-10V14L60 24Z"/>
+      <path class="paper" d="M0 0H60V24H0Z"/>
+      <path class="fine" d="M7 4V20M15 4V20M23 4V20M31 4V20M39 4V20M47 4V20M55 4V20M65 1V18M72-3V14"/>
+    </g>
+    <g id="yard-wheel" class="ink">
+      <ellipse class="shade" cx="0" cy="0" rx="4" ry="6"/>
+      <path class="fine" d="M0-2V2"/>
+    </g>
+  </defs>
+  <rect class="paper" width="720" height="360"/>
+  <text class="heading" x="25" y="31">开放堆场</text>
+  <text class="heading" x="387" y="31">轨道箱区</text>
+  <rect class="panel" x="18" y="46" width="326" height="245" rx="8"/>
+  <rect class="panel" x="376" y="46" width="326" height="245" rx="8"/>
+  <path class="fine" d="M360 60V280" stroke-dasharray="2 6"/>
+
+  <!-- 开放箱区：留白通道、地面箱列与有轮底盘；只表现组织方式。 -->
+  <g aria-hidden="true">
+    <path class="fine" d="M35 238 110 110H321M52 264 130 136H327"/>
+    <path class="lane" d="M41 274 153 81H318M132 280 233 102H325"/>
+    <use href="#yard-box" x="224" y="111"/>
+    <use href="#yard-box" x="207" y="141"/>
+    <use href="#yard-box" x="207" y="117"/>
+    <use href="#yard-box" x="189" y="173"/>
+    <path class="fine" d="M185 205H278L300 192"/>
+
+    <!-- 跨运车窄门架与可见轮组，不与右侧轨道门架混同。 -->
+    <path class="ink paper" d="M54 167 75 129H127L106 167Z"/>
+    <path class="ink shade" d="M106 167 127 129V137L106 175Z"/>
+    <path class="ink paper" d="M54 167H106V175H54Z"/>
+    <path class="ink paper" d="M57 175H64V233H57ZM98 175H105V233H98ZM120 138H127V195H120Z"/>
+    <path class="ink" d="M79 176V194M89 176V194M72 195H98"/>
+    <path class="fine" d="M66 183 74 170M108 158 119 140"/>
+    <use href="#yard-box" transform="translate(66 201) scale(.57)"/>
+    <path class="ink shade" d="M72 145 83 140H99V154H72Z"/>
+    <path class="fine" d="M78 145H94V151H78Z"/>
+    <use href="#yard-wheel" x="59" y="236"/>
+    <use href="#yard-wheel" x="104" y="236"/>
+    <use href="#yard-wheel" x="125" y="198"/>
+
+    <!-- 底盘箱：箱体位于带轮底盘上，前端留出挂接位置。 -->
+    <use href="#yard-box" x="192" y="233"/>
+    <path class="ink shade" d="M184 258H256L281 244H270L251 253H184Z"/>
+    <path class="ink" d="M184 258H173M218 259V266M261 254V261"/>
+    <use href="#yard-wheel" x="231" y="263"/>
+    <use href="#yard-wheel" x="244" y="263"/>
+    <use href="#yard-wheel" x="270" y="250"/>
+  </g>
+
+  <!-- 轨道箱区：固定服务范围、两条轨道和前端交接位。 -->
+  <g aria-hidden="true">
+    <path class="fine" d="M395 240 471 104H680M419 269 496 133H688"/>
+    <path class="ink" d="M411 252 499 94M418 253 506 95M606 252 694 94M613 253 701 95"/>
+    <path class="fine" d="M414 243H423M425 223H435M437 203H446M448 183H457M459 163H468M470 143H479M481 123H490M492 103H501M609 243H618M620 223H630M632 203H641M643 183H652M654 163H663M665 143H674M676 123H685M687 103H696"/>
+    <use href="#yard-box" x="521" y="141"/>
+    <use href="#yard-box" x="521" y="117"/>
+    <use href="#yard-box" x="505" y="169"/>
+    <use href="#yard-box" x="505" y="145"/>
+    <use href="#yard-box" x="489" y="197"/>
+    <use href="#yard-box" x="489" y="173"/>
+
+    <!-- 轨道门架不标注自动化等级；外形不能证明自动化程度。 -->
+    <path class="ink paper" d="M449 96 471 82H654L632 96Z"/>
+    <path class="ink shade" d="M632 96 654 82V96L632 110Z"/>
+    <path class="ink paper" d="M449 96H632V110H449Z"/>
+    <path class="ink paper" d="M451 110H460L449 207H438ZM620 110H629L618 207H607Z"/>
+    <path class="ink shade" d="M647 100H654L644 163H637Z"/>
+    <path class="fine" d="M463 101H615M461 103 470 96M479 103 488 96M497 103 506 96M515 103 524 96M533 103 542 96M551 103 560 96M569 103 578 96M587 103 596 96M605 103 614 96"/>
+    <path class="ink shade" d="M524 102H549V115H524Z"/>
+    <path class="ink" d="M529 115V139M544 115V139M520 140H553"/>
+    <path class="ink shade" d="M433 207H452V214H433ZM602 207H621V214H602ZM633 163H647V169H633Z"/>
+    <circle class="ink paper" cx="438" cy="216" r="3"/>
+    <circle class="ink paper" cx="447" cy="216" r="3"/>
+    <circle class="ink paper" cx="607" cy="216" r="3"/>
+    <circle class="ink paper" cx="616" cy="216" r="3"/>
+
+    <!-- 前方车辆交接只示位置关系，不代表端部交接工程布置。 -->
+    <path class="lane" d="M390 279H687M464 243H587V273H464Z"/>
+    <use href="#yard-box" transform="translate(488 241) scale(.72)"/>
+    <path class="ink shade" d="M480 261H547L555 255H549L541 258H480Z"/>
+    <path class="ink paper" d="M462 243H478V261H456V253Z"/>
+    <path class="fine" d="M464 247H474V253H460"/>
+    <path class="ink" d="M478 258H485"/>
+    <use href="#yard-wheel" x="463" y="265"/>
+    <use href="#yard-wheel" x="502" y="265"/>
+    <use href="#yard-wheel" x="534" y="265"/>
+  </g>
+
+  <text class="caption" x="181" y="312" text-anchor="middle">箱列 · 行车通道 · 底盘停放</text>
+  <text class="caption" x="539" y="312" text-anchor="middle">固定轨道 · 箱列 · 交接位置</text>
+  <text class="note" x="360" y="342" text-anchor="middle">教学示意，非工程图 · 布局可并存，自动化程度另看配置</text>
+</svg>

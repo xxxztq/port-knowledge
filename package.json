@@ -10,9 +10,11 @@
     "check:content": "node scripts/check-content.mjs",
     "test": "node --test tests/*.test.mjs",
     "check:links": "node scripts/check-links.mjs",
-    "verify": "npm run check:content && npm run check:visuals && npm run check:experiences && npm test && npm run build && npm run check:links",
+    "verify": "npm run check:content && npm run check:visuals && npm run check:experiences && npm run check:cargo && npm run check:infrastructure && npm test && npm run build && npm run check:links",
     "check:visuals": "node scripts/check-visuals.mjs",
-    "check:experiences": "node scripts/check-experiences.mjs"
+    "check:experiences": "node scripts/check-experiences.mjs",
+    "check:cargo": "node scripts/check-cargo.mjs",
+    "check:infrastructure": "node scripts/check-infrastructure.mjs"
   },
   "dependencies": {
     "astro": "^5.18.2"

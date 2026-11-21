@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-labelledby="bay-title bay-desc">
+  <title id="bay-title">贝位与箱位：船上和堆场的两套坐标</title>
+  <desc id="bay-desc">原创教学示意，非真实船图，不按比例。左侧展示教学船沿船长的20尺贝01、03及对应40尺贝02；从船艉朝船艏看，排为02、00、01，舱内层为02、04，甲板层为82、84，示例0010082表示Bay01、Row00、Tier82。右侧以A1箱区展示堆场Bay、Row、Tier三个方向；堆场地址不套用船上编号。</desc>
+  <defs>
+    <marker id="bay-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 7 4 1 7" fill="none" stroke="#292923" stroke-width="1.4" stroke-linejoin="round"/></marker>
+    <pattern id="bay-hatch" width="7" height="7" patternUnits="userSpaceOnUse"><path d="M-1 1 1-1M0 7 7 0M6 8 8 6" fill="none" stroke="#77766c" stroke-width=".75"/></pattern>
+  </defs>
+  <rect width="720" height="360" rx="14" fill="#faf8f1"/>
+  <g font-family="system-ui, 'Microsoft YaHei', sans-serif" fill="#292923">
+    <text x="24" y="32" font-size="21" font-weight="650">贝位与箱位</text>
+    <text x="696" y="31" text-anchor="end" font-size="14">教学示意 · 非真实船图 · 不按比例</text>
+  </g>
+  <g fill="none" stroke="#292923" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M24 46H696M357 60V313" stroke="#b5b2a8"/>
+    <!-- Ship: a longitudinal fragment with two 20-foot positions. -->
+    <path d="M52 99 30 117 52 135H326V99Z"/>
+    <rect x="122" y="104" width="82" height="26"/>
+    <rect x="209" y="104" width="82" height="26"/>
+    <path d="M122 142V148H291V142"/>
+    <!-- Cross-section: only the three rows selected by the teaching model. -->
+    <path d="M103 199V270L118 280H290L305 270V199"/>
+    <path d="M91 234H316" stroke-width="2.3"/>
+    <path d="M130 185H280V225H130ZM180 185V225M230 185V225M130 205H280"/>
+    <path d="M130 242H280V274H130ZM180 242V274M230 242V274M130 258H280"/>
+    <rect x="180" y="205" width="50" height="20" fill="url(#bay-hatch)" stroke-width="2.3"/>
+    <!-- Yard: a three-dimensional stack. x=Bay, diagonal=Row, z=Tier. -->
+    <path d="M425 184 505 144H643L563 184Z"/>
+    <path d="M425 184V262H563V184M563 262 643 222V144"/>
+    <path d="M471 184V262M517 184V262M425 210H563M425 236H563"/>
+    <path d="M471 184 551 144M517 184 597 144M465 164H603"/>
+    <path d="M563 210 643 170M563 236 643 196M603 164V242"/>
+    <path d="M471 184H517V210H471Z" fill="url(#bay-hatch)" stroke-width="2.3"/>
+    <!-- Independent yard axes. -->
+    <path d="M425 284H563" marker-end="url(#bay-arrow)"/>
+    <path d="M580 277 663 235" marker-end="url(#bay-arrow)"/>
+    <path d="M408 262V183" marker-end="url(#bay-arrow)"/>
+  </g>
+  <g font-family="system-ui, 'Microsoft YaHei', sans-serif" fill="#292923">
+    <text x="24" y="73" font-size="18" font-weight="650">船上 / SHIP</text>
+    <text x="163" y="94" text-anchor="middle" font-size="14">Bay 01</text>
+    <text x="250" y="94" text-anchor="middle" font-size="14">Bay 03</text>
+    <text x="65" y="123" font-size="14">艏</text>
+    <text x="163" y="123" text-anchor="middle" font-size="15">20′</text>
+    <text x="250" y="123" text-anchor="middle" font-size="15">20′</text>
+    <text x="207" y="166" text-anchor="middle" font-size="14">Bay 02 / 40′ 替代两段</text>
+    <text x="155" y="181" text-anchor="middle" font-size="13">02</text>
+    <text x="205" y="181" text-anchor="middle" font-size="13">00</text>
+    <text x="255" y="181" text-anchor="middle" font-size="13">01</text>
+    <text x="289" y="181" font-size="13">Row</text>
+    <text x="49" y="195" font-size="13">Tier</text>
+    <text x="97" y="200" text-anchor="end" font-size="13">84</text>
+    <text x="97" y="220" text-anchor="end" font-size="13">82</text>
+    <text x="97" y="254" text-anchor="end" font-size="13">04</text>
+    <text x="97" y="270" text-anchor="end" font-size="13">02</text>
+    <text x="39" y="239" font-size="14">甲板</text>
+    <text x="205" y="301" text-anchor="middle" font-size="14">朝船艏看 · 剖面取 Bay 01</text>
+    <text x="382" y="73" font-size="18" font-weight="650">堆场 / YARD</text>
+    <text x="382" y="102" font-size="16">箱区 Block A1</text>
+    <text x="382" y="124" font-size="14">区内方向由场地图定义</text>
+    <text x="410" y="176" text-anchor="end" font-size="14">Tier ↑</text>
+    <text x="494" y="202" text-anchor="middle" font-size="14">03</text>
+    <text x="494" y="228" text-anchor="middle" font-size="14">02</text>
+    <text x="494" y="254" text-anchor="middle" font-size="14">01</text>
+    <text x="494" y="306" text-anchor="middle" font-size="14">Bay</text>
+    <text x="655" y="275" text-anchor="middle" font-size="14">Row</text>
+    <path d="M24 319H696" stroke="#b5b2a8" fill="none"/>
+    <text x="24" y="344" font-size="15">船位示例 001｜00｜82</text>
+    <text x="382" y="344" font-size="15">场位示例 A1／05／02／03</text>
+  </g>
+</svg>
