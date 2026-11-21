@@ -13,6 +13,8 @@
 - 12 张原创黑白设备结构图、36 个交互观察点、作业位置筛选与两组相似设备对比。
 - 48 篇非设备文章配交互关系图，区分流程、并行职责、概念对照与循环；支持键盘操作和无脚本阅读。
 - 3 类虚构单证教学样张、逐栏解释；26 条流程的步骤导览；首页地图节点预览。
+- 7 站进口集装箱互动旅程，地图可切换货物、设备和系统图层；包含 3 个异常演练与可展开的业务细节。
+- 港口系统专题：13 类系统／参与方，交互协作关系图，集装箱与件杂货对照，以及对外消息与状态说明。
 - 采用用户提供头像的方案 A 品牌标识、移动图标与分享封面，补充阅读进度和返回页首。
 
 首版为教学内容和知识框架，不代表所有港口操作细则均已覆盖或已获机构专业审定。正文标注适用范围和来源。模拟器不连接真实海关、电子口岸或设备。
@@ -50,15 +52,19 @@ npm run preview
 | src/data/article-diagrams.js | 48 篇文章的关系图数据 |
 | src/data/document-examples.js | 虚构单证样张与字段解释 |
 | public/illustrations/equipment/ | 12 张原创 SVG 教学示意 |
+| src/data/container-journey.js | 进口集装箱旅程与异常演练 |
+| src/data/port-systems.js | 系统职责、协作关系与官方参考来源 |
+| src/lib/journey-model.mjs | 旅程导航与异常练习状态 |
 | src/data/scenarios.js | 场景、部门协作与闸口任务 |
 | src/lib/gate-model.mjs | 纯教学闸口状态模型 |
 | src/lib/economics-model.mjs | 纯教学经营测算 |
 | src/pages/ | 页面模板与交互 |
-| src/styles/global.css、visual.css | 全站布局与图解视觉风格 |
+| src/styles/global.css、visual.css、journey.css | 全站布局与图解视觉风格 |
 | scripts/check-content.mjs | 内容结构、引用完整性校验 |
 | scripts/check-visuals.mjs | 图解覆盖、连线、编号及资源完整性校验 |
+| scripts/check-experiences.mjs | 旅程、系统、来源及跨页关联检查 |
 | scripts/check-links.mjs | 静态页面链接、锚点、资源路径校验 |
-| tests/models.test.mjs | 业务状态与测算边界测试 |
+| tests/models.test.mjs、journey.test.mjs | 闸口、测算与旅程状态边界测试 |
 
 新增知识卡后应补齐范围、来源、检查项、常见误区与相关链接，再运行 npm run verify。具体文件夹组织和校审建议见 [内容维护](docs/CONTENT.md)。
 

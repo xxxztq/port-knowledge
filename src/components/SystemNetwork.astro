@@ -1,0 +1,125 @@
+---
+import { portSystems, systemSources } from '../data/port-systems.js';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const systemHref = (id: string) => `${base}systems/#system-${id}`;
+const groups = [
+  { id: '码头生产', title: '码头生产', code: '01 / OPERATIONS', note: '把计划落实为现场作业' },
+  { id: '经营与支撑', title: '经营与支撑', code: '02 / SUPPORT', note: '计费、维护与信息衔接' },
+  { id: '口岸与物流', title: '外部业务与口岸', code: '03 / COMMUNITY', note: '各主体保留自己的权限' },
+];
+const names = new Map(portSystems.map(s => [s.id, s.name]));
+const sourceNumbers = new Map(systemSources.map((s, index) => [s.id, index + 1]));
+---
+<section class="system-network" id="system-network" aria-labelledby="network-title" data-system-network>
+  <div class="network-heading">
+    <div><span class="section-kicker">01 / SYSTEM RELATIONSHIPS</span><h2 id="network-title">一票货，经过哪些系统？</h2></div>
+    <span class="network-count">13 个角色与系统 · 点击查看</span>
+  </div>
+  <p class="network-intro">选择一个节点，查看它管什么、接收什么，以及异常应该找谁。被标为“协作”的节点表示教学上的业务关联。</p>
+  <div class="network-lanes">
+    {groups.map(group => <section class="network-lane" aria-label={group.title}>
+      <header><span>{group.code}</span><h3>{group.title}</h3><p>{group.note}</p></header>
+      <div class="network-nodes">
+        {portSystems.filter(s => s.group === group.id).map(system => <a class="network-node" href={systemHref(system.id)} data-system-select={system.id} data-partners={system.partners.join(',')}>
+          <span class="node-symbol" aria-hidden="true">{system.group === '口岸与物流' ? '◇' : '□'}</span>
+          <span class="node-copy"><strong>{system.name}</strong><small>{system.short}</small></span>
+          <span class="node-state" aria-hidden="true">↗</span>
+        </a>)}
+      </div>
+    </section>)}
+  </div>
+  <div class="network-rail" aria-label="信息协作关系示意">
+    <span>计划 · 任务 · 实绩</span><span class="rail-arrow" aria-hidden="true">↔</span>
+    <a href={systemHref('data-exchange')} data-system-select="data-exchange">数据交换与集成 <span aria-hidden="true">↗</span></a>
+    <span class="rail-arrow" aria-hidden="true">↔</span><span>委托 · 申报 · 业务结果</span>
+  </div>
+  <p class="network-caption"><strong>信息关系教学示意。</strong>不代表真实网络部署与固定直连链路；业务可能经授权服务、地方平台或人工办理，系统也可能合并部署。虚线表示协作，不表示货物路线或权限转移。</p>
+  <p class="network-live" role="status" aria-live="polite" data-system-live>下方按系统列出职责说明；选择节点可聚焦查看。</p>
+  <div class="system-details">
+    {portSystems.map((system, index) => <article class="system-detail" id={`system-${system.id}`} data-system-panel={system.id} aria-labelledby={`system-title-${system.id}`}>
+      <header class="detail-heading">
+        <div><span class="section-kicker">SYSTEM {String(index + 1).padStart(2, '0')} / {system.group}</span><h3 id={`system-title-${system.id}`} tabindex="-1">{system.name}</h3><p>{system.summary}</p></div>
+        <a class="back-to-network" href="#system-network">返回关系图 ↑</a>
+      </header>
+      <div class="detail-purpose">
+        <div><h4><span aria-hidden="true">＋</span> 管什么</h4><p>{system.responsibility}</p></div>
+        <div class="detail-boundary"><h4><span aria-hidden="true">−</span> 不管什么</h4><p>{system.boundary}</p></div>
+      </div>
+      <div class="detail-io">
+        <div><h4>输入 <span>收到什么</span></h4><ul>{system.inputs.map(item => <li>{item}</li>)}</ul></div>
+        <div><h4>输出 <span>交给下一环什么</span></h4><ul>{system.outputs.map(item => <li>{item}</li>)}</ul></div>
+      </div>
+      <div class="detail-partners"><h4>对接谁</h4><p class="partner-note">业务协作对象，不承诺系统直接连接。</p><div>{system.partners.map(id => <a href={systemHref(id)} data-system-select={id}>{names.get(id)} <span aria-hidden="true">↗</span></a>)}</div></div>
+      <div class="detail-exception"><span aria-hidden="true">!</span><div><h4>异常找谁</h4><p>{system.exception}</p></div></div>
+      <footer class="detail-sources"><span>依据与适用范围</span>{system.sources.map(id => <a href={`#system-source-${id}`} aria-label={`来源 ${sourceNumbers.get(id)}：${systemSources.find(s => s.id === id)?.title}`}>[{sourceNumbers.get(id)}]</a>)}<small>职责与异常分工为本站教学归纳，具体权限以当地业务和授权为准。</small></footer>
+    </article>)}
+  </div>
+</section>
+
+<script>
+  const network = document.querySelector<HTMLElement>('[data-system-network]');
+  if (network) {
+    const panels = [...network.querySelectorAll<HTMLElement>('[data-system-panel]')];
+    const nodes = [...network.querySelectorAll<HTMLAnchorElement>('.network-node')];
+    const live = network.querySelector<HTMLElement>('[data-system-live]');
+    const systemFromHash = () => {
+      try { return decodeURIComponent(window.location.hash).replace(/^#system-/, ''); }
+      catch { return ''; }
+    };
+    const hasSystem = (id: string) => panels.some(panel => panel.dataset.systemPanel === id);
+    function selectSystem(id: string, moveToDetail = false) {
+      const target = panels.find(panel => panel.dataset.systemPanel === id);
+      const selectedNode = nodes.find(node => node.dataset.systemSelect === id);
+      if (!target || !selectedNode) return;
+      const partners = selectedNode.dataset.partners?.split(',') ?? [];
+      panels.forEach(panel => { panel.hidden = panel !== target; });
+      nodes.forEach(node => {
+        const active = node === selectedNode;
+        const partner = partners.includes(node.dataset.systemSelect ?? '');
+        node.classList.toggle('is-partner', partner);
+        if (active) node.setAttribute('aria-current', 'true');
+        else node.removeAttribute('aria-current');
+        const state = node.querySelector<HTMLElement>('.node-state');
+        if (state) state.textContent = active ? '已选' : partner ? '协作' : '↗';
+      });
+      if (live) live.textContent = `当前查看：${selectedNode.querySelector('strong')?.textContent}。下方已展示职责、输入输出和异常处理；关系图标出了 ${partners.length} 个协作对象。`;
+      if (moveToDetail) {
+        target.scrollIntoView({ block: 'start', behavior: 'instant' });
+        target.querySelector<HTMLElement>('h3')?.focus({ preventScroll: true });
+      }
+    }
+    network.addEventListener('click', event => {
+      if (!(event instanceof MouseEvent) || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      const anchor = (event.target as Element).closest<HTMLAnchorElement>('[data-system-select]');
+      const id = anchor?.dataset.systemSelect;
+      if (!anchor || !id || !hasSystem(id)) return;
+      event.preventDefault();
+      if (window.location.hash !== `#system-${id}`) history.pushState(null, '', anchor.href);
+      selectSystem(id, true);
+    });
+    const initialId = systemFromHash();
+    selectSystem(hasSystem(initialId) ? initialId : 'container-tos');
+    if (hasSystem(initialId)) requestAnimationFrame(() => selectSystem(initialId, true));
+    window.addEventListener('hashchange', () => {
+      const id = systemFromHash();
+      if (hasSystem(id)) selectSystem(id, true);
+    });
+    window.addEventListener('popstate', () => {
+      const id = systemFromHash();
+      selectSystem(hasSystem(id) ? id : 'container-tos', hasSystem(id));
+    });
+  }
+</script>
+
+<style>
+  .system-network{scroll-margin-top:105px;margin-block:52px;color:var(--ink)}
+  .network-heading{display:flex;justify-content:space-between;align-items:end;gap:20px}.section-kicker{font-size:10px;letter-spacing:1.6px;color:#586b6c}.network-heading h2{font-size:29px;letter-spacing:-.8px;margin:9px 0 0}.network-count{font-size:11px;color:#657373;white-space:nowrap}.network-intro{font-size:13px;color:#5e6b6b;line-height:1.9;margin:16px 0 23px}
+  .network-lanes{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid #bec9c4;border-radius:12px 12px 0 0;overflow:hidden;background:#fffefa}.network-lane{padding:22px 17px;min-width:0}.network-lane+.network-lane{border-left:1px solid #d6ddd7}.network-lane:nth-child(2){background:#f1f3ef}.network-lane header{padding:0 3px 18px}.network-lane header>span{font-size:9px;letter-spacing:1.4px;color:#6b7977}.network-lane h3{font-size:19px;margin:9px 0 5px}.network-lane header p{font-size:11px;color:#6b7977;margin:0}.network-nodes{display:grid;gap:9px}
+  .network-node{display:flex;align-items:center;gap:9px;min-height:71px;padding:12px 10px;background:#fff;border:1px solid #cfd7d0;border-radius:7px;color:#243b3c;text-decoration:none;transition:border-color .15s,background .15s}.network-node:hover{border-color:#244c50;background:#f4f6f2}.node-symbol{font-size:19px;flex-shrink:0;line-height:1}.node-copy{min-width:0;flex:1}.node-copy strong{display:block;font-size:12px;line-height:1.5;font-weight:650}.node-copy small{display:block;margin-top:4px;font-size:10px;color:#657573;line-height:1.5}.node-state{font-size:10px;white-space:nowrap;flex-shrink:0}.network-node.is-partner{border-style:dashed;border-color:#527674}.network-node[aria-current]{background:#103d47;border-color:#103d47;color:#fff}.network-node[aria-current] small{color:#d5e4df}
+  .network-rail{display:flex;align-items:center;justify-content:center;gap:18px;padding:20px 16px;background:#eef1ec;border:1px solid #bec9c4;border-top:1px dashed #8fa5a0;border-radius:0 0 12px 12px;font-size:11px;color:#526867}.network-rail a{padding:9px 17px;border:1px solid #4a6665;border-radius:5px;background:#fffefa;font-size:12px;font-weight:650;color:#153f46;text-decoration:none}.rail-arrow{font-size:22px;color:#406465}.network-caption{font-size:11px;color:#64716f;line-height:1.9;margin:13px 0 0}.network-caption strong{font-weight:650;color:#3e5857}.network-live{font-size:11px;color:#3d6567;padding:12px 0;margin:13px 0 0;min-height:46px}
+  .system-detail{scroll-margin-top:100px;background:#fffefa;border:1px solid #b8c7c1;border-top:3px solid #103d47;border-radius:8px;padding:28px;margin-bottom:20px}.system-detail[hidden]{display:none}.detail-heading{display:flex;justify-content:space-between;align-items:start;gap:20px;margin-bottom:24px}.detail-heading h3{font-size:26px;margin:10px 0;letter-spacing:-.6px}.detail-heading p{font-size:13px;margin:0;color:#5d6e6b;line-height:1.9}.back-to-network{font-size:11px;white-space:nowrap;color:#31585d;text-decoration:underline;text-underline-offset:4px;padding-top:2px}.detail-purpose,.detail-io{display:grid;grid-template-columns:1fr 1fr;gap:28px}.detail-purpose{border-block:1px solid #dbe1db;padding:20px 0}.system-detail h4{font-size:13px;margin:0 0 9px;font-weight:700}.detail-purpose h4 span{display:inline-grid;place-items:center;width:20px;height:20px;border:1px solid #6c8a80;border-radius:50%;font-size:13px;line-height:1;margin-right:6px}.detail-boundary h4 span{border-color:#a7957f;color:#756047}.detail-purpose p,.detail-exception p{font-size:12px;line-height:1.95;margin:0;color:#526260}.detail-boundary{padding-left:22px;border-left:1px solid #dbe1db}.detail-io{padding:21px 0}.detail-io h4{display:flex;align-items:baseline;gap:12px}.detail-io h4 span{font-size:10px;color:#73807b;font-weight:400}.detail-io ul{padding-left:17px;margin:0;display:grid;gap:6px;font-size:12px;line-height:1.8;color:#526260}.detail-io li::marker{color:#7d948b}.detail-partners{padding-block:17px;border-top:1px solid #dbe1db}.detail-partners h4{margin:0}.partner-note{font-size:10px;color:#758078;margin:6px 0 11px}.detail-partners>div{display:flex;flex-wrap:wrap;gap:8px}.detail-partners a{border:1px solid #c6d3ca;background:#f3f5ef;border-radius:4px;padding:7px 9px;font-size:11px;color:#254f51;text-decoration:none}.detail-partners a:hover{border-color:#31585d}.detail-exception{display:flex;align-items:start;gap:13px;padding:17px;background:#edf2ed;border-radius:6px}.detail-exception>span{width:22px;height:22px;border:1px solid #567a72;border-radius:50%;display:grid;place-items:center;flex-shrink:0;font-size:13px}.detail-exception h4{margin:0 0 5px}.detail-sources{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin-top:19px;font-size:10px;color:#708078;line-height:1.8}.detail-sources a{color:#315c61;text-decoration:underline;text-underline-offset:3px}.detail-sources small{font-size:10px;flex-basis:100%}
+  a:focus-visible{outline:3px solid #608d88;outline-offset:4px}.detail-heading h3:focus-visible{outline:2px solid #608d88;outline-offset:5px}
+  @media(max-width:900px){.network-node{padding:10px 8px;gap:7px}.network-lane{padding:18px 12px}.node-symbol{display:none}.node-copy strong{font-size:11px}.network-count{white-space:normal;text-align:right}.network-rail{gap:10px}}
+  @media(max-width:640px){.system-network{margin-block:34px}.network-heading{display:block}.network-heading h2{font-size:24px}.network-count{display:block;text-align:left;margin-top:10px}.network-intro{font-size:12px}.network-lanes{grid-template-columns:1fr}.network-lane{padding:18px 15px}.network-lane+.network-lane{border-left:0;border-top:1px solid #d6ddd7}.network-lane header{padding-bottom:13px}.network-lane h3{font-size:17px}.network-nodes{grid-template-columns:1fr 1fr;gap:8px}.network-node{min-height:76px}.node-copy strong{font-size:11px}.node-copy small{font-size:9px}.node-state{font-size:9px}.network-rail{flex-wrap:wrap;gap:8px;font-size:9px}.network-rail a{font-size:10px;padding:8px}.rail-arrow{font-size:15px}.network-caption{font-size:10px}.system-detail{padding:20px 16px}.detail-heading{display:block;margin-bottom:18px}.detail-heading h3{font-size:23px}.detail-heading p{font-size:12px}.back-to-network{display:inline-block;margin-top:12px}.detail-purpose,.detail-io{grid-template-columns:1fr;gap:19px}.detail-boundary{padding-left:0;padding-top:17px;border-left:0;border-top:1px solid #dbe1db}.detail-exception{padding:13px;gap:10px}.detail-sources{gap:7px}}
+  @media(prefers-reduced-motion:reduce){.network-node{transition:none}}
+</style>

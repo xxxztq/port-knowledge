@@ -1,12 +1,13 @@
 ---
 import '../styles/global.css';
 import '../styles/visual.css';
+import '../styles/journey.css';
 import Brand from '../components/Brand.astro';
 import Icon from '../components/Icon.astro';
 const { title = '看懂港口', description = '从一票货、一台设备、一个岗位，读懂港口如何运转。', active = 'home' } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const href = (p = '') => base + p;
-const nav = [['home','认识港口',''],['flows','业务流程','flows/'],['roles','角色协作','roles/'],['equipment','设备图鉴','equipment/'],['gate','闸口与监管','gate/'],['economics','经营逻辑','economics/'],['library','知识百科','library/']];
+const nav = [['home','认识港口',''],['journey','互动旅程','journey/'],['flows','业务流程','flows/'],['roles','角色协作','roles/'],['equipment','设备图鉴','equipment/'],['systems','港口系统','systems/'],['gate','闸口与监管','gate/'],['economics','经营逻辑','economics/'],['library','知识百科','library/']];
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#103d47"/><meta name="color-scheme" content="light"/><title>{title === '看懂港口' ? '看懂港口 · 从靠岸到交付' : title + ' · 看懂港口'}</title><link rel="icon" type="image/svg+xml" href={href('favicon.svg')}/><link rel="canonical" href={canonical}/><meta property="og:title" content={title + ' · 看懂港口'}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/><meta property="og:image" content={new URL(href("brand/social-card.png"),Astro.site)}/><meta name="twitter:card" content="summary_large_image"/><link rel="apple-touch-icon" href={href("brand/apple-touch-icon.png")}/></head>
@@ -14,7 +15,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 <a class="skip" href="#main">跳到主要内容</a>
 <header class="site-header"><div class="nav-wrap"><Brand/><nav class="main-nav" aria-label="主要导航">{nav.map(([key,label,url]) => <a href={href(url)} aria-current={active === key ? 'page' : undefined}>{label}</a>)}</nav><div class="nav-actions"><a class="icon-button" href={href('library/')} aria-label="搜索港口知识"><Icon name="search"/></a><button class="icon-button mobile-toggle" aria-label="展开导航" aria-expanded="false"><Icon name="menu"/></button></div></div></header>
 <main id="main"><slot/></main>
-<footer class="site-footer"><div class="footer-inner"><div><Brand compact/><p>把复杂的港口，讲成看得懂的日常。</p></div><div class="footer-links"><a href={href('library/')}>知识地图</a><a href={href('documents/')}>单证图解</a><a href={href('about/')}>来源与范围</a><a href="https://github.com/xxxztq/port-knowledge" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div><div class="footer-bottom"><span>由 xxxztq 建立 · 中文港口知识手册</span><span>教学示意与企业案例分别标注 · 内容核查 2026.11</span></div></footer>
+<footer class="site-footer"><div class="footer-inner"><div><Brand compact/><p>把复杂的港口，讲成看得懂的日常。</p></div><div class="footer-links"><a href={href('library/')}>知识地图</a><a href={href('documents/')}>单证图解</a><a href={href('systems/')}>港口系统</a><a href={href('about/')}>来源与范围</a><a href="https://github.com/xxxztq/port-knowledge" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div><div class="footer-bottom"><span>由 xxxztq 建立 · 中文港口知识手册</span><span>教学示意与企业案例分别标注 · 内容核查 2026.11</span></div></footer>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script>
 const toggle = document.querySelector('.mobile-toggle');
