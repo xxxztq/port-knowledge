@@ -1,4 +1,5 @@
 ---
+import BerthingEntry from '../components/BerthingEntry.astro';
 import Layout from '../layouts/Layout.astro';
 import { shipmentCases, shipmentLanes, shipmentExceptions, shipmentSources } from '../data/shipment-learning.js';
 import '../styles/shipment.css';
@@ -11,6 +12,7 @@ const number = (i: number) => String(i + 1).padStart(2, '0');
       <div><span class="eyebrow">ONE SHIPMENT / 五条线，看懂一次交接</span><h1>一票货，怎样走完全程？</h1><p>沿着货物走，也沿着证据走。<br/>从船边到交付点，看看每一站谁接手、凭什么继续、服务如何发生。</p></div>
       <a class="shipment-legacy" href={base + 'journey/'}><span>还想看集装箱？</span><strong>进口集装箱七站旅程 ↗</strong><small>机床进口 · 提箱 · 还空箱</small></a>
     </header>
+    <BerthingEntry compact/>
     <div class="shipment-scope"><span class="shipment-demo">虚构教学案例</span><p>不连接真实海关或生产系统，不生成作业指令、审核结果或放行状态。图中顺序是教学归纳。</p><a href="#shipment-sources">范围与来源 ↓</a></div>
     <nav class="shipment-cases" aria-label="选择一票货教学案例">
       {shipmentCases.map((lesson, i) => <a href={'#case-' + lesson.id} data-case-select={lesson.id}><span>{number(i)} / {lesson.id === 'soybeans' ? 'DRY BULK' : 'LIQUEFIED GAS'}</span><strong>{lesson.title}</strong><small>{lesson.subtitle}</small></a>)}

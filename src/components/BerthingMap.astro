@@ -1,0 +1,198 @@
+---
+import { randomUUID } from 'node:crypto';
+
+interface Props { base?: string }
+
+// Generated on the server so multiple maps never share accessible SVG IDs.
+const instanceId = `berth-map-${randomUUID()}`;
+const titleId = `${instanceId}-title`;
+const descriptionId = `${instanceId}-description`;
+const arrowId = `${instanceId}-arrow`;
+---
+<figure class="berth-map">
+  <div class="berth-map-tools" data-berth-map-tools hidden><button type="button" data-berth-zoom aria-expanded="false" aria-controls={`${instanceId}-viewport`}>放大空间图</button><span data-berth-zoom-hint>可放大查看水域与设施名称</span></div>
+  <div class="berth-map-viewport" id={`${instanceId}-viewport`} data-berth-map-viewport>
+  <svg
+    class="berth-map-svg"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1000 440"
+    width="1000"
+    height="440"
+    style="display:block;width:100%;height:auto"
+    role="img"
+    aria-labelledby={titleId}
+    aria-describedby={descriptionId}
+    focusable="false"
+    lang="zh-CN"
+  >
+    <title id={titleId}>船舶进港与靠泊：从海上进近到船岸交接的空间示意</title>
+    <desc id={descriptionId}>非比例教学图。左侧为海上进近，主通路直接连向引航登轮区，再连接航道、回旋水域及右侧岸边泊位。上方锚地通过虚线支路与主通路相连，是按条件选用的候泊位置，非所有船舶必经。九个标记分别对应抵港前准备、可选锚地、进港条件确认、引航登轮、航道、回旋水域、贴靠泊位、系泊和船岸交接。岸边画有码头、船舶、护舷、系缆设施及按需使用的小拖轮。实线仅表达空间联系，不表示实际航迹、固定转向或操纵程序；实际航路与引航登轮点依港口和当时条件确定。</desc>
+    <defs>
+      <marker id={arrowId} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M2 1 8 5 2 9" fill="none" stroke="#285b56" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+      </marker>
+    </defs>
+    <g aria-hidden="true" font-family="'Microsoft YaHei', 'PingFang SC', 'Noto Sans CJK SC', system-ui, sans-serif" fill="#173b42" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="1000" height="440" fill="#f7f5ef" />
+      <text x="30" y="35" font-size="20" font-weight="600">船舶进港 · 空间关系</text>
+      <text x="970" y="34" text-anchor="end" font-size="13">非比例教学图</text>
+      <path d="M30 56H970M30 395H970" fill="none" stroke="#b9c4bc" />
+
+      <!-- The coastline and quay remain distinct from the water connections. -->
+      <path d="M839 65V140L857 162V338L839 360V394H1000V65Z" fill="#e5e8df" />
+      <path d="M839 65V140L857 162V338L839 360V394" fill="none" stroke="#285b56" stroke-width="2" />
+      <path d="M847 70V136L865 158M865 342 847 364V390" fill="none" stroke="#637c72" />
+      <rect x="843" y="184" width="137" height="148" fill="#f7f5ef" stroke="#285b56" stroke-width="1.7" />
+      <path d="M851 190V326M974 190V326" fill="none" stroke="#637c72" />
+      <text x="900" y="105" font-size="14">岸线 / 陆域</text>
+      <text x="916" y="210" text-anchor="middle" font-size="16" font-weight="600">码头</text>
+
+      <!-- Sparse water strokes leave labels and route branches readable. -->
+      <g fill="none" stroke="#8b9c93" stroke-width="1">
+        <path d="M43 148q9-5 18 0t18 0M99 168q9-5 18 0t18 0M44 185q9-5 18 0t18 0" />
+        <path d="M216 319q9-5 18 0t18 0M275 350q9-5 18 0t18 0M441 364q9-5 18 0t18 0M534 337q9-5 18 0t18 0" />
+      </g>
+
+      <!-- These arrows connect spaces; they are deliberately not a maneuver track. -->
+      <g class="berth-map-connections" fill="none" stroke="#285b56" stroke-width="2.3" marker-end={`url(#${arrowId})`}>
+        <path d="M166 258H349" />
+        <path d="M433 258H613" />
+        <path d="M755 258H787" />
+      </g>
+      <path class="berth-map-optional-route" d="M184 258C188 199 204 158 250 158S325 199 340 258" fill="none" stroke="#285b56" stroke-width="2" stroke-dasharray="6 7" marker-end={`url(#${arrowId})`} />
+
+      <!-- Each stage has one stable hook. The parent page can add .is-current. -->
+      <g class="berth-map-point" data-berth-point="prearrival" stroke="#285b56" stroke-width="1.8">
+        <g class="berth-map-feature" fill="#f7f5ef">
+          <path d="M65 242H130Q148 247 159 258Q148 269 130 274H65Z" />
+          <path d="M73 248H128L144 258 128 268H73Z" />
+          <rect x="77" y="248" width="13" height="20" />
+          <rect x="98" y="250" width="12" height="16" />
+          <rect x="114" y="250" width="12" height="16" />
+          <path d="M59 250H47M59 265H40" fill="none" stroke-width="1" />
+        </g>
+        <text class="berth-map-area-label" x="73" y="219" font-size="16" stroke="none">海上进近</text>
+        <path class="berth-point-leader" d="M69 329 103 290V279" fill="none" stroke-width="1" />
+        <circle class="berth-point-marker" cx="63" cy="337" r="7" fill="#f7f5ef" stroke-width="2.5" />
+        <text class="berth-point-label" x="80" y="342" font-size="15" font-weight="600" stroke="none">抵港前准备</text>
+      </g>
+
+      <g class="berth-map-point" data-berth-point="anchorage" stroke="#285b56" stroke-width="1.8">
+        <g class="berth-map-feature" fill="#f7f5ef">
+          <ellipse cx="250" cy="158" rx="59" ry="37" stroke-width="1.3" />
+          <circle cx="250" cy="140" r="4" />
+          <path d="M250 144V178M237 151H263M233 161Q233 178 250 178Q267 178 267 161M230 165 233 160 238 164M262 164 267 160 270 165" fill="none" />
+        </g>
+        <path class="berth-point-leader" d="M201 113 216 125" fill="none" stroke-width="1" />
+        <circle class="berth-point-marker" cx="196" cy="106" r="7" fill="#f7f5ef" stroke-width="2.5" />
+        <text class="berth-point-label" x="213" y="111" font-size="15" font-weight="600" stroke="none">可选锚地</text>
+        <text x="250" y="216" text-anchor="middle" font-size="13" stroke="none">按条件候泊</text>
+      </g>
+
+      <g class="berth-map-point" data-berth-point="readiness" stroke="#285b56" stroke-width="1.8">
+        <g class="berth-map-feature" fill="#f7f5ef">
+          <rect x="394" y="140" width="32" height="41" rx="2" />
+          <rect x="403" y="136" width="14" height="7" rx="2" />
+          <path d="m400 152 3 3 5-6m-8 14 3 3 5-6M413 152H420M413 163H420M400 173H420" fill="none" stroke-width="1.3" />
+        </g>
+        <path class="berth-point-leader" d="M377 115 393 138" fill="none" stroke-width="1" />
+        <circle class="berth-point-marker" cx="371" cy="108" r="7" fill="#f7f5ef" stroke-width="2.5" />
+        <text class="berth-point-label" x="388" y="113" font-size="15" font-weight="600" stroke="none">进港条件确认</text>
+      </g>
+
+      <g class="berth-map-point" data-berth-point="pilotage" stroke="#285b56" stroke-width="1.8">
+        <g class="berth-map-feature" fill="#f7f5ef">
+          <circle cx="392" cy="258" r="35" stroke-width="1.3" />
+          <path d="M372 250H403L415 258 403 266H372Z" />
+          <rect x="381" y="252" width="17" height="12" />
+          <path d="M386 252V264M392 248V244" fill="none" stroke-width="1.2" />
+        </g>
+        <path class="berth-point-leader" d="M364 323 380 295" fill="none" stroke-width="1" />
+        <circle class="berth-point-marker" cx="360" cy="331" r="7" fill="#f7f5ef" stroke-width="2.5" />
+        <text class="berth-point-label" x="377" y="336" font-size="15" font-weight="600" stroke="none">引航登轮区</text>
+      </g>
+
+      <g class="berth-map-point" data-berth-point="channel" stroke="#285b56" stroke-width="1.8">
+        <g class="berth-map-feature" fill="none">
+          <path d="M477 227H603M477 289H603" />
+          <path d="M490 225V213M484 225H496M567 291V303M561 291H573" stroke-width="1.2" />
+          <path d="m486 214 4-7 4 7zM563 302H571V310H563Z" fill="#f7f5ef" stroke-width="1.2" />
+        </g>
+        <path class="berth-point-leader" d="M502 188 528 216" fill="none" stroke-width="1" />
+        <circle class="berth-point-marker" cx="496" cy="181" r="7" fill="#f7f5ef" stroke-width="2.5" />
+        <text class="berth-point-label" x="513" y="186" font-size="15" font-weight="600" stroke="none">航道</text>
+      </g>
+
+      <g class="berth-map-point" data-berth-point="turning" stroke="#285b56" stroke-width="1.8">
+        <circle class="berth-map-feature" cx="686" cy="258" r="67" fill="none" stroke-width="1.5" />
+        <path class="berth-map-feature" d="M677 258H695M686 249V267" fill="none" stroke-width="1" />
+        <path class="berth-point-leader" d="M638 157 659 194" fill="none" stroke-width="1" />
+        <circle class="berth-point-marker" cx="633" cy="149" r="7" fill="#f7f5ef" stroke-width="2.5" />
+        <text class="berth-point-label" x="650" y="154" font-size="15" font-weight="600" stroke="none">回旋水域</text>
+        <text x="686" y="348" text-anchor="middle" font-size="12" stroke="none">水域边界示意</text>
+      </g>
+
+      <g class="berth-map-point" data-berth-point="alongside" stroke="#285b56" stroke-width="1.8">
+        <g class="berth-map-feature" fill="#f7f5ef">
+          <path d="M793 311V237Q794 220 810 206Q826 220 827 237V311Z" />
+          <path d="M799 302V238L810 222 821 238V302Z" />
+          <rect x="800" y="244" width="20" height="16" />
+          <rect x="800" y="265" width="20" height="16" />
+          <rect x="798" y="288" width="24" height="12" />
+          <path d="M803 292H817" fill="none" stroke-width="1" />
+          <rect x="834" y="235" width="9" height="18" rx="2" fill="#285b56" />
+          <rect x="834" y="271" width="9" height="18" rx="2" fill="#285b56" />
+        </g>
+        <path class="berth-point-leader" d="M743 117 779 158 807 200" fill="none" stroke-width="1" />
+        <circle class="berth-point-marker" cx="737" cy="109" r="7" fill="#f7f5ef" stroke-width="2.5" />
+        <text class="berth-point-label" x="754" y="114" font-size="15" font-weight="600" stroke="none">贴靠泊位</text>
+        <path d="M845 244 882 234" fill="none" stroke-width="1" />
+        <text x="890" y="238" font-size="12" stroke="none">护舷</text>
+      </g>
+
+      <g class="berth-map-point" data-berth-point="mooring" stroke="#285b56" stroke-width="1.8">
+        <g class="berth-map-feature" fill="none">
+          <path d="M823 226 858 203M824 299 858 319" stroke-width="1.3" />
+          <path d="M853 201H863M856 201V206H860V201M853 317H863M856 317V322H860V317" stroke-width="2" />
+        </g>
+        <path class="berth-point-leader" d="M879 182 865 199" fill="none" stroke-width="1" />
+        <circle class="berth-point-marker" cx="884" cy="174" r="7" fill="#f7f5ef" stroke-width="2.5" />
+        <text class="berth-point-label" x="901" y="179" font-size="15" font-weight="600" stroke="none">系泊</text>
+      </g>
+
+      <g class="berth-map-point" data-berth-point="handover" stroke="#285b56" stroke-width="1.8">
+        <g class="berth-map-feature" fill="#f7f5ef">
+          <path d="M893 274V267H916L925 276V304H893Z" />
+          <path d="M916 267V277H925M900 284H918M900 290H918M900 296H912" fill="none" stroke-width="1.2" />
+          <path d="M932 273H947M943 269 947 273 943 277M947 293H932M936 289 932 293 936 297" fill="none" stroke-width="1.3" />
+        </g>
+        <path class="berth-point-leader" d="M875 362 905 332V310" fill="none" stroke-width="1" />
+        <circle class="berth-point-marker" cx="872" cy="370" r="7" fill="#f7f5ef" stroke-width="2.5" />
+        <text class="berth-point-label" x="889" y="375" font-size="15" font-weight="600" stroke="none">船岸交接</text>
+      </g>
+
+      <g class="berth-map-tug" stroke="#285b56" stroke-width="1.6" fill="#f7f5ef">
+        <g transform="translate(767 310) rotate(-28)">
+          <path d="M-10 28V6Q-8-4 0-8Q8-4 10 6V28Q0 34-10 28Z" />
+          <rect x="-6" y="6" width="12" height="15" rx="2" />
+          <path d="M-10 25H10M-5 10H5" fill="none" />
+        </g>
+        <path d="M756 361 775 343" fill="none" stroke-width="1" />
+        <text x="714" y="377" font-size="12" fill="#173b42" stroke="none">拖轮（按需）</text>
+      </g>
+
+      <g font-size="12" fill="#173b42">
+        <path d="M30 417H64" fill="none" stroke="#285b56" stroke-width="2" marker-end={`url(#${arrowId})`} />
+        <text x="75" y="421">空间联系</text>
+        <path d="M173 417H207" fill="none" stroke="#285b56" stroke-width="2" stroke-dasharray="6 5" />
+        <text x="218" y="421">可选支路</text>
+        <text x="970" y="421" text-anchor="end">不表示航迹或固定操纵程序</text>
+      </g>
+    </g>
+  </svg>
+  </div>
+  <figcaption class="berth-map-caption">
+    <p class="berth-map-note">锚地是按条件选用的候泊位置，非所有船舶必经。实线表示主要空间联系，虚线表示可选锚地支路。</p>
+    <p class="berth-map-note">非比例教学图；实际航路、引航登轮点及锚地安排依港口与当时条件确定。连线不表示固定航迹或航行操纵程序；拖轮使用与系泊安排按实际方案确定。</p>
+  </figcaption>
+</figure>

@@ -69,10 +69,12 @@ const evidence = {
     topics: [link('八类岗位入口', 'roles/')],
   },
   k08: {
-    process: covered('靠泊场景逐步说明船期、通航、引航拖轮、实到与开工准备。', scenario('vessel-berthing-coordination', '船舶靠泊协作')),
-    exceptions: covered('靠泊流程中的每一步都有具体阻断及处理责任。', scenario('vessel-berthing-coordination', '资源迟到与条件变化', '#step-2')),
-    next: '深化离泊、移泊和辅助船艇的协同场景。', tags: '船舶 引航 拖轮 系缆 靠泊 船型',
-    topics: [link('十四种船型', 'vessels/'), link('港口辅助船艇', 'vessels/#support')],
+    process: covered('九站专题从到港预报，经可选候泊、引航、航道、回旋、靠泊系缆，接到装卸准备。', link('进港靠泊九站旅程', 'berthing/#arrival-journey'), scenario('vessel-berthing-coordination', '船舶靠泊协作')),
+    interactive: covered('操作 / 判断：切换九站水域图与四个等待情景，核对通航、船方、泊位、服务和装卸条件。', link('等待条件演示', 'berthing/#readiness-lab')),
+    interactionKind: 'exercise',
+    exceptions: covered('天气改变、前船占泊和靠妥后未满足接口条件的情景，说明重新核对与协调方向。', link('天气、占泊与未开工情景', 'berthing/#readiness-lab')),
+    next: '在进离港概念与协作基础上，深化不同港口及船型的差异案例。', tags: '船舶 引航 拖轮 系缆 靠泊 船型 锚地 候泊 航道 登轮 港池 回旋 水深 吃水 潮汐 ETA ETB ATB VTS AIS 移泊 离港',
+    topics: [link('进港与靠泊', 'berthing/'), link('十四种船型', 'vessels/'), link('港口辅助船艇', 'vessels/#support')],
   },
   k09: {
     process: covered('船舶计划协作展示计划转成执行任务的责任链。', link('计划转为作业任务', 'roles/#collaboration-normal-vessel-plan')),
@@ -213,7 +215,7 @@ export const knowledgeCoverage = domains.map((domain) => {
 
 const step = (title, purpose, path) => ({ title, purpose, path });
 export const rolePaths = [
-  { id: 'planner', title: '计划', steps: [step('认识计划岗位', '辨认资源约束与安排边界。', 'knowledge/job-planner/'), step('看船舶计划交接', '看安排怎样成为可执行任务。', 'roles/#collaboration-normal-vessel-plan'), step('跟随靠泊流程', '核对船期、通航与岸侧准备。', 'scenarios/vessel-berthing-coordination/'), step('处理故障后的重排', '分清资源调整与生产恢复。', 'scenarios/quay-crane-failure-recovery/')] },
+  { id: 'planner', title: '计划', steps: [step('认识计划岗位', '辨认资源约束与安排边界。', 'knowledge/job-planner/'), step('看船舶计划交接', '看安排怎样成为可执行任务。', 'roles/#collaboration-normal-vessel-plan'), step('跟随进港靠泊流程', '从预报与候泊核对船岸准备。', 'berthing/'), step('处理故障后的重排', '分清资源调整与生产恢复。', 'scenarios/quay-crane-failure-recovery/')] },
   { id: 'control', title: '中控与调度', steps: [step('认识中控岗位', '理解如何接收现场变化。', 'knowledge/job-control/'), step('看生产计划关系', '把计划、指令与反馈接起来。', 'knowledge/k09-overview/'), step('跟随船舶计划交接', '确认交给执行方的任务。', 'roles/#collaboration-normal-vessel-plan'), step('处理天气或系统中断', '理解暂停与记录恢复。', 'scenarios/weather-and-system-interruption/')] },
   { id: 'operator', title: '现场操作', steps: [step('认识操作岗位', '区分作业指令与真实搬运。', 'knowledge/job-operator/'), step('看实物交接', '核对对象、数量、外观与封志。', 'knowledge/k17-overview/'), step('走一遍进口箱', '观察现场与上下游的交接。', 'journey/'), step('辨认吊装异常', '找出变化信号与报告方向。', 'risks/lifting/#recovery')] },
   { id: 'engineer', title: '工程设备', steps: [step('认识工程岗位', '理解技术可用的责任边界。', 'knowledge/job-engineer/'), step('认清设备结构', '把部位与实际用途对应起来。', 'knowledge/eq-sts/#visual-explainer'), step('跟随设备故障流程', '看报告、处理与交付如何接续。', 'scenarios/quay-crane-failure-recovery/'), step('核对恢复交接', '分清技术恢复与生产恢复。', 'knowledge/incident-recovery/')] },
@@ -224,7 +226,7 @@ export const rolePaths = [
 ];
 
 export const learningPaths = [
-  { id: 'first-port', number: '01', title: '第一次认识港口', purpose: '先认空间、船货与参与者，再把它们连成一程。', outcome: '能说清货经过哪里、谁接手，以及哪些条件仍需确认。', steps: [step('认清港口、码头和泊位', '先建立空间层级。', 'knowledge/k01-overview/'), step('认识船与承运对象', '把船型和货物联系起来。', 'vessels/'), step('从货类选择业务入口', '了解不同货物为何需要不同安排。', 'cargo/'), step('辨认港口内外的参与者', '知道谁委托、谁计划、谁执行。', 'roles/'), step('走一遍进口箱旅程', '把空间、岗位、设备和系统串起来。', 'journey/')] },
+  { id: 'first-port', number: '01', title: '第一次认识港口', purpose: '先认空间、船货与参与者，再把它们连成一程。', outcome: '能说清货经过哪里、谁接手，以及哪些条件仍需确认。', steps: [step('认清港口、码头和泊位', '先建立空间层级。', 'knowledge/k01-overview/'), step('认识船与承运对象', '把船型和货物联系起来。', 'vessels/'), step('看船怎样进港靠岸', '认识水域与船岸协作。', 'berthing/'), step('从货类选择业务入口', '了解不同货物为何需要不同安排。', 'cargo/'), step('辨认港口内外的参与者', '知道谁委托、谁计划、谁执行。', 'roles/'), step('走一遍进口箱旅程', '把空间、岗位、设备和系统串起来。', 'journey/')] },
   { id: 'one-shipment', number: '02', title: '跟一票货', purpose: '从具体货批出发，追踪实物、记录、交付条件与服务。', outcome: '能沿一票货解释交接、阻断与费用记录；案例是教学示意。', steps: [step('先认清这一批货', '以大豆档案识别货批与运输对象。', 'cargo/grain-soybeans/'), step('跟着一票货走', '在大豆或 LNG 教学场景中观察多条线如何接力。', 'shipment/'), step('打开交接单证', '核对每个字段能证明什么。', 'documents/'), step('检查陆侧交付条件', '用闸口例子区分授权、抬杆、通行和记录；不套用为 LNG 管网流程。', 'gate/#sim-title'), step('追踪服务与结算', '把实际服务接到费用与复核记录。', 'roles/#collaboration-completion-settlement')] },
   { id: 'by-role', number: '03', title: '按岗位', purpose: '选择一个岗位，按“职责 → 交接 → 场景 → 异常”阅读。', outcome: '能说明本岗位收到什么、交出什么，以及异常应交给谁。', steps: [] },
 ];

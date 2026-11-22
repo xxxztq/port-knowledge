@@ -1,4 +1,5 @@
 ---
+import BerthingEntry from '../../components/BerthingEntry.astro';
 import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
 import KnowledgeCheck from '../../components/KnowledgeCheck.astro';
@@ -19,7 +20,7 @@ const groups=new Map(vesselGroups.map(g=>[g.id,g.name]));
 <section class="vessel-section vessel-compare" id="compare"><span class="eyebrow">03 / SIDE BY SIDE</span><h2>名字相近，业务差在哪里？</h2><p>选两种船，对照货物、装卸方式与岸侧条件。相同船型也可有不同设计，具体能力仍看本船资料。</p><div class="vessel-compare-controls">{['left','right'].map((side,i)=><label>对照{ i===0?'左侧':'右侧'}船型<select data-vessel-select={side} aria-label={i===0?'左侧船型':'右侧船型'}>{vesselProfiles.map(p=><option value={p.id} selected={p.id===(i===0?'roro':'pctc')}>{p.name}</option>)}</select></label>)}</div><div class="vessel-compare-grid">{['left','right'].map(side=><div class="vessel-compare-slot" data-compare-side={side}>{vesselProfiles.map(p=><article data-compare-profile={p.id}><img src={href(p.visual)} alt={p.name+'对照示意'} width="720" height="360" loading="lazy"/><h3>{p.name}</h3><dl><dt>主要运什么</dt><dd>{p.cargo.join('、')}</dd><dt>怎样装卸</dt><dd>{p.method}</dd><dt>岸上怎样配合</dt><dd>{p.portFit}</dd></dl><a href={base+'vessels/'+p.id+'/'}>打开船型业务档案 →</a></article>)}</div>)}</div><p data-compare-status class="vessel-reference-note" role="status" aria-live="polite">可对照滚装船与汽车运输船，也可以换成重吊船与半潜运输船。</p><noscript><p>浏览器未启用脚本，保留全部对照内容，也可通过图鉴逐一打开。</p></noscript></section>
 <KnowledgeCheck quiz={vesselQuiz}/>
 <section class="vessel-section" id="support"><span class="eyebrow">04 / THE SHIPS AROUND THE SHIP</span><h2>港口里出现的船，不全是主运输船。</h2><p>这些船可能承担协助、转运、建设或海工作业。用途和承担的服务须分别理解。</p><div class="vessel-support-grid">{supportVessels.map(p=><article><h3>{p.name}</h3><p>{p.text}</p><small>{p.distinction}</small></article>)}</div></section>
-<VesselEntry compact/>
+<BerthingEntry compact/><VesselEntry compact/>
 <section class="vessel-section" id="vessel-sources"><h2>资料与适用范围</h2><p>船型图示为原创教学示意，不按实际比例；图中的舱形、罐形和设备是代表性设计，不能单凭外观判定船舶证书、能力或适装性。业务链为教学归纳，具体港口、船舶和货物另行确认。</p><ol class="vessel-source-list">{vesselSources.map(s=><li><a href={s.url} target="_blank" rel="noopener noreferrer">{s.title} ↗</a><small>{s.org} · 核查 {s.checked} · {s.scope}</small></li>)}</ol></section>
 </div></Layout>
 <script>

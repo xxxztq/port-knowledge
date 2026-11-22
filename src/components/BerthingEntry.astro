@@ -1,0 +1,6 @@
+---
+const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const {compact=false}=Astro.props;
+---
+<aside class:list={['berthing-entry',{'is-compact':compact}]} aria-label="船舶进港与靠泊专题"><div><span>BEFORE THE BERTH / 先看船怎样靠岸</span><h2>船到港了，为什么还在等？</h2><p>从到港预报、锚地候泊、引航和航道，到拖轮协助与靠泊系缆。把装卸之前的这一段，接到港口全程里。</p><a href={base+'berthing/'}>跟船走九站 · 看懂进港与靠泊 →</a></div><img src={base+'illustrations/berthing-overview.svg'} width="1000" height="440" alt="船舶由海上经可选候泊安排、引航登轮区与航道接近泊位的教学示意" loading="lazy"/></aside>
+<style>.berthing-entry{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;padding:32px 36px;margin:32px 0;border:1px solid #cbd8ce;border-radius:16px;background:#edf2eb}.berthing-entry span{font-size:11px;letter-spacing:.08em;color:#5f7c6b}.berthing-entry h2{font-size:28px;margin:12px 0}.berthing-entry p{font-size:14px;margin-bottom:18px;line-height:1.9}.berthing-entry a{font-weight:700;font-size:13px;text-decoration:underline;text-underline-offset:5px}.berthing-entry img{display:block;width:100%;height:auto}.is-compact{padding:24px 28px}.is-compact h2{font-size:24px}@media(max-width:700px){.berthing-entry{grid-template-columns:1fr;padding:24px;gap:18px}.berthing-entry h2{font-size:25px}.berthing-entry img{max-height:220px;object-fit:contain}}</style>
