@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="risk-overview" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="risk-title risk-desc">
+  <title id="risk-title">港口空间风险总览：六类观察要素</title>
+  <desc id="risk-desc">原创港口全景技术线稿，用六个数字对应观察要素：01岸边设备，02有标识的货物，03独立车道中的车辆，04码头水边，05天气与观测设施，06控制室。左侧岸桥空吊具下方无人、无吊物；货物静置，车辆与控制室分区。水面、岸线、棚外观测杆和室内显示屏表达空间及信息联系。所有布局均为教学抽象，不表示实际工程尺寸、安全距离、交通组织或现场操作方案。教学示意，不按比例。</desc>
+  <defs>
+    <style>
+      #risk-overview text{font-family:'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif;fill:#202827}
+      #risk-overview .heading{font-size:20px;font-weight:600}
+      #risk-overview .label{font-size:14px}
+      #risk-overview .small{font-size:12px}
+      #risk-overview .muted{fill:#596360}
+      #risk-overview .ink{fill:none;stroke:#202827;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+      #risk-overview .fine{fill:none;stroke:#7a8580;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+      #risk-overview .faint{fill:none;stroke:#b9bdb5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+      #risk-overview .paper{fill:#f7f5ef}
+      #risk-overview .shade{fill:#e5e8df}
+      #risk-overview .accent{fill:#285b56}
+      #risk-overview .number{font:600 12px Arial,sans-serif;fill:#285b56;text-anchor:middle}
+    </style>
+  </defs>
+  <rect width="720" height="360" class="paper"/>
+  <g aria-hidden="true">
+    <path d="M32 77H688M32 319H688" class="faint"/>
+    <text x="32" y="37" class="small" letter-spacing="2">RISK / OVERVIEW</text>
+    <text x="32" y="63" class="heading">港口空间风险总览</text>
+    <text x="688" y="55" text-anchor="end" class="label muted">设备 · 货物 · 环境 · 协同</text>
+
+    <!-- Water and a distinct quay edge establish the working space. -->
+    <path d="M32 183H172L119 278H32Z" fill="#eef0e9"/>
+    <path d="M172 183H688V278H119Z" fill="#f1f1ea"/>
+    <g class="faint">
+      <path d="M32 183H171M172 183H287M464 183H544M677 183H688"/>
+      <path d="M32 244H53M88 243H123M39 252H73M96 261H122M37 272H56M73 277H102"/>
+      <path d="M339 145V127H382V145M348 127V119H371V127M354 136H366M374 136H380"/>
+    </g>
+    <path d="M172 183L119 278M179 183L126 278" class="ink"/>
+    <path d="M169 202L162 213M157 223L150 234M145 244L138 255" fill="none" stroke="#7a8580" stroke-width="3"/>
+    <g class="ink">
+      <path d="M41 211H143L130 234H55Z" class="paper"/>
+      <path d="M50 211V193H72V211M56 193V186H67V193M62 186V178"/>
+      <path d="M55 199H67M55 205H67" class="fine"/>
+      <path d="M80 196H103V211H80ZM108 196H131V211H108Z" class="shade"/>
+      <path d="M86 200V207M92 200V207M97 200V207M114 200V207M120 200V207M125 200V207M58 221H127" class="fine"/>
+    </g>
+
+    <!-- An idle crane with an empty spreader; no people or suspended cargo. -->
+    <g class="ink">
+      <path d="M64 113H305V123H64Z" class="paper"/>
+      <path d="M66 122L81 114L96 122L111 114L126 122L141 114L156 122L171 114L186 122L201 114L216 122L231 114L246 122L261 114L276 122L291 114L304 122" class="fine"/>
+      <path d="M207 113V94H219V113M213 94L71 113M213 94L297 113M207 123V164M219 123V164"/>
+      <path d="M207 128L219 143L207 158M214 97V109" class="fine"/>
+      <path d="M190 164H245V175H190ZM191 175L179 226H190L204 175M230 175L244 226H255L243 175" class="paper"/>
+      <path d="M197 192H238M193 207H242M199 192L239 207M236 192L195 207" class="fine"/>
+      <path d="M175 226H195V232H175ZM240 226H259V232H240Z" class="shade"/>
+      <circle cx="180" cy="233" r="3" class="paper"/><circle cx="190" cy="233" r="3" class="paper"/>
+      <circle cx="245" cy="233" r="3" class="paper"/><circle cx="254" cy="233" r="3" class="paper"/>
+      <path d="M98 124V170M113 124V170" class="fine"/>
+      <path d="M86 171H125V178H86ZM93 178V181M118 178V181" class="paper"/>
+      <path d="M224 135H239V153H224Z" class="paper"/>
+      <path d="M228 139H235V145H228Z" class="accent"/>
+    </g>
+
+    <!-- Identified stationary cargo, behind the lane boundary. -->
+    <g class="ink">
+      <path d="M300 175L335 157H456L421 175Z" class="paper"/>
+      <path d="M421 175L456 157V202L421 220Z" class="shade"/>
+      <path d="M300 175H421V220H300Z" class="paper"/>
+      <path d="M307 181V214M317 181V214M327 181V214M337 181V214M347 181V214M357 181V214M367 181V214M377 181V214M387 181V214M397 181V214M407 181V214M432 175V207M446 168V200" class="fine"/>
+      <path d="M310 170H423M327 162H444M301 217H420" class="fine"/>
+      <rect x="341" y="187" width="44" height="19" rx="1" class="paper"/>
+      <path d="M470 192L488 182H521L503 192ZM470 192H503V220H470ZM503 192L521 182V210L503 220" class="paper"/>
+      <path d="M476 198L497 214M497 198L476 214M510 192V211M483 192L500 182" class="fine"/>
+    </g>
+    <text x="363" y="201" text-anchor="middle" class="small">A-01</text>
+    <path d="M293 226H525" fill="none" stroke="#7a8580" stroke-width="1"/>
+
+    <!-- Weather observation and a visibly separate control room. -->
+    <g class="fine">
+      <path d="M430 117C419 117 418 103 428 100C429 88 446 86 453 96C464 91 476 100 475 109C489 109 489 122 477 122H438"/>
+      <path d="M396 103H414M388 111H409M398 119H419M440 129L436 136M453 131L449 138M466 130L462 137"/>
+    </g>
+    <g class="ink">
+      <path d="M527 143V213M521 213H533M519 144H538"/>
+      <path d="M527 130V143M515 133L527 130L539 133M515 133L519 136M539 133L535 136" class="fine"/>
+      <path d="M550 153L575 140H679L654 153Z" class="paper"/>
+      <path d="M654 153L679 140V207L654 221Z" class="shade"/>
+      <path d="M556 153H654V221H556Z" class="paper"/>
+      <path d="M565 163H644V198H565Z" class="shade"/>
+      <path d="M571 169H599V184H571ZM607 169H636V184H607Z" class="paper"/>
+      <path d="M585 184V190M621 184V190M578 190H592M614 190H628M568 194H641M568 205H638" class="fine"/>
+      <path d="M575 179L580 175L585 178L590 173L595 176" fill="none" stroke="#285b56" stroke-width="1.2"/>
+      <path d="M612 174H619V179H612ZM624 174H632V179H624Z" fill="#285b56" stroke="none"/>
+      <path d="M662 167L672 162V194L662 199ZM666 182L669 180M636 140V128M631 129Q636 124 641 129" class="fine"/>
+    </g>
+    <g class="fine">
+      <path d="M548 228H682M552 225V233M565 225V233M578 225V233M591 225V233M604 225V233M617 225V233M630 225V233M643 225V233M656 225V233M669 225V233M682 225V233"/>
+    </g>
+
+    <!-- Dedicated traffic space, with simple directional marks. -->
+    <path d="M170 239H688M148 278H688" class="faint"/>
+    <path d="M174 258H352M515 258H687" fill="none" stroke="#b9bdb5" stroke-width="1" stroke-dasharray="12 10"/>
+    <path d="M310 258H337M331 253L337 258L331 263M596 258H626M620 253L626 258L620 263" fill="none" stroke="#285b56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g class="ink">
+      <path d="M380 249H465V255H380Z" class="shade"/>
+      <path d="M385 227L393 223H461L453 227ZM453 227L461 223V245L453 249Z" class="shade"/>
+      <path d="M385 227H453V249H385Z" class="paper"/>
+      <path d="M392 231V245M401 231V245M410 231V245M419 231V245M428 231V245M437 231V245M446 231V245" class="fine"/>
+      <path d="M465 238H483L496 250V263H465Z" class="paper"/>
+      <path d="M470 242H481L489 250H470Z" class="accent"/>
+      <path d="M470 255H476M491 255H496M378 261H496" class="fine"/>
+      <circle cx="390" cy="263" r="7" class="paper"/><circle cx="446" cy="263" r="7" class="paper"/><circle cx="482" cy="263" r="7" class="paper"/>
+      <circle cx="390" cy="263" r="2" class="fine"/><circle cx="446" cy="263" r="2" class="fine"/><circle cx="482" cy="263" r="2" class="fine"/>
+    </g>
+
+    <!-- Six unobtrusive markers; the single legend keeps scene text sparse. -->
+    <g class="fine">
+      <path d="M269 97H250L235 111M325 145V157H335M535 240H515L498 249M76 258H98L133 246M498 99L482 104M664 124H654L640 140"/>
+    </g>
+    <g fill="#f7f5ef" stroke="#285b56" stroke-width="1.2">
+      <circle cx="280" cy="97" r="11"/><circle cx="325" cy="134" r="11"/><circle cx="546" cy="240" r="11"/>
+      <circle cx="65" cy="258" r="11"/><circle cx="509" cy="99" r="11"/><circle cx="675" cy="124" r="11"/>
+    </g>
+    <text x="280" y="101" class="number">01</text><text x="325" y="138" class="number">02</text><text x="546" y="244" class="number">03</text>
+    <text x="65" y="262" class="number">04</text><text x="509" y="103" class="number">05</text><text x="675" y="128" class="number">06</text>
+    <text x="44" y="302" class="number">01</text><text x="63" y="302" class="small">设备</text>
+    <text x="152" y="302" class="number">02</text><text x="171" y="302" class="small">货物</text>
+    <text x="260" y="302" class="number">03</text><text x="279" y="302" class="small">车流</text>
+    <text x="368" y="302" class="number">04</text><text x="387" y="302" class="small">水边</text>
+    <text x="476" y="302" class="number">05</text><text x="495" y="302" class="small">天气</text>
+    <text x="584" y="302" class="number">06</text><text x="603" y="302" class="small">控制室</text>
+    <text x="32" y="342" class="small muted">教学示意 · 不按比例</text>
+    <text x="688" y="342" text-anchor="end" class="small">PORT / RISK</text>
+  </g>
+</svg>

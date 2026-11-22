@@ -1,4 +1,5 @@
 ---
+import RiskEntry from '../components/RiskEntry.astro';
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import ArticleCard from '../components/ArticleCard.astro';
@@ -13,4 +14,4 @@ const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
 <div class="section-heading section-top"><div><div class="eyebrow">ROLE ATLAS</div><h2>先认识岗位，再看交接</h2></div></div><div class="article-grid">{roles.map(article=><ArticleCard article={article}/>)}</div>
 <div class="section-heading section-top" id="collaboration"><div><div class="eyebrow">HANDOFF IN PRACTICE</div><h2>部门是怎样交互的？</h2></div><span class="external-note">输入 → 判断 → 交付</span></div>
 {collaboration.map(c=><section class="collaboration-card" id={c.id}><span class="pill">协作案例</span><h3>{c.title}</h3><p><strong>触发：</strong>{c.trigger}</p><div class="lanes">{c.lanes.map(l=><div class="lane"><strong>{l.role}</strong><div><small>收到什么</small>{l.receive}</div><div><small>判断什么</small>{l.decide}</div><div><small>交给谁什么</small>{l.deliver}</div></div>)}</div><p class="notice"><strong>完成标志：</strong>{c.result}</p><div class="exception"><strong>异常怎么接</strong>{c.exception}</div></section>)}
-</div></div></Layout>
+</div></div><div class="container"><RiskEntry compact riskIds={["equipment","lifting","identity"]}/></div></Layout>

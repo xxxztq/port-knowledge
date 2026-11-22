@@ -1,4 +1,5 @@
 ---
+import RiskEntry from '../components/RiskEntry.astro';
 import Layout from '../layouts/Layout.astro';import PageIntro from '../components/PageIntro.astro';import Icon from '../components/Icon.astro';import {gateTasks} from '../data/scenarios.js';
 const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
@@ -15,7 +16,7 @@ const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
 <div id="gate-result" role="status" aria-live="polite">选择业务和方向后，点击“校验并授权”。</div><p class="small-copy">这是教学分步操作。真实现场由设备、系统和岗位按权限协同，不能把按钮当作人工绕过监管的流程。</p></div></div></section>
 <section class="section"><div class="section-heading"><div><div class="eyebrow">DATA HAS A JOURNEY</div><h2>电子口岸、海关和码头，怎么衔接？</h2></div></div><div class="info-flow"><div><span>01</span><h3>业务主体形成信息</h3><p>承运人、代理、场站等按适用职责形成舱单、运抵、理货等信息。来源、版本与业务对象必须明确。</p></div><div><span>02</span><h3>通过适用渠道交换</h3><p>可能经国际贸易“单一窗口”、地方电子口岸或获准的对接系统。不同业务、地方和企业的连接方式不同。</p></div><div><span>03</span><h3>监管处理与反馈</h3><p>发送成功、平台接收、业务受理、查验与放行是不同状态。回执异常应追溯对应报文和对象。</p></div><div><span>04</span><h3>码头按任务判断</h3><p>把有效监管状态与商业授权、场内实绩等分别关联，再结合闸机状态完成适用通行判断。</p></div></div><div class="notice">这张图表达信息责任关系，不代表全国统一接口拓扑。电子口岸不是海关的同义词；海关放行也不会直接替代船公司放货、码头作业确认和道闸反馈。</div></section>
 <div class="two-column"><div class="panel"><h2>正常链路之外，也要讲异常</h2><p>识别错箱：比对实物与来源记录，修正责任方明确后重核。回执超时：查询接收结果，避免重复报送。设备故障：保留业务状态并处理设备。已经实际通过但回写失败：保留真实事件，补核记录。</p></div><div class="panel"><h2>深入阅读与资料</h2><p>基础校验、任务差异、异常回执与费用各有独立知识卡，企业资料只说明其自身流程。</p><a class="text-link" href={base+'library/?q=闸口'}>查看闸口专题 <Icon name="arrow"/></a><ul class="source-list"><li><a href="https://online.customs.gov.cn/static/pages/guides/000629018002/000629018002.html" target="_blank" rel="noopener noreferrer">海关总署：进出境运输工具舱单及相关电子数据传输服务</a></li><li><a href="https://www.nbsinglewindow.cn/plinfo/index.do" target="_blank" rel="noopener noreferrer">宁波国际贸易“单一窗口”（地方示例）</a></li><li><a href="https://ups.portshanghai.com.cn/Home/OperatingGuide" target="_blank" rel="noopener noreferrer">上港集团操作指南（企业示例）</a></li></ul></div></div>
-</div></div></Layout>
+</div></div><div class="container"><RiskEntry compact riskIds={["traffic","identity","continuity"]}/></div></Layout>
 <script>
 import {gateTasks} from '../data/scenarios.js';import {gateChecks,gateTransition} from '../lib/gate-model.mjs';
 const taskSelect=document.querySelector<HTMLSelectElement>('#gate-task')!;let state='idle';

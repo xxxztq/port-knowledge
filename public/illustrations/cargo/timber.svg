@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="cargo-timber" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="timber-title timber-desc">
+  <title id="timber-title">木材：原木、成捆锯材与货签交接</title>
+  <desc id="timber-desc">原创技术线稿。左侧原木端面以年轮和径向纹理辨识，中间锯材成捆、附有货签并离地承放，右侧两名工作人员在独立核签台核对批次和件数。T-01与S-02为虚构货签。图中没有起吊或移运中的货物，不表示实际堆放、捆扎或支承方案，不提供工程尺寸。教学示意，不按比例。</desc>
+  <defs>
+    <style>
+      text{font-family:'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif;fill:#202827}
+      .heading{font-size:20px;font-weight:600}
+      .label{font-size:14px}
+      .small{font-size:12px}
+      .muted{fill:#596360}
+      .ink{fill:none;stroke:#202827;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+      .fine{fill:none;stroke:#7a8580;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+      .faint{fill:none;stroke:#b9bdb5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+      .paper{fill:#f7f5ef}
+      .shade{fill:#e5e8df}
+      .accent{fill:#285b56}
+      .number{font:600 12px Arial,sans-serif;fill:#285b56;text-anchor:middle}
+    </style>
+    <g id="timber-end">
+      <ellipse rx="23" ry="25" class="paper ink"/>
+      <path d="M-17-5C-16-19 2-23 13-14C24-3 16 17 4 19C-10 23-21 9-17-5ZM-11-3C-10-13 2-16 10-8C17 2 8 14-2 13C-12 12-15 4-11-3ZM-5-1C-3-7 5-7 7-1C9 6 0 10-4 5Z" class="fine"/>
+      <path d="M-18 14L-10 8M9-23L7-16M21 8L15 6M-21-9L-16-7" class="fine"/>
+      <path d="M-3 0L1 3" class="ink"/>
+    </g>
+  </defs>
+  <rect width="720" height="360" class="paper"/>
+  <g aria-hidden="true">
+    <path d="M32 77H688M32 319H688" class="faint"/>
+    <text x="32" y="37" class="small" letter-spacing="2">CARGO / TIMBER</text>
+    <text x="32" y="63" class="heading">木材</text>
+    <text x="688" y="55" text-anchor="end" class="label muted">货签对应 · 交接留痕</text>
+
+    <!-- A quiet yard backdrop, kept separate from the foreground cargo. -->
+    <g class="faint">
+      <path d="M42 137L93 109H299M49 137H118M54 144V177M93 109V120M294 109V135"/>
+      <path d="M325 129H474M337 123V135M465 123V135M43 265H489M507 265H679"/>
+      <path d="M53 272H128M252 272H311M398 272H458M535 272H660"/>
+      <path d="M507 115L528 103H672L684 115ZM516 123V244M674 123V244"/>
+    </g>
+
+    <!-- Low cribbing and end stops make the resting cargo relationship clear. -->
+    <g class="ink">
+      <path d="M259 207H306V215H259Z" class="shade"/>
+      <path d="M59 247H216V255H59Z" class="shade"/>
+      <path d="M57 247L64 235L73 247ZM201 247L210 235L218 247Z" class="paper"/>
+      <path d="M72 251H201M55 257H224" class="fine"/>
+    </g>
+    <!-- Five individually drawn log bodies; local end-grain geometry only. -->
+    <g class="ink">
+      <path d="M184 197L284 157C314 159 315 203 284 207L184 247Z" class="shade"/>
+      <path d="M134 197L234 157C264 159 265 203 234 207L134 247Z" class="paper"/>
+      <path d="M84 197L184 157C214 159 215 203 184 207L84 247Z" class="shade"/>
+    </g>
+    <g class="fine">
+      <path d="M201 208L286 174M202 224L294 186M153 204L238 171M152 224L246 186M104 210L189 176M102 226L196 188"/>
+      <path d="M213 212L227 207M262 192L278 186M162 215L175 210M115 218L132 212"/>
+    </g>
+    <use href="#timber-end" transform="translate(184 222) rotate(7)"/>
+    <use href="#timber-end" transform="translate(134 222) rotate(-11)"/>
+    <use href="#timber-end" transform="translate(84 222) rotate(13)"/>
+    <g class="ink">
+      <path d="M159 155L259 115C289 117 290 161 259 165L159 205Z" class="shade"/>
+      <path d="M109 155L209 115C239 117 240 161 209 165L109 205Z" class="paper"/>
+    </g>
+    <g class="fine">
+      <path d="M176 164L261 130M177 180L269 143M127 163L212 129M128 182L220 144"/>
+      <path d="M193 167L209 161M237 146L253 140M147 165L166 157M178 146L190 141"/>
+      <path d="M206 119L217 122M253 119L266 123"/>
+    </g>
+    <use href="#timber-end" transform="translate(159 180) rotate(-18)"/>
+    <use href="#timber-end" transform="translate(109 180) rotate(23)"/>
+    <g class="ink">
+      <path d="M231 184L245 191" class="fine"/>
+      <path d="M242 187H290V219H236V193Z" class="paper"/>
+      <circle cx="244" cy="194" r="2" class="fine"/>
+      <path d="M246 209V215M250 209V215M255 209V215M262 209V215M265 209V215M271 209V215M277 209V215M282 209V215" class="fine"/>
+    </g>
+    <text x="263" y="204" text-anchor="middle" class="small">T-01</text>
+
+    <!-- Board ends, long grain, restrained bands and an identifying tag. -->
+    <g class="ink">
+      <path d="M336 239H358V253H336ZM390 239H413V253H390Z" class="shade"/>
+      <path d="M433 214L454 203V218L433 229Z" class="shade"/>
+      <path d="M326 185L391 149H478L413 185Z" class="paper"/>
+      <path d="M413 185L478 149V203L413 239Z" class="shade"/>
+      <path d="M326 185H413V239H326Z" class="paper"/>
+    </g>
+    <g class="fine">
+      <path d="M343 185L408 149M361 185L426 149M379 185L444 149M397 185L462 149"/>
+      <path d="M326 194H413L478 158M326 203H413L478 167M326 212H413L478 176M326 221H413L478 185M326 230H413L478 194"/>
+      <path d="M354 185V194M384 185V194M343 194V203M375 194V203M354 203V212M395 203V212M344 212V221M379 212V221M355 221V230M391 221V230M344 230V239M376 230V239"/>
+      <path d="M331 190H346M362 198H369M335 208H345M386 217H403M363 226H380M384 235H404M432 180L461 164M438 207L467 191"/>
+    </g>
+    <g fill="#596360" stroke="#202827" stroke-width=".8" stroke-linejoin="round">
+      <path d="M345 185L410 149H416L351 185V239H345Z"/>
+      <path d="M389 185L454 149H460L395 185V239H389Z"/>
+    </g>
+    <path d="M444 191V198" class="fine"/>
+    <rect x="423" y="198" width="45" height="25" rx="2" class="paper ink"/>
+    <path d="M430 220H460" fill="none" stroke="#285b56" stroke-width="2"/>
+    <text x="445.5" y="214" text-anchor="middle" class="small">S-02</text>
+
+    <!-- A document handover in its own pedestrian workspace; no lifting. -->
+    <text x="597" y="139" text-anchor="middle" class="small muted">批次 · 件数 · 外观</text>
+    <g class="ink">
+      <path d="M575 158H613V195H575Z" class="paper"/>
+      <path d="M586 156H602V161H586Z" class="shade"/>
+      <path d="M582 168H605M582 176H599M582 184H603" class="fine"/>
+      <path d="M565 202H634V209H565ZM571 209V249M627 209V249M571 239H627"/>
+      <path d="M584 198H610L617 202H590Z" class="paper"/>
+      <circle cx="536" cy="178" r="7" class="paper"/>
+      <path d="M527 175H545M529 175Q529 165 536 165Q543 165 543 175" class="paper"/>
+      <path d="M531 188H541L546 199L565 201M532 194L541 207H558M529 189L526 218H543L542 207M530 219L528 248M541 219L546 248M524 250H532M542 250H550"/>
+      <path d="M529 197H541M528 207H537" stroke="#285b56"/>
+      <circle cx="655" cy="178" r="7" class="paper"/>
+      <path d="M646 175H664M648 175Q648 165 655 165Q662 165 662 175" class="paper"/>
+      <path d="M649 188H661L665 218H648L649 208M650 191L641 200H622M655 199L645 208H634M650 219L646 248M661 219L663 248M642 250H650M659 250H667"/>
+      <path d="M650 196H662M652 207H664" stroke="#285b56"/>
+    </g>
+    <path d="M507 257H681" fill="none" stroke="#285b56" stroke-width="1.2"/>
+
+    <g class="fine"><path d="M105 253V278M369 257V278M594 264V278"/></g>
+    <g fill="#f7f5ef" stroke="#285b56" stroke-width="1.2">
+      <circle cx="44" cy="296" r="11"/><circle cx="268" cy="296" r="11"/><circle cx="504" cy="296" r="11"/>
+    </g>
+    <text x="44" y="300" class="number">01</text><text x="268" y="300" class="number">02</text><text x="504" y="300" class="number">03</text>
+    <text x="63" y="301" class="label">原木端面</text><text x="287" y="301" class="label">成捆锯材</text><text x="523" y="301" class="label">货签交接</text>
+    <text x="32" y="342" class="small muted">教学示意 · 不按比例</text>
+    <text x="688" y="342" text-anchor="end" class="small">PORT / CARGO</text>
+  </g>
+</svg>

@@ -6,3 +6,4 @@
 @media(prefers-reduced-motion:reduce){.cargo-profile-card{transition:none}.cargo-profile-card:hover{transform:none}}
 
 .container-source-link{display:inline-block;margin:4px 12px 4px 0}
+.cargo-stage-risks{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:20px 0;font-size:12px}.cargo-stage-risks>span{width:100%;font-size:11px;color:#718078;margin-bottom:3px}.cargo-stage-risks a{padding:6px 10px;border:1px solid #d8dfd6;border-radius:4px;background:#f5f5ee}.cargo-stage-risks a:hover{border-color:#78928a}

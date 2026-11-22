@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import {portRisks,riskSources} from '../../data/port-risks.js';
+import '../../styles/risks.css';
+export function getStaticPaths(){return portRisks.map(risk=>({params:{id:risk.id},props:{risk}}));}
+const {risk:r}=Astro.props;
+const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const refs=riskSources.filter(s=>r.sources.includes(s.id));
+const siblings=portRisks.filter(x=>x.category===r.category&&x.id!==r.id);
+---
+<Layout title={r.title+'：风险与预防'} active="risks" description={r.summary}><div class="container risk-page risk-detail">
+<div class="breadcrumbs"><a href={base+'risks/'}>风险与预防</a><Icon name="chevron" size={12}/><span>{r.title}</span></div>
+<header class="risk-detail-hero"><div><span class="eyebrow">RISK FILE / {r.category}</span><h1>{r.title}</h1><p class="risk-lead">{r.summary}</p><div class="risk-related-tags">{r.where.map(w=><span>{w}</span>)}</div></div><aside><span class="eyebrow">谁接这一棒</span><h2>{r.owner}</h2><p>需要一起协作</p><ul>{r.partners.map(x=><li>{x}</li>)}</ul></aside></header>
+<nav class="cargo-local-nav" aria-label="风险详情目录"><a href="#signals">怎样发现</a><a href="#prevention">怎样预防</a><a href="#response">异常交给谁</a><a href="#recovery">怎样确认恢复</a><a href="#sources">依据与范围</a></nav>
+<section class="risk-section" id="signals"><span class="eyebrow">01 / OBSERVE</span><h2>先注意哪些信号？</h2><div class="risk-signal-grid">{r.signals.map((s,i)=><article><span>{String(i+1).padStart(2,'0')}</span><p>{s}</p></article>)}</div></section>
+<section class="risk-section risk-two-columns" id="prevention"><div><span class="eyebrow">02 / PREVENT</span><h2>把预防放在作业前，<br/>也放进每一次交接。</h2><p>以下是管理关注点。具体技术条件、参数和执行程序由适用规则及相应专业方确定。</p></div><ol class="risk-numbered-list">{r.prevention.map(p=><li>{p}</li>)}</ol></section>
+<section class="risk-section risk-response" id="response"><span class="eyebrow">03 / RESPOND</span><h2>发现异常，下一棒怎么交？</h2><div class="risk-two-columns"><ol class="risk-numbered-list">{r.response.map(p=><li>{p}</li>)}</ol><aside class="risk-records"><h3>需要留下哪些记录</h3><ul>{r.records.map(x=><li>{x}</li>)}</ul><p>记录事实、处理人、时间和状态变化，帮助下一班组接续。</p></aside></div></section>
+<section class="risk-section" id="recovery"><div class="risk-recovery"><span class="eyebrow">04 / VERIFY & HAND OVER</span><h2>什么需要确认，才能衔接后续任务？</h2><p>{r.recovery}</p><small>本页不生成作业、放行或应急指令；恢复权限按本单位制度及适用要求执行。</small></div><div class="risk-example"><span class="eyebrow">把它放回一票货 · 教学情景</span><h3>{r.example.cargo}</h3><dl><div><dt>发现的变化</dt><dd>{r.example.trigger}</dd></div><div><dt>理解处理方向</dt><dd>{r.example.decision}</dd></div></dl></div></section>
+<section class="risk-section"><h2>沿着业务继续看</h2><div class="cargo-crosslinks">{r.related.map(l=><a href={base+l.path}>{l.label}<span>查看关联业务 →</span></a>)}</div>{siblings.length>0&&<div class="risk-related-tags">{siblings.map(s=><a href={base+'risks/'+s.id+'/'}>{s.title} ↗</a>)}</div>}</section>
+<section class="risk-section cargo-source-section" id="sources"><h2>依据与适用范围</h2><p>风险描述、部门协作和情景为本站教学归纳。以下来源支持相应主题；海外要求不等同于中国统一规定，具体场景还需核实当地要求和专业方案。</p>{r.id==='commercial'&&<p>本页合同、计费与索赔关注点为教学归纳；下列资料仅支持运输链责任与项目协同概念，不提供费率、索赔期限或责任认定依据。</p>}<ol class="source-list">{refs.map(s=><li id={s.id}><a href={s.url} target="_blank" rel="noopener noreferrer">{s.title} ↗</a><small>{s.org} · 核查 {s.checked} · {s.scope}</small></li>)}</ol><a class="text-link" href={base+'risks/'}>← 回到港口风险与预防</a></section>
+</div></Layout>

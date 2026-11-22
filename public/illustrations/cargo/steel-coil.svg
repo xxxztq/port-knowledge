@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="cargo-steel-coil" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="coil-title coil-desc">
+  <title id="coil-title">卷钢：包装、卷号与支承关系</title>
+  <desc id="coil-desc">原创技术线稿。一卷有外包装与端面护边的卷钢置于有顶棚场地内，卷孔开口可见，外侧附虚构卷号C-017。卷体由独立鞍形承托离地支承，旁边资料卡对应包装状态、承托和场地核对。图示不表示裸卷露天落地，不提供承托尺寸、绑扎、吊装或装载方法。承托仅表达关系，实际方案须按货物与场地条件确认。教学示意，不按比例。</desc>
+  <defs>
+    <style>
+      #cargo-steel-coil text{font-family:'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif;fill:#202827}
+      #cargo-steel-coil .heading{font-size:20px;font-weight:600}
+      #cargo-steel-coil .label{font-size:14px}
+      #cargo-steel-coil .small{font-size:12px}
+      #cargo-steel-coil .muted{fill:#596360}
+      #cargo-steel-coil .ink{fill:none;stroke:#202827;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+      #cargo-steel-coil .fine{fill:none;stroke:#7a8580;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+      #cargo-steel-coil .faint{fill:none;stroke:#b9bdb5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+      #cargo-steel-coil .paper{fill:#f7f5ef}
+      #cargo-steel-coil .shade{fill:#e5e8df}
+      #cargo-steel-coil .number{font:600 12px Arial,sans-serif;fill:#285b56;text-anchor:middle}
+    </style>
+  </defs>
+  <rect width="720" height="360" class="paper"/>
+  <g aria-hidden="true">
+    <path d="M32 77H688M32 319H688" class="faint"/>
+    <text x="32" y="37" class="small" letter-spacing="2">CARGO / STEEL COIL</text>
+    <text x="32" y="63" class="heading">卷钢</text>
+    <text x="688" y="55" text-anchor="end" class="label muted">包覆可见 · 卷号可追溯</text>
+
+    <!-- Covered receiving bay: a visible roof, columns and a continuous floor. -->
+    <g class="faint">
+      <path d="M46 117L90 95H445L401 117ZM46 117H401V123H46ZM401 117L445 95V101L401 123"/>
+      <path d="M62 117L106 95M126 117L170 95M190 117L234 95M254 117L298 95M318 117L362 95M382 117L426 95"/>
+      <path d="M53 123V267M59 123V267M90 101V243M439 105V241M445 101V241M395 123V267M401 123V267"/>
+      <path d="M59 155L84 128M395 155L370 130M46 278H420L454 260M63 267L94 250M340 267H421M408 245H442"/>
+      <path d="M68 284H126M307 284H391"/>
+    </g>
+
+    <!-- Separate cradles carry the coil clear of the floor. No specifications. -->
+    <g class="ink">
+      <path d="M217 210H235Q282 246 329 210H347V239H217Z" class="shade"/>
+      <path d="M217 239H347V247H217Z" class="paper"/>
+      <path d="M118 238H136Q183 274 230 238H248V269H118Z" class="shade"/>
+      <path d="M110 269H256V277H110Z" class="paper"/>
+      <path d="M256 269L347 239V247L256 277Z" class="shade"/>
+      <path d="M128 264H238M135 273H157M210 273H233" class="fine"/>
+    </g>
+
+    <!-- The visible shell and face are packaging, with a reinforced bore. -->
+    <ellipse cx="282" cy="176" rx="58" ry="51" class="shade ink"/>
+    <path d="M183 154L282 125C314 125 340 148 340 176C340 204 314 227 282 227L183 256Z" class="shade ink"/>
+    <g class="fine">
+      <path d="M207 152L282 130C312 130 335 150 335 176C335 201 312 222 282 222L207 244"/>
+      <path d="M234 148L301 132M240 240L301 220M247 189L330 164M247 193L331 168"/>
+      <path d="M293 137L303 140M318 148L324 155M326 194L320 202"/>
+    </g>
+    <path d="M244 136C276 136 302 159 302 187C302 215 276 238 244 238" fill="none" stroke="#596360" stroke-width="7"/>
+    <path d="M244 136C276 136 302 159 302 187C302 215 276 238 244 238" fill="none" stroke="#e5e8df" stroke-width="3"/>
+    <ellipse cx="183" cy="205" rx="58" ry="51" class="paper ink" stroke-width="2.3"/>
+    <ellipse cx="183" cy="205" rx="52" ry="45" class="fine"/>
+    <path d="M177 154V178M189 154V178M177 232V256M189 232V256" class="fine"/>
+    <path d="M142 170L164 188M224 170L202 188M142 240L164 222M224 240L202 222" class="fine"/>
+    <path d="M131 197L137 191M130 211L136 217M230 191L236 197M230 217L236 211" class="fine"/>
+    <path d="M164 158Q183 152 202 158M164 252Q183 258 202 252" fill="none" stroke="#596360" stroke-width="3"/>
+    <ellipse cx="183" cy="205" rx="25" ry="26" class="shade ink"/>
+    <ellipse cx="183" cy="205" rx="19" ry="20" fill="#596360" stroke="#202827" stroke-width="1.5"/>
+    <path d="M170 192Q185 184 198 196L198 212Q188 222 177 223Q185 211 170 192Z" fill="#b9c0b8"/>
+    <path d="M169 193Q181 190 189 197M177 219L190 214" class="fine"/>
+    <path d="M260 159L272 164" class="fine"/>
+    <rect x="258" y="162" width="66" height="36" rx="2" class="paper ink"/>
+    <text x="291" y="178" text-anchor="middle" class="small">C-017</text>
+    <path d="M266 184V192M270 184V192M276 184V192M282 184V192M285 184V192M292 184V192M298 184V192M302 184V192M308 184V192M315 184V192" class="fine"/>
+
+    <!-- Short numbered leaders avoid covering the shell, bore or identity. -->
+    <g class="fine">
+      <path d="M371 151H350L327 144M87 188H113L158 197M371 251H342L280 263"/>
+    </g>
+    <g fill="#f7f5ef" stroke="#285b56" stroke-width="1.2">
+      <circle cx="382" cy="151" r="11"/><circle cx="76" cy="188" r="11"/><circle cx="382" cy="251" r="11"/>
+    </g>
+    <text x="382" y="155" class="number">01</text><text x="76" y="192" class="number">02</text><text x="382" y="255" class="number">03</text>
+
+    <!-- A separate handover record; sample data is visibly identified. -->
+    <g class="ink">
+      <rect x="474" y="119" width="205" height="151" rx="5" class="paper"/>
+      <path d="M474 155H679" class="faint"/>
+      <path d="M490 129V144" stroke="#285b56" stroke-width="3"/>
+      <rect x="491" y="207" width="12" height="12" rx="1" class="fine"/>
+      <rect x="491" y="237" width="12" height="12" rx="1" class="fine"/>
+      <path d="M493 213L496 216L501 210M493 243L496 246L501 240" stroke="#285b56" stroke-width="1.4"/>
+      <path d="M515 224H660M515 254H660" class="faint"/>
+    </g>
+    <text x="502" y="142" class="label">交接核对</text>
+    <text x="491" y="181" class="label">C-017</text>
+    <text x="660" y="181" text-anchor="end" class="small muted">示例卷号</text>
+    <text x="515" y="218" class="label">包装 / 护边</text>
+    <text x="515" y="248" class="label">承托 / 场地</text>
+
+    <text x="33" y="301" class="number" text-anchor="start">01</text>
+    <text x="56" y="301" class="label">包装与护边</text>
+    <text x="270" y="301" class="number" text-anchor="start">02</text>
+    <text x="293" y="301" class="label">卷孔与卷号</text>
+    <text x="504" y="301" class="number" text-anchor="start">03</text>
+    <text x="527" y="301" class="label">承托与场地</text>
+    <text x="32" y="342" class="small muted">教学示意 · 不按比例</text>
+    <text x="688" y="342" text-anchor="end" class="small">PORT / CARGO</text>
+  </g>
+</svg>
