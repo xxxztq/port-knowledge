@@ -1,6 +1,7 @@
 ---
 import RiskEntry from '../components/RiskEntry.astro';
 import InfrastructureEntry from '../components/InfrastructureEntry.astro';
+import VesselEntry from '../components/VesselEntry.astro';
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import EquipmentCard from '../components/EquipmentCard.astro';
@@ -21,4 +22,4 @@ const pairs=[{title:'RTG 与 RMG',ids:['eq-rtg','eq-rmg'],question:'都叫场桥
 <InfrastructureEntry compact/><div class="notice">设备配置随货种、场地与作业方式变化。这些图用于识别典型结构与分工，不表示所有港口均使用相同配置。</div><div class="learning-banner"><div><h2>设备故障时，谁先接住问题？</h2><p>看现场、中控、工程与计划怎样处理一次岸桥故障。</p></div><a class="button light" href={base+'roles/#collaboration-quay-crane-failure'}>查看协作案例 <Icon name="arrow"/></a></div></div></div>
 <script>
 const cards=[...document.querySelectorAll<HTMLElement>('#equipment-results [data-equipment-category]')];document.querySelectorAll<HTMLButtonElement>('[data-equipment-filter]').forEach(button=>button.addEventListener('click',()=>{const category=button.dataset.equipmentFilter;let count=0;cards.forEach(card=>{const show=category==='全部设备'||card.dataset.equipmentCategory===category;card.hidden=!show;if(show)count++;});document.querySelectorAll<HTMLButtonElement>('[data-equipment-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));document.querySelector('#equipment-count')!.textContent='显示 '+count+' 台设备';}));document.querySelectorAll<HTMLButtonElement>('[data-compare-select]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll<HTMLButtonElement>('[data-compare-select]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));document.querySelectorAll<HTMLElement>('.compare-panel').forEach(panel=>panel.hidden=panel.id!=='compare-'+button.dataset.compareSelect);}));
-</script><div class="container"><RiskEntry compact riskIds={["equipment","lifting","stack"]}/></div></Layout>
+</script><div class="container"><RiskEntry compact riskIds={["equipment","lifting","stack"]}/></div><div class="container"><VesselEntry compact/></div></Layout>

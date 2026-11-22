@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="c-aggregates" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="c-aggregates-title c-aggregates-desc">
+  <title id="c-aggregates-title">砂石骨料：规格分区示例、车辆与衡器、交接计量记录</title>
+  <desc id="c-aggregates-desc">分隔料仓中的细料、粒料和块料用于说明砂石骨料按货物规格与批次分区，右侧自卸车辆位于示意衡器上并连接计量终端。粒级文字为概念性区分，不给出粒径标准；车辆与货仓不按比例，不表示装载量或实际称重操作。 原创工程科普线稿；教学示意，不按比例，不表示实际船舶总布置、工程尺寸或作业方案。</desc>
+  <defs><style>.c-aggregates-paper{fill:#f7f5ef}.c-aggregates-shade{fill:#e5e8df}.c-aggregates-wash{fill:#edf0e9}.c-aggregates-dark{fill:#526760}.c-aggregates-accent{fill:#285b56}.c-aggregates-ink{fill:none;stroke:#202827;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.c-aggregates-fine{fill:none;stroke:#7a8580;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.c-aggregates-faint{fill:none;stroke:#b9bdb5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.c-aggregates-teal{fill:none;stroke:#285b56;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}.c-aggregates-dash{stroke-dasharray:4 4}.c-aggregates-text{font-family:'Microsoft YaHei','PingFang SC',sans-serif;fill:#202827}.c-aggregates-heading{font-size:20px;font-weight:600}.c-aggregates-label{font-size:14px}.c-aggregates-small{font-size:12px}.c-aggregates-tiny{font-size:11px}.c-aggregates-muted{fill:#596360}.c-aggregates-number{font-family:Arial,sans-serif;font-size:11px;font-weight:600;fill:#285b56}.c-aggregates-ink.c-aggregates-paper,.c-aggregates-fine.c-aggregates-paper,.c-aggregates-teal.c-aggregates-paper{fill:#f7f5ef}.c-aggregates-ink.c-aggregates-shade,.c-aggregates-fine.c-aggregates-shade{fill:#e5e8df}.c-aggregates-ink.c-aggregates-wash,.c-aggregates-fine.c-aggregates-wash{fill:#edf0e9}</style></defs>
+  <rect x="0" y="0" width="720" height="360" rx="0" class="c-aggregates-paper"/>
+  <g aria-hidden="true">
+  <path d="M32 77H688M32 319H688" class="c-aggregates-faint" />
+  <text x="32" y="37" class="c-aggregates-text c-aggregates-small c-aggregates-muted" text-anchor="start">CARGO / AGGREGATES</text>
+  <text x="32" y="63" class="c-aggregates-text c-aggregates-heading" text-anchor="start">砂石骨料</text>
+  <text x="688" y="55" class="c-aggregates-text c-aggregates-small c-aggregates-muted" text-anchor="end">分区料堆 · 车辆计量</text>
+  <path d="M50 261V181H342V261M147 181V261M244 181V261" class="c-aggregates-ink" />
+  <path d="M50 181L68 169H360V249L342 261M147 181L165 169M244 181L262 169M342 181L360 169" class="c-aggregates-fine" />
+  <path d="M54 260L65.31 244.6L77.49000000000001 240.2L94.89 216L105.33 219.51999999999998L118.38 239.32L131.43 248.56L141 260Z" class="c-aggregates-shade c-aggregates-ink" />
+  <path d="M70.53 254.28l3 -1" class="c-aggregates-fine" />
+  <path d="M79.23 254.28l3 -1" class="c-aggregates-fine" />
+  <path d="M87.93 254.28l3 -1" class="c-aggregates-fine" />
+  <path d="M96.63 254.28l3 -1" class="c-aggregates-fine" />
+  <path d="M105.33000000000001 254.28l3 -1" class="c-aggregates-fine" />
+  <path d="M114.03 254.28l3 -1" class="c-aggregates-fine" />
+  <path d="M122.73 254.28l3 -1" class="c-aggregates-fine" />
+  <path d="M70.53 246.36l3 -1" class="c-aggregates-fine" />
+  <path d="M79.23 246.36l3 -1" class="c-aggregates-fine" />
+  <path d="M87.93 246.36l3 -1" class="c-aggregates-fine" />
+  <path d="M96.63 246.36l3 -1" class="c-aggregates-fine" />
+  <path d="M105.33000000000001 246.36l3 -1" class="c-aggregates-fine" />
+  <path d="M114.03 246.36l3 -1" class="c-aggregates-fine" />
+  <path d="M122.73 246.36l3 -1" class="c-aggregates-fine" />
+  <path d="M70.53 238.44l3 -1" class="c-aggregates-fine" />
+  <path d="M79.23 238.44l3 -1" class="c-aggregates-fine" />
+  <path d="M87.93 238.44l3 -1" class="c-aggregates-fine" />
+  <path d="M96.63 238.44l3 -1" class="c-aggregates-fine" />
+  <path d="M105.33000000000001 238.44l3 -1" class="c-aggregates-fine" />
+  <path d="M114.03 238.44l3 -1" class="c-aggregates-fine" />
+  <path d="M151 260L162.31 242.15L174.49 237.05L191.89 209L202.32999999999998 213.07999999999998L215.38 236.03L228.43 246.74L238 260Z" class="c-aggregates-shade c-aggregates-ink" />
+  <g transform="translate(161.44 247.25) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(175.36 247.25) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(189.28 247.25) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(203.2 247.25) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(217.12 247.25) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(161.44 236.03) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(175.36 236.03) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(189.28 236.03) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(203.2 236.03) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(217.12 236.03) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <path d="M248 260L259.44 240.05L271.76 234.35L289.36 203L299.92 207.56L313.12 233.21L326.32 245.18L336 260Z" class="c-aggregates-shade c-aggregates-ink" />
+  <g transform="translate(258.56 245.75) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(272.64 245.75) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(286.72 245.75) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(300.8 245.75) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(314.88 245.75) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(258.56 233.21) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(272.64 233.21) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(286.72 233.21) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(300.8 233.21) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(314.88 233.21) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(267 228) scale(0.52)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(291 228) scale(0.52)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(267 247) scale(0.52)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <g transform="translate(291 247) scale(0.52)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-aggregates-paper c-aggregates-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-aggregates-fine" />
+  </g>
+  <text x="98" y="203" class="c-aggregates-text c-aggregates-small" text-anchor="middle">细料</text>
+  <text x="194" y="203" class="c-aggregates-text c-aggregates-small" text-anchor="middle">粒料</text>
+  <text x="292" y="198" class="c-aggregates-text c-aggregates-small" text-anchor="middle">块料</text>
+  <g transform="translate(421 184) scale(1)">
+  <path d="M0 8H111L99 50H14Z" class="c-aggregates-shade c-aggregates-ink" />
+  <path d="M11 17H99M29 18V43M54 18V43M80 18V43" class="c-aggregates-fine" />
+  <path d="M111 25H141L160 43V60H111Z" class="c-aggregates-paper c-aggregates-ink" />
+  <path d="M120 31H138L148 43H120Z" class="c-aggregates-shade c-aggregates-fine" />
+  <path d="M9 53H151" class="c-aggregates-ink" />
+  <circle cx="30" cy="61" r="10" class="c-aggregates-paper c-aggregates-ink"/>
+  <circle cx="55" cy="61" r="10" class="c-aggregates-paper c-aggregates-ink"/>
+  <circle cx="133" cy="61" r="10" class="c-aggregates-paper c-aggregates-ink"/>
+  <circle cx="30" cy="61" r="4" class="c-aggregates-fine"/>
+  <circle cx="55" cy="61" r="4" class="c-aggregates-fine"/>
+  <circle cx="133" cy="61" r="4" class="c-aggregates-fine"/>
+  </g>
+  <path d="M410 261H594V268H410Z" class="c-aggregates-shade c-aggregates-ink" />
+  <path d="M414 274H590" class="c-aggregates-fine" />
+  <rect x="612" y="171" width="64" height="76" rx="3" class="c-aggregates-paper c-aggregates-ink"/>
+  <rect x="621" y="184" width="46" height="25" rx="2" class="c-aggregates-shade c-aggregates-fine"/>
+  <text x="644" y="201" class="c-aggregates-text c-aggregates-small" text-anchor="middle">计量</text>
+  <path d="M623 221H665M623 231H652M594 264H605V234H611" class="c-aggregates-fine" />
+  <path d="M366 236H403" class="c-aggregates-fine c-aggregates-dash" />
+  <path d="M156 126V133L195 226" class="c-aggregates-fine" />
+  <circle cx="195" cy="226" r="2.3" class="c-aggregates-accent"/>
+  <circle cx="156" cy="115" r="10" class="c-aggregates-paper c-aggregates-teal"/>
+  <text x="156" y="119" class="c-aggregates-text c-aggregates-number" text-anchor="middle">01</text>
+  <path d="M453 136V143L462 216" class="c-aggregates-fine" />
+  <circle cx="462" cy="216" r="2.3" class="c-aggregates-accent"/>
+  <circle cx="453" cy="125" r="10" class="c-aggregates-paper c-aggregates-teal"/>
+  <text x="453" y="129" class="c-aggregates-text c-aggregates-number" text-anchor="middle">02</text>
+  <path d="M614 127V134L643 184" class="c-aggregates-fine" />
+  <circle cx="643" cy="184" r="2.3" class="c-aggregates-accent"/>
+  <circle cx="614" cy="116" r="10" class="c-aggregates-paper c-aggregates-teal"/>
+  <text x="614" y="120" class="c-aggregates-text c-aggregates-number" text-anchor="middle">03</text>
+  <path d="M40 268H679M52 275H120M589 275H665" class="c-aggregates-faint" />
+  <circle cx="44" cy="298" r="10" class="c-aggregates-paper c-aggregates-teal"/>
+  <text x="44" y="302" class="c-aggregates-text c-aggregates-number" text-anchor="middle">01</text>
+  <text x="62" y="303" class="c-aggregates-text c-aggregates-label" text-anchor="start">规格分区示例</text>
+  <circle cx="268" cy="298" r="10" class="c-aggregates-paper c-aggregates-teal"/>
+  <text x="268" y="302" class="c-aggregates-text c-aggregates-number" text-anchor="middle">02</text>
+  <text x="286" y="303" class="c-aggregates-text c-aggregates-label" text-anchor="start">车辆与衡器</text>
+  <circle cx="492" cy="298" r="10" class="c-aggregates-paper c-aggregates-teal"/>
+  <text x="492" y="302" class="c-aggregates-text c-aggregates-number" text-anchor="middle">03</text>
+  <text x="510" y="303" class="c-aggregates-text c-aggregates-label" text-anchor="start">交接计量记录</text>
+  <text x="32" y="342" class="c-aggregates-text c-aggregates-tiny c-aggregates-muted" text-anchor="start">教学示意 · 不按比例 · 不作作业依据</text>
+  <text x="688" y="342" class="c-aggregates-text c-aggregates-tiny c-aggregates-muted" text-anchor="end">PORT / CARGO</text>
+  </g>
+</svg>

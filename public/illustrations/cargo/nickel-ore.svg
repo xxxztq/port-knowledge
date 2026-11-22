@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="c-nickel-ore" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="c-nickel-ore-title c-nickel-ore-desc">
+  <title id="c-nickel-ore-title">镍矿：土块状矿料示例、货况与环境、取样记录关联</title>
+  <desc id="c-nickel-ore-desc">采用土块状红土镍矿的代表性形态，画出有顶棚的货堆、棚外天气符号、样品容器及货况记录。镍矿并非全部具有相同外观；天气符号只说明环境与货况记录的联系，不示范防雨操作，不给出含水量阈值或固定运输分类。 原创工程科普线稿；教学示意，不按比例，不表示实际船舶总布置、工程尺寸或作业方案。</desc>
+  <defs><style>.c-nickel-ore-paper{fill:#f7f5ef}.c-nickel-ore-shade{fill:#e5e8df}.c-nickel-ore-wash{fill:#edf0e9}.c-nickel-ore-dark{fill:#526760}.c-nickel-ore-accent{fill:#285b56}.c-nickel-ore-ink{fill:none;stroke:#202827;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.c-nickel-ore-fine{fill:none;stroke:#7a8580;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.c-nickel-ore-faint{fill:none;stroke:#b9bdb5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.c-nickel-ore-teal{fill:none;stroke:#285b56;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}.c-nickel-ore-dash{stroke-dasharray:4 4}.c-nickel-ore-text{font-family:'Microsoft YaHei','PingFang SC',sans-serif;fill:#202827}.c-nickel-ore-heading{font-size:20px;font-weight:600}.c-nickel-ore-label{font-size:14px}.c-nickel-ore-small{font-size:12px}.c-nickel-ore-tiny{font-size:11px}.c-nickel-ore-muted{fill:#596360}.c-nickel-ore-number{font-family:Arial,sans-serif;font-size:11px;font-weight:600;fill:#285b56}.c-nickel-ore-ink.c-nickel-ore-paper,.c-nickel-ore-fine.c-nickel-ore-paper,.c-nickel-ore-teal.c-nickel-ore-paper{fill:#f7f5ef}.c-nickel-ore-ink.c-nickel-ore-shade,.c-nickel-ore-fine.c-nickel-ore-shade{fill:#e5e8df}.c-nickel-ore-ink.c-nickel-ore-wash,.c-nickel-ore-fine.c-nickel-ore-wash{fill:#edf0e9}</style></defs>
+  <rect x="0" y="0" width="720" height="360" rx="0" class="c-nickel-ore-paper"/>
+  <g aria-hidden="true">
+  <path d="M32 77H688M32 319H688" class="c-nickel-ore-faint" />
+  <text x="32" y="37" class="c-nickel-ore-text c-nickel-ore-small c-nickel-ore-muted" text-anchor="start">CARGO / NICKEL ORE</text>
+  <text x="32" y="63" class="c-nickel-ore-text c-nickel-ore-heading" text-anchor="start">镍矿</text>
+  <text x="688" y="55" class="c-nickel-ore-text c-nickel-ore-small c-nickel-ore-muted" text-anchor="end">土块状矿料 · 货况与样品关联</text>
+  <path d="M46 151L81 130H380L409 151Z" class="c-nickel-ore-shade c-nickel-ore-ink" />
+  <path d="M60 151V268M398 151V268M75 157V267M383 157V267" class="c-nickel-ore-fine" />
+  <path d="M82 259L119.96000000000001 233.8L160.84 226.6L219.23999999999998 187L254.28 192.76L298.08 225.16L341.88 240.28L374 259Z" class="c-nickel-ore-shade c-nickel-ore-ink" />
+  <path d="M137.48000000000002 249.64l3 -1" class="c-nickel-ore-fine" />
+  <path d="M166.68 249.64l3 -1" class="c-nickel-ore-fine" />
+  <path d="M195.88 249.64l3 -1" class="c-nickel-ore-fine" />
+  <path d="M225.08 249.64l3 -1" class="c-nickel-ore-fine" />
+  <path d="M254.28000000000003 249.64l3 -1" class="c-nickel-ore-fine" />
+  <path d="M283.48 249.64l3 -1" class="c-nickel-ore-fine" />
+  <path d="M312.68 249.64l3 -1" class="c-nickel-ore-fine" />
+  <path d="M137.48000000000002 236.68l3 -1" class="c-nickel-ore-fine" />
+  <path d="M166.68 236.68l3 -1" class="c-nickel-ore-fine" />
+  <path d="M195.88 236.68l3 -1" class="c-nickel-ore-fine" />
+  <path d="M225.08 236.68l3 -1" class="c-nickel-ore-fine" />
+  <path d="M254.28000000000003 236.68l3 -1" class="c-nickel-ore-fine" />
+  <path d="M283.48 236.68l3 -1" class="c-nickel-ore-fine" />
+  <path d="M312.68 236.68l3 -1" class="c-nickel-ore-fine" />
+  <path d="M137.48000000000002 223.72l3 -1" class="c-nickel-ore-fine" />
+  <path d="M166.68 223.72l3 -1" class="c-nickel-ore-fine" />
+  <path d="M195.88 223.72l3 -1" class="c-nickel-ore-fine" />
+  <path d="M225.08 223.72l3 -1" class="c-nickel-ore-fine" />
+  <path d="M254.28000000000003 223.72l3 -1" class="c-nickel-ore-fine" />
+  <path d="M283.48 223.72l3 -1" class="c-nickel-ore-fine" />
+  <g transform="translate(108 228) scale(0.52)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-nickel-ore-wash c-nickel-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-nickel-ore-fine" />
+  </g>
+  <g transform="translate(157 228) scale(0.64)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-nickel-ore-wash c-nickel-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-nickel-ore-fine" />
+  </g>
+  <g transform="translate(206 228) scale(0.52)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-nickel-ore-wash c-nickel-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-nickel-ore-fine" />
+  </g>
+  <g transform="translate(255 228) scale(0.64)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-nickel-ore-wash c-nickel-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-nickel-ore-fine" />
+  </g>
+  <g transform="translate(304 228) scale(0.52)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-nickel-ore-wash c-nickel-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-nickel-ore-fine" />
+  </g>
+  <g transform="translate(108 249) scale(0.64)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-nickel-ore-wash c-nickel-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-nickel-ore-fine" />
+  </g>
+  <g transform="translate(157 249) scale(0.52)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-nickel-ore-wash c-nickel-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-nickel-ore-fine" />
+  </g>
+  <g transform="translate(206 249) scale(0.64)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-nickel-ore-wash c-nickel-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-nickel-ore-fine" />
+  </g>
+  <g transform="translate(255 249) scale(0.52)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-nickel-ore-wash c-nickel-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-nickel-ore-fine" />
+  </g>
+  <path d="M76 264H385V270H76Z" class="c-nickel-ore-paper c-nickel-ore-ink" />
+  <path d="M66 111Q74 99 84 108Q99 98 108 112H66Z" class="c-nickel-ore-faint" />
+  <path d="M74 116L70 123M90 116L86 123M106 117L102 124" class="c-nickel-ore-fine" />
+  <rect x="444" y="202" width="34" height="8" rx="2" class="c-nickel-ore-shade c-nickel-ore-ink"/>
+  <rect x="441" y="210" width="40" height="52" rx="4" class="c-nickel-ore-paper c-nickel-ore-ink"/>
+  <rect x="445" y="235" width="32" height="20" rx="2" class="c-nickel-ore-shade c-nickel-ore-fine"/>
+  <text x="461" y="229" class="c-nickel-ore-text c-nickel-ore-tiny" text-anchor="middle">样品</text>
+  <rect x="519" y="145" width="155" height="118" rx="4" class="c-nickel-ore-paper c-nickel-ore-ink"/>
+  <path d="M519 174H674" class="c-nickel-ore-faint" />
+  <text x="531" y="165" class="c-nickel-ore-text c-nickel-ore-small" text-anchor="start">货况与样品</text>
+  <path d="M531 192H662" class="c-nickel-ore-fine" />
+  <path d="M531 213H662" class="c-nickel-ore-fine" />
+  <path d="M531 234H662" class="c-nickel-ore-fine" />
+  <path d="M401 235H431M485 235H511" class="c-nickel-ore-fine c-nickel-ore-dash" />
+  <text x="596" y="250" class="c-nickel-ore-text c-nickel-ore-tiny c-nickel-ore-muted" text-anchor="middle">与批次关联</text>
+  <path d="M166 120V127L180 223" class="c-nickel-ore-fine" />
+  <circle cx="180" cy="223" r="2.3" class="c-nickel-ore-accent"/>
+  <circle cx="166" cy="109" r="10" class="c-nickel-ore-paper c-nickel-ore-teal"/>
+  <text x="166" y="113" class="c-nickel-ore-text c-nickel-ore-number" text-anchor="middle">01</text>
+  <path d="M358 115V122L354 143" class="c-nickel-ore-fine" />
+  <circle cx="354" cy="143" r="2.3" class="c-nickel-ore-accent"/>
+  <circle cx="358" cy="104" r="10" class="c-nickel-ore-paper c-nickel-ore-teal"/>
+  <text x="358" y="108" class="c-nickel-ore-text c-nickel-ore-number" text-anchor="middle">02</text>
+  <path d="M581 122V129L582 145" class="c-nickel-ore-fine" />
+  <circle cx="582" cy="145" r="2.3" class="c-nickel-ore-accent"/>
+  <circle cx="581" cy="111" r="10" class="c-nickel-ore-paper c-nickel-ore-teal"/>
+  <text x="581" y="115" class="c-nickel-ore-text c-nickel-ore-number" text-anchor="middle">03</text>
+  <path d="M40 268H679M52 275H120M589 275H665" class="c-nickel-ore-faint" />
+  <circle cx="44" cy="298" r="10" class="c-nickel-ore-paper c-nickel-ore-teal"/>
+  <text x="44" y="302" class="c-nickel-ore-text c-nickel-ore-number" text-anchor="middle">01</text>
+  <text x="62" y="303" class="c-nickel-ore-text c-nickel-ore-label" text-anchor="start">土块状矿料示例</text>
+  <circle cx="268" cy="298" r="10" class="c-nickel-ore-paper c-nickel-ore-teal"/>
+  <text x="268" y="302" class="c-nickel-ore-text c-nickel-ore-number" text-anchor="middle">02</text>
+  <text x="286" y="303" class="c-nickel-ore-text c-nickel-ore-label" text-anchor="start">货况与环境</text>
+  <circle cx="492" cy="298" r="10" class="c-nickel-ore-paper c-nickel-ore-teal"/>
+  <text x="492" y="302" class="c-nickel-ore-text c-nickel-ore-number" text-anchor="middle">03</text>
+  <text x="510" y="303" class="c-nickel-ore-text c-nickel-ore-label" text-anchor="start">取样记录关联</text>
+  <text x="32" y="342" class="c-nickel-ore-text c-nickel-ore-tiny c-nickel-ore-muted" text-anchor="start">教学示意 · 不按比例 · 不作作业依据</text>
+  <text x="688" y="342" class="c-nickel-ore-text c-nickel-ore-tiny c-nickel-ore-muted" text-anchor="end">PORT / CARGO</text>
+  </g>
+</svg>

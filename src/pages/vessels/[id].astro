@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import RiskEntry from '../../components/RiskEntry.astro';
+import VesselEntry from '../../components/VesselEntry.astro';
+import {vesselProfiles,vesselGroups,vesselSources} from '../../data/vessel-types.js';
+import '../../styles/vessels.css';
+export function getStaticPaths(){return vesselProfiles.map(profile=>({params:{id:profile.id},props:{profile}}));}
+const {profile:p}=Astro.props;
+const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');const href=(path:string)=>base+path.replace(/^\//,'');
+const group=vesselGroups.find(g=>g.id===p.group);const references=vesselSources.filter(s=>p.sources.includes(s.id));
+---
+<Layout title={p.name} active="cargo" description={p.summary}><div class="container vessel-page"><div class="breadcrumbs"><a href={base}>首页</a><Icon name="chevron" size={12}/><a href={base+'vessels/'}>船型图鉴</a><Icon name="chevron" size={12}/><span>{p.name}</span></div>
+<header class="cargo-profile-hero"><div><span class="eyebrow">VESSEL FILE / {p.english}</span><h1>{p.name}</h1><p class="cargo-lead">{group?.name} · {p.cargo.join(' / ')}</p><p>{p.summary}</p><div class="cargo-identity"><span>先识别本船与本航次</span><strong>{p.identity}</strong></div></div><figure><img src={href(p.visual)} alt={p.name+'结构与业务教学示意'} width="720" height="360"/><figcaption>代表性结构 · 不按比例 · 外形不代替本船资料</figcaption></figure></header>
+<nav class="cargo-local-nav" aria-label="船型档案目录"><a href="#differences">先分清</a><a href="#interface">船岸接口</a><a href="#handoff">到离港接力</a><a href="#checks">接船核对</a><a href="#systems">系统记录</a><a href="#risk">风险预防</a><a href="#sources">来源范围</a></nav>
+<section class="vessel-section" id="differences"><span class="eyebrow">RECOGNIZE THE DIFFERENCE</span><h2>认识它，先分清这些差别。</h2><div class="cargo-distinction-grid">{p.distinctions.map(d=><div><h3>{d.title}</h3><p>{d.text}</p></div>)}</div></section>
+<section class="vessel-section" id="interface"><span class="eyebrow">SHIP / SHORE INTERFACE</span><h2>船怎样装卸，码头怎样接上？</h2><div class="vessel-lenses"><article><h3>货物</h3><p>{p.cargo.join('、')}</p></article><article><h3>装卸方式</h3><p>{p.method}</p></article><article><h3>岸侧配合</h3><p>{p.portFit}</p></article></div></section>
+<section class="vessel-section" id="handoff"><span class="eyebrow">FOLLOW A PORT CALL</span><h2>一艘船到港，哪些人接力？</h2><p>教学节点可并行、退回或重排；码头计划、船方确认和主管机关办理事项分别保留。</p><div class="vessel-work-chain">{p.stages.map((s,i)=><article><span>0{i+1} / {s.actor}</span><h3>{s.title}</h3><p>{s.action}</p><small>留下什么记录：{s.record}</small></article>)}</div></section>
+<section class="vessel-section" id="checks"><span class="eyebrow">BEFORE ACCEPTING THIS CALL</span><h2>船型相同，接船条件仍须逐项核对。</h2><ul class="vessel-checklist">{p.checks.map(c=><li>{c}</li>)}</ul></section>
+<section class="vessel-section" id="systems"><span class="eyebrow">THE RECORDS BEHIND THE MOVEMENT</span><h2>船在动，系统里跟着什么？</h2><div class="vessel-system-links">{p.systemLinks.map(l=><a href={href(l.path)}><strong>{l.label} →</strong><p>{l.text}</p></a>)}</div></section>
+<div id="risk"><RiskEntry riskIds={p.riskIds}/></div>
+<section class="vessel-section"><h2>顺着这艘船，继续看货物与作业。</h2><div class="cargo-crosslinks">{p.links.map(l=><a href={href(l.path)}>{l.label}<span>打开相关业务 →</span></a>)}</div></section>
+<section class="vessel-section" id="sources"><h2>依据与适用范围</h2><p>{p.limits}</p><ol class="vessel-source-list">{references.map(s=><li><a href={s.url} target="_blank" rel="noopener noreferrer">{s.title} ↗</a><small>{s.org} · 核查 {s.checked} · {s.scope}</small></li>)}</ol></section><VesselEntry compact/>
+</div></Layout>

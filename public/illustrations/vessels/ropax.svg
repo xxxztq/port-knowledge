@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="v-ropax" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="v-ropax-title v-ropax-desc">
+  <title id="v-ropax-title">客滚船：旅客上层建筑、下部车辆甲板、滚装跳板</title>
+  <desc id="v-ropax-desc">以连续客舱窗、旅客上层建筑、救生艇和下部车辆甲板示意客滚船。车辆甲板为局部剖视，表达客运与滚装运输在同一艘船上的关系，不表示实际客货流线。 原创工程科普线稿；教学示意，不按比例，不表示实际船舶总布置、工程尺寸或作业方案。</desc>
+  <defs><style>.v-ropax-paper{fill:#f7f5ef}.v-ropax-shade{fill:#e5e8df}.v-ropax-wash{fill:#edf0e9}.v-ropax-dark{fill:#526760}.v-ropax-accent{fill:#285b56}.v-ropax-ink{fill:none;stroke:#202827;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.v-ropax-fine{fill:none;stroke:#7a8580;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.v-ropax-faint{fill:none;stroke:#b9bdb5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.v-ropax-teal{fill:none;stroke:#285b56;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}.v-ropax-dash{stroke-dasharray:4 4}.v-ropax-text{font-family:'Microsoft YaHei','PingFang SC',sans-serif;fill:#202827}.v-ropax-heading{font-size:20px;font-weight:600}.v-ropax-label{font-size:14px}.v-ropax-small{font-size:12px}.v-ropax-tiny{font-size:11px}.v-ropax-muted{fill:#596360}.v-ropax-number{font-family:Arial,sans-serif;font-size:11px;font-weight:600;fill:#285b56}.v-ropax-ink.v-ropax-paper,.v-ropax-fine.v-ropax-paper,.v-ropax-teal.v-ropax-paper{fill:#f7f5ef}.v-ropax-ink.v-ropax-shade,.v-ropax-fine.v-ropax-shade{fill:#e5e8df}.v-ropax-ink.v-ropax-wash,.v-ropax-fine.v-ropax-wash{fill:#edf0e9}</style></defs>
+  <rect x="0" y="0" width="720" height="360" rx="0" class="v-ropax-paper"/>
+  <g aria-hidden="true">
+  <path d="M32 77H688M32 319H688" class="v-ropax-faint" />
+  <text x="32" y="37" class="v-ropax-text v-ropax-small v-ropax-muted" text-anchor="start">VESSEL / RO-PAX</text>
+  <text x="32" y="63" class="v-ropax-text v-ropax-heading" text-anchor="start">客滚船</text>
+  <text x="688" y="55" class="v-ropax-text v-ropax-small v-ropax-muted" text-anchor="end">旅客上层空间 · 下部车辆甲板</text>
+  <path d="M82 224H647L631 246Q620 264 595 267H117Q97 265 91 250Z" class="v-ropax-shade v-ropax-ink" />
+  <path d="M96 233H629M115 254H608" class="v-ropax-fine" />
+  <path d="M119 267H594" class="v-ropax-teal" />
+  <ellipse cx="614" cy="239" rx="4" ry="3" class="v-ropax-paper v-ropax-fine"/>
+  <path d="M105 244V253M106 248H110" class="v-ropax-fine" />
+  <path d="M134 222V185H581L615 222Z" class="v-ropax-paper v-ropax-ink" />
+  <rect x="177" y="164" width="355" height="21" rx="0" class="v-ropax-paper v-ropax-ink"/>
+  <rect x="220" y="143" width="268" height="21" rx="0" class="v-ropax-paper v-ropax-ink"/>
+  <rect x="187" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="206" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="225" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="244" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="263" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="282" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="301" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="320" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="339" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="358" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="377" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="396" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="415" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="434" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="453" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="472" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="491" y="171" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="230" y="150" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="249" y="150" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="268" y="150" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="287" y="150" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="306" y="150" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="325" y="150" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="344" y="150" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="363" y="150" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="382" y="150" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="401" y="150" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="420" y="150" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="439" y="150" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="458" y="150" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <path d="M135 191H579" class="v-ropax-fine" />
+  <rect x="204" y="225" width="345" height="25" rx="0" class="v-ropax-wash v-ropax-fine"/>
+  <g transform="translate(224 230) scale(0.58)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-ropax-paper v-ropax-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-ropax-shade v-ropax-fine" />
+  <circle cx="8" cy="22" r="4" class="v-ropax-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-ropax-dark"/>
+  </g>
+  <g transform="translate(282 230) scale(0.58)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-ropax-paper v-ropax-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-ropax-shade v-ropax-fine" />
+  <circle cx="8" cy="22" r="4" class="v-ropax-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-ropax-dark"/>
+  </g>
+  <g transform="translate(340 230) scale(0.58)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-ropax-paper v-ropax-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-ropax-shade v-ropax-fine" />
+  <circle cx="8" cy="22" r="4" class="v-ropax-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-ropax-dark"/>
+  </g>
+  <g transform="translate(398 230) scale(0.58)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-ropax-paper v-ropax-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-ropax-shade v-ropax-fine" />
+  <circle cx="8" cy="22" r="4" class="v-ropax-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-ropax-dark"/>
+  </g>
+  <g transform="translate(456 230) scale(0.58)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-ropax-paper v-ropax-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-ropax-shade v-ropax-fine" />
+  <circle cx="8" cy="22" r="4" class="v-ropax-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-ropax-dark"/>
+  </g>
+  <path d="M338 143V123H374V143" class="v-ropax-shade v-ropax-ink" />
+  <path d="M341 129H370" class="v-ropax-fine" />
+  <path d="M476 142L493 130H531V164H488" class="v-ropax-paper v-ropax-ink" />
+  <rect x="498" y="137" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <rect x="513" y="137" width="10" height="6" rx="1" class="v-ropax-shade v-ropax-fine"/>
+  <path d="M125 230L59 265L65 270L134 240Z" class="v-ropax-shade v-ropax-ink" />
+  <path d="M265 198H305Q300 210 285 210Q270 210 265 198Z" class="v-ropax-shade v-ropax-ink" />
+  <path d="M337 198H377Q372 210 357 210Q342 210 337 198Z" class="v-ropax-shade v-ropax-ink" />
+  <path d="M409 198H449Q444 210 429 210Q414 210 409 198Z" class="v-ropax-shade v-ropax-ink" />
+  <path d="M255 119V126L272 152" class="v-ropax-fine" />
+  <circle cx="272" cy="152" r="2.3" class="v-ropax-accent"/>
+  <circle cx="255" cy="108" r="10" class="v-ropax-paper v-ropax-teal"/>
+  <text x="255" y="112" class="v-ropax-text v-ropax-number" text-anchor="middle">01</text>
+  <path d="M482 119V126L461 236" class="v-ropax-fine" />
+  <circle cx="461" cy="236" r="2.3" class="v-ropax-accent"/>
+  <circle cx="482" cy="108" r="10" class="v-ropax-paper v-ropax-teal"/>
+  <text x="482" y="112" class="v-ropax-text v-ropax-number" text-anchor="middle">02</text>
+  <path d="M83 173V180L88 254" class="v-ropax-fine" />
+  <circle cx="88" cy="254" r="2.3" class="v-ropax-accent"/>
+  <circle cx="83" cy="162" r="10" class="v-ropax-paper v-ropax-teal"/>
+  <text x="83" y="166" class="v-ropax-text v-ropax-number" text-anchor="middle">03</text>
+  <path d="M35 270Q48 266 61 270T87 270H627Q640 266 653 270T679 270" class="v-ropax-fine" />
+  <path d="M69 277H137M557 277H629" class="v-ropax-faint" />
+  <circle cx="44" cy="298" r="10" class="v-ropax-paper v-ropax-teal"/>
+  <text x="44" y="302" class="v-ropax-text v-ropax-number" text-anchor="middle">01</text>
+  <text x="62" y="303" class="v-ropax-text v-ropax-label" text-anchor="start">旅客上层建筑</text>
+  <circle cx="268" cy="298" r="10" class="v-ropax-paper v-ropax-teal"/>
+  <text x="268" y="302" class="v-ropax-text v-ropax-number" text-anchor="middle">02</text>
+  <text x="286" y="303" class="v-ropax-text v-ropax-label" text-anchor="start">下部车辆甲板</text>
+  <circle cx="492" cy="298" r="10" class="v-ropax-paper v-ropax-teal"/>
+  <text x="492" y="302" class="v-ropax-text v-ropax-number" text-anchor="middle">03</text>
+  <text x="510" y="303" class="v-ropax-text v-ropax-label" text-anchor="start">滚装跳板</text>
+  <text x="32" y="342" class="v-ropax-text v-ropax-tiny v-ropax-muted" text-anchor="start">教学示意 · 不按比例 · 不作作业依据</text>
+  <text x="688" y="342" class="v-ropax-text v-ropax-tiny v-ropax-muted" text-anchor="end">PORT / VESSELS</text>
+  </g>
+</svg>

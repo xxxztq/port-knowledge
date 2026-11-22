@@ -1,6 +1,7 @@
 ---
 import RiskEntry from '../components/RiskEntry.astro';
 import InfrastructureEntry from '../components/InfrastructureEntry.astro';
+import VesselEntry from '../components/VesselEntry.astro';
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import SystemNetwork from '../components/SystemNetwork.astro';
@@ -88,7 +89,7 @@ const messageSteps = [
       </section>
     </div>
   </div>
-<div class="container"><RiskEntry compact riskIds={["continuity","identity","commercial"]}/></div></Layout>
+<div class="container"><RiskEntry compact riskIds={["continuity","identity","commercial"]}/></div><div class="container"><VesselEntry compact/></div></Layout>
 
 <style>
   .systems-page{color:var(--ink)}.systems-index{display:flex;flex-wrap:wrap;gap:10px 21px;padding:17px 0;border-block:1px solid #c7d0c9;margin-bottom:27px;font-size:12px}.systems-index a{color:#31585d;text-decoration:none;padding:4px 0}.systems-index a:hover{text-decoration:underline;text-underline-offset:5px}.flow-lens{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid #d9dfd7;padding-bottom:24px;gap:28px}.flow-lens>div{min-width:0}.flow-lens>div+div{border-left:1px solid #d9dfd7;padding-left:25px}.lens-label,.section-kicker{font-size:10px;letter-spacing:1.5px;color:#5e7471}.flow-lens h2{font-size:19px;margin:12px 0 8px}.flow-lens p{font-size:12px;line-height:1.95;color:#64716c;margin:0;min-height:70px}.lens-line{display:flex;align-items:center;max-width:180px;height:28px;margin-top:12px}.lens-line i{height:8px;width:8px;border:1px solid #31585d;background:#fafaf7}.lens-line span{height:0;flex:1;border-top:1px solid #31585d}.information span{border-top-style:dashed}.information i{border-radius:50%;background:#31585d}.authority-stamps{display:flex;gap:8px;margin-top:12px}.authority-stamps span{border:1px solid #9caaa1;border-radius:3px;padding:4px 10px;font-size:10px;color:#46625c}.reading-note{font-size:11px;line-height:1.9;color:#6b7871;margin:15px 0 0}.reading-note a{color:#31585d}

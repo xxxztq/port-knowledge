@@ -1,0 +1,6 @@
+---
+const {compact=false}=Astro.props;
+const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<aside class:list={['vessel-entry',{'is-compact':compact}]} aria-label="船型与散货学习入口"><div><span class="eyebrow">SHIP × CARGO × TERMINAL</span><h2>换一艘船，岸上的业务也会变。</h2><p>从船型、货物和装卸接口三个方向，看懂一票货为何需要不同的码头安排。</p></div><div class="vessel-entry-links"><a href={base+'vessels/'}>船型图鉴 <span>滚装、重吊、散货与液货 →</span></a><a href={base+'cargo/minerals/'}>矿产与干散货 <span>铁矿石、铝土矿、铜精矿与煤炭 →</span></a></div></aside>
+<style>.vessel-entry{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;margin:32px 0;padding:30px;border:1px solid #d8ded4;border-radius:12px;background:#f0f2e9}.vessel-entry h2{font-size:24px;margin:10px 0}.vessel-entry p{font-size:13px;margin:0}.vessel-entry-links{display:grid;gap:12px;align-content:center}.vessel-entry-links a{display:flex;flex-direction:column;gap:4px;border-bottom:1px solid #cfd7ca;padding:10px 0;font-weight:650}.vessel-entry-links span{font-size:12px;font-weight:400;color:#5c7270}.is-compact{padding:24px}@media(max-width:700px){.vessel-entry{grid-template-columns:1fr;gap:12px;padding:23px}.vessel-entry h2{font-size:22px}}</style>

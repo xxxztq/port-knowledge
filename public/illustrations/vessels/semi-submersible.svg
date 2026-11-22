@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="v-semi-submersible" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="v-semi-submersible-title v-semi-submersible-desc">
+  <title id="v-semi-submersible-title">半潜运输船：开放运输甲板、海上大型模块、可下潜甲板概念</title>
+  <desc id="v-semi-submersible-desc">半潜运输船拥有可下潜的开放运输甲板，承运海上大型模块。图为装载关系示意，实线为示意航行水线，灰绿虚线为另一压载状态下的水面概念线；不是同一时刻的两条真实水面。船体保持水面船形态，非潜艇。不表示实际浮装过程、吃水或压载顺序。 原创工程科普线稿；教学示意，不按比例，不表示实际船舶总布置、工程尺寸或作业方案。</desc>
+  <defs><style>.v-semi-submersible-paper{fill:#f7f5ef}.v-semi-submersible-shade{fill:#e5e8df}.v-semi-submersible-wash{fill:#edf0e9}.v-semi-submersible-dark{fill:#526760}.v-semi-submersible-accent{fill:#285b56}.v-semi-submersible-ink{fill:none;stroke:#202827;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.v-semi-submersible-fine{fill:none;stroke:#7a8580;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.v-semi-submersible-faint{fill:none;stroke:#b9bdb5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.v-semi-submersible-teal{fill:none;stroke:#285b56;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}.v-semi-submersible-dash{stroke-dasharray:4 4}.v-semi-submersible-text{font-family:'Microsoft YaHei','PingFang SC',sans-serif;fill:#202827}.v-semi-submersible-heading{font-size:20px;font-weight:600}.v-semi-submersible-label{font-size:14px}.v-semi-submersible-small{font-size:12px}.v-semi-submersible-tiny{font-size:11px}.v-semi-submersible-muted{fill:#596360}.v-semi-submersible-number{font-family:Arial,sans-serif;font-size:11px;font-weight:600;fill:#285b56}.v-semi-submersible-ink.v-semi-submersible-paper,.v-semi-submersible-fine.v-semi-submersible-paper,.v-semi-submersible-teal.v-semi-submersible-paper{fill:#f7f5ef}.v-semi-submersible-ink.v-semi-submersible-shade,.v-semi-submersible-fine.v-semi-submersible-shade{fill:#e5e8df}.v-semi-submersible-ink.v-semi-submersible-wash,.v-semi-submersible-fine.v-semi-submersible-wash{fill:#edf0e9}</style></defs>
+  <rect x="0" y="0" width="720" height="360" rx="0" class="v-semi-submersible-paper"/>
+  <g aria-hidden="true">
+  <path d="M32 77H688M32 319H688" class="v-semi-submersible-faint" />
+  <text x="32" y="37" class="v-semi-submersible-text v-semi-submersible-small v-semi-submersible-muted" text-anchor="start">VESSEL / SEMI-SUBMERSIBLE</text>
+  <text x="32" y="63" class="v-semi-submersible-text v-semi-submersible-heading" text-anchor="start">半潜运输船</text>
+  <text x="688" y="55" class="v-semi-submersible-text v-semi-submersible-small v-semi-submersible-muted" text-anchor="end">开放低甲板 · 海上模块承运</text>
+  <path d="M92 234H622L613 257Q609 267 590 267H116Q101 263 98 252Z" class="v-semi-submersible-shade v-semi-submersible-ink" />
+  <path d="M107 244H612M117 260H593" class="v-semi-submersible-fine" />
+  <rect x="112" y="151" width="57" height="84" rx="0" class="v-semi-submersible-paper v-semi-submersible-ink"/>
+  <rect x="104" y="137" width="76" height="15" rx="0" class="v-semi-submersible-shade v-semi-submersible-ink"/>
+  <rect x="113" y="141" width="10" height="6" rx="1" class="v-semi-submersible-shade v-semi-submersible-fine"/>
+  <rect x="129" y="141" width="10" height="6" rx="1" class="v-semi-submersible-shade v-semi-submersible-fine"/>
+  <rect x="145" y="141" width="10" height="6" rx="1" class="v-semi-submersible-shade v-semi-submersible-fine"/>
+  <rect x="161" y="141" width="10" height="6" rx="1" class="v-semi-submersible-shade v-semi-submersible-fine"/>
+  <rect x="128" y="121" width="22" height="16" rx="0" class="v-semi-submersible-shade v-semi-submersible-ink"/>
+  <path d="M138 121V106M124 112H150" class="v-semi-submersible-fine" />
+  <rect x="579" y="191" width="28" height="44" rx="0" class="v-semi-submersible-paper v-semi-submersible-ink"/>
+  <rect x="195" y="230" width="347" height="5" rx="0" class="v-semi-submersible-paper v-semi-submersible-ink"/>
+  <rect x="249" y="170" width="232" height="10" rx="0" class="v-semi-submersible-shade v-semi-submersible-ink"/>
+  <rect x="262" y="128" width="204" height="41" rx="0" class="v-semi-submersible-paper v-semi-submersible-ink"/>
+  <rect x="272" y="137" width="24" height="23" rx="0" class="v-semi-submersible-shade v-semi-submersible-fine"/>
+  <rect x="310" y="137" width="24" height="23" rx="0" class="v-semi-submersible-shade v-semi-submersible-fine"/>
+  <rect x="348" y="137" width="24" height="23" rx="0" class="v-semi-submersible-shade v-semi-submersible-fine"/>
+  <rect x="386" y="137" width="24" height="23" rx="0" class="v-semi-submersible-shade v-semi-submersible-fine"/>
+  <rect x="424" y="137" width="24" height="23" rx="0" class="v-semi-submersible-shade v-semi-submersible-fine"/>
+  <rect x="279" y="180" width="24" height="49" rx="0" class="v-semi-submersible-paper v-semi-submersible-ink"/>
+  <rect x="426" y="180" width="24" height="49" rx="0" class="v-semi-submersible-paper v-semi-submersible-ink"/>
+  <path d="M303 187L426 225M426 187L303 225" class="v-semi-submersible-fine" />
+  <rect x="322" y="111" width="37" height="17" rx="0" class="v-semi-submersible-shade v-semi-submersible-ink"/>
+  <rect x="389" y="100" width="30" height="28" rx="0" class="v-semi-submersible-paper v-semi-submersible-ink"/>
+  <path d="M397 100V88M411 100V91" class="v-semi-submersible-fine" />
+  <path d="M190 217H567" class="v-semi-submersible-teal v-semi-submersible-dash" />
+  <text x="575" y="181" class="v-semi-submersible-text v-semi-submersible-tiny v-semi-submersible-muted" text-anchor="start">另一水面状态</text>
+  <path d="M208 124V131L215 232" class="v-semi-submersible-fine" />
+  <circle cx="215" cy="232" r="2.3" class="v-semi-submersible-accent"/>
+  <circle cx="208" cy="113" r="10" class="v-semi-submersible-paper v-semi-submersible-teal"/>
+  <text x="208" y="117" class="v-semi-submersible-text v-semi-submersible-number" text-anchor="middle">01</text>
+  <path d="M504 111V118L451 145" class="v-semi-submersible-fine" />
+  <circle cx="451" cy="145" r="2.3" class="v-semi-submersible-accent"/>
+  <circle cx="504" cy="100" r="10" class="v-semi-submersible-paper v-semi-submersible-teal"/>
+  <text x="504" y="104" class="v-semi-submersible-text v-semi-submersible-number" text-anchor="middle">02</text>
+  <path d="M532 160V167L533 217" class="v-semi-submersible-fine" />
+  <circle cx="533" cy="217" r="2.3" class="v-semi-submersible-accent"/>
+  <circle cx="532" cy="149" r="10" class="v-semi-submersible-paper v-semi-submersible-teal"/>
+  <text x="532" y="153" class="v-semi-submersible-text v-semi-submersible-number" text-anchor="middle">03</text>
+  <path d="M35 270Q48 266 61 270T87 270H627Q640 266 653 270T679 270" class="v-semi-submersible-fine" />
+  <path d="M69 277H137M557 277H629" class="v-semi-submersible-faint" />
+  <circle cx="44" cy="298" r="10" class="v-semi-submersible-paper v-semi-submersible-teal"/>
+  <text x="44" y="302" class="v-semi-submersible-text v-semi-submersible-number" text-anchor="middle">01</text>
+  <text x="62" y="303" class="v-semi-submersible-text v-semi-submersible-label" text-anchor="start">开放运输甲板</text>
+  <circle cx="268" cy="298" r="10" class="v-semi-submersible-paper v-semi-submersible-teal"/>
+  <text x="268" y="302" class="v-semi-submersible-text v-semi-submersible-number" text-anchor="middle">02</text>
+  <text x="286" y="303" class="v-semi-submersible-text v-semi-submersible-label" text-anchor="start">海上大型模块</text>
+  <circle cx="492" cy="298" r="10" class="v-semi-submersible-paper v-semi-submersible-teal"/>
+  <text x="492" y="302" class="v-semi-submersible-text v-semi-submersible-number" text-anchor="middle">03</text>
+  <text x="510" y="303" class="v-semi-submersible-text v-semi-submersible-label" text-anchor="start">可下潜甲板概念</text>
+  <text x="32" y="342" class="v-semi-submersible-text v-semi-submersible-tiny v-semi-submersible-muted" text-anchor="start">教学示意 · 不按比例 · 不作作业依据</text>
+  <text x="688" y="342" class="v-semi-submersible-text v-semi-submersible-tiny v-semi-submersible-muted" text-anchor="end">PORT / VESSELS</text>
+  </g>
+</svg>

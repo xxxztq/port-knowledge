@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="c-bauxite" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="c-bauxite-title c-bauxite-desc">
+  <title id="c-bauxite-title">铝土矿：块粒状矿料、分批货堆、样品与成分记录</title>
+  <desc id="c-bauxite-desc">两组块粒状铝土矿货堆以虚构批次A、B区分，样品容器与成分和重量记录相对应。教学重点是不同批次矿料与记录关联；颗粒大小、颜色与湿润程度在实际货物间存在差异，本图不提供货物运输分类或判断标准。 原创工程科普线稿；教学示意，不按比例，不表示实际船舶总布置、工程尺寸或作业方案。</desc>
+  <defs><style>.c-bauxite-paper{fill:#f7f5ef}.c-bauxite-shade{fill:#e5e8df}.c-bauxite-wash{fill:#edf0e9}.c-bauxite-dark{fill:#526760}.c-bauxite-accent{fill:#285b56}.c-bauxite-ink{fill:none;stroke:#202827;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.c-bauxite-fine{fill:none;stroke:#7a8580;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.c-bauxite-faint{fill:none;stroke:#b9bdb5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.c-bauxite-teal{fill:none;stroke:#285b56;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}.c-bauxite-dash{stroke-dasharray:4 4}.c-bauxite-text{font-family:'Microsoft YaHei','PingFang SC',sans-serif;fill:#202827}.c-bauxite-heading{font-size:20px;font-weight:600}.c-bauxite-label{font-size:14px}.c-bauxite-small{font-size:12px}.c-bauxite-tiny{font-size:11px}.c-bauxite-muted{fill:#596360}.c-bauxite-number{font-family:Arial,sans-serif;font-size:11px;font-weight:600;fill:#285b56}.c-bauxite-ink.c-bauxite-paper,.c-bauxite-fine.c-bauxite-paper,.c-bauxite-teal.c-bauxite-paper{fill:#f7f5ef}.c-bauxite-ink.c-bauxite-shade,.c-bauxite-fine.c-bauxite-shade{fill:#e5e8df}.c-bauxite-ink.c-bauxite-wash,.c-bauxite-fine.c-bauxite-wash{fill:#edf0e9}</style></defs>
+  <rect x="0" y="0" width="720" height="360" rx="0" class="c-bauxite-paper"/>
+  <g aria-hidden="true">
+  <path d="M32 77H688M32 319H688" class="c-bauxite-faint" />
+  <text x="32" y="37" class="c-bauxite-text c-bauxite-small c-bauxite-muted" text-anchor="start">CARGO / BAUXITE</text>
+  <text x="32" y="63" class="c-bauxite-text c-bauxite-heading" text-anchor="start">铝土矿</text>
+  <text x="688" y="55" class="c-bauxite-text c-bauxite-small c-bauxite-muted" text-anchor="end">货堆分批 · 成分与重量对应</text>
+  <path d="M61 263L82.45 234.65L105.55000000000001 226.55L138.55 182L158.35 188.48L183.1 224.93L207.85 241.94L226 263Z" class="c-bauxite-shade c-bauxite-ink" />
+  <g transform="translate(80.8 242.75) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(107.2 242.75) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(133.6 242.75) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(160 242.75) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(186.4 242.75) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(80.8 224.93) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(107.2 224.93) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(133.6 224.93) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(160 224.93) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(186.4 224.93) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <path d="M239 263L261.49 239.2L285.71 232.4L320.31 195L341.07 200.44L367.02 231.04L392.97 245.32L412 263Z" class="c-bauxite-shade c-bauxite-ink" />
+  <g transform="translate(259.76 246) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(287.44 246) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(315.12 246) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(342.8 246) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(370.48 246) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(259.76 231.04) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(287.44 231.04) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(315.12 231.04) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(342.8 231.04) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(370.48 231.04) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-paper c-bauxite-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(87 232) scale(0.72)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-shade c-bauxite-ink" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(147 228) scale(0.58)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-shade c-bauxite-ink" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(276 230) scale(0.65)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-shade c-bauxite-ink" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <g transform="translate(337 237) scale(0.6)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-bauxite-shade c-bauxite-ink" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-bauxite-fine" />
+  </g>
+  <rect x="68" y="150" width="64" height="30" rx="2" class="c-bauxite-paper c-bauxite-ink"/>
+  <text x="100" y="170" class="c-bauxite-text c-bauxite-small" text-anchor="middle">批次 A</text>
+  <path d="M100 180V199" class="c-bauxite-fine" />
+  <rect x="325" y="154" width="64" height="30" rx="2" class="c-bauxite-paper c-bauxite-ink"/>
+  <text x="357" y="174" class="c-bauxite-text c-bauxite-small" text-anchor="middle">批次 B</text>
+  <path d="M357 184V218" class="c-bauxite-fine" />
+  <path d="M229 173V267" class="c-bauxite-faint c-bauxite-dash" />
+  <rect x="466" y="207" width="34" height="8" rx="2" class="c-bauxite-shade c-bauxite-ink"/>
+  <rect x="463" y="215" width="40" height="52" rx="4" class="c-bauxite-paper c-bauxite-ink"/>
+  <rect x="467" y="240" width="32" height="20" rx="2" class="c-bauxite-shade c-bauxite-fine"/>
+  <text x="483" y="234" class="c-bauxite-text c-bauxite-tiny" text-anchor="middle">样品</text>
+  <rect x="535" y="145" width="137" height="118" rx="4" class="c-bauxite-paper c-bauxite-ink"/>
+  <path d="M535 174H672" class="c-bauxite-faint" />
+  <text x="547" y="165" class="c-bauxite-text c-bauxite-small" text-anchor="start">成分与重量</text>
+  <path d="M547 192H660" class="c-bauxite-fine" />
+  <path d="M547 213H660" class="c-bauxite-fine" />
+  <path d="M547 234H660" class="c-bauxite-fine" />
+  <path d="M503 239H527" class="c-bauxite-fine c-bauxite-dash" />
+  <text x="603" y="250" class="c-bauxite-text c-bauxite-tiny c-bauxite-muted" text-anchor="middle">对应批次</text>
+  <path d="M141 124V131L163 207" class="c-bauxite-fine" />
+  <circle cx="163" cy="207" r="2.3" class="c-bauxite-accent"/>
+  <circle cx="141" cy="113" r="10" class="c-bauxite-paper c-bauxite-teal"/>
+  <text x="141" y="117" class="c-bauxite-text c-bauxite-number" text-anchor="middle">01</text>
+  <path d="M360 122V129L357 154" class="c-bauxite-fine" />
+  <circle cx="357" cy="154" r="2.3" class="c-bauxite-accent"/>
+  <circle cx="360" cy="111" r="10" class="c-bauxite-paper c-bauxite-teal"/>
+  <text x="360" y="115" class="c-bauxite-text c-bauxite-number" text-anchor="middle">02</text>
+  <path d="M558 123V130L556 145" class="c-bauxite-fine" />
+  <circle cx="556" cy="145" r="2.3" class="c-bauxite-accent"/>
+  <circle cx="558" cy="112" r="10" class="c-bauxite-paper c-bauxite-teal"/>
+  <text x="558" y="116" class="c-bauxite-text c-bauxite-number" text-anchor="middle">03</text>
+  <path d="M40 268H679M52 275H120M589 275H665" class="c-bauxite-faint" />
+  <circle cx="44" cy="298" r="10" class="c-bauxite-paper c-bauxite-teal"/>
+  <text x="44" y="302" class="c-bauxite-text c-bauxite-number" text-anchor="middle">01</text>
+  <text x="62" y="303" class="c-bauxite-text c-bauxite-label" text-anchor="start">块粒状矿料</text>
+  <circle cx="268" cy="298" r="10" class="c-bauxite-paper c-bauxite-teal"/>
+  <text x="268" y="302" class="c-bauxite-text c-bauxite-number" text-anchor="middle">02</text>
+  <text x="286" y="303" class="c-bauxite-text c-bauxite-label" text-anchor="start">分批货堆</text>
+  <circle cx="492" cy="298" r="10" class="c-bauxite-paper c-bauxite-teal"/>
+  <text x="492" y="302" class="c-bauxite-text c-bauxite-number" text-anchor="middle">03</text>
+  <text x="510" y="303" class="c-bauxite-text c-bauxite-label" text-anchor="start">样品与成分记录</text>
+  <text x="32" y="342" class="c-bauxite-text c-bauxite-tiny c-bauxite-muted" text-anchor="start">教学示意 · 不按比例 · 不作作业依据</text>
+  <text x="688" y="342" class="c-bauxite-text c-bauxite-tiny c-bauxite-muted" text-anchor="end">PORT / CARGO</text>
+  </g>
+</svg>

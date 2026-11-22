@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="v-oil-tanker" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="v-oil-tanker-title v-oil-tanker-desc">
+  <title id="v-oil-tanker-title">油轮：甲板液货管系、集中歧管区、货油舱剖视</title>
+  <desc id="v-oil-tanker-desc">以沿甲板布置的液货管系、集中歧管区和舷侧局部货油舱剖视示意油轮。舱数、管路连接及阀件仅作结构认知，不对应真实装卸流程或舱容。不能据此判断船舶适装货物。 原创工程科普线稿；教学示意，不按比例，不表示实际船舶总布置、工程尺寸或作业方案。</desc>
+  <defs><style>.v-oil-tanker-paper{fill:#f7f5ef}.v-oil-tanker-shade{fill:#e5e8df}.v-oil-tanker-wash{fill:#edf0e9}.v-oil-tanker-dark{fill:#526760}.v-oil-tanker-accent{fill:#285b56}.v-oil-tanker-ink{fill:none;stroke:#202827;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.v-oil-tanker-fine{fill:none;stroke:#7a8580;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.v-oil-tanker-faint{fill:none;stroke:#b9bdb5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.v-oil-tanker-teal{fill:none;stroke:#285b56;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}.v-oil-tanker-dash{stroke-dasharray:4 4}.v-oil-tanker-text{font-family:'Microsoft YaHei','PingFang SC',sans-serif;fill:#202827}.v-oil-tanker-heading{font-size:20px;font-weight:600}.v-oil-tanker-label{font-size:14px}.v-oil-tanker-small{font-size:12px}.v-oil-tanker-tiny{font-size:11px}.v-oil-tanker-muted{fill:#596360}.v-oil-tanker-number{font-family:Arial,sans-serif;font-size:11px;font-weight:600;fill:#285b56}.v-oil-tanker-ink.v-oil-tanker-paper,.v-oil-tanker-fine.v-oil-tanker-paper,.v-oil-tanker-teal.v-oil-tanker-paper{fill:#f7f5ef}.v-oil-tanker-ink.v-oil-tanker-shade,.v-oil-tanker-fine.v-oil-tanker-shade{fill:#e5e8df}.v-oil-tanker-ink.v-oil-tanker-wash,.v-oil-tanker-fine.v-oil-tanker-wash{fill:#edf0e9}</style></defs>
+  <rect x="0" y="0" width="720" height="360" rx="0" class="v-oil-tanker-paper"/>
+  <g aria-hidden="true">
+  <path d="M32 77H688M32 319H688" class="v-oil-tanker-faint" />
+  <text x="32" y="37" class="v-oil-tanker-text v-oil-tanker-small v-oil-tanker-muted" text-anchor="start">VESSEL / OIL TANKER</text>
+  <text x="32" y="63" class="v-oil-tanker-text v-oil-tanker-heading" text-anchor="start">油轮</text>
+  <text x="688" y="55" class="v-oil-tanker-text v-oil-tanker-small v-oil-tanker-muted" text-anchor="end">液货管系 · 舱室隔离</text>
+  <path d="M82 224H647L631 246Q620 264 595 267H117Q97 265 91 250Z" class="v-oil-tanker-shade v-oil-tanker-ink" />
+  <path d="M96 233H629M115 254H608" class="v-oil-tanker-fine" />
+  <path d="M119 267H594" class="v-oil-tanker-teal" />
+  <ellipse cx="614" cy="239" rx="4" ry="3" class="v-oil-tanker-paper v-oil-tanker-fine"/>
+  <path d="M105 244V253M106 248H110" class="v-oil-tanker-fine" />
+  <rect x="102" y="157" width="74" height="67" rx="0" class="v-oil-tanker-paper v-oil-tanker-ink"/>
+  <rect x="95" y="143" width="88" height="14" rx="2" class="v-oil-tanker-shade v-oil-tanker-ink"/>
+  <rect x="105" y="147" width="10" height="6" rx="0" class="v-oil-tanker-dark"/>
+  <rect x="118.8" y="147" width="10" height="6" rx="0" class="v-oil-tanker-dark"/>
+  <rect x="132.6" y="147" width="10" height="6" rx="0" class="v-oil-tanker-dark"/>
+  <rect x="146.4" y="147" width="10" height="6" rx="0" class="v-oil-tanker-dark"/>
+  <rect x="160.2" y="147" width="10" height="6" rx="0" class="v-oil-tanker-dark"/>
+  <path d="M114 176H164M114 196H164" class="v-oil-tanker-fine" />
+  <rect x="116" y="127" width="22" height="16" rx="0" class="v-oil-tanker-shade v-oil-tanker-ink"/>
+  <path d="M127 127V109M114 115H139" class="v-oil-tanker-fine" />
+  <rect x="211" y="234" width="377" height="25" rx="0" class="v-oil-tanker-paper v-oil-tanker-fine"/>
+  <path d="M286.4 235V258" class="v-oil-tanker-fine" />
+  <path d="M361.8 235V258" class="v-oil-tanker-fine" />
+  <path d="M437.2 235V258" class="v-oil-tanker-fine" />
+  <path d="M512.6 235V258" class="v-oil-tanker-fine" />
+  <path d="M219 250H278.4" class="v-oil-tanker-teal" />
+  <path d="M294.4 250H353.8" class="v-oil-tanker-teal" />
+  <path d="M369.8 250H429.2" class="v-oil-tanker-teal" />
+  <path d="M445.2 250H504.6" class="v-oil-tanker-teal" />
+  <path d="M520.6 250H580" class="v-oil-tanker-teal" />
+  <path d="M201 210H600V223M201 216H592V224M221 209V195H236V210M304 209V195H319V210M461 209V195H476V210M544 209V195H559V210" class="v-oil-tanker-ink" />
+  <path d="M226 195H238M232 188V201" class="v-oil-tanker-fine" />
+  <path d="M305 195H317M311 188V201" class="v-oil-tanker-fine" />
+  <path d="M384 195H396M390 188V201" class="v-oil-tanker-fine" />
+  <path d="M463 195H475M469 188V201" class="v-oil-tanker-fine" />
+  <path d="M542 195H554M548 188V201" class="v-oil-tanker-fine" />
+  <path d="M389 224V189H423V224M389 198H423M399 190V215M414 190V215" class="v-oil-tanker-shade v-oil-tanker-ink" />
+  <path d="M404 189V166H419M404 166V160" class="v-oil-tanker-fine" />
+  <path d="M275 135V142L275 211" class="v-oil-tanker-fine" />
+  <circle cx="275" cy="211" r="2.3" class="v-oil-tanker-accent"/>
+  <circle cx="275" cy="124" r="10" class="v-oil-tanker-paper v-oil-tanker-teal"/>
+  <text x="275" y="128" class="v-oil-tanker-text v-oil-tanker-number" text-anchor="middle">01</text>
+  <path d="M422 123V130L407 197" class="v-oil-tanker-fine" />
+  <circle cx="407" cy="197" r="2.3" class="v-oil-tanker-accent"/>
+  <circle cx="422" cy="112" r="10" class="v-oil-tanker-paper v-oil-tanker-teal"/>
+  <text x="422" y="116" class="v-oil-tanker-text v-oil-tanker-number" text-anchor="middle">02</text>
+  <path d="M553 142V149L550 246" class="v-oil-tanker-fine" />
+  <circle cx="550" cy="246" r="2.3" class="v-oil-tanker-accent"/>
+  <circle cx="553" cy="131" r="10" class="v-oil-tanker-paper v-oil-tanker-teal"/>
+  <text x="553" y="135" class="v-oil-tanker-text v-oil-tanker-number" text-anchor="middle">03</text>
+  <path d="M35 270Q48 266 61 270T87 270H627Q640 266 653 270T679 270" class="v-oil-tanker-fine" />
+  <path d="M69 277H137M557 277H629" class="v-oil-tanker-faint" />
+  <circle cx="44" cy="298" r="10" class="v-oil-tanker-paper v-oil-tanker-teal"/>
+  <text x="44" y="302" class="v-oil-tanker-text v-oil-tanker-number" text-anchor="middle">01</text>
+  <text x="62" y="303" class="v-oil-tanker-text v-oil-tanker-label" text-anchor="start">甲板液货管系</text>
+  <circle cx="268" cy="298" r="10" class="v-oil-tanker-paper v-oil-tanker-teal"/>
+  <text x="268" y="302" class="v-oil-tanker-text v-oil-tanker-number" text-anchor="middle">02</text>
+  <text x="286" y="303" class="v-oil-tanker-text v-oil-tanker-label" text-anchor="start">集中歧管区</text>
+  <circle cx="492" cy="298" r="10" class="v-oil-tanker-paper v-oil-tanker-teal"/>
+  <text x="492" y="302" class="v-oil-tanker-text v-oil-tanker-number" text-anchor="middle">03</text>
+  <text x="510" y="303" class="v-oil-tanker-text v-oil-tanker-label" text-anchor="start">货油舱剖视</text>
+  <text x="32" y="342" class="v-oil-tanker-text v-oil-tanker-tiny v-oil-tanker-muted" text-anchor="start">教学示意 · 不按比例 · 不作作业依据</text>
+  <text x="688" y="342" class="v-oil-tanker-text v-oil-tanker-tiny v-oil-tanker-muted" text-anchor="end">PORT / VESSELS</text>
+  </g>
+</svg>

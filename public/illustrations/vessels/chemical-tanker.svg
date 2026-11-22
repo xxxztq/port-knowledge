@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="v-chemical-tanker" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="v-chemical-tanker-title v-chemical-tanker-desc">
+  <title id="v-chemical-tanker-title">化学品船：多舱分隔示意、分组管线、舱口与管系对应</title>
+  <desc id="v-chemical-tanker-desc">以较多独立小货舱及多组甲板管线示意化学品运输船的一种布置。分隔表达不同货物批次与相应舱室管系的管理关系，并不意味着任意货物可同时承运；舱数、管线复杂度或外观不是判别船型和适装性的规则。 原创工程科普线稿；教学示意，不按比例，不表示实际船舶总布置、工程尺寸或作业方案。</desc>
+  <defs><style>.v-chemical-tanker-paper{fill:#f7f5ef}.v-chemical-tanker-shade{fill:#e5e8df}.v-chemical-tanker-wash{fill:#edf0e9}.v-chemical-tanker-dark{fill:#526760}.v-chemical-tanker-accent{fill:#285b56}.v-chemical-tanker-ink{fill:none;stroke:#202827;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.v-chemical-tanker-fine{fill:none;stroke:#7a8580;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.v-chemical-tanker-faint{fill:none;stroke:#b9bdb5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.v-chemical-tanker-teal{fill:none;stroke:#285b56;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}.v-chemical-tanker-dash{stroke-dasharray:4 4}.v-chemical-tanker-text{font-family:'Microsoft YaHei','PingFang SC',sans-serif;fill:#202827}.v-chemical-tanker-heading{font-size:20px;font-weight:600}.v-chemical-tanker-label{font-size:14px}.v-chemical-tanker-small{font-size:12px}.v-chemical-tanker-tiny{font-size:11px}.v-chemical-tanker-muted{fill:#596360}.v-chemical-tanker-number{font-family:Arial,sans-serif;font-size:11px;font-weight:600;fill:#285b56}.v-chemical-tanker-ink.v-chemical-tanker-paper,.v-chemical-tanker-fine.v-chemical-tanker-paper,.v-chemical-tanker-teal.v-chemical-tanker-paper{fill:#f7f5ef}.v-chemical-tanker-ink.v-chemical-tanker-shade,.v-chemical-tanker-fine.v-chemical-tanker-shade{fill:#e5e8df}.v-chemical-tanker-ink.v-chemical-tanker-wash,.v-chemical-tanker-fine.v-chemical-tanker-wash{fill:#edf0e9}</style></defs>
+  <rect x="0" y="0" width="720" height="360" rx="0" class="v-chemical-tanker-paper"/>
+  <g aria-hidden="true">
+  <path d="M32 77H688M32 319H688" class="v-chemical-tanker-faint" />
+  <text x="32" y="37" class="v-chemical-tanker-text v-chemical-tanker-small v-chemical-tanker-muted" text-anchor="start">VESSEL / CHEMICAL TANKER</text>
+  <text x="32" y="63" class="v-chemical-tanker-text v-chemical-tanker-heading" text-anchor="start">化学品船</text>
+  <text x="688" y="55" class="v-chemical-tanker-text v-chemical-tanker-small v-chemical-tanker-muted" text-anchor="end">多舱分隔 · 管系对应</text>
+  <path d="M82 224H647L631 246Q620 264 595 267H117Q97 265 91 250Z" class="v-chemical-tanker-shade v-chemical-tanker-ink" />
+  <path d="M96 233H629M115 254H608" class="v-chemical-tanker-fine" />
+  <path d="M119 267H594" class="v-chemical-tanker-teal" />
+  <ellipse cx="614" cy="239" rx="4" ry="3" class="v-chemical-tanker-paper v-chemical-tanker-fine"/>
+  <path d="M105 244V253M106 248H110" class="v-chemical-tanker-fine" />
+  <rect x="101" y="161" width="74" height="63" rx="0" class="v-chemical-tanker-paper v-chemical-tanker-ink"/>
+  <rect x="94" y="147" width="88" height="14" rx="2" class="v-chemical-tanker-shade v-chemical-tanker-ink"/>
+  <rect x="104" y="151" width="10" height="6" rx="0" class="v-chemical-tanker-dark"/>
+  <rect x="117.8" y="151" width="10" height="6" rx="0" class="v-chemical-tanker-dark"/>
+  <rect x="131.6" y="151" width="10" height="6" rx="0" class="v-chemical-tanker-dark"/>
+  <rect x="145.4" y="151" width="10" height="6" rx="0" class="v-chemical-tanker-dark"/>
+  <rect x="159.2" y="151" width="10" height="6" rx="0" class="v-chemical-tanker-dark"/>
+  <path d="M113 180H163M113 200H163" class="v-chemical-tanker-fine" />
+  <rect x="115" y="131" width="22" height="16" rx="0" class="v-chemical-tanker-shade v-chemical-tanker-ink"/>
+  <path d="M126 131V113M113 119H138" class="v-chemical-tanker-fine" />
+  <rect x="211" y="234" width="377" height="25" rx="0" class="v-chemical-tanker-paper v-chemical-tanker-fine"/>
+  <path d="M252.88888888888889 235V258" class="v-chemical-tanker-fine" />
+  <path d="M294.77777777777777 235V258" class="v-chemical-tanker-fine" />
+  <path d="M336.6666666666667 235V258" class="v-chemical-tanker-fine" />
+  <path d="M378.55555555555554 235V258" class="v-chemical-tanker-fine" />
+  <path d="M420.44444444444446 235V258" class="v-chemical-tanker-fine" />
+  <path d="M462.33333333333337 235V258" class="v-chemical-tanker-fine" />
+  <path d="M504.22222222222223 235V258" class="v-chemical-tanker-fine" />
+  <path d="M546.1111111111111 235V258" class="v-chemical-tanker-fine" />
+  <path d="M219 250H244.88888888888889" class="v-chemical-tanker-teal" />
+  <path d="M260.8888888888889 250H286.77777777777777" class="v-chemical-tanker-teal" />
+  <path d="M302.77777777777777 250H328.6666666666667" class="v-chemical-tanker-teal" />
+  <path d="M344.6666666666667 250H370.55555555555554" class="v-chemical-tanker-teal" />
+  <path d="M386.55555555555554 250H412.44444444444446" class="v-chemical-tanker-teal" />
+  <path d="M428.44444444444446 250H454.33333333333337" class="v-chemical-tanker-teal" />
+  <path d="M470.33333333333337 250H496.22222222222223" class="v-chemical-tanker-teal" />
+  <path d="M512.2222222222222 250H538.1111111111111" class="v-chemical-tanker-teal" />
+  <path d="M554.1111111111111 250H580" class="v-chemical-tanker-teal" />
+  <path d="M205 201H599" class="v-chemical-tanker-ink" />
+  <path d="M205 208H599" class="v-chemical-tanker-ink" />
+  <path d="M205 215H599" class="v-chemical-tanker-ink" />
+  <path d="M218 224V181H228V201" class="v-chemical-tanker-fine" />
+  <ellipse cx="218" cy="221" rx="8" ry="3" class="v-chemical-tanker-shade v-chemical-tanker-ink"/>
+  <path d="M214 185H222" class="v-chemical-tanker-fine" />
+  <path d="M264 224V187H274V208" class="v-chemical-tanker-fine" />
+  <ellipse cx="264" cy="221" rx="8" ry="3" class="v-chemical-tanker-shade v-chemical-tanker-ink"/>
+  <path d="M260 191H268" class="v-chemical-tanker-fine" />
+  <path d="M310 224V181H320V215" class="v-chemical-tanker-fine" />
+  <ellipse cx="310" cy="221" rx="8" ry="3" class="v-chemical-tanker-shade v-chemical-tanker-ink"/>
+  <path d="M306 185H314" class="v-chemical-tanker-fine" />
+  <path d="M356 224V187H366V201" class="v-chemical-tanker-fine" />
+  <ellipse cx="356" cy="221" rx="8" ry="3" class="v-chemical-tanker-shade v-chemical-tanker-ink"/>
+  <path d="M352 191H360" class="v-chemical-tanker-fine" />
+  <path d="M402 224V181H412V208" class="v-chemical-tanker-fine" />
+  <ellipse cx="402" cy="221" rx="8" ry="3" class="v-chemical-tanker-shade v-chemical-tanker-ink"/>
+  <path d="M398 185H406" class="v-chemical-tanker-fine" />
+  <path d="M448 224V187H458V215" class="v-chemical-tanker-fine" />
+  <ellipse cx="448" cy="221" rx="8" ry="3" class="v-chemical-tanker-shade v-chemical-tanker-ink"/>
+  <path d="M444 191H452" class="v-chemical-tanker-fine" />
+  <path d="M494 224V181H504V201" class="v-chemical-tanker-fine" />
+  <ellipse cx="494" cy="221" rx="8" ry="3" class="v-chemical-tanker-shade v-chemical-tanker-ink"/>
+  <path d="M490 185H498" class="v-chemical-tanker-fine" />
+  <path d="M540 224V187H550V208" class="v-chemical-tanker-fine" />
+  <ellipse cx="540" cy="221" rx="8" ry="3" class="v-chemical-tanker-shade v-chemical-tanker-ink"/>
+  <path d="M536 191H544" class="v-chemical-tanker-fine" />
+  <rect x="383" y="189" width="45" height="35" rx="0" class="v-chemical-tanker-paper v-chemical-tanker-ink"/>
+  <path d="M390 190V214M387 199H393" class="v-chemical-tanker-teal" />
+  <path d="M400 190V214M397 199H403" class="v-chemical-tanker-teal" />
+  <path d="M410 190V214M407 199H413" class="v-chemical-tanker-teal" />
+  <path d="M420 190V214M417 199H423" class="v-chemical-tanker-teal" />
+  <path d="M278 133V140L272 245" class="v-chemical-tanker-fine" />
+  <circle cx="272" cy="245" r="2.3" class="v-chemical-tanker-accent"/>
+  <circle cx="278" cy="122" r="10" class="v-chemical-tanker-paper v-chemical-tanker-teal"/>
+  <text x="278" y="126" class="v-chemical-tanker-text v-chemical-tanker-number" text-anchor="middle">01</text>
+  <path d="M472 127V134L482 209" class="v-chemical-tanker-fine" />
+  <circle cx="482" cy="209" r="2.3" class="v-chemical-tanker-accent"/>
+  <circle cx="472" cy="116" r="10" class="v-chemical-tanker-paper v-chemical-tanker-teal"/>
+  <text x="472" y="120" class="v-chemical-tanker-text v-chemical-tanker-number" text-anchor="middle">02</text>
+  <path d="M597 147V154L540 221" class="v-chemical-tanker-fine" />
+  <circle cx="540" cy="221" r="2.3" class="v-chemical-tanker-accent"/>
+  <circle cx="597" cy="136" r="10" class="v-chemical-tanker-paper v-chemical-tanker-teal"/>
+  <text x="597" y="140" class="v-chemical-tanker-text v-chemical-tanker-number" text-anchor="middle">03</text>
+  <path d="M35 270Q48 266 61 270T87 270H627Q640 266 653 270T679 270" class="v-chemical-tanker-fine" />
+  <path d="M69 277H137M557 277H629" class="v-chemical-tanker-faint" />
+  <circle cx="44" cy="298" r="10" class="v-chemical-tanker-paper v-chemical-tanker-teal"/>
+  <text x="44" y="302" class="v-chemical-tanker-text v-chemical-tanker-number" text-anchor="middle">01</text>
+  <text x="62" y="303" class="v-chemical-tanker-text v-chemical-tanker-label" text-anchor="start">多舱分隔示意</text>
+  <circle cx="268" cy="298" r="10" class="v-chemical-tanker-paper v-chemical-tanker-teal"/>
+  <text x="268" y="302" class="v-chemical-tanker-text v-chemical-tanker-number" text-anchor="middle">02</text>
+  <text x="286" y="303" class="v-chemical-tanker-text v-chemical-tanker-label" text-anchor="start">分组管线</text>
+  <circle cx="492" cy="298" r="10" class="v-chemical-tanker-paper v-chemical-tanker-teal"/>
+  <text x="492" y="302" class="v-chemical-tanker-text v-chemical-tanker-number" text-anchor="middle">03</text>
+  <text x="510" y="303" class="v-chemical-tanker-text v-chemical-tanker-label" text-anchor="start">舱口与管系对应</text>
+  <text x="32" y="342" class="v-chemical-tanker-text v-chemical-tanker-tiny v-chemical-tanker-muted" text-anchor="start">教学示意 · 不按比例 · 不作作业依据</text>
+  <text x="688" y="342" class="v-chemical-tanker-text v-chemical-tanker-tiny v-chemical-tanker-muted" text-anchor="end">PORT / VESSELS</text>
+  </g>
+</svg>

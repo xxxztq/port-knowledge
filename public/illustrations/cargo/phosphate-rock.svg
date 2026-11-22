@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="c-phosphate-rock" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="c-phosphate-rock-title c-phosphate-rock-desc">
+  <title id="c-phosphate-rock-title">磷矿石：封闭仓型示例、矿料形态放大、样品与原料批次</title>
+  <desc id="c-phosphate-rock-desc">以代表性的封闭料仓、局部放大块粉状矿料、样品和原料批次记录表达磷矿石运输与工业原料管理关系。右侧货堆为形态说明插图，不表示料仓外实际漏料或露天存放；块矿、粉矿及加工形态不同，仓型不是固定要求。 原创工程科普线稿；教学示意，不按比例，不表示实际船舶总布置、工程尺寸或作业方案。</desc>
+  <defs><style>.c-phosphate-rock-paper{fill:#f7f5ef}.c-phosphate-rock-shade{fill:#e5e8df}.c-phosphate-rock-wash{fill:#edf0e9}.c-phosphate-rock-dark{fill:#526760}.c-phosphate-rock-accent{fill:#285b56}.c-phosphate-rock-ink{fill:none;stroke:#202827;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.c-phosphate-rock-fine{fill:none;stroke:#7a8580;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.c-phosphate-rock-faint{fill:none;stroke:#b9bdb5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.c-phosphate-rock-teal{fill:none;stroke:#285b56;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}.c-phosphate-rock-dash{stroke-dasharray:4 4}.c-phosphate-rock-text{font-family:'Microsoft YaHei','PingFang SC',sans-serif;fill:#202827}.c-phosphate-rock-heading{font-size:20px;font-weight:600}.c-phosphate-rock-label{font-size:14px}.c-phosphate-rock-small{font-size:12px}.c-phosphate-rock-tiny{font-size:11px}.c-phosphate-rock-muted{fill:#596360}.c-phosphate-rock-number{font-family:Arial,sans-serif;font-size:11px;font-weight:600;fill:#285b56}.c-phosphate-rock-ink.c-phosphate-rock-paper,.c-phosphate-rock-fine.c-phosphate-rock-paper,.c-phosphate-rock-teal.c-phosphate-rock-paper{fill:#f7f5ef}.c-phosphate-rock-ink.c-phosphate-rock-shade,.c-phosphate-rock-fine.c-phosphate-rock-shade{fill:#e5e8df}.c-phosphate-rock-ink.c-phosphate-rock-wash,.c-phosphate-rock-fine.c-phosphate-rock-wash{fill:#edf0e9}</style></defs>
+  <rect x="0" y="0" width="720" height="360" rx="0" class="c-phosphate-rock-paper"/>
+  <g aria-hidden="true">
+  <path d="M32 77H688M32 319H688" class="c-phosphate-rock-faint" />
+  <text x="32" y="37" class="c-phosphate-rock-text c-phosphate-rock-small c-phosphate-rock-muted" text-anchor="start">CARGO / PHOSPHATE ROCK</text>
+  <text x="32" y="63" class="c-phosphate-rock-text c-phosphate-rock-heading" text-anchor="start">磷矿石</text>
+  <text x="688" y="55" class="c-phosphate-rock-text c-phosphate-rock-small c-phosphate-rock-muted" text-anchor="end">矿料形态 · 原料批次对应</text>
+  <path d="M74 155Q74 144 108 144Q142 144 142 155V221L119 246H97L74 221Z" class="c-phosphate-rock-paper c-phosphate-rock-ink" />
+  <ellipse cx="108" cy="155" rx="34" ry="10" class="c-phosphate-rock-shade c-phosphate-rock-ink"/>
+  <path d="M74 221Q108 232 142 221M84 232V267M132 232V267M103 246V256H113V246" class="c-phosphate-rock-fine" />
+  <path d="M165 155Q165 144 199 144Q233 144 233 155V221L210 246H188L165 221Z" class="c-phosphate-rock-paper c-phosphate-rock-ink" />
+  <ellipse cx="199" cy="155" rx="34" ry="10" class="c-phosphate-rock-shade c-phosphate-rock-ink"/>
+  <path d="M165 221Q199 232 233 221M175 232V267M223 232V267M194 246V256H204V246" class="c-phosphate-rock-fine" />
+  <path d="M270 264L289.37 243L310.23 237L340.03 204L357.90999999999997 208.8L380.26 235.8L402.61 248.4L419 264Z" class="c-phosphate-rock-shade c-phosphate-rock-ink" />
+  <path d="M298.31 256.2l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M313.21000000000004 256.2l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M328.11 256.2l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M343.01 256.2l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M357.91 256.2l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M372.81 256.2l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M387.71000000000004 256.2l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M298.31 245.4l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M313.21000000000004 245.4l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M328.11 245.4l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M343.01 245.4l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M357.91 245.4l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M372.81 245.4l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M387.71000000000004 245.4l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M298.31 234.6l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M313.21000000000004 234.6l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M328.11 234.6l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M343.01 234.6l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M357.91 234.6l3 -1" class="c-phosphate-rock-fine" />
+  <path d="M372.81 234.6l3 -1" class="c-phosphate-rock-fine" />
+  <g transform="translate(286 240) scale(0.3)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-phosphate-rock-paper c-phosphate-rock-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-phosphate-rock-fine" />
+  </g>
+  <g transform="translate(303 250) scale(0.3)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-phosphate-rock-paper c-phosphate-rock-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-phosphate-rock-fine" />
+  </g>
+  <g transform="translate(320 240) scale(0.3)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-phosphate-rock-paper c-phosphate-rock-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-phosphate-rock-fine" />
+  </g>
+  <g transform="translate(337 250) scale(0.3)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-phosphate-rock-paper c-phosphate-rock-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-phosphate-rock-fine" />
+  </g>
+  <g transform="translate(354 240) scale(0.3)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-phosphate-rock-paper c-phosphate-rock-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-phosphate-rock-fine" />
+  </g>
+  <g transform="translate(371 250) scale(0.3)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-phosphate-rock-paper c-phosphate-rock-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-phosphate-rock-fine" />
+  </g>
+  <rect x="452" y="204" width="34" height="8" rx="2" class="c-phosphate-rock-shade c-phosphate-rock-ink"/>
+  <rect x="449" y="212" width="40" height="52" rx="4" class="c-phosphate-rock-paper c-phosphate-rock-ink"/>
+  <rect x="453" y="237" width="32" height="20" rx="2" class="c-phosphate-rock-shade c-phosphate-rock-fine"/>
+  <text x="469" y="231" class="c-phosphate-rock-text c-phosphate-rock-tiny" text-anchor="middle">样品</text>
+  <rect x="539" y="145" width="134" height="120" rx="4" class="c-phosphate-rock-paper c-phosphate-rock-ink"/>
+  <path d="M539 174H673" class="c-phosphate-rock-faint" />
+  <text x="551" y="165" class="c-phosphate-rock-text c-phosphate-rock-small" text-anchor="start">原料批次</text>
+  <path d="M551 192H661" class="c-phosphate-rock-fine" />
+  <path d="M551 213H661" class="c-phosphate-rock-fine" />
+  <path d="M551 234H661" class="c-phosphate-rock-fine" />
+  <text x="606" y="251" class="c-phosphate-rock-text c-phosphate-rock-tiny c-phosphate-rock-muted" text-anchor="middle">品位 / 重量</text>
+  <path d="M250 220H270M420 239H439M492 239H530" class="c-phosphate-rock-fine c-phosphate-rock-dash" />
+  <path d="M145 119V126L150 160" class="c-phosphate-rock-fine" />
+  <circle cx="150" cy="160" r="2.3" class="c-phosphate-rock-accent"/>
+  <circle cx="145" cy="108" r="10" class="c-phosphate-rock-paper c-phosphate-rock-teal"/>
+  <text x="145" y="112" class="c-phosphate-rock-text c-phosphate-rock-number" text-anchor="middle">01</text>
+  <path d="M337 134V141L340 225" class="c-phosphate-rock-fine" />
+  <circle cx="340" cy="225" r="2.3" class="c-phosphate-rock-accent"/>
+  <circle cx="337" cy="123" r="10" class="c-phosphate-rock-paper c-phosphate-rock-teal"/>
+  <text x="337" y="127" class="c-phosphate-rock-text c-phosphate-rock-number" text-anchor="middle">02</text>
+  <path d="M586 118V125L587 145" class="c-phosphate-rock-fine" />
+  <circle cx="587" cy="145" r="2.3" class="c-phosphate-rock-accent"/>
+  <circle cx="586" cy="107" r="10" class="c-phosphate-rock-paper c-phosphate-rock-teal"/>
+  <text x="586" y="111" class="c-phosphate-rock-text c-phosphate-rock-number" text-anchor="middle">03</text>
+  <path d="M40 268H679M52 275H120M589 275H665" class="c-phosphate-rock-faint" />
+  <circle cx="44" cy="298" r="10" class="c-phosphate-rock-paper c-phosphate-rock-teal"/>
+  <text x="44" y="302" class="c-phosphate-rock-text c-phosphate-rock-number" text-anchor="middle">01</text>
+  <text x="62" y="303" class="c-phosphate-rock-text c-phosphate-rock-label" text-anchor="start">封闭仓型示例</text>
+  <circle cx="268" cy="298" r="10" class="c-phosphate-rock-paper c-phosphate-rock-teal"/>
+  <text x="268" y="302" class="c-phosphate-rock-text c-phosphate-rock-number" text-anchor="middle">02</text>
+  <text x="286" y="303" class="c-phosphate-rock-text c-phosphate-rock-label" text-anchor="start">矿料形态放大</text>
+  <circle cx="492" cy="298" r="10" class="c-phosphate-rock-paper c-phosphate-rock-teal"/>
+  <text x="492" y="302" class="c-phosphate-rock-text c-phosphate-rock-number" text-anchor="middle">03</text>
+  <text x="510" y="303" class="c-phosphate-rock-text c-phosphate-rock-label" text-anchor="start">样品与原料批次</text>
+  <text x="32" y="342" class="c-phosphate-rock-text c-phosphate-rock-tiny c-phosphate-rock-muted" text-anchor="start">教学示意 · 不按比例 · 不作作业依据</text>
+  <text x="688" y="342" class="c-phosphate-rock-text c-phosphate-rock-tiny c-phosphate-rock-muted" text-anchor="end">PORT / CARGO</text>
+  </g>
+</svg>

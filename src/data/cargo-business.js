@@ -1,3 +1,5 @@
+import {oreCargoProfiles,oreCargoSources} from './cargo-ore-profiles.js';
+import {dryBulkCargoProfiles,dryBulkCargoSources} from './cargo-drybulk-profiles.js';
 import {additionalCargoProfiles,additionalCargoSources} from './cargo-bulk-profiles.js';
 // 港口货类业务教学档案；阶段为教学组织，不是全国统一法规或现场操作规程。
 // 内部链接不含站点 base；系统、单证及公司案例均按各自适用范围理解。
@@ -1864,5 +1866,5 @@ const coreCargoProfiles = [
   }
 ];
 
-export const cargoSources = [...coreCargoSources,...additionalCargoSources];
-export const cargoProfiles = [...coreCargoProfiles,...additionalCargoProfiles];
+export const cargoSources = [...coreCargoSources,...additionalCargoSources,...oreCargoSources,...dryBulkCargoSources];
+export const cargoProfiles = [...coreCargoProfiles,...additionalCargoProfiles,...oreCargoProfiles,...dryBulkCargoProfiles];

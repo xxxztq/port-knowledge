@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="c-iron-ore" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="c-iron-ore-title c-iron-ore-desc">
+  <title id="c-iron-ore-title">铁矿石：散装到港、接料与转运、矿石批次堆存</title>
+  <desc id="c-iron-ore-desc">左侧散货船内的块粉状铁矿石与卸船设备相连，中部接料斗和皮带表达转运关系，右侧矿石货堆旁有批次记录。货堆仅表达散货形态，设备与船舶不按比例，图中装卸关系不表示实际作业流程或工艺参数。 原创工程科普线稿；教学示意，不按比例，不表示实际船舶总布置、工程尺寸或作业方案。</desc>
+  <defs><style>.c-iron-ore-paper{fill:#f7f5ef}.c-iron-ore-shade{fill:#e5e8df}.c-iron-ore-wash{fill:#edf0e9}.c-iron-ore-dark{fill:#526760}.c-iron-ore-accent{fill:#285b56}.c-iron-ore-ink{fill:none;stroke:#202827;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.c-iron-ore-fine{fill:none;stroke:#7a8580;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.c-iron-ore-faint{fill:none;stroke:#b9bdb5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.c-iron-ore-teal{fill:none;stroke:#285b56;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}.c-iron-ore-dash{stroke-dasharray:4 4}.c-iron-ore-text{font-family:'Microsoft YaHei','PingFang SC',sans-serif;fill:#202827}.c-iron-ore-heading{font-size:20px;font-weight:600}.c-iron-ore-label{font-size:14px}.c-iron-ore-small{font-size:12px}.c-iron-ore-tiny{font-size:11px}.c-iron-ore-muted{fill:#596360}.c-iron-ore-number{font-family:Arial,sans-serif;font-size:11px;font-weight:600;fill:#285b56}.c-iron-ore-ink.c-iron-ore-paper,.c-iron-ore-fine.c-iron-ore-paper,.c-iron-ore-teal.c-iron-ore-paper{fill:#f7f5ef}.c-iron-ore-ink.c-iron-ore-shade,.c-iron-ore-fine.c-iron-ore-shade{fill:#e5e8df}.c-iron-ore-ink.c-iron-ore-wash,.c-iron-ore-fine.c-iron-ore-wash{fill:#edf0e9}</style></defs>
+  <rect x="0" y="0" width="720" height="360" rx="0" class="c-iron-ore-paper"/>
+  <g aria-hidden="true">
+  <path d="M32 77H688M32 319H688" class="c-iron-ore-faint" />
+  <text x="32" y="37" class="c-iron-ore-text c-iron-ore-small c-iron-ore-muted" text-anchor="start">CARGO / IRON ORE</text>
+  <text x="32" y="63" class="c-iron-ore-text c-iron-ore-heading" text-anchor="start">铁矿石</text>
+  <text x="688" y="55" class="c-iron-ore-text c-iron-ore-small c-iron-ore-muted" text-anchor="end">卸船转运 · 分批堆存</text>
+  <path d="M46 233H214L199 257H72Q55 256 46 233Z" class="c-iron-ore-shade c-iron-ore-ink" />
+  <path d="M60 239H197" class="c-iron-ore-fine" />
+  <rect x="58" y="208" width="34" height="25" rx="0" class="c-iron-ore-paper c-iron-ore-ink"/>
+  <rect x="56" y="199" width="40" height="9" rx="0" class="c-iron-ore-shade c-iron-ore-ink"/>
+  <rect x="62" y="201" width="10" height="6" rx="1" class="c-iron-ore-shade c-iron-ore-fine"/>
+  <rect x="75" y="201" width="10" height="6" rx="1" class="c-iron-ore-shade c-iron-ore-fine"/>
+  <path d="M105 232L115.14 223.6L126.06 221.2L141.66 208L151.01999999999998 209.92L162.72 220.72L174.42000000000002 225.76L183 232Z" class="c-iron-ore-shade c-iron-ore-ink" />
+  <g transform="translate(114.36 226) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(126.84 226) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(139.32 226) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(151.8 226) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(164.28 226) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(114.36 220.72) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(126.84 220.72) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(139.32 220.72) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(151.8 220.72) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(164.28 220.72) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <path d="M214 232H276V270" class="c-iron-ore-ink" />
+  <path d="M215 231V136H246V231M217 143L159 160L152 151L215 127H263V136Z" class="c-iron-ore-paper c-iron-ore-ink" />
+  <path d="M158 159V189M153 189L144 200L155 209H168L177 200L167 189M153 189H167" class="c-iron-ore-ink" />
+  <path d="M222 148L240 173L222 198L240 224M241 149L222 174L241 200" class="c-iron-ore-fine" />
+  <path d="M269 184H339L325 217H283Z" class="c-iron-ore-shade c-iron-ore-ink" />
+  <path d="M281 218V266M328 218V266" class="c-iron-ore-fine" />
+  <path d="M306 218L491 184L494 192L309 226Z" class="c-iron-ore-shade c-iron-ore-ink" />
+  <circle cx="322.9166666666667" cy="219.16666666666666" r="2" class="c-iron-ore-fine"/>
+  <circle cx="353.75" cy="213.5" r="2" class="c-iron-ore-fine"/>
+  <circle cx="384.58333333333337" cy="207.83333333333334" r="2" class="c-iron-ore-fine"/>
+  <circle cx="415.4166666666667" cy="202.16666666666666" r="2" class="c-iron-ore-fine"/>
+  <circle cx="446.25" cy="196.5" r="2" class="c-iron-ore-fine"/>
+  <circle cx="477.0833333333333" cy="190.83333333333334" r="2" class="c-iron-ore-fine"/>
+  <path d="M326 222.92V267M470 197.08V267" class="c-iron-ore-fine" />
+  <path d="M423 265L448.48 241.2L475.92 234.4L515.12 197L538.64 202.44L568.04 233.04L597.44 247.32L619 265Z" class="c-iron-ore-shade c-iron-ore-ink" />
+  <g transform="translate(446.52 248) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(477.88 248) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(509.24 248) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(540.6 248) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(571.96 248) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(446.52 233.04) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(477.88 233.04) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(509.24 233.04) scale(0.35000000000000003)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(540.6 233.04) scale(0.42000000000000004)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <g transform="translate(571.96 233.04) scale(0.28)">
+  <path d="M0 13L8 2L21 0L31 8L27 23L12 27L0 22Z" class="c-iron-ore-paper c-iron-ore-fine" />
+  <path d="M8 2L13 14L0 22M13 14L27 23M13 14L31 8" class="c-iron-ore-fine" />
+  </g>
+  <rect x="614" y="199" width="58" height="55" rx="3" class="c-iron-ore-paper c-iron-ore-ink"/>
+  <text x="643" y="220" class="c-iron-ore-text c-iron-ore-small" text-anchor="middle">批次</text>
+  <path d="M626 231H660M626 241H653" class="c-iron-ore-fine" />
+  <path d="M113 124V131L160 191" class="c-iron-ore-fine" />
+  <circle cx="160" cy="191" r="2.3" class="c-iron-ore-accent"/>
+  <circle cx="113" cy="113" r="10" class="c-iron-ore-paper c-iron-ore-teal"/>
+  <text x="113" y="117" class="c-iron-ore-text c-iron-ore-number" text-anchor="middle">01</text>
+  <path d="M365 129V136L372 206" class="c-iron-ore-fine" />
+  <circle cx="372" cy="206" r="2.3" class="c-iron-ore-accent"/>
+  <circle cx="365" cy="118" r="10" class="c-iron-ore-paper c-iron-ore-teal"/>
+  <text x="365" y="122" class="c-iron-ore-text c-iron-ore-number" text-anchor="middle">02</text>
+  <path d="M568 135V142L533 227" class="c-iron-ore-fine" />
+  <circle cx="533" cy="227" r="2.3" class="c-iron-ore-accent"/>
+  <circle cx="568" cy="124" r="10" class="c-iron-ore-paper c-iron-ore-teal"/>
+  <text x="568" y="128" class="c-iron-ore-text c-iron-ore-number" text-anchor="middle">03</text>
+  <path d="M40 268H679M52 275H120M589 275H665" class="c-iron-ore-faint" />
+  <circle cx="44" cy="298" r="10" class="c-iron-ore-paper c-iron-ore-teal"/>
+  <text x="44" y="302" class="c-iron-ore-text c-iron-ore-number" text-anchor="middle">01</text>
+  <text x="62" y="303" class="c-iron-ore-text c-iron-ore-label" text-anchor="start">散装到港</text>
+  <circle cx="268" cy="298" r="10" class="c-iron-ore-paper c-iron-ore-teal"/>
+  <text x="268" y="302" class="c-iron-ore-text c-iron-ore-number" text-anchor="middle">02</text>
+  <text x="286" y="303" class="c-iron-ore-text c-iron-ore-label" text-anchor="start">接料与转运</text>
+  <circle cx="492" cy="298" r="10" class="c-iron-ore-paper c-iron-ore-teal"/>
+  <text x="492" y="302" class="c-iron-ore-text c-iron-ore-number" text-anchor="middle">03</text>
+  <text x="510" y="303" class="c-iron-ore-text c-iron-ore-label" text-anchor="start">矿石批次堆存</text>
+  <text x="32" y="342" class="c-iron-ore-text c-iron-ore-tiny c-iron-ore-muted" text-anchor="start">教学示意 · 不按比例 · 不作作业依据</text>
+  <text x="688" y="342" class="c-iron-ore-text c-iron-ore-tiny c-iron-ore-muted" text-anchor="end">PORT / CARGO</text>
+  </g>
+</svg>

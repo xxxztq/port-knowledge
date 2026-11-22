@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="v-pctc" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="v-pctc-title v-pctc-desc">
+  <title id="v-pctc-title">汽车运输船：高大封闭船体、多层车辆甲板、车辆进出跳板</title>
+  <desc id="v-pctc-desc">以高大封闭船体和多层车辆甲板示意汽车及卡车运输船。局部剖视显示多层车库而非真实露天开口；此处层数、车辆大小与跳板位置均为示意。 原创工程科普线稿；教学示意，不按比例，不表示实际船舶总布置、工程尺寸或作业方案。</desc>
+  <defs><style>.v-pctc-paper{fill:#f7f5ef}.v-pctc-shade{fill:#e5e8df}.v-pctc-wash{fill:#edf0e9}.v-pctc-dark{fill:#526760}.v-pctc-accent{fill:#285b56}.v-pctc-ink{fill:none;stroke:#202827;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.v-pctc-fine{fill:none;stroke:#7a8580;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.v-pctc-faint{fill:none;stroke:#b9bdb5;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.v-pctc-teal{fill:none;stroke:#285b56;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}.v-pctc-dash{stroke-dasharray:4 4}.v-pctc-text{font-family:'Microsoft YaHei','PingFang SC',sans-serif;fill:#202827}.v-pctc-heading{font-size:20px;font-weight:600}.v-pctc-label{font-size:14px}.v-pctc-small{font-size:12px}.v-pctc-tiny{font-size:11px}.v-pctc-muted{fill:#596360}.v-pctc-number{font-family:Arial,sans-serif;font-size:11px;font-weight:600;fill:#285b56}.v-pctc-ink.v-pctc-paper,.v-pctc-fine.v-pctc-paper,.v-pctc-teal.v-pctc-paper{fill:#f7f5ef}.v-pctc-ink.v-pctc-shade,.v-pctc-fine.v-pctc-shade{fill:#e5e8df}.v-pctc-ink.v-pctc-wash,.v-pctc-fine.v-pctc-wash{fill:#edf0e9}</style></defs>
+  <rect x="0" y="0" width="720" height="360" rx="0" class="v-pctc-paper"/>
+  <g aria-hidden="true">
+  <path d="M32 77H688M32 319H688" class="v-pctc-faint" />
+  <text x="32" y="37" class="v-pctc-text v-pctc-small v-pctc-muted" text-anchor="start">VESSEL / PCTC</text>
+  <text x="32" y="63" class="v-pctc-text v-pctc-heading" text-anchor="start">汽车运输船</text>
+  <text x="688" y="55" class="v-pctc-text v-pctc-small v-pctc-muted" text-anchor="end">高层车库船体 · 多层车辆舱</text>
+  <path d="M82 224H647L631 246Q620 264 595 267H117Q97 265 91 250Z" class="v-pctc-shade v-pctc-ink" />
+  <path d="M96 233H629M115 254H608" class="v-pctc-fine" />
+  <path d="M119 267H594" class="v-pctc-teal" />
+  <ellipse cx="614" cy="239" rx="4" ry="3" class="v-pctc-paper v-pctc-fine"/>
+  <path d="M105 244V253M106 248H110" class="v-pctc-fine" />
+  <path d="M111 224V158Q111 146 125 146H568L612 173L625 224Z" class="v-pctc-paper v-pctc-ink" />
+  <path d="M123 160H563L601 180M122 174H582M122 189H604M122 205H615" class="v-pctc-fine" />
+  <rect x="207" y="170" width="300" height="70" rx="0" class="v-pctc-wash v-pctc-fine"/>
+  <path d="M207 204H507" class="v-pctc-fine" />
+  <g transform="translate(220 177) scale(0.7)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-pctc-paper v-pctc-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-pctc-shade v-pctc-fine" />
+  <circle cx="8" cy="22" r="4" class="v-pctc-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-pctc-dark"/>
+  </g>
+  <g transform="translate(276 177) scale(0.7)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-pctc-paper v-pctc-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-pctc-shade v-pctc-fine" />
+  <circle cx="8" cy="22" r="4" class="v-pctc-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-pctc-dark"/>
+  </g>
+  <g transform="translate(332 177) scale(0.7)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-pctc-paper v-pctc-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-pctc-shade v-pctc-fine" />
+  <circle cx="8" cy="22" r="4" class="v-pctc-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-pctc-dark"/>
+  </g>
+  <g transform="translate(388 177) scale(0.7)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-pctc-paper v-pctc-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-pctc-shade v-pctc-fine" />
+  <circle cx="8" cy="22" r="4" class="v-pctc-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-pctc-dark"/>
+  </g>
+  <g transform="translate(444 177) scale(0.7)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-pctc-paper v-pctc-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-pctc-shade v-pctc-fine" />
+  <circle cx="8" cy="22" r="4" class="v-pctc-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-pctc-dark"/>
+  </g>
+  <g transform="translate(220 211) scale(0.7)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-pctc-paper v-pctc-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-pctc-shade v-pctc-fine" />
+  <circle cx="8" cy="22" r="4" class="v-pctc-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-pctc-dark"/>
+  </g>
+  <g transform="translate(276 211) scale(0.7)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-pctc-paper v-pctc-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-pctc-shade v-pctc-fine" />
+  <circle cx="8" cy="22" r="4" class="v-pctc-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-pctc-dark"/>
+  </g>
+  <g transform="translate(332 211) scale(0.7)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-pctc-paper v-pctc-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-pctc-shade v-pctc-fine" />
+  <circle cx="8" cy="22" r="4" class="v-pctc-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-pctc-dark"/>
+  </g>
+  <g transform="translate(388 211) scale(0.7)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-pctc-paper v-pctc-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-pctc-shade v-pctc-fine" />
+  <circle cx="8" cy="22" r="4" class="v-pctc-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-pctc-dark"/>
+  </g>
+  <g transform="translate(444 211) scale(0.7)">
+  <path d="M0 12L5 5H22L30 12H36V22H0Z" class="v-pctc-paper v-pctc-ink" />
+  <path d="M8 7H20L25 12H6Z" class="v-pctc-shade v-pctc-fine" />
+  <circle cx="8" cy="22" r="4" class="v-pctc-dark"/>
+  <circle cx="28" cy="22" r="4" class="v-pctc-dark"/>
+  </g>
+  <path d="M548 143H574L602 162H548Z" class="v-pctc-shade v-pctc-ink" />
+  <rect x="555" y="150" width="10" height="6" rx="1" class="v-pctc-shade v-pctc-fine"/>
+  <rect x="570" y="150" width="10" height="6" rx="1" class="v-pctc-shade v-pctc-fine"/>
+  <rect x="160" y="134" width="37" height="12" rx="0" class="v-pctc-shade v-pctc-ink"/>
+  <path d="M113 228L50 266L58 272L121 238Z" class="v-pctc-shade v-pctc-ink" />
+  <path d="M290 122V129L320 148" class="v-pctc-fine" />
+  <circle cx="320" cy="148" r="2.3" class="v-pctc-accent"/>
+  <circle cx="290" cy="111" r="10" class="v-pctc-paper v-pctc-teal"/>
+  <text x="290" y="115" class="v-pctc-text v-pctc-number" text-anchor="middle">01</text>
+  <path d="M453 122V129L453 189" class="v-pctc-fine" />
+  <circle cx="453" cy="189" r="2.3" class="v-pctc-accent"/>
+  <circle cx="453" cy="111" r="10" class="v-pctc-paper v-pctc-teal"/>
+  <text x="453" y="115" class="v-pctc-text v-pctc-number" text-anchor="middle">02</text>
+  <path d="M71 171V178L86 250" class="v-pctc-fine" />
+  <circle cx="86" cy="250" r="2.3" class="v-pctc-accent"/>
+  <circle cx="71" cy="160" r="10" class="v-pctc-paper v-pctc-teal"/>
+  <text x="71" y="164" class="v-pctc-text v-pctc-number" text-anchor="middle">03</text>
+  <path d="M35 270Q48 266 61 270T87 270H627Q640 266 653 270T679 270" class="v-pctc-fine" />
+  <path d="M69 277H137M557 277H629" class="v-pctc-faint" />
+  <circle cx="44" cy="298" r="10" class="v-pctc-paper v-pctc-teal"/>
+  <text x="44" y="302" class="v-pctc-text v-pctc-number" text-anchor="middle">01</text>
+  <text x="62" y="303" class="v-pctc-text v-pctc-label" text-anchor="start">高大封闭船体</text>
+  <circle cx="268" cy="298" r="10" class="v-pctc-paper v-pctc-teal"/>
+  <text x="268" y="302" class="v-pctc-text v-pctc-number" text-anchor="middle">02</text>
+  <text x="286" y="303" class="v-pctc-text v-pctc-label" text-anchor="start">多层车辆甲板</text>
+  <circle cx="492" cy="298" r="10" class="v-pctc-paper v-pctc-teal"/>
+  <text x="492" y="302" class="v-pctc-text v-pctc-number" text-anchor="middle">03</text>
+  <text x="510" y="303" class="v-pctc-text v-pctc-label" text-anchor="start">车辆进出跳板</text>
+  <text x="32" y="342" class="v-pctc-text v-pctc-tiny v-pctc-muted" text-anchor="start">教学示意 · 不按比例 · 不作作业依据</text>
+  <text x="688" y="342" class="v-pctc-text v-pctc-tiny v-pctc-muted" text-anchor="end">PORT / VESSELS</text>
+  </g>
+</svg>
