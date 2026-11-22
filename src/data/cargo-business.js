@@ -1,3 +1,5 @@
+import {grainCargoProfiles,grainCargoSources} from './cargo-grain-profiles.js';
+import {liquidCargoProfiles,liquidCargoSources} from './cargo-liquid-profiles.js';
 import {oreCargoProfiles,oreCargoSources} from './cargo-ore-profiles.js';
 import {dryBulkCargoProfiles,dryBulkCargoSources} from './cargo-drybulk-profiles.js';
 import {additionalCargoProfiles,additionalCargoSources} from './cargo-bulk-profiles.js';
@@ -1866,5 +1868,5 @@ const coreCargoProfiles = [
   }
 ];
 
-export const cargoSources = [...coreCargoSources,...additionalCargoSources,...oreCargoSources,...dryBulkCargoSources];
-export const cargoProfiles = [...coreCargoProfiles,...additionalCargoProfiles,...oreCargoProfiles,...dryBulkCargoProfiles];
+export const cargoSources = [...coreCargoSources,...additionalCargoSources,...oreCargoSources,...dryBulkCargoSources,...grainCargoSources,...liquidCargoSources];
+export const cargoProfiles = [...coreCargoProfiles,...additionalCargoProfiles,...oreCargoProfiles,...dryBulkCargoProfiles,...grainCargoProfiles,...liquidCargoProfiles];

@@ -1,0 +1,96 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import { grainCargoProfiles, grainCargoSources } from '../../data/cargo-grain-profiles.js';
+import { grainLearning } from '../../data/grain-learning.js';
+import '../../styles/grains.css';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const sources = new Map(grainCargoSources.map((s, i) => [s.id, { ...s, number: String(i + 1).padStart(2, '0') }]));
+const refs = (ids: string[]) => ids.map(id => sources.get(id)).filter(Boolean);
+const titleOf = (title: string) => title.replace(/^\d+\s*·\s*/, '');
+---
+<Layout title="粮食与农产品业务" description="从大豆、玉米、小麦的一批粮出发，读懂船岸接卸、品质计量、检验检疫、分仓保管和指定去向交付。" active="cargo">
+  <div class="container grains-page">
+    <div class="breadcrumbs"><a href={base}>首页</a><Icon name="chevron" size={12}/><a href={base+'cargo/'}>箱型与货类</a><Icon name="chevron" size={12}/><span>粮食与农产品</span></div>
+    <header class="grain-hero">
+      <div class="grain-hero-copy"><span class="eyebrow">CARGO FIELD NOTES / 03 GRAINS</span><h1>一批粮的港口旅程</h1><p class="grain-deck">从船舱到工厂，<br/>让数量、品质和去向一路对得上。</p><p>认识大豆、玉米与小麦。先辨认货批，再把接卸、计量、检验检疫和库存串起来，最后看这批粮为什么可以交、应该交给谁。</p><a class="grain-primary" href="#grain-soybeans">选一批粮，开始看 <span aria-hidden="true">↗</span></a><div class="grain-meta"><span>3 类货物</span><span>每类 8 个节点</span><span>核查 2026.11.22</span></div></div>
+      <figure class="grain-hero-art"><img src={base+'illustrations/cargo/grain-terminal.svg'} alt="散粮船经卸船设施和输送线路进入粮仓，再按货批交给接收企业" width="720" height="360" fetchpriority="high"/><figcaption><span>01 / 实物移动，记录也要跟上</span><span>原创线稿 · 教学示意</span></figcaption></figure>
+    </header>
+    <nav class="grain-local-nav" aria-label="粮食专题目录"><a href="#grain-boundaries">三个条件</a><a href="#grain-compare">三类粮对照</a><a href="#grain-equipment">设备与岗位</a><a href="#grain-files">跟一批粮</a><a href="#grain-documents">单证与系统</a><a href="#grain-costs">服务与成本</a><a href="#grain-sources">依据与范围</a></nav>
+    <aside class="grain-scope"><strong>先把“粮食”说清楚</strong><p>本页选择的是<strong>进口、加工用、非繁殖用途的籽粒</strong>。粮食办法还涵盖其他粮食；这里先从三类学起。内贸、出口、种用，以及豆粕、豆油、面粉等加工制品，应另核适用要求。<a class="grain-cite" href="#grain-cn-rules-283" aria-label="查看来源01">依据 01</a></p></aside>
+
+    <section class="grain-section" id="grain-boundaries"><div class="grain-section-heading"><span class="eyebrow">01 / THREE SEPARATE CHECKS</span><h2>能不能交付，分三件事确认。</h2><p>货权与商业指令、海关监管、现场作业各有责任主体。一项确认完成，其他条件仍要核实。</p></div><div class="grain-approval-grid">{grainLearning.approvals.map((a,i)=><article><span class="grain-number">0{i+1}</span><h3>{a.title}</h3><strong>{a.question}</strong><p>{a.text}</p><small>{a.who}</small><div class="grain-reference-row">{a.sources.length?refs(a.sources).map(s=><a class="grain-cite" href={'#'+s.id}>依据 {s.number}</a>):<span>教学管理提示</span>}</div></article>)}</div>
+      <details class="grain-update"><summary><span>2026 年 11 月的企业要求，哪里容易读错？</span><span class="grain-open-hint" aria-hidden="true">展开 +</span></summary><div><p>11 月 15 日实施的第146号公告明确：拟开展进境粮食加工业务的企业先自评估，再通过公告指定的渠道提交符合性声明及材料，<strong>经海关审核通过</strong>后开展业务。提交声明本身不等于完成审核。</p><p>申请检疫许可时需明确拟运往的指定加工企业及相应证明材料；初审联系单是公告规定的可选途径，不是所有货票都先办的一张通行证。换运换装场地、运输和加工各环节还须承担防疫与记录责任。<a class="grain-cite" href="#grain-cn-enterprises-146">依据 02</a></p></div></details>
+    </section>
+
+    <section class="grain-section" id="grain-compare"><div class="grain-section-heading"><span class="eyebrow">02 / SAME CHAIN, DIFFERENT QUESTIONS</span><h2>都叫粮食，关注点各有不同。</h2><p>品质项目帮助读懂合同；这里列的是理解方向，具体检测项目与验收依据按本票要求确定。<a class="grain-cite" href="#grain-usda-quality">依据 07</a></p></div><div class="grain-compare-grid">{grainLearning.comparison.map((c,i)=><article><a class="grain-compare-link" href={'#'+c.id}><span class="grain-number">0{i+1}</span><h3>{c.name}</h3><span aria-hidden="true">↗</span></a><img src={base+'illustrations/cargo/'+c.id+'.svg'} alt={c.name+'籽粒或植株形态与分仓接卸示意'} width="720" height="360" loading="lazy"/><dl><div><dt>品质看什么</dt><dd>{c.quality}</dd></div><div><dt>可能交到哪里</dt><dd>{c.destination}</dd></div><div><dt>库存注意什么</dt><dd>{c.inventory}</dd></div></dl><a class="grain-text-link" href={'#'+c.id}>跟着这批{c.name}看 8 个节点 →</a></article>)}</div><p class="grain-small-note">去向与企业要求见 <a href="#grain-cn-enterprises-146">依据 02</a>；品质与储存概念见 <a href="#grain-usda-quality">07</a>、<a href="#grain-who-mycotoxins">08</a>、<a href="#grain-fao-storage">09</a>。并非每批都以完全相同的项目验收。</p></section>
+
+    <section class="grain-section" id="grain-equipment"><div class="grain-section-heading"><span class="eyebrow">03 / EQUIPMENT & PEOPLE</span><h2>设备连起路线，岗位守住交接。</h2><p>点击设备环节，看看它背后要交接的记录。广州港案例支持卸船、粮仓与多式联运的路线理解；下列岗位与字段为教学归纳。</p></div><div class="grain-equipment-grid">{grainLearning.equipment.map((e,i)=><details><summary><span class="grain-number">0{i+1}</span><strong>{e.name}</strong><small>{e.person}</small><span class="grain-open-hint" aria-hidden="true">展开 +</span></summary><div><p>{e.text}</p><p class="grain-prompt">{e.record}</p><div class="grain-reference-row">{refs(e.sources).map(s=><a class="grain-cite" href={'#'+s.id}>依据 {s.number}</a>)}</div></div></details>)}</div><div class="grain-routes"><div><span>主线</span><strong>散粮船 → 接卸 → 分仓 → 指定企业</strong></div><div><span>后程选择</span><strong>汽车配送 ／ 水水转运 ／ 散改集后接铁路</strong></div><p>每条路线都要核对设施、运输、监管与接收条件，实际可办路线由具体港口及责任方确认。<a class="grain-cite" href="#grain-port-container">案例 06</a></p></div></section>
+
+    <section class="grain-section" id="grain-files"><div class="grain-section-heading"><span class="eyebrow">04 / FOLLOW ONE SHIPMENT</span><h2>选一批粮，沿着八个节点走。</h2><p>这是业务关系的教学顺序。检疫许可应在签订贸易合同前按规定办理，到港前安排、查验、取样和计量也可能并行，不能照页面编号推迟办理。<a class="grain-cite" href="#grain-cn-rules-283">依据 01</a></p></div>
+      <div data-grain-explorer>
+        <nav class="grain-selector" aria-label="选择粮食档案">{grainCargoProfiles.map((p,i)=><a href={'#'+p.id} data-grain-select={p.id}><span>0{i+1}</span><strong>{p.name}</strong><small>{i===0?'油料与蛋白':i===1?'用途与状态':'类别与加工品质'}</small></a>)}</nav>
+        <p class="sr-only" data-grain-status role="status" aria-live="polite"></p>
+        {grainCargoProfiles.map(p=><article class="grain-file" id={p.id} data-grain-panel>
+          <header class="grain-file-header"><div><span class="eyebrow">CARGO FILE / {p.name}</span><h3>{p.subtitle}</h3><p>{p.summary}</p></div><img src={base+(p.visual.startsWith('/') ? p.visual.slice(1) : p.visual)} alt={p.name+'形态与接卸线稿'} width="720" height="360" loading="lazy"/></header>
+          <div class="grain-identity"><span>先认出这一批</span><p>{p.identity}</p></div>
+          <details class="grain-file-extra"><summary>先分清：形态、用途与品质</summary><div class="grain-distinction-grid">{p.distinctions.map(d=><div><h4>{d.title}</h4><p>{d.text}</p></div>)}</div><div class="grain-reference-row">{refs(['grain-cn-rules-283','grain-usda-quality',...(p.id==='grain-maize'?['grain-who-mycotoxins']:[])]).map(s=><a class="grain-cite" href={'#'+s.id}>依据 {s.number}</a>)}<span>货批与授权关系为教学归纳</span></div></details>
+          <details class="grain-file-extra"><summary>换一种运输形态，要重新核对什么？</summary><div class="grain-mode-grid">{p.modes.map(m=><div><h4>{m.name}</h4><p>{m.when}</p><p><strong>记录：</strong>{m.system}</p><p><strong>核对：</strong>{m.checks}</p></div>)}</div><div class="grain-reference-row">{refs(['grain-imo-code','grain-imo-2026','grain-port-container']).map(s=><a class="grain-cite" href={'#'+s.id}>依据 {s.number}</a>)}</div></details>
+          <ol class="grain-stages">{p.stages.map((s,i)=><li><details id={p.id+'-'+s.id} open={i===0}><summary><span class="grain-number">{String(i+1).padStart(2,'0')}</span><span><strong>{titleOf(s.title)}</strong><small>{s.actor}</small></span><span class="grain-open-hint" aria-hidden="true">展开 +</span></summary><div class="grain-stage-body"><p class="grain-stage-action">{s.action}</p><dl class="grain-stage-facts"><div><dt>系统怎样跟上</dt><dd>{s.system}</dd></div><div><dt>交出去的结果</dt><dd>{s.output}</dd></div></dl><div class="grain-stage-checks"><div><h4>带哪些记录</h4><ul>{s.records.map(r=><li>{r}</li>)}</ul></div><div><h4>接手前核对</h4><ul>{s.checks.map(c=><li>{c}</li>)}</ul></div></div><div class="grain-exception"><strong>对不上时</strong><p>{s.exception}</p></div><div class="grain-reference-row">{grainLearning.stageSources[p.id][s.id].length?refs(grainLearning.stageSources[p.id][s.id]).map(r=><a class="grain-cite" href={'#'+r.id}>依据 {r.number}</a>):<span>本站教学管理归纳；不是统一计价或索赔规则。</span>}</div>{grainLearning.stageSources[p.id][s.id].length>0&&<p class="grain-small-note">来源支持本节点的货物、监管或设备事实；岗位、字段与流程组织为教学归纳。</p>}<a class="grain-stage-permalink" href={'#'+p.id+'-'+s.id} aria-label={'定位'+p.name+titleOf(s.title)}>定位这一节点 ↗</a></div></details></li>)}</ol>
+          <details class="grain-file-extra"><summary>交接清单：谁交给谁，具体交什么？</summary><div class="grain-handoffs">{p.handoffs.map(h=><article><h4>{h.from} → {h.to}</h4><p><strong>记录：</strong>{h.record}</p><p><strong>核对：</strong>{h.check}</p></article>)}</div><div class="grain-reference-row"><a class="grain-cite" href="#grain-cn-rules-283">依据 01</a><a class="grain-cite" href="#grain-cn-enterprises-146">依据 02</a><span>岗位划分为教学归纳</span></div></details>
+          <details class="grain-file-extra"><summary>出库前再核对四件事</summary><div class="grain-distinction-grid">{p.gateChecks.map(g=><div><h4>{g.label}</h4><p>{g.text}</p></div>)}</div><div class="grain-reference-row"><a class="grain-cite" href="#grain-cn-enterprises-146">依据 02</a><span>商业授权、任务及载体核对为教学提示</span></div></details>
+          <details class="grain-file-extra"><summary>流程停住了：异常交给哪位责任人？</summary><div class="grain-handoffs">{p.exceptions.map(e=><article><h4>{e.symptom}</h4><small>{e.owner}</small><p>{e.response}</p></article>)}</div><div class="grain-reference-row">{refs(['grain-cn-enterprises-146','grain-fao-storage','grain-niosh-controls']).map(s=><a class="grain-cite" href={'#'+s.id}>依据 {s.number}</a>)}<span>响应衔接为教学归纳</span></div></details>
+          <p class="grain-small-note">{p.limits}</p>
+        </article>)}
+        <noscript><p class="grain-scope">脚本未启用，三篇粮食档案均可按顺序阅读；各节点仍可点击展开。</p></noscript>
+      </div>
+    </section>
+
+    <section class="grain-section" id="grain-documents"><div class="grain-section-heading"><span class="eyebrow">05 / FOLLOW THE RECORDS</span><h2>一条实物流，背后有几种不同的记录。</h2><p>同一个货批号把记录连起来。各系统能交换哪些字段、由谁录入和审核，以实际口岸与企业部署为准。</p></div><div class="grain-documents">{grainLearning.documents.map((d,i)=><article><span class="grain-number">0{i+1}</span><div><h3>{d.name}</h3><p>{d.role}</p><p class="grain-small-note">{d.boundary}</p><div class="grain-reference-row">{d.sources.length?refs(d.sources).map(s=><a class="grain-cite" href={'#'+s.id}>依据 {s.number}</a>):<span>教学管理提示</span>}</div></div></article>)}</div></section>
+
+    <section class="grain-section" id="grain-costs"><div class="grain-section-heading"><span class="eyebrow">06 / SERVICES & COSTS</span><h2>港口收的是哪些服务的钱？</h2><p>这是一张教学服务清单。计费项目、单位、免费期和付费责任按合同与适用规则核对；粮价、税费、承运运费与港口服务费分别看。</p></div><div class="grain-cost-grid">{grainCargoProfiles[0].economics.map((e,i)=><article><span class="grain-number">0{i+1}</span><h3>{e.service}</h3><small>{e.unit}</small><p>{e.cost}</p><p class="grain-small-note">{e.boundary}</p></article>)}</div><div class="grain-cost-note"><strong>吞吐量 ≠ 收入 ≠ 利润</strong><p>完成的服务形成收入，同时消耗人工、能源、设备与仓容。上表为管理解释，不给固定费率、税率、损耗比例或异常赔付结论。</p></div></section>
+
+    <section class="grain-section grain-source-section" id="grain-sources"><div class="grain-section-heading"><span class="eyebrow">07 / EVIDENCE & SCOPE</span><h2>哪些是规则，哪些是案例？</h2><p>核查日期：2026 年 11 月 22 日。每项来源都标明支持范围；页面与流程中的编号可回到对应资料。准入名单、具体企业审核状态、双边检疫要求及本票许可须另核。</p></div><div class="grain-source-note"><p><strong>时效核对：</strong>粮食办法使用第283号令附件3的修订全文，修改自2026年11月1日施行；企业环节结合11月15日实施的第146号公告；海运规则核对2026年1月1日生效的Grain Code补充修订。</p><p><strong>教学边界：</strong>设备路线来自明确标注的港口案例；岗位、系统字段、费用与八阶段组织为本站归纳。国外品质与安全资料只解释概念，不代替中国适用规则，不提供危险作业参数或熏蒸操作。</p></div><ol class="grain-sources">{grainCargoSources.map((s,i)=><li id={s.id}><span class="grain-number">{String(i+1).padStart(2,'0')}</span><div><h3><a href={s.url} target="_blank" rel="noopener noreferrer">{s.title} ↗</a></h3><small>{s.org} · 核查 {s.checked}</small><p>{s.scope}</p><a class="grain-source-url" href={s.url} target="_blank" rel="noopener noreferrer">{s.url}</a></div></li>)}</ol></section>
+    <nav class="grain-next" aria-label="继续阅读"><a href={base+'cargo/'}>← 箱型与货类全景</a><a href={base+'vessels/bulk-carrier/'}>认识散货船 ↗</a><a href={base+'systems/'}>港口系统怎样协作 ↗</a><a href={base+'economics/'}>继续读港口经营 ↗</a></nav>
+  </div>
+  <script>
+    const explorer = document.querySelector<HTMLElement>('[data-grain-explorer]');
+    if (explorer) {
+      const panels = [...explorer.querySelectorAll<HTMLElement>('[data-grain-panel]')];
+      const links = [...explorer.querySelectorAll<HTMLAnchorElement>('[data-grain-select]')];
+      const status = explorer.querySelector<HTMLElement>('[data-grain-status]');
+      function selectGrain(id: string) {
+        if (!panels.some(panel => panel.id === id)) return;
+        panels.forEach(panel => { panel.hidden = panel.id !== id; });
+        links.forEach(link => { if (link.dataset.grainSelect === id) link.setAttribute('aria-current','true'); else link.removeAttribute('aria-current'); });
+        const label = links.find(link => link.dataset.grainSelect === id)?.querySelector('strong')?.textContent;
+        if (status) status.textContent = '正在查看'+label+'的八阶段业务档案';
+      }
+      function syncHash(scroll = false) {
+        let id = ''; try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+        const panel = panels.find(panel => panel.id === id || id.startsWith(panel.id+'-'));
+        if (panel) {
+          selectGrain(panel.id);
+          const target = document.getElementById(id);
+          if (target instanceof HTMLDetailsElement) target.open = true;
+          if (scroll) requestAnimationFrame(() => target?.scrollIntoView({block:'start'}));
+        } else if (!id) selectGrain(panels[0].id);
+      }
+      selectGrain(panels[0].id);
+      syncHash(Boolean(location.hash));
+      document.querySelectorAll<HTMLAnchorElement>('a[href^="#grain-"]').forEach(link => {
+        link.addEventListener('click', event => {
+          if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          const id = link.hash.slice(1);
+          const panel = panels.find(panel => panel.id === id || id.startsWith(panel.id+'-'));
+          if (!panel) return;
+          event.preventDefault();
+          if (location.hash !== '#'+id) history.pushState(null,'','#'+id);
+          syncHash(true);
+        });
+      });
+      window.addEventListener('hashchange', () => syncHash(true));
+      window.addEventListener('popstate', () => syncHash(true));
+    }
+  </script>
+</Layout>

@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { coverageDimensions, coverageGroups, knowledgeCoverage, learningPaths, rolePaths } from '../data/knowledge-coverage.js';
+import '../styles/knowledge-map.css';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const href = (path: string) => base + path;
+const count = (id: string) => knowledgeCoverage.filter((domain) => domain.coverage[id].links.length).length;
+const needsDepth = knowledgeCoverage.filter((domain) => domain.gaps.length).length;
+const practiceCount = knowledgeCoverage.filter((domain) => domain.interactionKind === 'exercise').length;
+const interactionNames = { diagram: '节点图解', walkthrough: '步骤导览', exercise: '操作 / 判断' };
+const views = [
+  { id: 'all', title: '全部主题', count: knowledgeCoverage.length },
+  { id: 'interactive', title: '查看有交互', count: count('interactive') },
+  { id: 'practice', title: '操作 / 判断', count: practiceCount },
+  { id: 'deepen', title: '需要深化', count: needsDepth },
+];
+---
+<Layout title="知识覆盖地图与学习路线" description="按九大类浏览二十四个知识域，分别查看基础介绍、业务流程、交互演示和异常案例的已有入口与待深化项，并选择适合自己的学习路线。" active="library">
+  <div class="km-page" data-knowledge-map>
+    <div class="km-wrap">
+      <div class="km-breadcrumb"><a href={base}>首页</a><span aria-hidden="true">/</span><span>知识覆盖地图</span></div>
+      <header class="km-hero">
+        <div class="km-hero-copy">
+          <p class="km-kicker">PORT KNOWLEDGE / 学习导航</p>
+          <h1>把港口知识，<br /><em>连成自己的路线。</em></h1>
+          <p class="km-lead">先看已有的入口，再选下一步。用四个独立维度，读懂这份手册讲到了哪里、还可以往哪里深入。</p>
+          <div class="km-hero-actions"><a class="km-primary" href="#coverage-map">打开覆盖地图 <span aria-hidden="true">↓</span></a><a class="km-text-link" href="#learning-paths">选择学习路线 <span aria-hidden="true">↗</span></a></div>
+          <p class="km-scope">{knowledgeCoverage.length} 个既有知识域 · {coverageGroups.length} 大类 · 有入口不等于知识完备</p>
+        </div>
+        <figure class="km-harbor">
+          <div class="km-drawing-caption"><span>从船到岸，从事到人</span><span aria-hidden="true">FIG. 01</span></div>
+          <svg viewBox="0 0 560 300" fill="none" role="img" aria-label="船舶、岸桥、堆场和车辆以虚线相连的港口线稿">
+            <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 220H539M22 251c17 8 27-8 44 0s27-8 44 0 27-8 44 0 27-8 44 0 27-8 44 0M35 267c17 8 27-8 44 0s27-8 44 0 27-8 44 0 27-8 44 0" />
+              <path d="M32 190h166l-19 30H54zM49 190v-37h22v37M54 153v-16h11v16M59 137v-15M77 172h31v18H77zM110 172h31v18h-31zM143 172h31v18h-31zM110 153h31v19h-31z" />
+              <path d="M222 220V73h16v147M203 220l26-91 28 91M145 73h158v-9H145zM160 64l70-39 69 39M230 25v39M230 73l70 54M278 73v68M269 141h19M264 144h29v20h-29zM237 220h305M317 220v-51l63-29 63 29v51M327 177h106M330 187h26v33M370 187h26v33M410 187h24v33M451 204h59v16h-59zM474 204v-21h-23v21M478 190h23l11 14M461 211h13M492 211h9" />
+              <path d="M86 98H348v25M368 114h131v48" stroke-dasharray="4 7" />
+              <circle cx="86" cy="98" r="4" fill="currentColor"/><circle cx="348" cy="123" r="4" fill="currentColor"/><circle cx="499" cy="162" r="4" fill="currentColor"/>
+              <path d="M108 89l9 9-9 9M478 105l9 9-9 9M298 256h76m-12-7 12 7-12 7" />
+              <circle cx="459" cy="224" r="5" fill="#fbf8f1"/><circle cx="502" cy="224" r="5" fill="#fbf8f1"/>
+            </g>
+            <g fill="currentColor" font-family="system-ui, sans-serif" font-size="13"><text x="51" y="114">船</text><text x="212" y="244">岸</text><text x="367" y="242">场</text><text x="479" y="249">车</text></g>
+          </svg>
+          <figcaption><span>基础 → 流程 → 交互 → 异常</span><small>四个观察角度，不是完成度评分</small></figcaption>
+        </figure>
+      </header>
+
+      <section class="km-learning" id="learning-paths" aria-labelledby="km-learning-title">
+        <div class="km-section-head"><div><p class="km-kicker">START SOMEWHERE / 从这里出发</p><h2 id="km-learning-title">三条路线，选一个起点。</h2></div><p>按顺序读，也可以回到地图自由探索。</p></div>
+        <div class="km-path-grid">
+          {learningPaths.map((route) => (
+            <article class="km-path" id={'route-' + route.id}>
+              <span class="km-route-number" aria-hidden="true">{route.number}</span>
+              <h3>{route.title}</h3><p class="km-route-purpose">{route.purpose}</p>
+              <details class="km-route-details">
+                <summary>{route.id === 'by-role' ? '选择岗位，展开路线' : `展开 ${route.steps.length} 步路线`}<span aria-hidden="true">＋</span></summary>
+                {route.id === 'by-role' ? (
+                  <div>
+                    <div class="km-role-picker" data-km-role-picker hidden><label for="km-role">选择你的岗位</label><select id="km-role" aria-controls="km-role-guides">{rolePaths.map((role) => <option value={role.id}>{role.title}</option>)}</select></div>
+                    <div id="km-role-guides">{rolePaths.map((role, index) => <details class="km-role-guide" data-km-role={role.id} open={index === 0}><summary>{role.title} · 4 步</summary><ol class="km-steps">{role.steps.map((item, i) => <li><span aria-hidden="true">{String(i + 1).padStart(2, '0')}</span><div><a href={href(item.path)}>{item.title}<span aria-hidden="true"> ↗</span></a><p>{item.purpose}</p></div></li>)}</ol></details>)}</div>
+                  </div>
+                ) : <ol class="km-steps">{route.steps.map((item, i) => <li><span aria-hidden="true">{String(i + 1).padStart(2, '0')}</span><div><a href={href(item.path)}>{item.title}<span aria-hidden="true"> ↗</span></a><p>{item.purpose}</p></div></li>)}</ol>}
+                <p class="km-route-outcome"><strong>读完试着说：</strong>{route.outcome}</p>
+              </details>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="km-map" id="coverage-map" aria-labelledby="km-map-title">
+        <div class="km-section-head"><div><p class="km-kicker">KNOWLEDGE ATLAS / 已有与待深化</p><h2 id="km-map-title">一张地图，四种覆盖。</h2></div><a class="km-text-link" href="#km-method">怎样判断覆盖 <span aria-hidden="true">↓</span></a></div>
+        <div class="km-legend" aria-label="覆盖维度说明">
+          {coverageDimensions.map((dimension) => <div><span class="km-dimension-number">{dimension.symbol}</span><div><strong>{dimension.title}</strong><p>{dimension.explanation}</p></div></div>)}
+        </div>
+        <p class="km-map-note"><span class="km-status-mark" aria-hidden="true">↗</span> 有入口：点击对应内容 <span class="km-pending-mark" aria-hidden="true">○</span> 待深化：暂未列出该维度的专门内容。概览关系图也属于交互；可用“操作 / 判断”筛选进一步练习。</p>
+
+        <form class="km-controls" data-km-controls role="search" aria-label="筛选知识覆盖地图" hidden>
+          <div class="km-search-row"><div class="km-search-field"><label for="km-search">按主题搜索</label><div><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></svg><input id="km-search" name="q" type="search" maxlength="100" placeholder="试试：大豆、LNG、闸口、计量…" autocomplete="off" aria-describedby="km-filter-help" /></div></div><div class="km-group-select"><label for="km-group">知识大类</label><select id="km-group" name="group"><option value="all">全部 {coverageGroups.length} 大类</option>{coverageGroups.map((group) => <option value={group.id}>{group.title}</option>)}</select></div><button class="km-reset" type="reset">重置筛选</button></div>
+          <fieldset class="km-views"><legend class="km-sr-only">按覆盖情况筛选</legend>{views.map((view, i) => <label><input type="radio" name="view" value={view.id} checked={i === 0}/><span>{view.title}<small>{view.count}</small></span></label>)}</fieldset>
+          <p id="km-filter-help">搜索、大类和覆盖条件共同生效。“需要深化”表示至少一个维度待深化；所有数字都是知识域数量。</p>
+        </form>
+        <noscript><p class="km-noscript">当前显示全部知识域。搜索和筛选需启用 JavaScript；目录、内容链接和展开详情仍可使用。</p></noscript>
+        <div class="km-map-layout">
+          <nav class="km-index" aria-label="知识大类目录"><p class="km-kicker">地图目录</p>{coverageGroups.map((group, index) => <a href={'#group-' + group.id} data-km-index={group.id}><span class="km-index-number">{String(index + 1).padStart(2, '0')}</span><span>{group.title}</span><small>{group.domains.length}</small></a>)}<a class="km-index-top" href="#learning-paths">↑ 回到学习路线</a></nav>
+          <div class="km-results">
+            <p class="km-result-status" id="km-results-status" role="status" aria-live="polite" aria-atomic="true">显示 {knowledgeCoverage.length} 个知识域 / {coverageGroups.length} 大类</p>
+            <div class="km-empty" data-km-empty hidden><span aria-hidden="true">⌕</span><h3>暂时没有匹配的主题</h3><p>试试更短的词，或放宽大类与覆盖条件。</p><button type="button" data-km-clear>清除筛选，查看全部</button></div>
+            {coverageGroups.map((group, index) => <section class="km-group" id={'group-' + group.id} data-km-group={group.id} aria-labelledby={'group-title-' + group.id}>
+              <header class="km-group-heading"><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><div><h3 id={'group-title-' + group.id}>{group.title}</h3><p>{group.hint}</p></div><small data-km-group-count>{group.domains.length} 个域</small></header>
+              <div class="km-domain-grid">{knowledgeCoverage.filter((domain) => domain.groupId === group.id).map((domain) => <article class="km-domain" id={domain.id} data-km-domain data-km-search={domain.searchText} data-km-group-id={domain.groupId} data-km-interactive={String(domain.coverage.interactive.links.length > 0)} data-km-practice={String(domain.interactionKind === 'exercise')} data-km-deepen={String(domain.gaps.length > 0)}>
+                <div class="km-domain-meta"><span>{domain.id.toUpperCase()}</span><span>{domain.gaps.length ? '有待深化维度' : '四维均有入口'}</span></div>
+                <h4>{domain.title}</h4><p class="km-domain-summary">{domain.summary}</p>
+                <dl class="km-coverage-grid">{coverageDimensions.map((dimension) => {
+                  const item = domain.coverage[dimension.id];
+                  return <div class:list={['km-coverage-cell', { 'km-is-pending': !item.links.length }]}>
+                    <dt>{dimension.title}{dimension.id === 'interactive' && <small>{interactionNames[domain.interactionKind]}</small>}</dt>
+                    <dd>{item.links.length ? item.links.map((entry) => <a href={href(entry.path)} aria-label={`${domain.title} · ${dimension.title}：${entry.label}`}>{entry.label}<span aria-hidden="true">↗</span></a>) : <span class="km-pending"><span aria-hidden="true">○</span> 待深化</span>}</dd>
+                  </div>;
+                })}</dl>
+                <details class="km-domain-details"><summary>覆盖依据与继续深入<span aria-hidden="true">＋</span></summary>
+                  <dl class="km-evidence">{coverageDimensions.map((dimension) => <div><dt>{dimension.title}</dt><dd>{domain.coverage[dimension.id].note}</dd></div>)}</dl>
+                  <p class="km-next"><strong>继续深入</strong>{domain.next}</p>
+                  {domain.topics.length > 0 && <div class="km-related"><strong>本领域专题</strong><div>{domain.topics.map((topic) => <a href={href(topic.path)}>{topic.label}<span aria-hidden="true"> ↗</span></a>)}</div></div>}
+                </details>
+              </article>)}</div>
+            </section>)}
+          </div>
+        </div>
+      </section>
+
+      <section class="km-method" id="km-method" aria-labelledby="km-method-title"><div><p class="km-kicker">READ THE MAP / 阅读这张地图</p><h2 id="km-method-title">记录入口，保留边界。</h2><p>四个维度独立判断。一个领域即使四维均有入口，也只代表这里链接的内容已经存在，不代表所有货类、地区与实务问题均已覆盖。</p></div><div><ul><li><strong>尊重现有概览。</strong>24 个领域的基础介绍都来自既有知识卡；粮食归入干散货，油品、化学品、LNG 与 LPG 归入液体散货与气体业务。</li><li><strong>以实际内容为依据。</strong>业务流程对应步骤或交接链；交互注明图解、导览或操作类型；异常案例对应具体变化与处理，不拿常见误区充数。</li><li><strong>不作完成度评分。</strong>“待深化”描述尚未列出的专门内容；本图不提供来源核查日期，也不作专业审定声明。</li></ul><a class="km-text-link" href={href('about/')}>查看手册的来源与适用范围 <span aria-hidden="true">↗</span></a></div></section>
+      <div class="km-end"><span>从一个问题出发，沿着交接继续走。</span><a href="#coverage-map">回到地图 ↑</a></div>
+    </div>
+  </div>
+</Layout>
+<script>
+  import '../scripts/knowledge-map';
+</script>

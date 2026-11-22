@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {liquidCargoProfiles, liquidCargoSources} from '../../data/cargo-liquid-profiles.js';
+import {liquidLearning, liquidComparison} from '../../data/liquid-learning.js';
+import '../../styles/liquids.css';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const href = (path:string) => base + path.replace(/^\//, '');
+const title = (text:string) => text.replace(/^\d+\s*[·.｜|、：:]\s*/, '');
+const sources = (ids:string[]) => liquidCargoSources.filter(source => ids.includes(source.id));
+---
+<Layout title="液体货类业务" description="分清原油与成品油、散装液体化工品、LNG和LPG，沿船岸接口、管线、罐区、计量与交付看完整业务。" active="cargo">
+  <div class="container liquid-page">
+    <nav class="liquid-breadcrumb" aria-label="面包屑"><a href={base}>首页</a><span>/</span><a href={href('cargo/')}>箱型与货类</a><span>/</span><span>液体货类</span></nav>
+    <header class="liquid-hero">
+      <div><span class="eyebrow">CARGO ATLAS / LIQUID BULK</span><h1>看不见的流动，<br/><em>有据可查的交接。</em></h1><p class="liquid-intro">货在船舱、管线与罐区之间流动，业务始终要回答：这是谁的哪一批、去哪里、按什么计量、现在能否交付。</p><div class="liquid-hero-actions"><a class="button primary" href="#liquid-explorer">沿一票货走一遍 <span aria-hidden="true">↓</span></a><a class="text-link" href="#liquid-files">阅读四类完整档案 →</a></div><p class="liquid-meta">4 类货物 <span>／</span> 32 个业务阶段 <span>／</span> 核查 2026.11.22</p></div>
+      <figure class="liquid-hero-art"><span class="liquid-art-label">船 · 管 · 罐 · 交接点</span><img src={href('illustrations/cargo/liquid-lng.svg')} alt="LNG船、船岸接口、低温储存和再气化入网关系线稿" width="720" height="360"/><figcaption><strong>液体货的出口，不只有一道闸。</strong><span>管线、气网、槽车与再装船，分别对应不同交付对象。</span></figcaption></figure>
+    </header>
+    <nav class="liquid-section-nav" aria-label="本页目录"><a href="#liquid-differences">先分清</a><a href="#liquid-explorer">路线与对象</a><a href="#liquid-conditions">交付条件</a><a href="#liquid-files">完整档案</a><a href="#liquid-sources">来源与范围</a></nav>
+
+    <section class="liquid-section" id="liquid-differences">
+      <div class="liquid-heading"><div><span class="eyebrow">01 / FOUR DIFFERENT CARGOES</span><h2>液态，是外观；接收条件，要看具体货物。</h2></div><p>以下为教学分类。具体条目、船舶证书、货物资料和设施接收范围需要共同核对。</p></div>
+      <div class="liquid-atlas">{liquidCargoProfiles.map(p => <a class="liquid-cargo-card" href={'#file-'+p.id}><img src={href(p.visual)} alt={p.name+'船管罐业务原创线稿'} width="720" height="360" loading="lazy"/><div><span class="eyebrow">{liquidLearning[p.id].code}</span><h3>{p.name}<span aria-hidden="true">↗</span></h3><p>{liquidLearning[p.id].question}</p><small>8 阶段 · 身份、岗位、单证、计量与费用</small></div></a>)}</div>
+      <div class="liquid-table-wrap" role="region" aria-label="四类货物比较" tabindex="0"><table class="liquid-comparison"><caption>同样是液态，业务身份与交付边界并不相同</caption><thead><tr>{['货类','先认什么','接收设施','计量与品质','可能的交付路径'].map(x=><th scope="col">{x}</th>)}</tr></thead><tbody>{liquidComparison.map(row=><tr>{row.map((cell,index)=>index===0?<th scope="row">{cell}</th>:<td>{cell}</td>)}</tr>)}</tbody></table></div>
+      <div class="liquid-notes"><article><span>运输形态</span><h3>散装船 ≠ 罐箱 ≠ 道路槽车</h3><p>船舶货舱、可移动罐箱和道路车罐分别建对象。危险品罐箱海运按适用包装运输体系核对，不能套用散装船认可。</p><a href="#liquid-imo-imdg">查看 IMO 支持范围 →</a></article><article><span>规则边界</span><h3>IBC、IGC与MARPOL各有适用范围</h3><p>散装液体化工品与液化气分别审核；石油类和散装有毒液体的防污染要求也须落实到具体货物。产品名与用途不能代替专业判断。</p><a href="#liquid-sources">查看规则及补编 →</a></article><article><span>设施边界</span><h3>一张路线图，不代表每港都有</h3><p>船岸接口、罐型、管线、再气化、装车和罐箱服务按真实站点核实。企业复合码头案例不意味着各产品共罐共管。</p><a href="#liquid-vopak-banyan">查看运营商案例范围 →</a></article></div>
+    </section>
+
+    <section class="liquid-section" id="liquid-explorer" data-liquid-explorer>
+      <div class="liquid-heading"><div><span class="eyebrow">02 / FOLLOW THE OBJECTS</span><h2>选一类货，再选它的交付方向。</h2></div><p>点击船、管、罐或计量节点，看实物背后需要哪些记录。连线表达业务关系，不表示设备操作顺序。</p></div>
+      <nav class="liquid-selector" aria-label="选择液体货类">{liquidCargoProfiles.map(p=><a href={'#explore-'+p.id} data-liquid-choice={p.id}>{liquidLearning[p.id].short}</a>)}</nav>
+      <p class="sr-only" role="status" aria-live="polite" data-liquid-status></p>
+      {liquidCargoProfiles.map(p=>{const lesson=liquidLearning[p.id];return <article class="liquid-explore-panel" id={'explore-'+p.id} data-liquid-profile={p.id}>
+        <header><div><span class="eyebrow">{lesson.code}</span><h3>{lesson.short}：船管罐关系</h3></div><a href={'#file-'+p.id}>读完整 8 阶段 →</a></header>
+        <div class="liquid-explore-body"><figure><img src={href(p.visual)} alt={p.name+'船管罐概念关系，使用下方节点查看业务记录'} width="720" height="360" loading="lazy"/><figcaption>原创线稿 · 不按比例 · 不含阀位、温压或现场操作指令</figcaption></figure><div class="liquid-identity"><span class="eyebrow">ONE SHIPMENT / 多种身份</span><h4>货批不是罐号，<br/>权益不是库存读数。</h4><p>{p.identity}</p></div></div>
+        <nav class="liquid-object-line" aria-label={p.name+'的业务对象'}>{lesson.nodes.map((node,index)=><a href={'#node-'+p.id+'-'+node.id} data-liquid-node={node.id}><span>{String(index+1).padStart(2,'0')}</span><strong>{node.label}</strong></a>)}<a href={'#routes-'+p.id} data-liquid-node="delivery"><span>05</span><strong>选择交付方向</strong></a></nav>
+        <div class="liquid-object-details">{lesson.nodes.map(node=><section class="liquid-node-detail" id={'node-'+p.id+'-'+node.id} data-liquid-node-panel={node.id}><div><span class="eyebrow">{node.role}</span><h4>{node.label}</h4><p>{node.text}</p></div><dl><div><dt>记录串起来</dt><dd>{node.record}</dd></div><div><dt>要核对的边界</dt><dd>{node.check}</dd></div></dl></section>)}</div>
+        <section class="liquid-routes" id={'routes-'+p.id}><span class="eyebrow">DELIVERY / 交付方向</span><nav class="liquid-route-selector" aria-label={p.name+'交付路线'}>{lesson.routes.map(r=><a href={'#route-'+p.id+'-'+r.id} data-liquid-route={r.id}>{r.label}</a>)}</nav>{lesson.routes.map(r=><article class="liquid-route-panel" id={'route-'+p.id+'-'+r.id} data-liquid-route-panel={r.id}><div><span class="liquid-route-tag">船舶 → 接收系统 → 适用储存 →</span><h4>{r.end}</h4><p>{r.text}</p></div><dl><div><dt>交付记录</dt><dd>{r.record}</dd></div><div><dt>执行前核验</dt><dd>{r.check}</dd></div></dl><p class="liquid-case"><strong>来源与边界</strong>{r.case}<span>{sources(r.sources).map(s=><a href={'#'+s.id}>{s.org}资料 ↗</a>)}</span></p></article>)}</section>
+      </article>})}
+      <noscript><p class="liquid-boundary">当前未启用 JavaScript，四类货物及全部路线已按顺序展开，仍可通过目录和页内链接阅读。</p></noscript>
+    </section>
+
+    <section class="liquid-section" id="liquid-conditions"><div class="liquid-heading"><div><span class="eyebrow">03 / READY TO DELIVER?</span><h2>“能交货”，需要几种确认同时成立。</h2></div><p>三类条件是教学检查框架，不是穷尽性许可清单。交付点可以在管线或气网，也可以在装车位或船岸接口。</p></div><div class="liquid-conditions"><article><span>01</span><h3>商业授权</h3><p>谁能下达指令？交给谁、哪一批、多少？查货主权益、有效指令和剩余额度。</p><small>提单、缴费和预约不能单独替代授权。</small></article><article><span>02</span><h3>监管条件</h3><p>当前进境、储存、转运或交付行为的适用条件是否满足？查有效状态与限制范围。</p><small>上一阶段获准，不自动覆盖下一阶段。</small></article><article><span>03</span><h3>现场可执行</h3><p>船岸、设备、人员、品质与接收能力是否符合本次任务？由专业责任人确认。</p><small>系统生成任务，不等于现场已经具备条件。</small></article></div><div class="liquid-boundary"><strong>遇到差异，先保留事实与受限范围。</strong><p>数量差异先核计量时间、边界和基准，品质差异先核样品和代表批次，身份差异先核指令与对象。现场异常交由责任人按批准方案控制并报告；本页只解释谁负责、留什么证据与怎样闭环。</p></div></section>
+
+    <section class="liquid-section" id="liquid-files"><div class="liquid-heading"><div><span class="eyebrow">04 / COMPLETE BUSINESS FILES</span><h2>从接收委托，到服务结算。</h2></div><p>各档案直接在本页展开。节点是职责与单证的教学组织，可以并行或返工，不能作为现场操作程序。</p></div>
+      {liquidCargoProfiles.map(p=><details class="liquid-file" id={'file-'+p.id}><summary><div><span class="eyebrow">{p.category}</span><h3>{p.name}</h3><p>{p.subtitle}</p></div><span class="liquid-file-count">8 阶段 <span aria-hidden="true">＋</span></span></summary><div class="liquid-file-body"><p class="liquid-file-summary">{p.summary}</p><p><strong>对象身份：</strong>{p.identity}</p><h4>先分清</h4><div class="liquid-file-differences">{p.distinctions.map(d=><article><h5>{d.title}</h5><p>{d.text}</p></article>)}</div><h4>运输方式与系统</h4><div class="liquid-file-modes">{p.modes.map(m=><article><h5>{m.name}</h5><p>{m.when}</p><dl><div><dt>系统记录</dt><dd>{m.system}</dd></div><div><dt>核对重点</dt><dd>{m.checks}</dd></div></dl></article>)}</div><h4>八个业务阶段</h4><div class="liquid-stage-list">{p.stages.map((s,index)=><details class="liquid-stage"><summary><span>{String(index+1).padStart(2,'0')}</span><h5>{title(s.title)}</h5><span aria-hidden="true">＋</span></summary><div><p>{s.action}</p><dl class="liquid-stage-facts"><div><dt>岗位与责任</dt><dd>{s.actor}</dd></div><div><dt>系统怎样跟上</dt><dd>{s.system}</dd></div><div><dt>交出去的结果</dt><dd>{s.output}</dd></div></dl><div class="liquid-stage-lists"><section><h6>留下哪些单证与记录</h6><ul>{s.records.map(r=><li>{r}</li>)}</ul></section><section><h6>核对哪些条件</h6><ul>{s.checks.map(c=><li>{c}</li>)}</ul></section></div><p class="liquid-stage-exception"><strong>出现差异</strong>{s.exception}</p></div></details>)}</div><h4>谁交给谁</h4><div class="liquid-handoffs">{p.handoffs.map(h=><article><h5>{h.from} → {h.to}</h5><p>{h.record}</p><small>{h.check}</small></article>)}</div><h4>交付点校验</h4><div class="liquid-file-differences">{p.gateChecks.map(c=><article><h5>{c.label}</h5><p>{c.text}</p></article>)}</div><h4>收入、成本与收费边界</h4><div class="liquid-table-wrap" role="region" aria-label={p.name+'费用比较'} tabindex="0"><table class="liquid-comparison"><thead><tr><th scope="col">服务</th><th scope="col">计费口径示例</th><th scope="col">成本来自哪里</th><th scope="col">边界</th></tr></thead><tbody>{p.economics.map(e=><tr><th scope="row">{e.service}</th><td>{e.unit}</td><td>{e.cost}</td><td>{e.boundary}</td></tr>)}</tbody></table></div><h4>异常与风险闭环</h4><div class="liquid-handoffs">{p.exceptions.map(e=><article><h5>{e.symptom}</h5><small>责任协同：{e.owner}</small><p>{e.response}</p></article>)}</div><div class="liquid-file-limits"><strong>范围与局限</strong><p>{p.limits}</p><div class="liquid-ref-links">{sources(p.sources).map(s=><a href={'#'+s.id}>{s.title} ↗</a>)}</div></div></div></details>)}
+    </section>
+
+    <section class="liquid-section" id="liquid-sources"><div class="liquid-heading"><div><span class="eyebrow">05 / EVIDENCE &amp; LIMITS</span><h2>规则讲范围，案例讲具体设施。</h2></div><p>核查日期为 2026 年 11 月 22 日。下列资料均实际读取；来源支持范围、版本边界及企业案例局限逐项列出。</p></div><div class="liquid-boundary"><strong>出版年份、补编日期和本航次适用规则，需要分别核对。</strong><p>已读取 IBC 2020 版的 2024 年 7 月补编、IGC 2016 版的 2026 年 7 月补编；它们涉及特定船舶条款，不是完整修订清单。IMO概览、企业服务页面和单份合同都不能单独证明某船、某货、某码头的全部现行许可与作业条件。</p></div><ol class="liquid-source-list">{liquidCargoSources.map(s=><li id={s.id}><a href={s.url} target="_blank" rel="noopener noreferrer">{s.title} <span aria-hidden="true">↗</span></a><small>{s.org} · 核查 {s.checked}</small><p>{s.scope}</p></li>)}</ol></section>
+    <div class="liquid-next"><a href={href('cargo/')}>回到箱型与货类全景 <span>→</span></a><a href={href('systems/')}>把岗位与系统连起来 <span>→</span></a><a href={href('economics/')}>继续看港口经营逻辑 <span>→</span></a></div>
+  </div>
+</Layout>
+<script>
+  const explorer = document.querySelector<HTMLElement>('[data-liquid-explorer]');
+  if (explorer) {
+    const profiles = Array.from(explorer.querySelectorAll<HTMLElement>('[data-liquid-profile]'));
+    const choices = Array.from(explorer.querySelectorAll<HTMLAnchorElement>('[data-liquid-choice]'));
+    const status = explorer.querySelector<HTMLElement>('[data-liquid-status]');
+    const mark = (items:HTMLElement[], value:string|undefined, key:string) => items.forEach(item => {
+      if (item.dataset[key] === value) item.setAttribute('aria-current','true');
+      else item.removeAttribute('aria-current');
+    });
+    const showProfile = (id:string, announce = true) => {
+      profiles.forEach(panel => panel.hidden = panel.dataset.liquidProfile !== id);
+      mark(choices,id,'liquidChoice');
+      if (announce && status) status.textContent = '已切换至 '+choices.find(c=>c.dataset.liquidChoice===id)?.textContent+'，可继续选择对象和交付方向。';
+    };
+    choices.forEach(choice => choice.addEventListener('click',event=>{
+      event.preventDefault(); showProfile(choice.dataset.liquidChoice!);
+    }));
+    profiles.forEach(panel=>{
+      const nodes = Array.from(panel.querySelectorAll<HTMLAnchorElement>('[data-liquid-node]'));
+      const details = Array.from(panel.querySelectorAll<HTMLElement>('[data-liquid-node-panel]'));
+      const routeChoices = Array.from(panel.querySelectorAll<HTMLAnchorElement>('[data-liquid-route]'));
+      const routePanels = Array.from(panel.querySelectorAll<HTMLElement>('[data-liquid-route-panel]'));
+      const showNode = (id:string) => {
+        details.forEach(detail=>detail.hidden=detail.dataset.liquidNodePanel!==id);
+        mark(nodes,id,'liquidNode');
+      };
+      const showRoute = (id:string) => {
+        routePanels.forEach(route=>route.hidden=route.dataset.liquidRoutePanel!==id);
+        mark(routeChoices,id,'liquidRoute');
+      };
+      nodes.forEach(node=>node.addEventListener('click',event=>{
+        const id=node.dataset.liquidNode!;
+        showNode(id);
+        if(id!=='delivery') event.preventDefault();
+        if(status) status.textContent='正在查看'+node.textContent?.replace(/\s+/g,' ').trim()+'的业务关系。';
+      }));
+      routeChoices.forEach(choice=>choice.addEventListener('click',event=>{
+        event.preventDefault(); showRoute(choice.dataset.liquidRoute!);
+        if(status) status.textContent='交付方向已切换：'+choice.textContent;
+      }));
+      showNode('ship'); showRoute(routeChoices[0].dataset.liquidRoute!);
+    });
+    showProfile(choices[0].dataset.liquidChoice!,false);
+    const revealHash = () => {
+      if(!location.hash) return;
+      const target=document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if(!target) return;
+      let parent:HTMLElement|null=target;
+      while(parent){if(parent instanceof HTMLDetailsElement)parent.open=true;parent=parent.parentElement;}
+      const panel=target.closest<HTMLElement>('[data-liquid-profile]');
+      if(panel){
+        showProfile(panel.dataset.liquidProfile!,false);
+        const node=target.closest<HTMLElement>('[data-liquid-node-panel]');
+        if(node){panel.querySelectorAll<HTMLElement>('[data-liquid-node-panel]').forEach(n=>n.hidden=n!==node);mark(Array.from(panel.querySelectorAll<HTMLElement>('[data-liquid-node]')),node.dataset.liquidNodePanel,'liquidNode');}
+        const route=target.closest<HTMLElement>('[data-liquid-route-panel]');
+        if(route){panel.querySelectorAll<HTMLElement>('[data-liquid-route-panel]').forEach(r=>r.hidden=r!==route);mark(Array.from(panel.querySelectorAll<HTMLElement>('[data-liquid-route]')),route.dataset.liquidRoutePanel,'liquidRoute');}
+      }
+      requestAnimationFrame(()=>target.scrollIntoView({block:'start',behavior:'instant'}));
+    };
+    window.addEventListener('hashchange',revealHash);
+    document.querySelectorAll<HTMLAnchorElement>('a[href^="#file-"]').forEach(link=>link.addEventListener('click',()=>{
+      const target=document.getElementById(link.hash.slice(1));if(target instanceof HTMLDetailsElement)target.open=true;
+    }));
+    revealHash();
+  }
+</script>

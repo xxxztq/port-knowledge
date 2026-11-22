@@ -1,0 +1,18 @@
+---
+import Icon from './Icon.astro';
+const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const { compact=false }=Astro.props;
+const items=[
+ {n:'01',title:'一票货，五条线一起走',text:'切换大豆与 LNG，让实物、岗位、信息、交付条件和费用在同一节点对齐。',path:'shipment/',icon:'route',tag:'全程交互'},
+ {n:'02',title:'从船舱到粮仓',text:'认识大豆、玉米、小麦，看懂货批、筒仓、计量和出库交接。',path:'cargo/grains/',icon:'grid',tag:'粮食与农产品'},
+ {n:'03',title:'沿着管线看液货',text:'分清油品、化工品、LNG 与 LPG，理解船岸、罐区及不同交付路线。',path:'cargo/liquids/',icon:'ship',tag:'液体货类'},
+ {n:'04',title:'先找到自己的学习路线',text:'查看各主题的介绍、流程、交互和异常案例，沿着问题逐步深入。',path:'knowledge-map/',icon:'map',tag:'全站知识地图'}
+];
+---
+<section class:list={['learning-entry',{'is-compact':compact}]} aria-label="货物全程与学习路线">
+<div class="learning-entry-heading"><div><span class="eyebrow">CONNECT THE PORT / 把知识连起来</span><h2>换一种货，看懂另一条路。</h2></div><a class="text-link" href={base+'knowledge-map/'}>查看全站知识地图 <Icon name="arrow" size={17}/></a></div>
+<div class="learning-entry-grid">{items.map(item=><a href={base+item.path} class="learning-entry-card"><div class="learning-entry-top"><span>{item.n} / {item.tag}</span><Icon name={item.icon} size={30}/></div><h3>{item.title}</h3><p>{item.text}</p><span class="learning-entry-link">打开探索 <Icon name="arrow" size={16}/></span></a>)}</div>
+</section>
+<style>
+.learning-entry{margin:38px 0 46px}.learning-entry-heading{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:20px}.learning-entry-heading h2{font-size:clamp(25px,3vw,34px);margin:10px 0 0;letter-spacing:-.04em}.learning-entry-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.learning-entry-card{display:flex;flex-direction:column;padding:24px 22px;border:1px solid #d8e1de;border-radius:16px;background:#fafaf5;color:#173e45;transition:transform .18s,border-color .18s}.learning-entry-card:first-child{background:#103d47;color:#fff;border-color:#103d47}.learning-entry-card:hover{transform:translateY(-3px);border-color:#779b9c}.learning-entry-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:28px}.learning-entry-top>span{font-size:11px;letter-spacing:.04em}.learning-entry-card h3{font-size:21px;line-height:1.45;margin:0 0 12px}.learning-entry-card p{font-size:14px;line-height:1.8;margin:0 0 24px;color:#52676c}.learning-entry-card:first-child p{color:#dce9e7}.learning-entry-link{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:700;margin-top:auto;padding-top:14px;border-top:1px solid #cfdcda}.learning-entry-card:first-child .learning-entry-link{border-color:#477079}.is-compact .learning-entry-card{padding:20px}.is-compact .learning-entry-top{margin-bottom:18px}@media(max-width:1050px){.learning-entry-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.learning-entry-heading{align-items:start;flex-direction:column}.learning-entry-grid{grid-template-columns:1fr}.learning-entry-top{margin-bottom:15px}.learning-entry-card{padding:22px}.learning-entry-card p{margin-bottom:16px}}@media(prefers-reduced-motion:reduce){.learning-entry-card{transition:none}.learning-entry-card:hover{transform:none}}
+</style>

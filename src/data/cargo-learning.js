@@ -8,11 +8,11 @@ export const cargoCoverage = [
   {name:'包装危险货物',level:'业务专题',path:'cargo/packaged-dangerous/',focus:'货物分类、申报、场地与承运条件'},
   {name:'矿产与干散货',level:'业务专题',path:'cargo/minerals/',focus:'铁矿石、铝土矿、铜精矿、镍矿、煤炭、磷矿与建材'},
   {name:'船型与特殊运输船',level:'业务专题',path:'vessels/',focus:'14种船型、船岸接口、滚装与项目运输'},
-  {name:'粮食与其他农产品',level:'基础入口',path:'knowledge/k11-overview/',focus:'检验、保管、损耗与混货风险'},
+  {name:'粮食与农产品：大豆、玉米、小麦',level:'业务专题',path:'cargo/grains/',focus:'货批、筒仓、检验检疫、计量与出库交接'},
   {name:'木材：原木与锯材',level:'业务专题',path:'cargo/timber/',focus:'批次、数量口径、保管与检疫交接'},
   {name:'卷钢与钢卷',level:'业务专题',path:'cargo/steel-coil/',focus:'卷号、包装、货况、防滚动与交付证据'},
   {name:'其他钢材与普通件杂货',level:'基础入口',path:'knowledge/k12-overview/',focus:'品种、包装、件数与理货交接'},
-  {name:'油品、化学品与液化气',level:'基础入口',path:'knowledge/k13-overview/',focus:'介质、管线、储罐与计量交接'},
+  {name:'油品、化学品与液化气',level:'业务专题',path:'cargo/liquids/',focus:'四类货物、船岸接口、储罐、计量与交付路线'},
   {name:'传统燃油商品车与滚装货',level:'基础入口',path:'knowledge/k14-overview/',focus:'车辆组织与滚装交接'},
   {name:'拼箱、空箱与中转',level:'场景入口',path:'flows/',focus:'集装箱业务不同组织方式'},
 ];
