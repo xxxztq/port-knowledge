@@ -27,6 +27,7 @@ test('old article bookmarks stay usable and container variants remain distinct',
 });
 test('marking a route step read advances route progress',async({page})=>{await page.goto(base+'knowledge-map/');const route=page.locator('.km-steps').first();const link=route.locator('li a').first();const href=await link.getAttribute('href');await page.goto(href);await page.locator('[data-learning-toggle="read"]').first().click();await page.goto(base+'knowledge-map/');await expect(page.locator('.route-progress').first()).toContainText('已完成 1 /');await expect(page.locator('.km-steps').first().locator('li').first()).toHaveClass(/is-read/);});
 test('homepage vessel hotspot opens berthing topic',async({page})=>{await page.goto(base);const link=page.locator('.map-detail a');await expect(link).toHaveAttribute('href',base+'berthing/');await link.click();await expect(page).toHaveURL(base+'berthing/');});
+test('brand guide separates liner, asset, manufacturer and port roles',async({page})=>{await page.setViewportSize({width:390,height:844});await page.goto(base+'brands/');await expect(page.getByRole('heading',{name:'认涂装，也要认清背后的主体。'})).toBeVisible();await page.getByRole('button',{name:'班轮承运人'}).click();await expect(page.locator('[data-brand-card]:visible')).toHaveCount(7);await expect(page.locator('#brand-filter-count')).toContainText('7 个主体示例');await expect(page.locator('#brand-cma-cgm')).toContainText('达飞海运');await expect(page.locator('#brand-hapag-lloyd')).toContainText('赫伯罗特');await page.getByRole('button',{name:'全部'}).click();await expect(page.locator('#pink-container')).toContainText('ONE 的洋红色箱');await expect(page.locator('#panda-container')).toContainText('“熊猫船长”是吉祥物');await expect(page.locator('#read-a-container')).toContainText('登记代码');await expect(page.locator('#brand-sources')).toContainText('Container Interest Register');await expect(page.locator('a[href="'+base+'brands-and-ports/"]')).toContainText('上海港与宁波舟山港');await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);});
 test('mobile menu supports Escape and no horizontal overflow',async({page})=>{await page.setViewportSize({width:390,height:844});for(const route of ['', 'library/','berthing/','foundations/lifecycle/']){await page.goto(base+route);await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);}const toggle=page.locator('button[aria-controls="site-navigation"]');await toggle.click();await expect(toggle).toHaveAttribute('aria-expanded','true');await page.keyboard.press('Escape');await expect(toggle).toHaveAttribute('aria-expanded','false');await expect(toggle).toBeFocused();});
 test('denied storage shows failure without claiming a bookmark was saved',async({page})=>{await page.addInitScript(()=>Object.defineProperty(window,'localStorage',{get(){throw new DOMException('Blocked','SecurityError')}}));await page.goto(base+'berthing/');const tools=page.locator('[data-learning-tools]').first();await tools.locator('[data-learning-toggle="bookmarks"]').click();await expect(tools.locator('.learning-feedback')).toContainText('保存失败');await expect(tools.locator('[data-learning-toggle="bookmarks"]')).toHaveAttribute('aria-pressed','false');});
 test('foundation question produces explanation and is discoverable in full text',async({page})=>{await search(page,'?q='+encodeURIComponent('西码头'));await page.locator('[data-search-card][href*="foundations/spatial-levels/"]').click();await page.locator('[data-knowledge-check]').first().locator('input[data-correct="true"]').check();await page.locator('[data-knowledge-check]').first().getByRole('button').click();await expect(page.locator('[data-check-result]').first()).toContainText('理解正确');});
@@ -53,4 +54,20 @@ test('foundation diagrams work without JavaScript', async ({browser}) => {
   await page.getByText('查看答案解释', {exact:true}).first().click();
   await expect(page.getByText('否，还需核对经营与运行条件。投用对象和可用范围必须清晰。', {exact:true})).toBeVisible();
   await context.close();
+});
+test('port network page distinguishes port areas from terminal operators and cargo workflows',async({page})=>{
+  await page.goto(base+'brands-and-ports/');
+  await expect(page.getByRole('heading',{name:'港口是网络，真正干活的是具体码头。'})).toBeVisible();
+  await expect(page.locator('#port-shanghai')).toContainText('上海沪东集装箱码头有限公司（SECT）');
+  await expect(page.locator('#port-shanghai')).toContainText('道口识别箱号并交换进出场作业信息');
+  await expect(page.locator('#port-ningbo-zhoushan')).toContainText('舟山鼠浪湖码头有限公司');
+  await expect(page.locator('#port-ningbo-zhoushan')).toContainText('铁矿石等干散货');
+  await expect(page.locator('#port-shanghai')).toContainText('APM Terminals（马士基旗下独立码头业务）公开称持有 49%');
+  await expect(page.locator('#port-shanghai')).toContainText('EDI');
+  await expect(page.locator('.pn-handoff-grid article')).toHaveCount(4);
+  await expect(page.locator('.pn-control-line')).toContainText('海关监管状态');
+  await expect(page.locator('#source-shanghai-east-terminal a')).toHaveAttribute('href','https://akamai.apmterminals.com/en/shanghai/about/our-terminal');
+  await expect(page.locator('#source-shanghai-hudong-company a')).toHaveAttribute('href','https://www.sect.com.cn/aboutus');
+  await page.setViewportSize({width:390,height:844});
+  await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
 });

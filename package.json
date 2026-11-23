@@ -10,7 +10,7 @@
     "check:content": "node scripts/check-content.mjs",
     "test": "node --test tests/*.test.mjs",
     "check:links": "node scripts/check-links.mjs",
-    "verify": "npm run check:content && npm run check:visuals && npm run check:experiences && npm run check:cargo && npm run check:infrastructure && npm run check:risks && npm run check:vessels && npm run check:learning && npm run check:berthing && npm run check:foundations && npm test && npm run build && npm run check:links",
+    "verify": "npm run check:content && npm run check:visuals && npm run check:experiences && npm run check:cargo && npm run check:infrastructure && npm run check:risks && npm run check:vessels && npm run check:learning && npm run check:berthing && npm run check:foundations && npm run check:brands-ports && npm test && npm run build && npm run check:links",
     "check:visuals": "node scripts/check-visuals.mjs",
     "check:experiences": "node scripts/check-experiences.mjs",
     "check:cargo": "node scripts/check-cargo.mjs",
@@ -21,7 +21,8 @@
     "check:berthing": "node scripts/check-berthing.mjs",
     "test:browser": "playwright test",
     "check:foundations": "node scripts/check-foundations.mjs",
-    "check:sources": "node scripts/check-sources.mjs"
+    "check:sources": "node scripts/check-sources.mjs",
+    "check:brands-ports": "node scripts/check-brands-ports.mjs"
   },
   "dependencies": {
     "astro": "^5.18.2"

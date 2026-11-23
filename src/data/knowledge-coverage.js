@@ -46,7 +46,7 @@ const evidence = {
     next: '把枢纽、支线和腹地关系延伸为运输方案比较。', tags: '航线 贸易 腹地 枢纽 支线 中转',
     interactive: covered('三道理解题可选择答案并查看解释，范围限于本专题。', link('航线与腹地选择理解练习', 'foundations/network-choice/#checks')),
     interactionKind: 'exercise',
-    topics: [link('航线与腹地选择专题', 'foundations/network-choice/')],
+    topics: [link('航线与腹地选择专题', 'foundations/network-choice/'), link('集装箱品牌与航运公司', 'brands/'), link('上海港与宁波舟山港码头案例', 'brands-and-ports/')],
   },
   k03: {
     process: covered('靠泊协作包含通航条件、泊位与岸侧资源确认，未覆盖水工勘测设计。', scenario('vessel-berthing-coordination', '靠泊条件与准备')),

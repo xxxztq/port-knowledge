@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import { brandsAndPortsReviewedOn, brandPortSources, portComparisons } from '../data/brands-and-ports.js';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const source = (id: string) => brandPortSources.find((item) => item.id === id)!;
+const relevantSourceIds = new Set(portComparisons.flatMap((port) => port.sources));
+const sources = brandPortSources.filter((item) => relevantSourceIds.has(item.id));
+---
+<Layout title="上海港与宁波舟山港" active="cargo" description="从港口、港区、码头企业到泊位任务，认识上海港与宁波舟山港的业务层级，并对照集装箱和铁矿石码头的作业链。">
+  <PageIntro eyebrow="PORT NETWORK / 港口网络与码头案例" title="港口是网络，真正干活的是具体码头。" description="用上海外高桥四期和宁波舟山鼠浪湖作例子，看清港区、经营企业、泊位、设备与货物流向。">
+    <a class="text-link" href={base + 'brands/'}>← 先认识箱体品牌与航运公司</a>
+  </PageIntro>
+
+  <div class="container port-network-page">
+    <section class="pn-hierarchy" aria-label="港口作业层级">
+      <div class="pn-hierarchy-copy">
+        <span class="eyebrow">FIND THE RIGHT LEVEL / 先问你指的是哪一层</span>
+        <h2>从地图上的“港”，一路找到现场的任务。</h2>
+        <p>港口名称不能直接告诉你车辆该去哪个门、货该堆在哪块场地。实际办理要沿着层级继续向下查。</p>
+      </div>
+      <ol class="pn-levels">
+        <li><span>01</span><strong>港口网络</strong><small>上海港 / 宁波舟山港</small></li>
+        <li><span>02</span><strong>港区与航道</strong><small>地理位置与水陆通道</small></li>
+        <li><span>03</span><strong>码头经营企业</strong><small>组织设备、计划与现场作业</small></li>
+        <li><span>04</span><strong>泊位与任务</strong><small>船、货、设备和时间窗口</small></li>
+      </ol>
+    </section>
+
+    <section class="pn-cases" id="port-cases" aria-labelledby="pn-cases-title">
+      <div class="pn-heading"><div><span class="eyebrow">TWO PORTS, TWO TERMINAL TYPES</span><h2 id="pn-cases-title">同样叫港口，现场逻辑可以完全不同。</h2></div><p>选一个具体码头来观察，而不是把整个港口当作一家公司、一套设备或一个作业场。</p></div>
+      <div class="pn-case-grid">
+        {portComparisons.map((port, index) => <article class:list={['pn-case', 'pn-' + port.accent]} id={'port-' + port.id}>
+          <div class="pn-scene" aria-label={port.name + port.label + '的简化俯视示意图'}>
+            <span class="pn-scene-label">PORT STUDY / 0{index + 1}</span>
+            <span class="pn-water">航道 / 水域</span>
+            <Icon name="ship" size={36} />
+            <div class="pn-quay"><Icon name="crane" size={34} /><Icon name="crane" size={34} /></div>
+            <span class="pn-yard">{port.id === 'shanghai' ? '堆场 · 闸口' : '料堆 · 输送线'}</span>
+          </div>
+          <div class="pn-case-body">
+            <span class="pn-tag">{port.label}</span>
+            <h3>{port.name}</h3>
+            <p class="pn-subtitle">{port.subtitle}</p>
+            <dl class="pn-facts">
+              <div><dt>观察案例</dt><dd>{port.terminal}</dd></div>
+              <div><dt>具体运营方</dt><dd>{port.operator}</dd></div>
+              <div><dt>典型货物</dt><dd>{port.cargo}</dd></div>
+              <div><dt>主要设备</dt><dd>{port.equipment}</dd></div>
+            </dl>
+            <p class="pn-systems"><strong>系统与记录：</strong>{port.systems}</p>
+            <div class="pn-operation-focus"><strong>现场作业看什么</strong><ol>{port.operations.map((operation, step) => <li><span>0{step + 1}</span>{operation}</li>)}</ol></div>
+            <p class="pn-lesson">{port.lesson}</p>
+            <p class="pn-sources">官方资料：{port.sources.map((id) => <a href={'#source-' + id}>{source(id).organization} ↗</a>)}</p>
+          </div>
+        </article>)}
+      </div>
+    </section>
+
+    <section class="pn-handoffs" aria-labelledby="pn-handoffs-title">
+      <div class="pn-heading"><div><span class="eyebrow">WHO HANDS WHAT TO WHOM</span><h2 id="pn-handoffs-title">业务不是“货一到，码头就能放”。</h2></div><p>不同单位各自确认自己负责的状态；一项放行结果不能代替另一项授权。</p></div>
+      <div class="pn-handoff-grid">
+        <article><span>货主 / 货代</span><strong>提供货物、委托与申报信息</strong></article>
+        <Icon name="arrow" size={20} />
+        <article><span>承运人 / 船公司</span><strong>安排舱位、运输合同与船期</strong></article>
+        <Icon name="arrow" size={20} />
+        <article><span>码头经营企业</span><strong>安排泊位、装卸、堆存和闸口任务</strong></article>
+        <Icon name="arrow" size={20} />
+        <article><span>车队 / 收货人</span><strong>按授权、预约与提货条件交接</strong></article>
+      </div>
+      <div class="pn-control-line"><strong>并行核对：</strong><span>海关监管状态</span><i>+</i><span>承运人商业放货 / 运单状态</span><i>+</i><span>码头作业及费用条件</span><b>→</b><span>分别满足后才进入相应下一步</span></div>
+    </section>
+
+    <section class="pn-next" aria-label="相关学习专题">
+      <a href={base + 'gate/'}><Icon name="gate" size={25} /><span><strong>闸口与监管</strong><small>车辆进出港需要核对什么</small></span><Icon name="arrow" size={19} /></a>
+      <a href={base + 'cargo/minerals/'}><Icon name="chart" size={25} /><span><strong>矿石业务</strong><small>散货从卸船到仓储与疏运</small></span><Icon name="arrow" size={19} /></a>
+      <a href={base + 'berthing/'}><Icon name="ship" size={25} /><span><strong>进港与靠泊</strong><small>船到港前的计划和协调</small></span><Icon name="arrow" size={19} /></a>
+    </section>
+
+    <section class="pn-reference" id="sources">
+      <div class="pn-heading"><div><span class="eyebrow">SOURCE NOTES</span><h2>资料说明</h2></div><span>核对日期 {brandsAndPortsReviewedOn}</span></div>
+      <p>企业资料用于识别案例中的经营主体与业务类型，不构成实时作业指引；具体进港路线、预约、泊位、费用和监管要求应以对应码头及办理时点的信息为准。</p>
+      <ol>{sources.map((item) => <li id={'source-' + item.id}><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title} ↗</a><span>{item.organization} · {item.scope}</span></li>)}</ol>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .port-network-page{max-width:1180px;padding-bottom:80px;color:#26312d}
+  .port-network-page h2{font-size:clamp(24px,2.5vw,34px);line-height:1.35}
+  .port-network-page p{line-height:1.8}
+  .pn-hierarchy{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center;padding:32px 0 42px;border-bottom:1px solid #d8dfd9}
+  .pn-hierarchy-copy h2{margin:10px 0;max-width:440px}
+  .pn-hierarchy-copy p{max-width:480px;color:#68736c}
+  .pn-levels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:0;margin:0;list-style:none;border:1px solid #d8dfd9}
+  .pn-levels li{min-width:0;padding:17px 13px;border-right:1px solid #d8dfd9;background:#f6f8f4}
+  .pn-levels li:last-child{border:0;background:#eaf1ec}
+  .pn-levels span,.pn-levels strong,.pn-levels small{display:block}
+  .pn-levels span{font:12px ui-monospace,monospace;color:#76837a}
+  .pn-levels strong{margin:9px 0 5px;font-size:14px}
+  .pn-levels small{color:#68736c;font-size:11px;line-height:1.6}
+  .pn-cases,.pn-handoffs,.pn-reference{padding-top:68px}
+  .pn-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:22px}
+  .pn-heading h2{margin:8px 0 0}
+  .pn-heading>p,.pn-heading>span{max-width:390px;margin:0;color:#68736c;font-size:14px}
+  .pn-case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .pn-case{min-width:0;border:1px solid #d8dfd9;border-radius:6px;overflow:hidden}
+  .pn-scene{position:relative;display:flex;align-items:flex-end;gap:22px;height:185px;padding:25px 28px 21px;overflow:hidden;color:#344d45;background:linear-gradient(#edf2ef 0 52%,#dbe8e4 52% 72%,#e7ece6 72%)}
+  .pn-scene:before{content:'';position:absolute;left:0;right:0;top:52%;border-top:1px solid #92aaa0}
+  .pn-scene-label{position:absolute;top:15px;left:17px;font:10px ui-monospace,monospace;color:#66776d}
+  .pn-scene>svg{position:relative;z-index:1;margin-bottom:14px}
+  .pn-water{position:absolute;left:20px;top:58%;font-size:10px;color:#607d74}
+  .pn-quay{position:relative;z-index:1;display:flex;align-items:flex-end;gap:9px;margin:0 auto 11px;padding:0 18px 8px;border-bottom:2px solid #597267}
+  .pn-quay svg{width:37px;height:63px}
+  .pn-yard{align-self:flex-end;margin-bottom:13px;padding:5px 8px;border:1px solid #9eaea4;background:#f5f7f2;color:#40564d;font-size:10px}
+  .pn-green .pn-scene{color:#4d6552;background:linear-gradient(#edf2ef 0 52%,#dce9e3 52% 72%,#e9eee7 72%)}
+  .pn-green .pn-quay{border-color:#637d69}
+  .pn-case-body{padding:22px 24px 24px}
+  .pn-tag{display:inline-block;padding:4px 8px;background:#e8f0eb;color:#3d6655;font-size:11px}
+  .pn-green .pn-tag{background:#eff0e2;color:#5f6942}
+  .pn-case h3{margin:10px 0 3px;font-size:25px}
+  .pn-subtitle{margin:0;color:#68736c;font-size:13px}
+  .pn-facts{margin:18px 0 0;border-top:1px solid #e1e5e0}
+  .pn-facts>div{display:grid;grid-template-columns:92px 1fr;gap:13px;padding:10px 0;border-bottom:1px solid #e1e5e0}
+  .pn-facts dt{color:#617067;font-size:12px;font-weight:700}
+  .pn-facts dd{margin:0;font-size:13px;line-height:1.65}
+  .pn-operation-focus{margin-top:17px;padding:16px;background:#f6f7f3}
+  .pn-operation-focus>strong{font-size:13px}
+  .pn-operation-focus ol{display:grid;gap:9px;margin:13px 0 0;padding:0;list-style:none}
+  .pn-operation-focus li{display:flex;gap:10px;align-items:baseline;font-size:12px;line-height:1.65}
+  .pn-operation-focus li span{flex:none;color:#698275;font:11px ui-monospace,monospace}
+  .pn-systems{margin:13px 0;padding:12px 14px;border:1px solid #d8e3db;color:#4e6156;background:#f9faf7;font-size:12px}
+  .pn-systems strong{color:#315744}
+  .pn-lesson{padding:13px 15px;border-left:3px solid #50816e;background:#edf3ef;color:#43544a;font-size:13px}
+  .pn-green .pn-lesson{border-color:#788153;background:#f2f2e9}
+  .pn-sources{display:flex;flex-wrap:wrap;gap:7px 13px;margin:15px 0 0;color:#68736c;font-size:11px}
+  .pn-sources a,.pn-reference a{color:#376d5a;text-decoration:underline;text-underline-offset:3px}
+  .pn-handoff-grid{display:grid;grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr) 22px minmax(0,1fr) 22px minmax(0,1fr);align-items:center;gap:8px}
+  .pn-handoff-grid article{min-height:102px;padding:15px;border-top:2px solid #668272;border-bottom:1px solid #d8dfd9;background:#fafbf8}
+  .pn-handoff-grid article span,.pn-handoff-grid article strong{display:block}
+  .pn-handoff-grid article span{margin-bottom:8px;color:#63746a;font-size:11px}
+  .pn-handoff-grid article strong{font-size:13px;line-height:1.6}
+  .pn-handoff-grid>svg{color:#789185}
+  .pn-control-line{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:16px;padding:16px;background:#f1f3ee;color:#4c5b52;font-size:12px}
+  .pn-control-line span{padding:5px 8px;border:1px solid #d3ddd5;background:#fff}
+  .pn-control-line i,.pn-control-line b{font-style:normal;color:#72877b}
+  .pn-reference>p{max-width:900px;color:#68736c;font-size:13px}
+  .pn-reference ol{list-style:none;padding:0;border-top:1px solid #d8dfd9}
+  .pn-reference li{display:grid;grid-template-columns:minmax(210px,.42fr) 1fr;gap:18px;padding:13px 0;border-bottom:1px solid #e1e5e0}
+  .pn-reference li span{color:#68736c;font-size:12px;line-height:1.65}
+  .pn-next{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:26px}
+  .pn-next a{display:flex;align-items:center;gap:12px;min-width:0;padding:17px;border-top:2px solid #668272;background:#f4f6f1;color:#354c42}
+  .pn-next a>span{flex:1;min-width:0}
+  .pn-next strong,.pn-next small{display:block}
+  .pn-next strong{font-size:13px}
+  .pn-next small{margin-top:4px;color:#69766e;font-size:11px;line-height:1.5}
+  @media(max-width:950px){.pn-hierarchy{grid-template-columns:1fr;gap:15px}.pn-case-grid{grid-template-columns:1fr}.pn-handoff-grid{grid-template-columns:1fr 22px 1fr}.pn-handoff-grid>svg:nth-of-type(2){display:none}.pn-handoff-grid article:nth-of-type(3){grid-column:1}.pn-handoff-grid article:last-child{grid-column:3}}
+  @media(max-width:600px){.port-network-page{padding-bottom:48px}.pn-hierarchy{padding:24px 0 32px}.pn-levels{grid-template-columns:repeat(2,minmax(0,1fr))}.pn-levels li:nth-child(2){border-right:0}.pn-levels li:nth-child(-n+2){border-bottom:1px solid #d8dfd9}.pn-cases,.pn-handoffs,.pn-reference{padding-top:48px}.pn-heading{display:block}.pn-heading>p,.pn-heading>span{display:block;margin-top:10px}.pn-scene{height:150px;padding:20px}.pn-quay{gap:1px;padding-inline:7px}.pn-quay svg{width:31px}.pn-facts>div{grid-template-columns:78px 1fr;gap:9px}.pn-handoff-grid{grid-template-columns:1fr;gap:7px}.pn-handoff-grid>svg,.pn-handoff-grid>svg:nth-of-type(2){display:block;justify-self:center;transform:rotate(90deg)}.pn-handoff-grid article:nth-of-type(n){grid-column:auto;min-height:0}.pn-control-line{justify-content:flex-start}.pn-reference li{grid-template-columns:1fr;gap:4px}.pn-next{grid-template-columns:1fr;gap:8px}}
+</style>
