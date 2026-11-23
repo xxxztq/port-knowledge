@@ -23,16 +23,17 @@ test('transit is listed in Flows and the mobile case can be read and answered', 
   const question = page.locator('[data-knowledge-check]');
   await question.getByRole('radio', {name: '能，运抵报告已接收等于进口放行。'}).check();
   await question.getByRole('button', {name: '看看解释'}).click();
-  await expect(question.getByRole('status')).toContainText('不是进口放行');
+  await expect(question.getByRole('status')).toContainText('不等于进口放行');
   await question.getByRole('radio', {name: /不能。分别查转关核销/}).check();
   await question.getByRole('button', {name: '看看解释'}).click();
   await expect(question.getByRole('status')).toContainText('理解正确');
   await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
   await page.goto(scenario);
   const international = page.locator('.comparison-grid article').filter({has: page.getByRole('heading', {name: '保税国际中转'})});
+  await expect(international).toContainText('不能泛化成所有港口换船接续');
   await international.getByRole('link', {name: /对照依据/}).click();
-  await expect(page).toHaveURL(/#source-international-transshipment$/);
-  await expect(page.locator('#source-international-transshipment')).toContainText('不能泛化成所有港口换船接续');
+  await expect(page).toHaveURL(scenario + '#source-international-transshipment');
+  await expect(page.locator('#source-international-transshipment').getByRole('link', {name: /海关总署公告2023年第109号/})).toBeVisible();
 });
 
 test('transit details, sources and the quiz answer stay readable without JavaScript', async ({browser}) => {
