@@ -512,6 +512,10 @@ export const vesselProfiles = [
         "path": "cargo/iron-ore/"
       },
       {
+        "label": "进口铁矿石从卸船到交付",
+        "path": "scenarios/iron-ore-import/"
+      },
+      {
         "label": "铝土矿业务",
         "path": "cargo/bauxite/"
       },

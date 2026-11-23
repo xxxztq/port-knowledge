@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { coverageDimensions, coverageGroups, interactionNames, knowledgeCoverage, learningPaths, rolePaths } from '../data/knowledge-coverage.js';
+import { coverageDimensions, coverageGroups, interactionNames, caseKindLabels, knowledgeCoverage, learningPaths, rolePaths } from '../data/knowledge-coverage.js';
 import '../styles/knowledge-map.css';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
@@ -11,8 +11,27 @@ const views: { id: string; title: string; matches: (domain: Domain) => boolean; 
   { id: 'interactive', title: '查看有交互', matches: (domain) => domain.coverage.interactive.links.length > 0 },
   { id: 'practice', title: '可作答练习', matches: (domain) => domain.coverage.interactive.links.some((entry) => entry.kind === 'exercise') },
   { id: 'missing-entry', title: '缺维度入口', matches: (domain) => domain.development.missingEntry, noEntries: '当前所有知识域的四个维度都有入口' },
-  { id: 'missing-case', title: '缺独立案例', matches: (domain) => Boolean(domain.development.missingCase), noEntries: '目前没有标注的独立案例缺口' },
+  { id: 'dedicated-case', title: '有独立案例', matches: (domain) => domain.caseStudy.kind === 'dedicated' },
+  { id: 'related-case', title: '相关案例可借读', matches: (domain) => domain.caseStudy.kind === 'related' },
   { id: 'deepen', title: '需要深化', matches: (domain) => domain.development.canDeepen },
+];
+const practiceDomainCount = knowledgeCoverage.filter((domain) => domain.coverage.interactive.links.some((entry) => entry.kind === 'exercise')).length;
+const dedicatedCaseCount = knowledgeCoverage.filter((domain) => domain.caseStudy.kind === 'dedicated').length;
+const relatedCaseCount = knowledgeCoverage.filter((domain) => domain.caseStudy.kind === 'related').length;
+const deepenDomainCount = knowledgeCoverage.filter((domain) => domain.development.canDeepen).length;
+const summaryStats = [
+  { id: 'domains', value: knowledgeCoverage.length, label: '知识领域', hint: '覆盖港口从船到岸的完整目录' },
+  { id: 'groups', value: coverageGroups.length, label: '知识大类', hint: '按船舶、岗位、货类等主题浏览' },
+  { id: 'practice', value: practiceDomainCount, label: '有可作答练习的领域', hint: '通过判断和异常选择检验理解' },
+  { id: 'dedicated-case', value: dedicatedCaseCount, label: '有独立案例', hint: '各领域核对过的代表案例，不代表穷尽' },
+  { id: 'related-case', value: relatedCaseCount, label: '相关案例可借读', hint: '可借邻近场景学习，仍有独立专题空间' },
+];
+const quickTasks = [
+  { view: 'all', label: '从全图开始', description: `先浏览 ${knowledgeCoverage.length} 个领域，建立港口全貌`, value: knowledgeCoverage.length },
+  { view: 'practice', label: '先做可作答练习', description: `查看含练习的 ${practiceDomainCount} 个领域，检验自己是否读懂`, value: practiceDomainCount },
+  { view: 'dedicated-case', label: '看有独立案例的领域', description: '直接进入已核对的领域代表案例', value: dedicatedCaseCount },
+  { view: 'related-case', label: '看相关案例可借读的领域', description: '区分借读内容与尚待补充的独立专题', value: relatedCaseCount },
+  { view: 'deepen', label: '查看可继续深化', description: '从已有基础出发，选择下一步专题', value: deepenDomainCount },
 ];
 ---
 <Layout title="知识覆盖地图与学习路线" description="按九大类浏览二十四个知识域，分别查看基础介绍、业务流程、交互演示和异常案例的已有入口与待深化项，并选择适合自己的学习路线。" active="library">
@@ -45,6 +64,24 @@ const views: { id: string; title: string; matches: (domain: Domain) => boolean; 
         </figure>
       </header>
 
+      <section class="km-snapshot" id="km-snapshot" aria-labelledby="km-snapshot-title">
+        <div class="km-section-head km-snapshot-head"><div><p class="km-kicker">AT A GLANCE / 先看全貌</p><h2 id="km-snapshot-title">这张地图现在覆盖到哪里？</h2></div><p>摘要数字是入口统计，不是知识完备度评分。</p></div>
+        <div class="km-summary-grid" aria-label="知识地图摘要">
+          {summaryStats.map((stat) => <div class:list={['km-summary-card', { 'is-alert': stat.id === 'related-case' }]} data-km-summary={stat.id}>
+            <span class="km-summary-number" aria-hidden="true">{String(stat.value).padStart(2, '0')}</span>
+            <div><strong>{stat.label}</strong><p>{stat.hint}</p></div>
+          </div>)}
+        </div>
+        <div class="km-task-panel">
+          <div class="km-task-intro"><p class="km-kicker">LEARNING TASKS / 快捷入口</p><h3>今天先完成哪一件？</h3><p>点击任务会清除原有搜索和大类筛选，并跳到任务结果。</p></div>
+          <div class="km-task-list" aria-label="学习任务入口">
+            {quickTasks.map((task) => <a class="km-task" href="#coverage-map" data-km-quick-view={task.view} aria-controls="coverage-map">
+              <span class="km-task-copy"><strong>{task.label}</strong><small>{task.description}</small></span><span class="km-task-count">{task.value}<small>个域</small><span aria-hidden="true">↗</span></span>
+            </a>)}
+          </div>
+        </div>
+      </section>
+
       <section class="km-learning" id="learning-paths" aria-labelledby="km-learning-title">
         <div class="km-section-head"><div><p class="km-kicker">START SOMEWHERE / 从这里出发</p><h2 id="km-learning-title">三条路线，选一个起点。</h2></div><p>按顺序读，也可以回到地图自由探索。</p></div>
         <div class="km-path-grid">
@@ -53,7 +90,7 @@ const views: { id: string; title: string; matches: (domain: Domain) => boolean; 
               <span class="km-route-number" aria-hidden="true">{route.number}</span>
               <h3>{route.title}</h3><p class="km-route-purpose">{route.purpose}</p>
               <details class="km-route-details">
-                <summary>{route.id === 'by-role' ? '选择岗位，展开路线' : route.branches ? '选择大豆或 LNG 路线' : `展开 ${route.steps.length} 步路线`}<span aria-hidden="true">＋</span></summary>
+                <summary>{route.id === 'by-role' ? '选择岗位，展开路线' : route.branches ? '选择进口箱、大豆或 LNG 路线' : `展开 ${route.steps.length} 步路线`}<span aria-hidden="true">＋</span></summary>
                 {route.id === 'by-role' ? (
                   <div>
                     <div class="km-role-picker" data-km-role-picker hidden><label for="km-role">选择你的岗位</label><select id="km-role" aria-controls="km-role-guides">{rolePaths.map((role) => <option value={role.id}>{role.title}</option>)}</select></div>
@@ -61,7 +98,7 @@ const views: { id: string; title: string; matches: (domain: Domain) => boolean; 
                   </div>
                 ) : route.branches && route.comparisons ? (
                   <div class="km-shipment-routes">
-                    <p class="km-shipment-hint">从第 1 站开始，可在案例里点「下一节点」接着读。这里是同一篇案例的站点导航，不计入已读步数。</p>
+                    <p class="km-shipment-hint">从一只虚构进口箱 A-01 开始，先读同一票货上的交接，再选择进口箱、大豆或 LNG 路线继续。线路锚点是导航，不另计已读步数。</p>{route.featuredCase && <article class="km-featured-case"><div><strong>{route.featuredCase.title}</strong><p>{route.featuredCase.purpose}</p></div><a href={href(route.featuredCase.path)}>开始六站案例 ↗</a></article>}
                     {route.branches.map((branch) => <details class="km-shipment-branch" data-km-shipment={branch.id}>
                       <summary>{branch.title}</summary>
                       <p>{branch.description} <a href={href(branch.profile.path)}>{branch.profile.label} ↗</a></p>
@@ -92,7 +129,7 @@ const views: { id: string; title: string; matches: (domain: Domain) => boolean; 
         <div class="km-legend" aria-label="覆盖维度说明">
           {coverageDimensions.map((dimension) => <div><span class="km-dimension-number">{dimension.symbol}</span><div><strong>{dimension.title}</strong><p>{dimension.explanation}</p></div></div>)}
         </div>
-        <p class="km-map-note"><span class="km-status-mark" aria-hidden="true">↗</span> 有入口 <span class="km-pending-mark" aria-hidden="true">○</span> 缺维度入口 · 缺独立案例 · 可继续深化。状态分别判定，可同时成立；有交互不等于可作答练习。</p>
+        <p class="km-map-note"><span class="km-status-mark" aria-hidden="true">↗</span> 有入口 <span class="km-pending-mark" aria-hidden="true">○</span> 缺维度入口 · 有独立案例 / 相关案例可借读 · 可继续深化。案例状态已逐域核对，但只代表所列代表案例，不表示覆盖全部业务。</p>
 
         <form class="km-controls" data-km-controls role="search" aria-label="筛选知识覆盖地图" hidden>
           <div class="km-search-row"><div class="km-search-field"><label for="km-search">按主题搜索</label><div><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></svg><input id="km-search" name="q" type="search" maxlength="100" placeholder="试试：大豆、LNG、闸口、计量…" autocomplete="off" aria-describedby="km-filter-help" /></div></div><div class="km-group-select"><label for="km-group">知识大类</label><select id="km-group" name="group"><option value="all">全部 {coverageGroups.length} 大类</option>{coverageGroups.map((group) => <option value={group.id}>{group.title}</option>)}</select></div><button class="km-reset" type="reset">重置筛选</button></div>
@@ -101,18 +138,19 @@ const views: { id: string; title: string; matches: (domain: Domain) => boolean; 
             return <label><input type="radio" name="view" value={view.id} checked={i === 0} data-km-empty-title={total === 0 ? view.noEntries : undefined}/><span>{view.title}<small>{total}</small></span></label>;
           })}</fieldset>
           <p id="km-filter-help">搜索、大类和覆盖条件共同生效。按钮显示全站知识域数；「需要深化」表示已有具体后续建议，与缺入口、缺独立案例可以重叠。</p>
+          <p class="km-share-note">筛选条件会同步到地址栏；复制当前页面链接即可分享相同结果。</p>
         </form>
         <noscript><p class="km-noscript">当前显示全部知识域。搜索和筛选需启用 JavaScript；目录、内容链接和展开详情仍可使用。</p></noscript>
         <div class="km-map-layout">
           <nav class="km-index" aria-label="知识大类目录"><p class="km-kicker">地图目录</p>{coverageGroups.map((group, index) => <a href={'#group-' + group.id} data-km-index={group.id}><span class="km-index-number">{String(index + 1).padStart(2, '0')}</span><span>{group.title}</span><small>{group.domains.length}</small></a>)}<a class="km-index-top" href="#learning-paths">↑ 回到学习路线</a></nav>
           <div class="km-results">
-            <p class="km-result-status" id="km-results-status" role="status" aria-live="polite" aria-atomic="true">显示 {knowledgeCoverage.length} 个知识域 / {coverageGroups.length} 大类</p>
+            <p class="km-result-status" id="km-results-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1">显示 {knowledgeCoverage.length} 个知识域 / {coverageGroups.length} 大类</p>
             <div class="km-empty" data-km-empty hidden><span aria-hidden="true">⌕</span><h3 data-km-empty-title>暂时没有匹配的主题</h3><p>试试更短的词，或放宽大类与覆盖条件。</p><button type="button" data-km-clear>清除筛选，查看全部</button></div>
             {coverageGroups.map((group, index) => <section class="km-group" id={'group-' + group.id} data-km-group={group.id} aria-labelledby={'group-title-' + group.id}>
               <header class="km-group-heading"><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><div><h3 id={'group-title-' + group.id}>{group.title}</h3><p>{group.hint}</p></div><small data-km-group-count>{group.domains.length} 个域</small></header>
               <div class="km-domain-grid">{knowledgeCoverage.filter((domain) => domain.groupId === group.id).map((domain) => <article class="km-domain" id={domain.id} data-km-domain data-km-search={domain.searchText} data-km-group-id={domain.groupId} data-km-views={views.filter((view) => view.matches(domain)).map((view) => view.id).join(' ')}>
                 <div class="km-domain-meta"><span>{domain.id.toUpperCase()}</span><span>{domain.development.missingEntry ? `缺维度入口 · ${domain.gaps.length} 项` : '四维均有入口'}</span></div>
-                <h4>{domain.title}</h4><p class="km-domain-summary">{domain.summary}</p>{domain.development.missingCase && <p class="km-case-gap"><strong>缺独立案例：</strong>{domain.development.missingCase.title}</p>}
+                <h4>{domain.title}</h4><p class="km-domain-summary">{domain.summary}</p><p class="km-case-status" data-case-kind={domain.caseStudy.kind}><strong>{caseKindLabels[domain.caseStudy.kind as keyof typeof caseKindLabels]}</strong><span>{domain.caseStudy.note}</span><a href={href(domain.caseStudy.path)}>{domain.caseStudy.label} ↗</a></p>
                 <dl class="km-coverage-grid">{coverageDimensions.map((dimension) => {
                   const item = domain.coverage[dimension.id];
                   return <div class:list={['km-coverage-cell', { 'km-is-pending': !item.links.length }]}>
@@ -124,7 +162,7 @@ const views: { id: string; title: string; matches: (domain: Domain) => boolean; 
                 })}</dl>
                 <details class="km-domain-details"><summary>覆盖依据与继续深入<span aria-hidden="true">＋</span></summary>
                   <dl class="km-evidence">{coverageDimensions.map((dimension) => <div><dt>{dimension.title}</dt><dd>{domain.coverage[dimension.id].note}</dd></div>)}</dl>
-                  {domain.development.missingCase && <p class="km-next"><strong>独立案例缺口 · {domain.development.missingCase.title}</strong>{domain.development.missingCase.note}</p>}{domain.development.canDeepen && <p class="km-next"><strong>可以继续深化</strong>{domain.next}</p>}
+                  <p class="km-next"><strong>{caseKindLabels[domain.caseStudy.kind as keyof typeof caseKindLabels]} · {domain.caseStudy.label}</strong>{domain.caseStudy.note}</p>{domain.development.canDeepen && <p class="km-next"><strong>可以继续深化</strong>{domain.next}</p>}
                   {domain.topics.length > 0 && <div class="km-related"><strong>本领域专题</strong><div>{domain.topics.map((topic) => <a href={href(topic.path)}>{topic.label}<span aria-hidden="true"> ↗</span></a>)}</div></div>}
                 </details>
               </article>)}</div>
@@ -133,7 +171,7 @@ const views: { id: string; title: string; matches: (domain: Domain) => boolean; 
         </div>
       </section>
 
-      <section class="km-method" id="km-method" aria-labelledby="km-method-title"><div><p class="km-kicker">READ THE MAP / 阅读这张地图</p><h2 id="km-method-title">记录入口，保留边界。</h2><p>四个维度独立判断。一个领域即使四维均有入口，也只代表这里链接的内容已经存在，不代表所有货类、地区与实务问题均已覆盖。</p></div><div><ul><li><strong>尊重现有概览。</strong>24 个领域的基础介绍都来自既有知识卡；粮食归入干散货，油品、化学品、LNG 与 LPG 归入液体散货与气体业务。</li><li><strong>以实际内容为依据。</strong>业务流程对应步骤或交接链；交互按实际玩法标注类型；异常案例对应具体变化与处理，不拿常见误区充数。</li><li><strong>不作完成度评分。</strong>缺入口、缺独立案例和已有深化建议分别标记。没有标注缺口不代表穷尽所有实务问题。</li></ul><a class="km-text-link" href={href('about/')}>查看手册的来源与适用范围 <span aria-hidden="true">↗</span></a></div></section>
+      <section class="km-method" id="km-method" aria-labelledby="km-method-title"><div><p class="km-kicker">READ THE MAP / 阅读这张地图</p><h2 id="km-method-title">记录入口，保留边界。</h2><p>四个维度独立判断。一个领域即使四维均有入口，也只代表这里链接的内容已经存在，不代表所有货类、地区与实务问题均已覆盖。</p></div><div><ul><li><strong>尊重现有概览。</strong>24 个领域的基础介绍都来自既有知识卡；粮食归入干散货，油品、化学品、LNG 与 LPG 归入液体散货与气体业务。</li><li><strong>以实际内容为依据。</strong>业务流程对应步骤或交接链；交互按实际玩法标注类型；异常案例对应具体变化与处理，不拿常见误区充数。</li><li><strong>不作完成度评分。</strong>案例分为有独立案例和相关案例可借读；这只是代表案例核对，不表示完整覆盖。缺入口与已有深化建议分别标记。</li></ul><a class="km-text-link" href={href('about/')}>查看手册的来源与适用范围 <span aria-hidden="true">↗</span></a></div></section>
       <div class="km-end"><span>从一个问题出发，沿着交接继续走。</span><a href="#coverage-map">回到地图 ↑</a></div>
     </div>
   </div>

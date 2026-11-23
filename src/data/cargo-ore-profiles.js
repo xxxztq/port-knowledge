@@ -179,6 +179,7 @@ export const oreCargoProfiles = [
       { symptom: '系统中断后存在重复提货或库存未知', owner: '业务负责人、IT、中控与计量岗位', response: '按本单位连续性安排控制任务，恢复后以原始交接和计量记录对账去重；系统恢复不自动解除监管或商业限制。' }
     ],
     links: [
+      { label: '铁矿石进口完整业务案例', path: 'scenarios/iron-ore-import/' },
       { label: '散货船与船岸衔接', path: 'vessels/bulk-carrier/' },
       { label: '港口系统与料流记录', path: 'systems/' },
       { label: '闸口交付与权限', path: 'gate/' },

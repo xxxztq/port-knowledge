@@ -16,6 +16,7 @@ const pageSize = 12;
 const summaryEntries = JSON.parse(document.querySelector('#knowledge-search-index')!.textContent || '[]');
 let entries = summaryEntries;
 let kind = '全部', domain = 'all', full = false, indexFailed = false, typing = false, composing = false;
+let indexPromise: Promise<void> | null = null;
 let visibleCount = pageSize;
 let timer: ReturnType<typeof setTimeout>;
 const kinds = [...kindSelect.options].map(option => option.value);
@@ -38,7 +39,10 @@ function readURL() {
   const remembered = history.state?.libraryVisible;
   visibleCount = Number.isSafeInteger(remembered) && remembered >= pageSize ? Math.min(remembered, 10000) : pageSize;
   writeURL(true);
+  document.body.dataset.searchIndexState = full ? 'full' : indexFailed ? 'fallback' : (indexPromise || input.value.trim()) ? 'loading' : 'summary';
+  document.body.dataset.searchReady = full || (!indexFailed && !indexPromise && !input.value.trim()) ? 'true' : indexFailed ? 'fallback' : 'loading';
   refresh();
+  if (input.value.trim() && !full && !indexFailed) void loadIndex();
 }
 function node(tag: string, content: string, className = '') {
   const element = document.createElement(tag);
@@ -114,12 +118,13 @@ function refresh(reset = false, append = false) {
     suggestion.querySelector('button')!.dataset.query = correction.query;
   }
   if (failed && kind === '我的收藏') status.textContent = '无法读取收藏记录，请检查浏览器是否允许本地存储。';
-  else status.textContent = full ? '已检索全站正文 · 点击结果可到相关章节。' : indexFailed ? '完整正文索引暂未加载，当前仅显示摘要匹配与问题导航；可重试。' : '当前使用摘要索引；完整正文索引加载后会自动更新结果。';
+  else status.textContent = full ? '已检索全站正文 · 点击结果可到相关章节。' : indexFailed ? '完整正文索引暂未加载，当前仅显示摘要匹配与问题导航；可重试。' : document.body.dataset.searchIndexState === 'loading' ? '正在载入全站正文；当前先显示摘要匹配与问题导航。' : '当前仅显示摘要匹配与问题导航；输入关键词后会加载全站正文。';
 }
 function changeFilters() { typing = false; writeURL(); refresh(true); }
 function searchQuestion(query: string) {
   input.value = query;
   changeFilters();
+  if (input.value.trim() && !full && !indexFailed) void loadIndex();
   input.focus();
 }
 function onInput() {
@@ -129,6 +134,7 @@ function onInput() {
   clearTimeout(timer);
   timer = setTimeout(() => typing = false, 600);
   refresh(true);
+  if (input.value.trim() && !full && !indexFailed) void loadIndex();
 }
 input.addEventListener('compositionstart', () => composing = true);
 input.addEventListener('compositionend', () => { composing = false; onInput(); });
@@ -158,26 +164,35 @@ window.addEventListener('pageshow', readURL);
 window.addEventListener('storage', () => refresh());
 window.addEventListener('learningchange', () => refresh());
 async function loadIndex() {
+  if (full) return;
+  if (indexPromise) return indexPromise;
   retry.hidden = true;
   indexFailed = false;
+  document.body.dataset.searchIndexState = 'loading';
+  document.body.dataset.searchReady = 'loading';
   refresh();
-  try {
-    const response = await fetch(base + 'search-index.json', {signal: AbortSignal.timeout(12000)});
-    if (!response.ok) throw new Error('index unavailable');
-    entries = validateSearchIndex(await response.json());
-    full = true;
-    refresh();
-    document.body.dataset.searchReady = 'true';
-  } catch {
-    entries = summaryEntries;
-    full = false;
-    indexFailed = true;
-    refresh();
-    retry.hidden = false;
-    document.body.dataset.searchReady = 'fallback';
-  }
+  indexPromise = (async () => {
+    try {
+      const response = await fetch(base + 'search-index.json?v=2', {cache: 'no-cache', signal: AbortSignal.timeout(12000)});
+      if (!response.ok) throw new Error('index unavailable');
+      entries = validateSearchIndex(await response.json());
+      full = true;
+      document.body.dataset.searchIndexState = 'full';
+      document.body.dataset.searchReady = 'true';
+      refresh();
+    } catch {
+      entries = summaryEntries;
+      full = false;
+      indexFailed = true;
+      document.body.dataset.searchIndexState = 'fallback';
+      document.body.dataset.searchReady = 'fallback';
+      refresh();
+      retry.hidden = false;
+    }
+  })();
+  try { await indexPromise; } finally { indexPromise = null; }
 }
-retry.addEventListener('click', loadIndex);
+retry.addEventListener('click', () => { void loadIndex(); });
 document.querySelector('.knowledge-library')!.classList.add('search-enhanced');
+document.body.dataset.searchIndexState = 'summary';
 readURL();
-loadIndex();

@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const title = '跟一只进口箱：从单证到交付对账';
+const headline = '箱子没换，交接凭据一直在变。';
+const nodes = [
+  { id: 'paperwork', short: '单证对箱', title: '先确认说的是同一票货、同一只箱', actor: '收货人／受托报关企业 · 船公司／船代 · 码头单证岗', input: '船舶航次、舱单关联、提单或运输资料、箱号与封志记录。提单指向一票货，箱号指向一个物理箱，不能互相替代。', check: '核对运输资料及有效版本，把 A-01 和该票货关联起来。货代可协助组织资料与运输，海关才作监管判断；并非每个货代都有本票申报委托。', output: '资料与箱的关联可追溯；发现差异先找产生原始记录的一方核实，不让现场自行改写。', link: { path: 'documents/', label: '逐栏看单证样张' } },
+  { id: 'yard', short: '卸船落场', title: '岸桥把箱卸下来，堆场给它一个位置', actor: '操作部 · 理货 · 中控／计划 · 堆场班组', input: '卸船任务和现场识别记录。码头操作系统（TOS）需要知道预定卸哪只箱、放在哪里。', check: '核对实卸箱号、异常箱况和实际落位；堆位计划不是库存实绩。发现箱号或位置对不上，先保留现场记录并复核。', output: '确认 A-01 已实卸、在哪个箱位，以及是否有不能继续流转的异常或限制。', link: { path: 'journey/#journey-map', label: '去七站地图看船、岸桥和堆场' } },
+  { id: 'systems', short: '核对状态', title: '消息收到了，不等于箱可以提走', actor: '报关方／外部平台 · 海关 · 码头业务岗 · 港口 IT', input: '申报或回执、码头任务、在场记录，以及各自对应该票货或 A-01 的有效状态。', check: '单一窗口或电子口岸等是办理或交换信息的渠道，不能把“已接收”直接当成海关放行。码头系统还要区分监管依据、商业提货授权和现场任务。', output: '能说清每个状态来自谁、证明什么、对应哪个对象。对不上时退回权威来源复核，不能用系统重发替代业务审批。', link: { path: 'systems/#system-message-chain', label: '拆解电子口岸、单一窗口与码头系统的消息链' } },
+];
+const paths = [
+  { id: 'local-pickup', title: 'A · 在进境地办理进口，再从本港提货', condition: 'A-01 已取得适用的进口放行，本票不走进口转关。', handoff: '码头再核对有效提货授权、预约车次、箱号及其他适用限制，符合条件才交给受核验的提货方。', exit: '本港实际离场是这条路径的港区实物交接节点；此前抬杆或收到一条回执，都不能单独证明已提离。', link: { path: 'scenarios/import-full-container/', label: '读进口整箱完整案例' } },
+  { id: 'transit-pickup', title: 'B · 先按监管安排转运，再在指运地办进口', condition: '假设本票具备适用的进口转关条件，选择直转教学路径，已获得该段运输所需的有效转关放行。', handoff: '本港按转关任务核对 A-01、适用的运输工具和封志记录等，再交给相应承运人；这个出闸是监管运输发运，不是交付给最终提货人。', exit: '指运地分别确认实到、运抵反馈、转关核销，再看进口申报与放行结果；最终提离还要核对当地交付条件。运输途中异常交由责任方按适用程序处置。', link: { path: 'scenarios/customs-transit/', label: '读进口转关全链及官方依据' } },
+];
+const nav = [...nodes.map(({ id, short }) => ({ id, short })), { id: 'choose-path', short: '分清两条路' }, { id: 'gate-check', short: '闸口和实过' }, { id: 'settlement', short: '核对费用' }];
+const number = (index: number) => String(index + 1).padStart(2, '0');
+---
+<Layout title={title} description="用虚构进口普箱 A-01 读懂单证、卸船落场、系统回执、转关、闸口核验、实物交付与费用对账。" active="flows">
+  <div class="container box-lesson">
+    <div class="breadcrumbs"><a href={base}>首页</a><Icon name="chevron" size={12}/><a href={base + 'knowledge-map/#route-one-shipment'}>跟一票货</a><Icon name="chevron" size={12}/><span>进口箱 A-01</span></div>
+    <header class="box-hero">
+      <div><p class="eyebrow">ONE CONTAINER / 六站教学案例</p><h1>{title}</h1><p class="box-lede">{headline} 从岸桥卸箱到闸口，跟着 A-01 看每一步谁接手、核对什么、留下什么。</p><a class="button primary" href="#paperwork">从第 1 站开始 <Icon name="arrow" size={17}/></a></div>
+      <figure class="box-card">
+        <svg viewBox="0 0 260 100" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 79h226M27 78V27l22-13h167l19 14v50M27 27h208m-22 0v51M51 34v36m18-36v36m18-36v36m18-36v36m18-36v36m18-36v36m18-36v36m18-36v36m18-36v36m28-27v15"/><path d="M27 86h15m177 0h16"/></svg>
+        <figcaption><strong>A-01</strong><span>虚构演示号 · 不是正式箱号</span></figcaption>
+      </figure>
+    </header>
+    <p class="box-scope">场景设定：一只普通进口重箱。第 4 站的两个去向是同一箱的<b>备选路径，不是连续动作</b>。这是静态教学案例，不接入港口、电子口岸或海关系统，不作通关、收费或实际作业指引。</p>
+    <nav class="box-toc" aria-label="六站案例目录"><ol>{nav.map(({ id, short }, i) => <li><a href={'#' + id}><span aria-hidden="true">{number(i)}</span>{short}</a></li>)}</ol></nav>
+    <div class="box-timeline" data-search-content>
+      {nodes.map((node, i) => <section id={node.id} aria-labelledby={'title-' + node.id} class="box-step">
+        <header><span class="box-no">{number(i)}</span><div><p class="eyebrow">{node.short}</p><h2 id={'title-' + node.id}>{node.title}</h2></div></header>
+        <p class="box-actors"><strong>谁接手：</strong>{node.actor}</p>
+        <dl class="box-checks"><div><dt>收到什么</dt><dd>{node.input}</dd></div><div><dt>怎样核对</dt><dd>{node.check}</dd></div><div><dt>留下什么</dt><dd>{node.output}</dd></div></dl>
+        <p class="box-step-links"><a href={base + node.link.path}>{node.link.label} ↗</a><a href={'#' + nav[i + 1].id}>下一站：{nav[i + 1].short} ↓</a></p>
+      </section>)}
+      <section id="choose-path" aria-labelledby="title-path" class="box-step">
+        <header><span class="box-no">04</span><div><p class="eyebrow">分清两条路</p><h2 id="title-path">同一只箱，为什么出港目的不同？</h2></div></header>
+        <div class="box-branches">{paths.map((path) => <article id={path.id}><h3>{path.title}</h3><dl><div><dt>前提</dt><dd>{path.condition}</dd></div><div><dt>本港交接</dt><dd>{path.handoff}</dd></div><div><dt>后续凭据</dt><dd>{path.exit}</dd></div></dl><a href={base + path.link.path}>{path.link.label} ↗</a></article>)}</div>
+        <p class="box-step-links"><a href="#gate-check">下一站：闸口和实过 ↓</a></p>
+      </section>
+      <section id="gate-check" aria-labelledby="title-gate" class="box-step">
+        <header><span class="box-no">05</span><div><p class="eyebrow">闸口和实过</p><h2 id="title-gate">校验通过、抬杆、实际通行、回执是四件事</h2></div></header>
+        <ol class="box-gate"><li><strong>认任务</strong>是本港提货还是转关发运？按任务类型选对应依据。</li><li><strong>对对象</strong>核对车辆、箱号、任务与适用凭据；封志等按本次要求校验。</li><li><strong>看实过</strong>道闸获准抬杆后，还要确认车和箱是否真的通过。</li><li><strong>存回执</strong>记录箱、车辆、时间和交接结果；回执缺失时复核现场实绩，不重复放车。</li></ol>
+        <details class="box-question"><summary>想一想：闸杆抬起，A-01 就已经出场了吗？</summary><p>没有。抬杆是设备动作。车尚未实际通过时不能记作离场；车已通过但回执未回传时，要核对实绩和记录，不把回执缺失当作“没有出去”。</p></details>
+        <p class="box-step-links"><a href={base + 'gate/#sim-title'}>进入通用闸口教学模拟 ↗</a><a href="#settlement">下一站：核对费用 ↓</a></p>
+      </section>
+      <section id="settlement" aria-labelledby="title-settlement" class="box-step">
+        <header><span class="box-no">06</span><div><p class="eyebrow">核对费用</p><h2 id="title-settlement">谁提供了服务，就找谁的计费依据</h2></div></header>
+        <dl class="box-checks"><div><dt>码头服务</dt><dd>按适用约定核对装卸、堆存或额外服务的实绩与计费口径。查看事件时间、计费单位、费用承担人，不凭一张出闸回执计算全部费用。</dd></div><div><dt>其他主体</dt><dd>承运人运输服务、船公司的用箱相关费用与海关税费不是同一笔码头作业收入。转关路径中，运输段和两地场站服务应分别查依据，不套用本港提货的账单。</dd></div><div><dt>最后留档</dt><dd>把 A-01 的交接记录、服务实绩、合同或公示口径、账单差异及更正记录对应起来。单票服务收入不是利润，利润还要考虑成本。</dd></div></dl>
+        <p class="box-step-links"><a href={base + 'roles/#collaboration-completion-settlement'}>看操作、商务和财务怎样交接 ↗</a><a href={base + 'economics/#profit-title'}>试算经营收入与成本 ↗</a></p>
+      </section>
+    </div>
+    <footer class="box-end"><a href={base + 'knowledge-map/#route-one-shipment'}>← 返回「跟一票货」换一条路线</a><a href="#paperwork">回到第 1 站 ↑</a></footer>
+  </div>
+</Layout>
+<style>
+  .box-lesson{max-width:1120px;padding-bottom:clamp(44px,7vw,90px);color:#20352e}
+  .box-hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:center;gap:clamp(24px,5vw,68px);padding:clamp(22px,6vw,62px);background:#e9efe6;border:1px solid #c9d6ca;border-radius:16px}
+  .box-hero h1{font-size:clamp(32px,5vw,60px);line-height:1.12;margin:.24em 0}
+  .box-lede{max-width:34em;font-size:clamp(16px,2vw,20px);line-height:1.65}
+  .box-card{margin:0;padding:22px;border:1px solid #627c72;border-radius:12px;background:#203a37;color:#e9f0e7}
+  .box-card svg{width:100%;height:auto;display:block}.box-card figcaption{display:flex;gap:10px;flex-wrap:wrap;align-items:baseline;justify-content:space-between;font-size:13px}.box-card strong{font:700 22px Georgia,serif}
+  .box-scope{line-height:1.65;border-inline-start:3px solid #92703d;background:#f4efe2;padding:12px 16px;margin:20px 0}
+  .box-toc ol{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;padding:0;margin:0 0 28px}.box-toc a{display:flex;align-items:center;gap:8px;background:#fffdf8;border:1px solid #cdd9cf;border-radius:6px;padding:10px;min-height:44px;font-weight:650}.box-toc span{font:700 16px Georgia,serif;color:#365e53}
+  .box-step{scroll-margin-top:92px;padding:clamp(16px,3.3vw,36px);border:1px solid #ccd7cf;border-radius:12px;margin-bottom:18px;background:#fffdf8}.box-step header{display:flex;gap:14px;align-items:start}.box-step header p{margin:0 0 4px}.box-step h2{font-size:clamp(20px,3.3vw,32px);margin:0;line-height:1.25}.box-no{padding:8px 10px;color:#fff;background:#285b55;border-radius:6px;font:700 19px Georgia,serif}
+  .box-actors{padding:10px 12px;background:#eef3e9;border-radius:6px;line-height:1.6}.box-checks,.box-branches{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr))}.box-checks div,.box-branches article,.box-gate li{padding:14px;background:#f5f7f0;border:1px solid #dae2d9;border-radius:8px;min-width:0}.box-step a,.box-end a{text-decoration:underline;text-underline-offset:3px;font-weight:650;color:#234e47}.box-step-links,.box-end{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;margin-bottom:0}.box-step dt,.box-gate strong{font-weight:750;margin-bottom:3px;display:block}.box-step dd,.box-gate li{margin:0;line-height:1.65;font-size:15px}
+  .box-branches{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:16px}.box-branches article{scroll-margin-top:92px}.box-branches h3{margin:0;font-size:17px}.box-branches dl>div{margin-bottom:10px}.box-gate{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;list-style:none;padding:0}.box-question{padding:12px;background:#f4efe2;border:1px solid #decfb4;border-radius:6px}.box-question summary{cursor:pointer;font-weight:700}.box-question p{margin:8px 0 0}
+  .box-lesson :is(a,summary):focus-visible{outline:3px solid #8b6634;outline-offset:3px}
+  @media(max-width:760px){.box-hero{grid-template-columns:1fr}.box-card{max-width:340px}.box-toc ol{grid-template-columns:repeat(3,minmax(0,1fr))}.box-checks{grid-template-columns:1fr}.box-gate{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:480px){.box-toc ol,.box-branches{grid-template-columns:repeat(2,minmax(0,1fr))}.box-branches{grid-template-columns:1fr}}
+</style>

@@ -9,13 +9,103 @@ import Icon from '../components/Icon.astro';
 const { title = '看懂港口', description = '从一票货、一台设备、一个岗位，读懂港口如何运转。', active = 'home' } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const href = (p = '') => base + p;
-const nav = [['home','认识港口',''],['journey','互动旅程','shipment/'],['flows','业务流程','flows/'],['cargo','箱型与货类','cargo/'],['roles','角色协作','roles/'],['equipment','设备图鉴','equipment/'],['systems','港口系统','systems/'],['gate','闸口与监管','gate/'],['economics','经营逻辑','economics/'],['library','知识百科','library/']];
-const pagePath = Astro.url.pathname.slice(base.length);
-const hasLearning = !['', 'library/', 'about/', '404.html', 'knowledge-map/'].includes(pagePath);
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const nav = [['home','认识港口',''],['knowledge-map','知识地图','knowledge-map/'],['journey','互动旅程','shipment/'],['flows','业务流程','flows/'],['cargo','箱型与货类','cargo/'],['vessels','船型图鉴','vessels/'],['roles','角色协作','roles/'],['equipment','设备图鉴','equipment/'],['systems','港口系统','systems/'],['gate','闸口与监管','gate/'],['economics','经营逻辑','economics/'],['library','知识百科','library/']];
+const pagePath = Astro.url.pathname === base || Astro.url.pathname === base.slice(0, -1)
+  ? ''
+  : Astro.url.pathname.startsWith(base)
+    ? Astro.url.pathname.slice(base.length)
+    : Astro.url.pathname.replace(/^\/+/, '');
+const isNotFound = /^404(?:\.html|\/)?$/.test(pagePath);
+const hasLearning = !isNotFound && !['', 'library/', 'about/', 'knowledge-map/'].includes(pagePath);
+const site = Astro.site ?? new URL(Astro.url.origin);
+const canonical = new URL(Astro.url.pathname, site);
+const siteUrl = new URL(base, site);
+const sectionLabels: Record<string, string> = {
+  shipment: '互动旅程',
+  flows: '业务流程',
+  scenarios: '业务流程',
+  cargo: '箱型与货类',
+  roles: '角色协作',
+  equipment: '设备图鉴',
+  systems: '港口系统',
+  gate: '闸口与监管',
+  economics: '经营逻辑',
+  library: '知识百科',
+  knowledge: '知识百科',
+  'knowledge-map': '知识地图',
+  foundations: '港口基础专题',
+  infrastructure: '港口基础设施',
+  risks: '风险与预防',
+  vessels: '船型图鉴',
+  berthing: '进港与靠泊',
+  documents: '单证图解',
+  containers: '集装箱基础',
+  brands: '箱体品牌与港航公司',
+  'brands-and-ports': '港口与港航主体',
+  about: '来源与范围',
+};
+const isHome = pagePath === '';
+const pathSegments = pagePath.split('/').filter(Boolean);
+const section = pathSegments[0];
+const breadcrumbParents: Record<string, string> = { knowledge: 'library', scenarios: 'flows' };
+const articleSections = new Set(['knowledge', 'scenarios', 'cargo', 'foundations', 'infrastructure', 'risks', 'vessels']);
+const isArticle = pathSegments.length > 1 && articleSections.has(section);
+const breadcrumbs = isHome || isNotFound ? [] : [
+  { name: '首页', url: siteUrl.href },
+  ...(pathSegments.length > 1 && sectionLabels[section] ? [{
+    name: sectionLabels[section],
+    url: new URL((breadcrumbParents[section] ?? section) + '/', siteUrl).href,
+  }] : []),
+  { name: title, url: canonical.href },
+];
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl.href}#website`,
+      url: siteUrl.href,
+      name: '看懂港口',
+      description: '从一票货、一台设备、一个岗位，读懂港口如何运转。',
+      inLanguage: 'zh-CN',
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonical.href}#webpage`,
+      url: canonical.href,
+      name: title,
+      description,
+      ...(breadcrumbs.length > 0 ? { breadcrumb: { '@id': `${canonical.href}#breadcrumb` } } : {}),
+      isPartOf: { '@id': `${siteUrl.href}#website` },
+      inLanguage: 'zh-CN',
+    },
+    ...(breadcrumbs.length > 0 ? [{
+      '@type': 'BreadcrumbList',
+      '@id': `${canonical.href}#breadcrumb`,
+      itemListElement: breadcrumbs.map((item, position) => ({
+        '@type': 'ListItem',
+        position: position + 1,
+        name: item.name,
+        item: item.url,
+      })),
+    }] : []),
+    ...(isArticle ? [{
+      '@type': 'Article',
+      '@id': `${canonical.href}#article`,
+      url: canonical.href,
+      headline: title,
+      description,
+      mainEntityOfPage: { '@id': `${canonical.href}#webpage` },
+      isPartOf: { '@id': `${siteUrl.href}#website` },
+      articleSection: breadcrumbs[1]?.name ?? '港口知识',
+      inLanguage: 'zh-CN',
+    }] : []),
+  ],
+};
+const structuredDataJson = JSON.stringify(structuredData).replace(/</g, '\\u003c');
+const fullTitle = title === '看懂港口' ? '看懂港口 · 从靠岸到交付' : `${title} · 看懂港口`;
 ---
-<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#103d47"/><meta name="color-scheme" content="light"/><title>{title === '看懂港口' ? '看懂港口 · 从靠岸到交付' : title + ' · 看懂港口'}</title><link rel="icon" type="image/svg+xml" href={href('favicon.svg')}/><link rel="canonical" href={canonical}/><meta property="og:title" content={title + ' · 看懂港口'}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/><meta property="og:image" content={new URL(href("brand/social-card.png"),Astro.site)}/><meta name="twitter:card" content="summary_large_image"/><link rel="apple-touch-icon" href={href("brand/apple-touch-icon.png")}/></head>
-<body data-base={base}>
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#103d47"/><meta name="color-scheme" content="light"/><title>{fullTitle}</title><link rel="icon" type="image/svg+xml" href={href('favicon.svg')}/>{isNotFound ? <meta name="robots" content="noindex"/> : <link rel="canonical" href={canonical}/>}<meta property="og:title" content={fullTitle}/><meta property="og:description" content={description}/><meta property="og:type" content={isArticle ? "article" : "website"}/><meta property="og:url" content={canonical}/><meta property="og:image" content={new URL(href("brand/social-card.png"),site)}/><meta name="twitter:card" content="summary_large_image"/><link rel="apple-touch-icon" href={href("brand/apple-touch-icon.png")}/>{!isNotFound && <script type="application/ld+json" set:html={structuredDataJson}></script>}</head><body data-base={base}>
 <a class="skip" href="#main">跳到主要内容</a>
 <header class="site-header">
   <div class="nav-wrap">
@@ -25,7 +115,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <button type="button" class="icon-button mobile-toggle" aria-controls="site-navigation" aria-label="展开导航" aria-expanded="false"><Icon name="menu"/></button>
     </div>
     <nav id="site-navigation" class="main-nav" aria-label="主要导航">
-      {nav.map(([key,label,url]) => <a href={href(url)} aria-current={active === key ? 'page' : undefined}>{label}</a>)}
+      {nav.map(([key,label,url]) => <a href={href(url)} aria-current={active === key || (key === 'knowledge-map' && pagePath.startsWith('knowledge-map')) || (key === 'vessels' && section === 'vessels') ? 'page' : undefined}>{label}</a>)}
     </nav>
     <div class="nav-actions nav-actions--wide">
       <a class="icon-button" href={href('library/')} aria-label="搜索港口知识"><Icon name="search"/></a>
@@ -80,8 +170,15 @@ if (toggle && navigation) initNavigation(toggle, navigation);
 <style>
   /* Each layout keeps its visual order and only exposes one search link to the keyboard. */
   .nav-actions--compact { display: none; }
+  @media (min-width: 1181px) and (max-width: 1500px) {
+    .main-nav { gap: 16px; }
+  }
   @media (max-width: 1180px) {
     .nav-actions--compact { display: flex; }
+    .main-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; height: auto; max-height: calc(100dvh - 88px); overflow-y: auto; overscroll-behavior: contain; background: #f8faf6; border-bottom: 1px solid var(--line); padding: 18px 30px; flex-wrap: wrap; gap: 12px 22px; }
+    .main-nav.is-open { display: flex; }
+    .main-nav a { height: auto; padding: 7px 0; }
+    .main-nav a[aria-current]:after { bottom: 0; }
     .nav-actions--wide { display: none; }
     .main-nav.is-open { max-height: calc(100dvh - 88px); overflow-y: auto; overscroll-behavior: contain; }
     .site-header :is(a, button):focus-visible { outline-color: #365953; }

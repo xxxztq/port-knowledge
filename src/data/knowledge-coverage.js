@@ -118,12 +118,12 @@ const evidence = {
     topics: [link('箱型与箱门信息', 'containers/'), link('贝位与箱位', 'infrastructure/bay/')],
   },
   k11: {
-    process: covered('散粮已有卸船入仓到装车交付的流程；矿产总览另有料流与记录链。', scenario('bulk-grain-to-silo', '散粮入仓与出库'), link('矿产作业链', 'cargo/minerals/#bulk-chain')),
+    process: covered('散粮案例与矿产概览各有其范围；新增铁矿石进口独立案例，串起卸船、堆存、数量与品质核对、授权交付及费用边界，不外推为全部矿种。', scenario('iron-ore-import', '铁矿石进口：从卸船到交付'), scenario('bulk-grain-to-silo', '散粮入仓与出库'), link('矿产作业链总览', 'cargo/minerals/#bulk-chain')),
     interactive: covered('交互比较：切换四种疏港方式，查看各自的交接记录与判断要点，不要求作答。', link('疏港方式交互比较', 'cargo/minerals/#outbound')),
     interactionKind: 'comparison',
-    exceptions: covered('散粮流程明确误入仓、输送堵塞、受潮和数量差异等异常。', scenario('bulk-grain-to-silo', '入仓异常与货批隔离', '#step-2')),
-    next: '深化粮种差异与不同矿产品的品质、计量交接。', tags: '干散货 粮食 农产品 大豆 玉米 小麦 矿石 煤炭 铁矿石 铝土矿 铜精矿 镍矿 磷矿石 砂石 石灰石',
-    topics: [link('矿产与干散货', 'cargo/minerals/'), link('粮食与农产品', 'cargo/grains/'), link('大豆', 'cargo/grain-soybeans/'), link('玉米', 'cargo/grain-maize/'), link('小麦', 'cargo/grain-wheat/')],
+    exceptions: covered('散粮案例与铁矿石案例分别呈现各自的输送、批次、计量及交付异常，不据此覆盖全部散货风险。', scenario('iron-ore-import', '铁矿石计量、批次与交付异常', '#step-4'), scenario('bulk-grain-to-silo', '入仓异常与货批隔离', '#step-2')),
+    next: '继续深化不同矿种、粮种及港口设施的差异，不能把铁矿石案例视为所有散货的通用流程。', tags: '干散货 粮食 农产品 大豆 玉米 小麦 矿石 煤炭 铁矿石 铝土矿 铜精矿 镍矿 磷矿石 砂石 石灰石',
+    topics: [link('铁矿石进口独立案例', 'scenarios/iron-ore-import/'), link('矿产与干散货', 'cargo/minerals/'), link('粮食与农产品', 'cargo/grains/'), link('大豆', 'cargo/grain-soybeans/'), link('玉米', 'cargo/grain-maize/'), link('小麦', 'cargo/grain-wheat/')],
   },
   k12: {
     process: covered('木材、卷钢与项目货物档案已有按货物身份组织的业务链。', link('木材业务链', 'cargo/timber/#business-chain'), link('风电叶片业务链', 'cargo/wind-blade/#business-chain')),
@@ -142,9 +142,9 @@ const evidence = {
     topics: [link('液体散货与气体', 'cargo/liquids/'), link('石油与油品', 'cargo/liquid-petroleum/'), link('液体化学品', 'cargo/liquid-chemicals/'), link('LNG', 'cargo/liquid-lng/'), link('LPG', 'cargo/liquid-lpg/')],
   },
   k14: {
-    process: covered('已有商品车滚装和客运登离船流程；邮轮仍以概览和船型介绍为主。', scenario('ro-ro-finished-vehicles', '商品车滚装'), scenario('passenger-terminal-boarding', '旅客登离船')),
-    exceptions: covered('滚装场景明确车况异常、跳板条件变化和擦碰后的交接。', scenario('ro-ro-finished-vehicles', '滚装擦碰与故障', '#step-3')),
-    next: '对照现有商品车滚装与普通旅客场景，补充车货和旅客交接记录的差异。', tags: '滚装 客滚 邮轮 商品车 汽车 新能源汽车 旅客 客运',
+    process: covered('对照商品车滚装、国内客运登离船与国际邮轮母港换客，区分车辆、旅客及行李的交接。', scenario('ro-ro-finished-vehicles', '商品车滚装'), scenario('passenger-terminal-boarding', '旅客登离船'), scenario('cruise-port-passenger-turnaround', '邮轮母港换客')),
+    exceptions: covered('滚装案例看车况和擦碰；邮轮案例看行李标签、实物和领取状态不一致时由谁接手。', scenario('ro-ro-finished-vehicles', '滚装擦碰与故障', '#step-3'), scenario('cruise-port-passenger-turnaround', '邮轮行李异常', '#step-2')),
+    next: '补充客滚船上步行旅客与随车旅客如何分流，并对照普通客运和邮轮换客。', tags: '滚装 客滚 邮轮 母港 换客 行李 商品车 汽车 新能源汽车 旅客 客运',
     topics: [link('新能源汽车业务', 'cargo/ev/'), link('船型比较', 'vessels/#compare')],
   },
   k15: {
@@ -220,12 +220,37 @@ const evidence = {
   },
 };
 
-// 独立案例状态只记录已经核对过的具体缺口，不从“有流程/异常链接”自动推断案例完整。
-const independentCaseGaps = {
-  k14: {
-    title: '邮轮母港换客',
-    note: '商品车滚装已有逐车验收、编组、登船与异常案例，普通旅客登离船也有场景；邮轮母港旅客与行李分流、未完事项交接尚缺一条独立业务案例。',
-  },
+// 逐域记录代表案例，不能根据有流程或异常入口自动推定。
+// “独立”指本领域的一个问题作为案例主线；不要求覆盖该域的全部业务。
+const dedicated = (entry, note) => ({ kind: 'dedicated', ...entry, note });
+const related = (entry, note) => ({ kind: 'related', ...entry, note });
+export const caseKindLabels = { dedicated: '有独立案例', related: '有相关案例可借读' };
+
+const caseEvidence = {
+  k01: dedicated(link('港口空间层级教学案例', 'foundations/spatial-levels/#process'), '跟随一项任务认识港区、码头和泊位，范围限于空间层级。'),
+  k02: dedicated(link('航线与腹地选择案例', 'foundations/network-choice/#process'), '以航线与腹地方案选择为主线，不代表所有网络安排。'),
+  k03: related(scenario('vessel-berthing-coordination', '借读：船舶靠泊协作'), '能看到潮汐、通航与泊位条件怎样影响靠泊；尚未单独演示自然条件如何影响港址或设施选择。'),
+  k04: dedicated(link('治理与权限交接案例', 'foundations/governance/#process'), '用一个交接任务说明决策和执行权限，不外推到其他治理模式。'),
+  k05: dedicated(link('建设与运行交接案例', 'foundations/lifecycle/#process'), '重点是投用交接，并非建设全周期手册。'),
+  k06: related(link('借读：A-01 进口箱的单证核对与系统反馈', 'import-container/#paperwork'), '可辨认船公司、货代、甲方与现场执行者；尚未单独对照不同合同下的委托关系。'),
+  k07: dedicated(link('岸桥故障跨岗位协作案例', 'roles/#collaboration-quay-crane-failure'), '按现场、中控与工程的责任接力读一轮故障恢复。'),
+  k08: dedicated(scenario('vessel-berthing-coordination', '船舶靠泊协作案例'), '以本船次通航条件、靠泊和装卸准备为主线。'),
+  k09: dedicated(link('船舶计划转成作业任务', 'roles/#collaboration-normal-vessel-plan'), '以一个船次说明船期、资源与生产计划怎样交接。'),
+  k10: dedicated(link('进口箱 A-01 从单证到对账', 'import-container/'), '以虚构进口普箱串起单证、堆场、系统、闸口与费用，并比较两种提离路径。'),
+  k11: dedicated(scenario('iron-ore-import', '进口铁矿石交付案例'), '以铁矿石卸船、堆存、计量与交付为主线，不代表所有矿种。'),
+  k12: related(scenario('out-of-gauge-container', '借读：超限框架箱'), '可借读超限尺寸、吊具、堆位与运输约束；木材、卷钢及风电叶片现有各自档案，未用框架箱案例代替件杂货独立案例。'),
+  k13: dedicated(scenario('liquid-cargo-ship-to-tank', '液体船舱到储罐案例'), '跟随一票液体货从船舱交接到储罐，不外推到所有液体或气体。'),
+  k14: dedicated(scenario('cruise-port-passenger-turnaround', '邮轮母港换客案例'), '重点看换客、行李和旅客交接；滚装货物需另读商品车案例。'),
+  k15: dedicated(scenario('reefer-temperature-chain', '冷藏箱堆存与监控案例'), '以在场期间接电、监控和交付条件为主线。'),
+  k16: dedicated(scenario('sea-rail-intermodal', '海铁联运交接案例'), '看港、站与内陆接续，不代表其他疏港方式。'),
+  k17: dedicated(scenario('cargo-damage-and-delivery-dispute', '货损货差与交付争议案例'), '以实物与交接证据不一致为主线，不替代检验或责任认定。'),
+  k18: related(link('借读：A-01 的系统与状态交接', 'import-container/#systems'), '可用同一箱理解单证来源和状态；尚未单独演示资料更正、版本转换和更正回执链。'),
+  k19: dedicated(scenario('customs-transit', '进口转关与监管交接案例'), '专门区分转关放行、运抵、核销和进口放行。'),
+  k20: dedicated(scenario('quay-crane-failure-recovery', '岸桥故障与恢复案例'), '聚焦设备故障后技术可用与恢复生产的交接。'),
+  k21: related(link('借读：A-01 的系统与状态交接', 'import-container/#systems'), '能跟同一箱辨认消息和权威状态；尚未独立演示系统接口从接入到对账的完整案例。'),
+  k22: dedicated(scenario('weather-and-system-interruption', '中断与恢复案例'), '看暂停、恢复与记录核对，不代表现有全部安全专题。'),
+  k23: dedicated(link('环境与港城协同案例', 'foundations/environment-city/#process'), '用一个环境协同任务展示责任与交接。'),
+  k24: dedicated(link('实绩到计费的结算案例', 'roles/#collaboration-completion-settlement'), '以作业完工与计费复核为主线，不把单票收入当经营利润。'),
 };
 
 export const knowledgeCoverage = domains.map((domain) => {
@@ -246,12 +271,13 @@ export const knowledgeCoverage = domains.map((domain) => {
     interactiveLink(entry.kind ?? detail.interactionKind ?? 'diagram', entry));
   const gaps = coverageDimensions.filter((dimension) => !coverage[dimension.id].links.length).map((dimension) => dimension.title);
   const next = detail.next?.trim() ?? '';
-  const caseGap = independentCaseGaps[domain.id] ?? null;
+  const caseStudy = caseEvidence[domain.id];
+  if (!caseStudy) throw new Error(`知识覆盖地图缺少案例核对：${domain.id}`);
   return {
-    ...domain, groupId: group.id, coverage, gaps,
-    development: { missingEntry: gaps.length > 0, missingCase: caseGap, canDeepen: Boolean(next) },
+    ...domain, groupId: group.id, coverage, gaps, caseStudy,
+    development: { missingEntry: gaps.length > 0, canDeepen: Boolean(next) },
     next, topics: detail.topics ?? [],
-    searchText: [domain.id, domain.title, domain.summary, group.title, detail.tags, caseGap?.title, ...(detail.topics ?? []).map((item) => item.label)].filter(Boolean).join(' '),
+    searchText: [domain.id, domain.title, domain.summary, group.title, detail.tags, caseStudy.label, ...(detail.topics ?? []).map((item) => item.label)].filter(Boolean).join(' '),
   };
 });
 
@@ -271,9 +297,10 @@ export const learningPaths = [
   { id: 'first-port', number: '01', title: '第一次认识港口', purpose: '先认空间、船货与参与者，再把它们连成一程。', outcome: '能说清货经过哪里、谁接手，以及哪些条件仍需确认。', nextStep: step('继续读一条具体货类业务线', '从货类专题挑选集装箱、散货或件杂货继续学习；这是续读建议，不计入本路线进度。', 'cargo/'), steps: [step('认清港口、码头和泊位', '先建立空间层级。', 'knowledge/k01-overview/'), step('认识船与承运对象', '把船型和货物联系起来。', 'vessels/'), step('看船怎样进港靠岸', '认识水域与船岸协作。', 'berthing/'), step('从货类选择业务入口', '了解不同货物为何需要不同安排。', 'cargo/'), step('辨认港口内外的参与者', '知道谁委托、谁计划、谁执行。', 'roles/'), step('走一遍进口箱旅程', '把空间、岗位、设备和系统串起来。', 'journey/')] },
   {
     id: 'one-shipment', number: '02', title: '跟一票货',
-    purpose: '选进口大豆或进口 LNG，沿同一票货走到交付，不在中途换货类。',
+    purpose: '选进口集装箱、大豆或 LNG，沿同一票货走到交付，不在中途换货类。',
     outcome: '能沿同一票货说明实物、岗位、记录、交付条件和服务如何接力；案例为虚构教学示意。',
     steps: [],
+    featuredCase: step('进口箱 A-01：从单证走到交付对账', '按顺序看卸船、系统、监管、闸口和费用；在同一个进口箱上对照本港提货和进口转关。', 'import-container/'),
     branches: shipmentCases.map((lesson) => ({
       id: lesson.id,
       title: lesson.title,

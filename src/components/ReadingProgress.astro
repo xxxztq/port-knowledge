@@ -1,4 +1,45 @@
-<div class="reading-progress" aria-hidden="true"><span></span></div><button class="back-top" aria-label="返回页首" title="返回页首" hidden>↑</button>
+<div class="reading-progress" aria-hidden="true"><span></span></div><button class="back-top" data-back-top type="button" aria-label="返回页首" title="返回页首" hidden>↑</button>
 <script>
-const line=document.querySelector<HTMLElement>('.reading-progress span');const back=document.querySelector<HTMLButtonElement>('.back-top');let scheduled=false;function update(){scheduled=false;const max=document.documentElement.scrollHeight-window.innerHeight;const fraction=max>0?Math.min(1,Math.max(0,window.scrollY/max)):0;if(line)line.style.transform='scaleX('+fraction+')';if(back)back.hidden=window.scrollY<700;const sections=[...document.querySelectorAll<HTMLElement>('.article-body section[id],#visual-explainer')];let current=sections.find(s=>s.getBoundingClientRect().top>120)?.id;for(const s of sections)if(s.getBoundingClientRect().top<=150)current=s.id;document.querySelectorAll<HTMLAnchorElement>('.article-aside a[href^="#"]').forEach(a=>{const active=a.hash==='#'+current;a.classList.toggle('toc-active',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}window.addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}},{passive:true});window.addEventListener('resize',update);back?.addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}));update();
+  const line = document.querySelector<HTMLElement>('.reading-progress span');
+  const back = document.querySelector<HTMLButtonElement>('[data-back-top]');
+  const articleTitle = document.querySelector<HTMLElement>('[data-article-title], .article-body h1');
+  if (articleTitle && !articleTitle.hasAttribute('tabindex')) articleTitle.tabIndex = -1;
+  if (articleTitle?.id) back?.setAttribute('aria-controls', articleTitle.id);
+  let scheduled = false;
+
+  function update() {
+    scheduled = false;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const fraction = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    if (line) line.style.transform = 'scaleX(' + fraction + ')';
+    if (back) back.hidden = window.scrollY < 700;
+
+    const sections = [...document.querySelectorAll<HTMLElement>('.article-body section[id], #visual-explainer')];
+    let current = sections.find(section => section.getBoundingClientRect().top > 120)?.id;
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= 150) current = section.id;
+    }
+    document.querySelectorAll<HTMLAnchorElement>('.article-aside a[href^="#"]').forEach(link => {
+      const active = link.hash === '#' + current;
+      link.classList.toggle('toc-active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function scheduleUpdate() {
+    if (!scheduled) {
+      scheduled = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', update);
+  back?.addEventListener('click', () => {
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reducedMotion ? 'instant' : 'smooth' });
+    articleTitle?.focus({ preventScroll: true });
+  });
+  update();
 </script>

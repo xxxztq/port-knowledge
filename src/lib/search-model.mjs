@@ -49,7 +49,8 @@ export function matchEntry(entry, state, saved = []) {
   // consume additional search terms in a keyword query.
   const wholeGuide = tokens.length <= 1 ? guideForQuery(s.q) : guideByPhrase.get(phraseKey(s.q));
   const words = wholeGuide ? [normalized(s.q)] : tokens;
-  const text = normalized(entry.title + ' ' + entry.summary + ' ' + entry.searchText);
+  const sectionText = (entry.sections || []).map(section => section.text).join(' ');
+  const text = normalized([entry.title, entry.summary, entry.keywords ?? entry.searchText ?? '', sectionText].join(' '));
   let navigation = null;
   let boost = 0;
   for (const word of words) {

@@ -57,6 +57,8 @@ npm run preview
 
 在仓库 Settings → Pages 中选择 GitHub Actions；向 main 分支推送后，.github/workflows/deploy.yml 自动安装依赖、执行校验、构建并发布。细节见 [发布指南](docs/GITHUB_PAGES.md)。
 
+站点地图构建后位于项目子路径的 `sitemap.xml`，发布后可在 Search Console 中提交。本项目不生成子路径的 `robots.txt`：爬虫只在域名根目录读取该文件。
+
 ## 维护入口
 
 | 文件 | 用途 |

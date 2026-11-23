@@ -6,6 +6,8 @@
 // 来源链接包含已有方案的官方指南；上港指南本次返回 403，南沙指南及承运人费用页访问受限。
 // 不能将链接可访问等同逐项专业审核；流程文字是跨资料的教学归纳，未获任何机构认证。
 import { customsTransit } from './scenarios/customs-transit.js';
+import { cruisePortPassenger } from './scenarios/cruise-port-passenger.js';
+import { ironOreImportScenario } from './scenarios/iron-ore-import.js';
 
 const sources = {
   manifest: 'https://online.customs.gov.cn/static/pages/guides/000629018002/000629018002.html',
@@ -1385,6 +1387,8 @@ export const scenarios = [
     sourceUrls: [sources.portSafety, sources.craneService],
   },
   customsTransit,
+  cruisePortPassenger,
+  ironOreImportScenario,
 ];
 
 // 协作泳道为教学角色分工，不声明所有企业采用相同部门名称和审批权限。

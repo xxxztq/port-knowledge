@@ -5,12 +5,15 @@ import { cargoCoverage } from '../src/data/cargo-learning.js';
 import { coverageDimensions, interactionNames, knowledgeCoverage, learningPaths } from '../src/data/knowledge-coverage.js';
 import { shipmentCases, shipmentExceptions } from '../src/data/shipment-learning.js';
 
-test('knowledge map distinguishes entry gaps, dedicated case gaps, and actionable deepening', () => {
+test('knowledge map classifies representative cases separately from topic completeness', () => {
   assert.equal(knowledgeCoverage.length, 24);
   assert.equal(knowledgeCoverage.filter((domain) => domain.development.missingEntry).length, 0);
-  const caseGaps = knowledgeCoverage.filter((domain) => domain.development.missingCase);
-  assert.deepEqual(caseGaps.map((domain) => domain.id), ['k14']);
-  assert.equal(caseGaps[0].development.missingCase.title, '邮轮母港换客');
+  const dedicated = knowledgeCoverage.filter((domain) => domain.caseStudy.kind === 'dedicated');
+  const related = knowledgeCoverage.filter((domain) => domain.caseStudy.kind === 'related');
+  assert.equal(dedicated.length, 19);
+  assert.deepEqual(related.map((domain) => domain.id), ['k03', 'k06', 'k12', 'k18', 'k21']);
+  assert.equal(dedicated.length + related.length, knowledgeCoverage.length);
+  for (const domain of knowledgeCoverage) assert.ok(domain.caseStudy.label && domain.caseStudy.path && domain.caseStudy.note);
   assert.equal(knowledgeCoverage.filter((domain) => domain.development.canDeepen).length, 24);
   for (const domain of knowledgeCoverage) {
     assert.equal(domain.development.missingEntry, domain.gaps.length > 0);
@@ -23,6 +26,14 @@ test('knowledge map distinguishes entry gaps, dedicated case gaps, and actionabl
       }
     }
   }
+});
+
+test('cruise turnaround has a dedicated representative case linked from workflows and exceptions', () => {
+  const cruise = knowledgeCoverage.find((domain) => domain.id === 'k14');
+  assert.equal(cruise.caseStudy.kind, 'dedicated');
+  assert.equal(cruise.caseStudy.path, 'scenarios/cruise-port-passenger-turnaround/');
+  assert.ok(cruise.coverage.process.links.some((entry) => entry.path === 'scenarios/cruise-port-passenger-turnaround/'));
+  assert.ok(cruise.coverage.exceptions.links.some((entry) => entry.path === 'scenarios/cruise-port-passenger-turnaround/#step-2'));
 });
 
 test('interactive labels distinguish exploration and comparison from answerable practice', () => {
@@ -56,6 +67,8 @@ test('customs transit is linked from both regulatory workflow and an in-transit 
 
 test('one-shipment learning branches follow every real soy and LNG node without false page-level progress', () => {
   const route = learningPaths.find((item) => item.id === 'one-shipment');
+  assert.equal(route.featuredCase.path, 'import-container/');
+  assert.equal(route.featuredCase.title, '进口箱 A-01：从单证走到交付对账');
   assert.equal(route.branches.length, 2);
   assert.equal(route.steps.length, 0, 'same-page anchors are navigation, not separately tracked read steps');
   assert.deepEqual(route.branches.map((branch) => branch.id), ['soybeans', 'lng']);

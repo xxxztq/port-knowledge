@@ -1,6 +1,20 @@
 import {test,expect} from '@playwright/test';
 const base='/port-knowledge/';
-const openSearch=async(page,query)=>{await page.goto(base+'library/?q='+encodeURIComponent(query));await expect(page.locator('body')).toHaveAttribute('data-search-ready','true');};
+const openSearch=async(page,query)=>{await page.goto(base+'library/?q='+encodeURIComponent(query));await expect(page.locator('body')).toHaveAttribute('data-search-ready','true');await expect(page.locator('body')).toHaveAttribute('data-search-index-state','full');};
+
+test('opening the library stays on summary data until a keyword is entered',async({page})=>{
+ let requests=0;
+ await page.route('**/search-index.json*',async route=>{requests++;await route.continue();});
+ await page.goto(base+'library/');
+ await expect(page.locator('body')).toHaveAttribute('data-search-index-state','summary');
+ await expect(page.locator('#search-status')).toContainText('输入关键词后');
+ await page.waitForTimeout(150);
+ expect(requests).toBe(0);
+ await page.getByLabel('搜索知识百科').fill('管网交接留痕');
+ await expect(page.locator('body')).toHaveAttribute('data-search-index-state','full');
+ expect(requests).toBe(1);
+ await expect(page.locator('[data-search-card][href*="shipment/"]')).toBeVisible();
+});
 
 test('search anchors activate the hidden shipment step and system panel',async({page})=>{
  await openSearch(page,'管网交接留痕');
@@ -17,9 +31,9 @@ test('search anchors activate the hidden shipment step and system panel',async({
 
 test('malformed full-text index preserves summary search and can retry',async({page})=>{
  let requests=0;
- await page.route('**/search-index.json',async route=>{
+ await page.route('**/search-index.json*',async route=>{
   requests++;
-  if(requests===1) await route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({version:1,entries:[null]})});
+  if(requests===1) await route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({version:2,entries:[null]})});
   else await route.continue();
  });
  await page.goto(base+'library/?q='+encodeURIComponent('粉红色集装箱'));
@@ -27,8 +41,20 @@ test('malformed full-text index preserves summary search and can retry',async({p
  await expect(page.locator('#retry-search-index')).toBeVisible();
  await expect(page.locator('[data-search-card][href*="brands/"]')).toBeVisible();
  await page.locator('#retry-search-index').click();
- await expect(page.locator('body')).toHaveAttribute('data-search-ready','true');
+ await expect(page.locator('body')).toHaveAttribute('data-search-index-state','full');
  await expect(page.locator('#retry-search-index')).toBeHidden();
+});
+
+test('aborted full-text requests keep summary matching and retry after recovery',async({page})=>{
+ let fail=true;
+ await page.route('**/search-index.json*',async route=>{if(fail)await route.abort();else await route.continue();});
+ await page.goto(base+'library/');
+ await page.getByLabel('搜索知识百科').fill('粉红色集装箱');
+ await expect(page.locator('body')).toHaveAttribute('data-search-ready','fallback');
+ await expect(page.locator('[data-search-card][href*="brands/"]')).toBeVisible();
+ fail=false;
+ await page.locator('#retry-search-index').click();
+ await expect(page.locator('body')).toHaveAttribute('data-search-index-state','full');
 });
 
 test('corrupt bookmarks do not suppress valid read progress',async({page})=>{
