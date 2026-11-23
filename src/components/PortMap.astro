@@ -1,6 +1,6 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const spots = [{x:20,y:71,n:'01',name:'船舶与泊位',text:'靠泊、装卸与离港',url:'journey/'},{x:37,y:40,n:'02',name:'岸桥与装卸',text:'船与岸之间的第一棒',url:'equipment/'},{x:62,y:53,n:'03',name:'堆场与运输',text:'箱位、翻箱与场内衔接',url:'journey/'},{x:77,y:20,n:'04',name:'计划与中控',text:'岗位与系统怎样衔接',url:'systems/'},{x:86,y:76,n:'05',name:'闸口与交接',text:'人、车、箱与授权核对',url:'gate/'}];
+const spots = [{x:20,y:71,n:'01',name:'船舶与泊位',text:'预报、候泊、靠泊与开工',url:'berthing/'},{x:37,y:40,n:'02',name:'岸桥与装卸',text:'船与岸之间的第一棒',url:'equipment/'},{x:62,y:53,n:'03',name:'堆场与运输',text:'箱位、翻箱与场内衔接',url:'journey/'},{x:77,y:20,n:'04',name:'计划与中控',text:'岗位与系统怎样衔接',url:'systems/'},{x:86,y:76,n:'05',name:'闸口与交接',text:'人、车、箱与授权核对',url:'gate/'}];
 ---
 <div class="map-interaction"><div class="port-map"><div class="map-topline"><span><i></i>港口全景 · 交互示意</span><span>点击编号，查看这一站</span></div>
 <svg class="port-scene" viewBox="0 0 1000 620" role="img" aria-label="港口示意图：左侧船舶水域，中间岸桥，右侧堆场、中控和闸口。"><defs><pattern id="waves" width="54" height="28" patternUnits="userSpaceOnUse"><path d="M0 16q8-5 16 0t16 0" stroke="#83b8bb" stroke-width="1.2" fill="none" opacity=".4"/></pattern><filter id="shadow"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#16454a" flood-opacity=".1"/></filter></defs>
@@ -17,7 +17,7 @@ const spots = [{x:20,y:71,n:'01',name:'船舶与泊位',text:'靠泊、装卸与
 <g fill="#507774" font-size="13" letter-spacing="3"><text x="70" y="160">水域 · 航道</text><text x="570" y="207">集装箱堆场</text><text x="606" y="526">仓储与配套</text><text x="778" y="595">陆侧集疏运 →</text></g></svg>
 {spots.map((s,i)=><button class="map-hotspot" data-map-spot={i} data-map-name={s.name} data-map-text={s.text} data-map-url={base+s.url} aria-pressed={i===0?"true":"false"} style={'left:'+s.x+'%;top:'+s.y+'%'} aria-label={s.name+'：'+s.text}><span>{s.n}</span><strong>{s.name}<small>{s.text}</small></strong></button>)}
 <div class="map-legend"><span><i class="water"></i>水域</span><span><i class="land"></i>陆域</span><span><i class="operation"></i>作业节点</span><small>通用布局示意</small></div></div>
-<div class="map-detail"><span class="map-detail-number" aria-hidden="true">01</span><div class="map-detail-copy" aria-live="polite"><strong>船舶与泊位</strong><p>靠泊、装卸与离港</p></div><a class="text-link" href={base+'journey/'}>深入了解 ↗</a></div></div>
+<div class="map-detail"><span class="map-detail-number" aria-hidden="true">01</span><div class="map-detail-copy" aria-live="polite"><strong>船舶与泊位</strong><p>预报、候泊、靠泊与开工</p></div><a class="text-link" href={base+'berthing/'}>深入了解 ↗</a></div></div>
 <script>
 document.querySelectorAll<HTMLElement>('.map-interaction').forEach(root=>{root.querySelectorAll<HTMLButtonElement>('[data-map-spot]').forEach(b=>b.addEventListener('click',()=>{root.querySelectorAll('[data-map-spot]').forEach(other=>other.setAttribute('aria-pressed',String(other===b)));root.querySelector('.map-detail-number')!.textContent=String(Number(b.dataset.mapSpot)+1).padStart(2,'0');root.querySelector('.map-detail-copy strong')!.textContent=b.dataset.mapName!;root.querySelector('.map-detail-copy p')!.textContent=b.dataset.mapText!;root.querySelector<HTMLAnchorElement>('.map-detail a')!.href=b.dataset.mapUrl!;}));});
 </script>

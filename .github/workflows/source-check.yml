@@ -1,0 +1,23 @@
+name: Check external knowledge sources
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check:sources -- --strict
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: external-source-report
+          path: artifacts/source-check.*

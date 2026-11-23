@@ -1,0 +1,15 @@
+---
+import { learningKey } from '../data/learning-state.js';
+const { path, title, compact = false } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const key = learningKey(path, base);
+---
+<section class:list={['learning-tools', { container: !compact, compact }]} data-learning-tools data-learning-key={key} data-search-exclude aria-label={title+'的学习记录'}>
+  <div><span class="learning-label">我的学习</span><strong>{title}</strong></div>
+  <div class="learning-buttons"><button type="button" class="button outline" data-learning-toggle="bookmarks" aria-pressed="false">收藏这篇</button><button type="button" class="button outline" data-learning-toggle="read" aria-pressed="false">标记已读</button><a href={base+'library/?kind='+encodeURIComponent('我的收藏')}>我的收藏 ↗</a></div>
+  <p class="learning-feedback" role="status">记录保存在当前浏览器。</p>
+</section>
+<style>
+.learning-tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px;border-bottom:1px solid var(--line);padding-block:15px;margin-bottom:8px}.learning-tools>div:first-child{flex:1;min-width:180px}.learning-tools strong{display:block;font-size:13px}.learning-label{font-size:10px;letter-spacing:2px;color:var(--muted)}.learning-buttons{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.learning-buttons button{padding:8px 13px;font-size:12px}.learning-buttons a{font-size:12px;padding:8px}.learning-buttons [aria-pressed=true]{background:var(--deep);color:white}.learning-feedback{flex-basis:100%;font-size:11px;margin:0}.compact{margin-top:20px;background:var(--bg);padding:16px;border-radius:12px}.learning-feedback[data-error]{color:#974124}@media(max-width:600px){.learning-tools>div:first-child{flex-basis:100%}.learning-buttons{gap:6px}.learning-buttons button{min-height:42px}}
+</style>
+<script>import '../scripts/learning-state';</script>

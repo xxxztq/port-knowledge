@@ -34,13 +34,19 @@ export const coverageGroups = [
 const evidence = {
   k01: {
     process: covered('以进口集装箱为例串起七个站点，并非所有港口的统一流程。', link('进口箱七站旅程', 'journey/')),
-    exceptions: pending('待深化：港口功能或空间层级误判的完整案例；现有概览的误区不算异常案例。'),
+    exceptions: covered('包含发现、控制影响、责任方决定、证据、恢复和关闭的完整教学案例。', link('港口空间层级异常闭环', 'foundations/spatial-levels/#exception')),
     next: '补充不同港口类型的对照案例。', tags: '入门 港区 码头 泊位 航道',
+    interactive: covered('三道理解题可选择答案并查看解释，范围限于本专题。', link('港口空间层级理解练习', 'foundations/spatial-levels/#checks')),
+    interactionKind: 'exercise',
+    topics: [link('港口空间层级专题', 'foundations/spatial-levels/')],
   },
   k02: {
-    process: pending('待深化：航线网络、腹地与挂靠选择的专门业务流程；已有网络概览不等于选线实务。'),
-    exceptions: covered('跨码头接船失败场景说明错失接续后的交接，范围限于这一场景。', scenario('inter-terminal-transfer-missed-connection', '跨码头接船失败')),
+    process: covered('虚构教学案例，逐步核对主体、输入、条件、输出和接续；不替代本港具体程序。', link('航线与腹地选择流程', 'foundations/network-choice/#process')),
+    exceptions: covered('包含发现、控制影响、责任方决定、证据、恢复和关闭的完整教学案例。', link('航线与腹地选择异常闭环', 'foundations/network-choice/#exception')),
     next: '把枢纽、支线和腹地关系延伸为运输方案比较。', tags: '航线 贸易 腹地 枢纽 支线 中转',
+    interactive: covered('三道理解题可选择答案并查看解释，范围限于本专题。', link('航线与腹地选择理解练习', 'foundations/network-choice/#checks')),
+    interactionKind: 'exercise',
+    topics: [link('航线与腹地选择专题', 'foundations/network-choice/')],
   },
   k03: {
     process: covered('靠泊协作包含通航条件、泊位与岸侧资源确认，未覆盖水工勘测设计。', scenario('vessel-berthing-coordination', '靠泊条件与准备')),
@@ -48,14 +54,20 @@ const evidence = {
     next: '深化水深、潮汐与场地约束的联合比较。', tags: '水深 潮汐 天气 风 自然条件',
   },
   k04: {
-    process: pending('待深化：港口治理、许可与监管协同的专门流程；概览已解释角色边界。'),
-    exceptions: pending('待深化：制度边界或多主体权限冲突的完整案例。'),
+    process: covered('虚构教学案例，逐步核对主体、输入、条件、输出和接续；不替代本港具体程序。', link('治理与权限交接流程', 'foundations/governance/#process')),
+    exceptions: covered('包含发现、控制影响、责任方决定、证据、恢复和关闭的完整教学案例。', link('治理与权限交接异常闭环', 'foundations/governance/#exception')),
     next: '补充不同治理安排的适用条件与实例。', tags: '制度 监管 经营 管理 资产 所有权',
+    interactive: covered('三道理解题可选择答案并查看解释，范围限于本专题。', link('治理与权限交接理解练习', 'foundations/governance/#checks')),
+    interactionKind: 'exercise',
+    topics: [link('治理与权限交接专题', 'foundations/governance/')],
   },
   k05: {
-    process: pending('待深化：从需求论证到投产、改造和退出的项目流程；现有生命周期图仅为概念框架。'),
-    exceptions: pending('待深化：建设延期、资产改造或退出的具体案例。'),
+    process: covered('虚构教学案例，逐步核对主体、输入、条件、输出和接续；不替代本港具体程序。', link('建设与运行交接流程', 'foundations/lifecycle/#process')),
+    exceptions: covered('包含发现、控制影响、责任方决定、证据、恢复和关闭的完整教学案例。', link('建设与运行交接异常闭环', 'foundations/lifecycle/#exception')),
     next: '增加规划建设阶段的交付物与责任交接。', tags: '规划 投资 建设 资产 生命周期 退役',
+    interactive: covered('三道理解题可选择答案并查看解释，范围限于本专题。', link('建设与运行交接理解练习', 'foundations/lifecycle/#checks')),
+    interactionKind: 'exercise',
+    topics: [link('建设与运行交接专题', 'foundations/lifecycle/')],
   },
   k06: {
     process: covered('进口整箱场景串起船公司、代理、车队及码头的交付责任。', scenario('import-full-container', '进口货物委托交接')),
@@ -177,9 +189,12 @@ const evidence = {
     next: '深化保安、职业健康及跨部门应急的专门案例。', tags: '安全 保安 职业健康 应急 风险 人员 消防 受限空间',
   },
   k23: {
-    process: pending('待深化：环保、能源与港城协同的专题业务流程；污染响应是局部异常链，不能替代整个领域。'),
-    exceptions: covered('环境风险页有泄漏污染、检疫异常及具体货物情景；不代表能源与气候案例齐备。', link('污染与检疫异常情景', 'risks/environment/#recovery')),
+    process: covered('虚构教学案例，逐步核对主体、输入、条件、输出和接续；不替代本港具体程序。', link('环境与港城协同流程', 'foundations/environment-city/#process')),
+    exceptions: covered('包含发现、控制影响、责任方决定、证据、恢复和关闭的完整教学案例。', link('环境与港城协同异常闭环', 'foundations/environment-city/#exception')),
     next: '深化能源改造、气候适应与港城交通的具体案例。', tags: '环保 环境 能源 气候 港城 污染 粉尘 污水 岸电',
+    interactive: covered('三道理解题可选择答案并查看解释，范围限于本专题。', link('环境与港城协同理解练习', 'foundations/environment-city/#checks')),
+    interactionKind: 'exercise',
+    topics: [link('环境与港城协同专题', 'foundations/environment-city/')],
   },
   k24: {
     process: covered('完工结算协作案例把生产实绩、服务确认、计费和复核连接起来。', link('完工结算岗位交接', 'roles/#collaboration-completion-settlement')),

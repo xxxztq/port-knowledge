@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import KnowledgeCheck from '../../components/KnowledgeCheck.astro';
+import {foundationTopics,foundationSources,foundationReviewDate} from '../../data/port-foundations.js';
+import '../../styles/foundations.css';
+export function getStaticPaths(){return foundationTopics.map(topic=>({params:{id:topic.id},props:{topic}}));}
+const {topic:p}=Astro.props;
+const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const rows=[['actor','谁负责'],['input','收到什么'],['action','做什么'],['check','核对什么'],['output','留下什么'],['downstream','交给谁']];
+const quizzes=p.questions.map(q=>({id:q.id,question:q.prompt,options:q.options.map((text,i)=>({text,correct:i===q.answer,feedback:q.explanation}))}));
+---
+<Layout title={p.title} description={p.summary} active="library"><PageIntro eyebrow="PORT FOUNDATIONS / 港口基础专题" title={p.title} description={p.summary}><a class="text-link" href={base+'foundations/'}>← 五个基础专题</a></PageIntro>
+<div class="container foundation-page"><nav class="foundation-nav" aria-label="基础专题目录">{[['scenario','情景'],['diagram','流程图'],['process','节点业务'],['handoffs','部门交接'],['economics','费用归属'],['exception','异常闭环'],['checks','理解练习'],['sources','来源范围']].map(([id,label])=><a href={'#'+id}>{label}</a>)}</nav>
+<section id="scenario" class="foundation-scenario"><span class="eyebrow">FICTIONAL CASE / 虚构教学案例</span><h2>{p.scenario.title}</h2><p>{p.scenario.story}</p><strong>读完要能说明</strong><p>{p.scenario.goal}</p><small>{p.scenario.scope}</small></section>
+<div class="foundation-concepts">{p.concepts.map(c=><article><h3>{c.title}</h3><p>{c.text}</p></article>)}</div>
+<section id="diagram" class="foundation-section"><span class="eyebrow">01 / 看完整关系</span><h2>沿着一条业务线，找到每次交接。</h2><p>点击节点阅读细节。顺序用于学习；准备事项可能并行，条件变化时需要返回核对。</p><ol class="foundation-flow">{p.steps.map((s,i)=><li><a href={'#node-'+s.id}><span>{String(i+1).padStart(2,'0')}</span><strong>{s.title}</strong><small>{s.actor}</small></a></li>)}</ol><p class="foundation-caption">原创业务关系示意 · 不是工程图、审批清单或现场操作指令</p></section>
+<section id="process" class="foundation-section"><span class="eyebrow">02 / 节点业务</span><h2>每一步，收到什么、交出什么。</h2><div class="foundation-steps">{p.steps.map((s,i)=><article id={'node-'+s.id}><header><span>{String(i+1).padStart(2,'0')}</span><h3>{s.title}</h3><a href="#diagram" aria-label={'返回流程图：'+s.title}>↑</a></header><dl>{rows.map(([key,label])=><div><dt>{label}</dt><dd>{s[key]}</dd></div>)}</dl></article>)}</div></section>
+<section id="handoffs" class="foundation-section"><span class="eyebrow">03 / 部门与外部协作</span><h2>双方都确认，交接才算有依据。</h2><div class="foundation-handoffs">{p.handoffs.map(h=><article><h3>{h.from}</h3><p><strong>交接对象：</strong>{h.object}</p><p>{h.confirmation}</p></article>)}</div></section>
+<section id="economics" class="foundation-section"><span class="eyebrow">04 / 谁承担、谁取得</span><h2>同一票业务，账不能混在一起。</h2><div class="foundation-economics">{p.economics.map(e=><article><h3>{e.owner}</h3><dl><dt>成本或支出</dt><dd>{e.cost}</dd><dt>收入或回报</dt><dd>{e.revenue}</dd><dt>比较时注意</dt><dd>{e.tradeoff}</dd></dl></article>)}</div><p class="foundation-caption">金额、责任与计费依据由实际合同及适用要求确定；本例不提供报价或收益承诺。</p></section>
+<section id="exception" class="foundation-section foundation-exception"><span class="eyebrow">05 / 异常怎样闭环</span><h2>{p.exception.title}</h2><p>{p.exception.story}</p><ol>{[['发现问题',p.exception.trigger],['控制影响',p.exception.containment],['由谁决定',p.exception.decision]].map(([label,text])=><li><h3>{label}</h3><p>{text}</p></li>)}<li><h3>保留证据</h3><ul>{p.exception.records.map(t=><li>{t}</li>)}</ul></li><li><h3>满足恢复条件</h3><ul>{p.exception.recovery.map(t=><li>{t}</li>)}</ul></li><li><h3>关闭并复盘</h3><p>{p.exception.closure}</p></li></ol></section>
+<section id="checks" class="foundation-section"><span class="eyebrow">06 / 换你判断</span><h2>试着解释，而不是背步骤。</h2>{quizzes.map(quiz=><KnowledgeCheck quiz={quiz}/>)}</section>
+<section id="sources" class="foundation-section foundation-sources"><h2>来源与适用范围</h2><p>{p.boundary}</p><p>内容整理：{foundationReviewDate}。来源只支持所述主题范围；教学情景并非真实事故报告。</p><ol>{p.sourceIds.map(id=>foundationSources.find(s=>s.id===id)).filter(Boolean).map(s=><li><a href={s.url} target="_blank" rel="noopener noreferrer">{s.title} ↗</a><p>{s.organization} · {s.version} · {s.region}</p><p>{s.scope}</p><small>{s.checked} {s.limits}</small></li>)}</ol></section>
+<div class="foundation-next"><a href={base+'foundations/'}>继续探索基础专题 →</a><a href={base+'knowledge-map/'}>回到知识地图 →</a></div></div></Layout>

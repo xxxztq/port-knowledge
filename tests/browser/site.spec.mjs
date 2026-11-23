@@ -1,0 +1,56 @@
+import {test,expect} from '@playwright/test';
+const base='/port-knowledge/';
+const search=async(page,query='')=>{await page.goto(base+'library/'+query);await expect(page.locator('body')).toHaveAttribute('data-search-ready','true');};
+test('body phrase finds a berth panel and opens the matching visible content',async({page})=>{await search(page,'?q='+encodeURIComponent('登离船通道'));const hit=page.locator('[data-search-card][href*="berthing/"]');await expect(hit).toHaveCount(1);await expect(hit).toContainText('登离船通道');await hit.click();await expect(page.locator('[data-berth-panel]:visible')).toContainText('登离船通道');});
+test('query, type, domain survive reload, back, forward and reset',async({page})=>{await search(page);await page.getByLabel('搜索知识百科').fill('岸桥');await page.locator('[data-kind-filter="设备"]').click();await page.locator('[data-domain-filter="k20"]').click();await expect(page).toHaveURL(/domain=k20/);await page.reload();await expect(page.getByLabel('搜索知识百科')).toHaveValue('岸桥');await expect(page.locator('[data-kind-filter="设备"]')).toHaveAttribute('aria-pressed','true');await page.goBack();await expect(page.locator('[data-domain-filter="all"]')).toHaveAttribute('aria-pressed','true');await page.goForward();await expect(page.locator('[data-domain-filter="k20"]')).toHaveAttribute('aria-pressed','true');await page.getByLabel('搜索知识百科').fill('不存在的知识点zyx');await expect(page.locator('#empty-results')).toBeVisible();await page.locator('#reset-search').click();await expect(page).toHaveURL(base+'library/');await expect(page.getByLabel('搜索知识百科')).toHaveValue('');});
+test('topic bookmarks and read state persist and update the shared library',async({page})=>{await page.goto(base+'berthing/');const tools=page.locator('[data-learning-tools]').first();await tools.locator('[data-learning-toggle="bookmarks"]').click();await tools.locator('[data-learning-toggle="read"]').click();await page.reload();await expect(tools.locator('[data-learning-toggle="read"]')).toHaveAttribute('aria-pressed','true');await search(page,'?kind='+encodeURIComponent('我的收藏'));await expect(page.locator('[data-search-card][href*="berthing/"]')).toBeVisible();await expect(page.locator('[data-search-card]')).toHaveCount(1);});
+test('old article bookmarks stay usable and container variants remain distinct', async ({page}) => {
+  await page.goto(base);
+  await page.evaluate(() => localStorage.setItem('port-bookmarks', JSON.stringify(['eq-sts', 'page:containers/#dry-20'])));
+  await search(page, '?kind='+encodeURIComponent('我的收藏'));
+  await expect(page.locator('[data-search-card][data-id="eq-sts"]')).toBeVisible();
+  await expect(page.locator('[data-search-card][href$="containers/#dry-20"]')).toBeVisible();
+  await expect(page.locator('[data-search-card]')).toHaveCount(2);
+  await page.goto(base+'containers/#dry-40');
+  const dry40=page.locator('#dry-40');
+  await expect(dry40).toBeVisible();
+  await dry40.locator('[data-learning-toggle="bookmarks"]').click();
+  await search(page, '?kind='+encodeURIComponent('我的收藏'));
+  await expect(page.locator('[data-search-card][href*="containers/#"]')).toHaveCount(2);
+  await page.locator('[data-search-card][href$="containers/#dry-20"]').click();
+  await expect(page.locator('#dry-20')).toBeVisible();
+  await page.locator('#dry-20 [data-learning-toggle="bookmarks"]').click();
+  await search(page, '?kind='+encodeURIComponent('我的收藏'));
+  await expect(page.locator('[data-search-card][href$="containers/#dry-20"]')).toHaveCount(0);
+  await expect(page.locator('[data-search-card][href$="containers/#dry-40"]')).toBeVisible();
+  await expect(page.locator('[data-search-card][data-id="eq-sts"]')).toBeVisible();
+});
+test('marking a route step read advances route progress',async({page})=>{await page.goto(base+'knowledge-map/');const route=page.locator('.km-steps').first();const link=route.locator('li a').first();const href=await link.getAttribute('href');await page.goto(href);await page.locator('[data-learning-toggle="read"]').first().click();await page.goto(base+'knowledge-map/');await expect(page.locator('.route-progress').first()).toContainText('已完成 1 /');await expect(page.locator('.km-steps').first().locator('li').first()).toHaveClass(/is-read/);});
+test('homepage vessel hotspot opens berthing topic',async({page})=>{await page.goto(base);const link=page.locator('.map-detail a');await expect(link).toHaveAttribute('href',base+'berthing/');await link.click();await expect(page).toHaveURL(base+'berthing/');});
+test('mobile menu supports Escape and no horizontal overflow',async({page})=>{await page.setViewportSize({width:390,height:844});for(const route of ['', 'library/','berthing/','foundations/lifecycle/']){await page.goto(base+route);await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);}const toggle=page.locator('button[aria-controls="site-navigation"]');await toggle.click();await expect(toggle).toHaveAttribute('aria-expanded','true');await page.keyboard.press('Escape');await expect(toggle).toHaveAttribute('aria-expanded','false');await expect(toggle).toBeFocused();});
+test('denied storage shows failure without claiming a bookmark was saved',async({page})=>{await page.addInitScript(()=>Object.defineProperty(window,'localStorage',{get(){throw new DOMException('Blocked','SecurityError')}}));await page.goto(base+'berthing/');const tools=page.locator('[data-learning-tools]').first();await tools.locator('[data-learning-toggle="bookmarks"]').click();await expect(tools.locator('.learning-feedback')).toContainText('保存失败');await expect(tools.locator('[data-learning-toggle="bookmarks"]')).toHaveAttribute('aria-pressed','false');});
+test('foundation question produces explanation and is discoverable in full text',async({page})=>{await search(page,'?q='+encodeURIComponent('西码头'));await page.locator('[data-search-card][href*="foundations/spatial-levels/"]').click();await page.locator('[data-knowledge-check]').first().locator('input[data-correct="true"]').check();await page.locator('[data-knowledge-check]').first().getByRole('button').click();await expect(page.locator('[data-check-result]').first()).toContainText('理解正确');});
+test('index load failure is visible and can be retried',async({page})=>{await page.route('**/search-index.json',r=>r.abort());await page.goto(base+'library/');await expect(page.locator('#retry-search-index')).toBeVisible();await expect(page.locator('#search-status')).toContainText('仅显示摘要');await page.getByLabel('搜索知识百科').fill('岸桥');await expect(page.locator('#search-status')).toContainText('仅显示摘要');await page.unroute('**/search-index.json');await page.locator('#retry-search-index').click();await expect(page.locator('body')).toHaveAttribute('data-search-ready','true');});
+
+test('reading state updates an already open route in another tab', async ({page,context}) => {
+  await page.goto(base+'knowledge-map/');
+  const href=await page.locator('.km-steps li a').first().getAttribute('href');
+  const article=await context.newPage();
+  await article.goto(href);
+  await article.locator('[data-learning-toggle="read"]').first().click();
+  await expect(page.locator('.route-progress').first()).toContainText('已完成 1 /');
+  await article.close();
+});
+test('foundation diagrams work without JavaScript', async ({browser}) => {
+  const context=await browser.newContext({javaScriptEnabled:false});
+  const page=await context.newPage();
+  await page.goto('http://127.0.0.1:4321'+base+'foundations/lifecycle/');
+  const first=page.locator('.foundation-flow a').first();
+  const href=await first.getAttribute('href');
+  await first.click();
+  await expect(page).toHaveURL(new RegExp(href+'$'));
+  await expect(page.locator(href)).toBeVisible();
+  await page.getByText('查看答案解释', {exact:true}).first().click();
+  await expect(page.getByText('否，还需核对经营与运行条件。投用对象和可用范围必须清晰。', {exact:true})).toBeVisible();
+  await context.close();
+});

@@ -1,0 +1,2 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {classify} from '../scripts/check-sources.mjs';
+test('source checks require repeated missing status and distinguish blocked or transient responses',()=>{assert.equal(classify(404,404),'broken');assert.equal(classify(410,410),'broken');assert.equal(classify(404,200),'reachable');for(const code of [0,403,429,500])assert.equal(classify(404,code),'manual-review');assert.equal(classify(0,404),'manual-review');});

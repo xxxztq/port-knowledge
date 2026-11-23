@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import {foundationTopics} from '../../data/port-foundations.js';
+import '../../styles/foundations.css';
+const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<Layout title="港口基础专题" active="library" description="用五个虚构业务案例，理解航线腹地、港口治理、建设生命周期、环境港城协同，以及港区、码头和泊位的关系。">
+<PageIntro eyebrow="PORT FOUNDATIONS / 从全局理解港口" title="把港口的边界，先画清楚。" description="货从哪里来，谁有权决定，设施怎样建成，又怎样影响周边？从五个案例，连接港口长期运行的逻辑。"/>
+<div class="container foundation-page"><p class="foundation-note">每篇都有流程图、岗位交接、成本与收入、异常闭环和三道理解题。情景与记录名均为教学设计；具体项目须另核本港和当时适用要求。</p><div class="foundation-cards">{foundationTopics.map((p,i)=><a href={base+'foundations/'+p.id+'/'}><span class="eyebrow">0{i+1} / {p.domainId.toUpperCase()}</span><div class="foundation-mini" aria-hidden="true"><i>输入</i><b>→</b><i>判断</i><b>→</b><i>交接</i></div><h2>{p.title}</h2><p>{p.summary}</p><span class="text-link">跟着案例读懂 →</span></a>)}</div><div class="foundation-next"><a href={base+'knowledge-map/'}>放回 24 个知识域中看 →</a><a href={base+'berthing/'}>接着看船舶怎样进港 →</a></div></div></Layout>
