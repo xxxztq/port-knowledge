@@ -17,16 +17,80 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 <!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#103d47"/><meta name="color-scheme" content="light"/><title>{title === '看懂港口' ? '看懂港口 · 从靠岸到交付' : title + ' · 看懂港口'}</title><link rel="icon" type="image/svg+xml" href={href('favicon.svg')}/><link rel="canonical" href={canonical}/><meta property="og:title" content={title + ' · 看懂港口'}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/><meta property="og:image" content={new URL(href("brand/social-card.png"),Astro.site)}/><meta name="twitter:card" content="summary_large_image"/><link rel="apple-touch-icon" href={href("brand/apple-touch-icon.png")}/></head>
 <body data-base={base}>
 <a class="skip" href="#main">跳到主要内容</a>
-<header class="site-header"><div class="nav-wrap"><Brand/><nav id="site-navigation" class="main-nav" aria-label="主要导航">{nav.map(([key,label,url]) => <a href={href(url)} aria-current={active === key ? 'page' : undefined}>{label}</a>)}</nav><div class="nav-actions"><a class="icon-button" href={href('library/')} aria-label="搜索港口知识"><Icon name="search"/></a><button class="icon-button mobile-toggle" aria-controls="site-navigation" aria-label="展开导航" aria-expanded="false"><Icon name="menu"/></button></div></div></header>
+<header class="site-header">
+  <div class="nav-wrap">
+    <Brand/>
+    <div class="nav-actions nav-actions--compact">
+      <a class="icon-button" href={href('library/')} aria-label="搜索港口知识"><Icon name="search"/></a>
+      <button type="button" class="icon-button mobile-toggle" aria-controls="site-navigation" aria-label="展开导航" aria-expanded="false"><Icon name="menu"/></button>
+    </div>
+    <nav id="site-navigation" class="main-nav" aria-label="主要导航">
+      {nav.map(([key,label,url]) => <a href={href(url)} aria-current={active === key ? 'page' : undefined}>{label}</a>)}
+    </nav>
+    <div class="nav-actions nav-actions--wide">
+      <a class="icon-button" href={href('library/')} aria-label="搜索港口知识"><Icon name="search"/></a>
+    </div>
+  </div>
+</header>
 <main id="main">{hasLearning && <LearningActions path={Astro.url.pathname} title={title}/>}<slot/></main>
 <footer class="site-footer"><div class="footer-inner"><div><Brand compact/><p>把复杂的港口，讲成看得懂的日常。</p></div><div class="footer-links"><a href={href('knowledge-map/')}>知识地图</a><a href={href('foundations/')}>港口基础专题</a><a href={href('cargo/')}>箱型与货类</a><a href={href('vessels/')}>船型图鉴</a><a href={href('berthing/')}>进港与靠泊</a><a href={href('cargo/minerals/')}>矿产与干散货</a><a href={href('cargo/grains/')}>粮食业务</a><a href={href('cargo/liquids/')}>液体货类</a><a href={href('shipment/')}>一票货全程</a><a href={href('documents/')}>单证图解</a><a href={href('risks/')}>风险与预防</a><a href={href('systems/')}>港口系统</a><a href={href('about/')}>来源与范围</a><a href="https://github.com/xxxztq/port-knowledge" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div><div class="footer-bottom"><span>由 xxxztq 建立 · 中文港口知识手册</span><span>教学示意与企业案例分别标注 · 内容核查 2026.11</span></div></footer>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script>
-const toggle = document.querySelector('.mobile-toggle');
-toggle?.addEventListener('click', () => { const expanded = toggle.getAttribute('aria-expanded') === 'true'; toggle.setAttribute('aria-expanded', String(!expanded)); toggle.setAttribute('aria-label', expanded ? '展开导航' : '收起导航'); document.querySelector('.main-nav')?.classList.toggle('is-open', !expanded); });
-function closeNavigation(returnFocus = false) {toggle?.setAttribute('aria-expanded','false');toggle?.setAttribute('aria-label','展开导航');document.querySelector('.main-nav')?.classList.remove('is-open');if(returnFocus)(toggle as HTMLButtonElement)?.focus();}
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&toggle?.getAttribute('aria-expanded')==='true')closeNavigation(true)});
-document.querySelectorAll('.main-nav a').forEach(link=>link.addEventListener('click',()=>closeNavigation()));
-window.addEventListener('pageshow',()=>closeNavigation());
+function initNavigation(toggle: HTMLButtonElement, navigation: HTMLElement) {
+  // Keep this breakpoint aligned with the collapsed navigation styles.
+  const compact = window.matchMedia('(max-width: 1180px)');
+  const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
+
+  function setOpen(open: boolean, returnFocus = false) {
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? '收起导航' : '展开导航');
+    navigation.classList.toggle('is-open', open);
+    if (returnFocus) toggle.focus();
+  }
+
+  toggle.addEventListener('click', () => {
+    const open = isOpen();
+    if (!open && document.activeElement !== toggle) toggle.focus();
+    setOpen(!open, open);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || event.defaultPrevented || !isOpen()) return;
+    event.preventDefault();
+    setOpen(false, true);
+  });
+  document.addEventListener('focusin', event => {
+    if (isOpen() && event.target instanceof Node && !toggle.contains(event.target) && !navigation.contains(event.target)) {
+      setOpen(false);
+    }
+  });
+  navigation.addEventListener('click', event => {
+    if (isOpen() && event.target instanceof Element && event.target.closest('a')) {
+      setOpen(false, navigation.contains(document.activeElement));
+    }
+  });
+  compact.addEventListener('change', () => setOpen(false));
+  window.addEventListener('pageshow', () => setOpen(false, isOpen() && navigation.contains(document.activeElement)));
+}
+
+const toggle = document.querySelector<HTMLButtonElement>('.mobile-toggle');
+const navigation = document.querySelector<HTMLElement>('#site-navigation');
+if (toggle && navigation) initNavigation(toggle, navigation);
 </script>
 </body></html>
+<style>
+  /* Each layout keeps its visual order and only exposes one search link to the keyboard. */
+  .nav-actions--compact { display: none; }
+  @media (max-width: 1180px) {
+    .nav-actions--compact { display: flex; }
+    .nav-actions--wide { display: none; }
+    .main-nav.is-open { max-height: calc(100dvh - 88px); overflow-y: auto; overscroll-behavior: contain; }
+    .site-header :is(a, button):focus-visible { outline-color: #365953; }
+  }
+  @media (max-width: 1180px) and (max-height: 420px) {
+    .main-nav.is-open {
+      bottom: max(8px, env(safe-area-inset-bottom));
+      max-height: none;
+      align-content: flex-start;
+    }
+  }
+</style>

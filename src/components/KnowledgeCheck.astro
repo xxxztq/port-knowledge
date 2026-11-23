@@ -3,10 +3,22 @@ const {quiz}=Astro.props;
 ---
 <section class="cargo-quiz" data-knowledge-check>
   <span class="eyebrow">停一下，试着判断</span><h2>{quiz.question}</h2>
-  <fieldset><legend class="sr-only">选择一个答案</legend>{quiz.options.map((o,i)=><label><input type="radio" name={quiz.id} value={i} data-correct={String(o.correct)} data-feedback={o.feedback}/><span>{o.text}</span></label>)}</fieldset>
-  <button type="button" class="button primary" data-check-answer>看看解释</button><p data-check-result role="status" aria-live="polite">这是理解练习，不会生成实际作业或放行指令。</p>
+  <div data-check-controls hidden><fieldset><legend class="sr-only">选择一个答案</legend>{quiz.options.map((o,i)=><label><input type="radio" name={quiz.id} value={i} data-correct={String(o.correct)} data-feedback={o.feedback}/><span>{o.text}</span></label>)}</fieldset>
+  <button type="button" class="button primary" data-check-answer>看看解释</button><p data-check-result role="status" aria-live="polite">这是理解练习，不会生成实际作业或放行指令。</p></div>
   <noscript><details><summary>查看答案解释</summary>{quiz.options.filter(o=>o.correct).map(o=><p>{o.text}。{o.feedback}</p>)}</details></noscript>
 </section>
 <script>
-document.querySelectorAll<HTMLElement>('[data-knowledge-check]').forEach(root=>{root.querySelector('[data-check-answer]')?.addEventListener('click',()=>{const chosen=root.querySelector<HTMLInputElement>('input:checked');const result=root.querySelector<HTMLElement>('[data-check-result]')!;result.textContent=chosen?(chosen.dataset.correct==='true'?'理解正确。':'再想一步。')+chosen.dataset.feedback:'请先选择一个答案。';result.dataset.state=chosen?.dataset.correct==='true'?'correct':'review';});});
+document.querySelectorAll<HTMLElement>('[data-knowledge-check]').forEach(root => {
+  const controls = root.querySelector<HTMLElement>('[data-check-controls]');
+  const answer = controls?.querySelector<HTMLButtonElement>('[data-check-answer]');
+  const result = controls?.querySelector<HTMLElement>('[data-check-result]');
+  if (!controls || !answer || !result) return;
+  answer.addEventListener('click', () => {
+    const chosen = controls.querySelector<HTMLInputElement>('input:checked');
+    const correct = chosen?.dataset.correct === 'true';
+    result.textContent = chosen ? (correct ? '理解正确。' : '再想一步。') + chosen.dataset.feedback : '请先选择一个答案。';
+    result.dataset.state = correct ? 'correct' : 'review';
+  });
+  controls.hidden = false;
+});
 </script>

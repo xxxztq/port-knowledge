@@ -13,7 +13,7 @@ export const cargoCoverage = [
   {name:'卷钢与钢卷',level:'业务专题',path:'cargo/steel-coil/',focus:'卷号、包装、货况、防滚动与交付证据'},
   {name:'其他钢材与普通件杂货',level:'基础入口',path:'knowledge/k12-overview/',focus:'品种、包装、件数与理货交接'},
   {name:'油品、化学品与液化气',level:'业务专题',path:'cargo/liquids/',focus:'四类货物、船岸接口、储罐、计量与交付路线'},
-  {name:'传统燃油商品车与滚装货',level:'基础入口',path:'knowledge/k14-overview/',focus:'车辆组织与滚装交接'},
+  {name:'传统燃油商品车与滚装货',level:'业务场景',path:'scenarios/ro-ro-finished-vehicles/',focus:'逐车验收、停车编组、驶入船舱与异常交接；不外推为新能源汽车或客滚业务'},
   {name:'拼箱、空箱与中转',level:'场景入口',path:'flows/',focus:'集装箱业务不同组织方式'},
 ];
 export const cargoQuizzes = {

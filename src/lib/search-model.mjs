@@ -44,8 +44,11 @@ export function matchEntry(entry, state, saved = []) {
   const s = normalizeSearch(state);
   if (s.kind !== '全部' && (s.kind === '我的收藏' ? !saved.includes(entry.key) : entry.kind !== s.kind)) return null;
   if (s.domain !== 'all' && entry.domain !== s.domain) return null;
-  const wholeGuide = guideForQuery(s.q);
-  const words = wholeGuide ? [normalized(s.q)] : normalized(s.q).split(/\s+/).filter(Boolean);
+  const tokens = normalized(s.q).split(/\s+/).filter(Boolean);
+  // An exact editorial question may contain spaces. Fuzzy rules must not
+  // consume additional search terms in a keyword query.
+  const wholeGuide = tokens.length <= 1 ? guideForQuery(s.q) : guideByPhrase.get(phraseKey(s.q));
+  const words = wholeGuide ? [normalized(s.q)] : tokens;
   const text = normalized(entry.title + ' ' + entry.summary + ' ' + entry.searchText);
   let navigation = null;
   let boost = 0;

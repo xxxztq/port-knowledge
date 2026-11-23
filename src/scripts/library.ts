@@ -1,5 +1,6 @@
 import {matchEntry, searchSuggestion, searchURL} from '../lib/search-model.mjs';
 import {readItems} from '../data/learning-state.js';
+import {validateSearchIndex} from '../data/search-index.js';
 
 const base = document.body.dataset.base || '/port-knowledge/';
 const input = document.querySelector<HTMLInputElement>('#knowledge-search')!;
@@ -12,7 +13,8 @@ const more = document.querySelector<HTMLButtonElement>('#load-more-results')!;
 const suggestion = document.querySelector<HTMLElement>('#search-suggestion')!;
 const clear = document.querySelector<HTMLButtonElement>('#clear-search')!;
 const pageSize = 12;
-let entries = JSON.parse(document.querySelector('#knowledge-search-index')!.textContent || '[]');
+const summaryEntries = JSON.parse(document.querySelector('#knowledge-search-index')!.textContent || '[]');
+let entries = summaryEntries;
 let kind = '全部', domain = 'all', full = false, indexFailed = false, typing = false, composing = false;
 let visibleCount = pageSize;
 let timer: ReturnType<typeof setTimeout>;
@@ -162,13 +164,13 @@ async function loadIndex() {
   try {
     const response = await fetch(base + 'search-index.json', {signal: AbortSignal.timeout(12000)});
     if (!response.ok) throw new Error('index unavailable');
-    const data = await response.json();
-    if (data.version !== 1 || !Array.isArray(data.entries) || !data.entries.length) throw new Error('invalid index');
-    entries = data.entries;
+    entries = validateSearchIndex(await response.json());
     full = true;
     refresh();
     document.body.dataset.searchReady = 'true';
   } catch {
+    entries = summaryEntries;
+    full = false;
     indexFailed = true;
     refresh();
     retry.hidden = false;

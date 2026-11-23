@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from './Icon.astro';
+import KnowledgeCheck from './KnowledgeCheck.astro';
+import { customsTransit, transitStages, transitStatuses, transitComparisons, customsTransitQuiz } from '../data/scenarios/customs-transit.js';
+const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const referenceNumber = new Map(customsTransit.references.map(({ id }, i) => [id, i + 1]));
+---
+<Layout title={customsTransit.title} description={customsTransit.summary} active="flows">
+  <div class="container transit-page">
+    <nav class="breadcrumbs" aria-label="面包屑"><a href={base}>首页</a><Icon name="chevron" size={12}/><a href={base+'flows/'}>业务全流程</a><Icon name="chevron" size={12}/><span>海关转关运输</span></nav>
+    <header class="transit-hero">
+      <span class="eyebrow">CUSTOMS TRANSIT / 监管运输的交接链</span>
+      <h1>{customsTransit.title}</h1>
+      <p class="hero-summary">{customsTransit.summary}</p>
+      <p class="teaching-label">虚构教学案例 · 不构成申报、运输或放行指令</p>
+    </header>
+
+    <section class="transit-map" aria-labelledby="map-title">
+      <div class="section-heading"><div><span class="eyebrow">ONE CARGO · TWO CUSTOMS LOCATIONS</span><h2 id="map-title">箱子在走，海关状态要另查</h2></div><p>道路运输只是物理路线。转关放行、真实抵达、转关核销和进口放行，是不同的业务事实。</p></div>
+      <div class="map-frame">
+        <svg class="route-drawing" viewBox="0 0 960 260" role="img" aria-labelledby="route-title route-desc">
+          <title id="route-title">进口转关运输的三段交接示意</title><desc id="route-desc">货物从海港进境并办理转关，经境内公路运到指运地海关监管作业场所，再分别核对转关核销、进口放行和交付条件。</desc>
+          <path class="route-line" d="M145 126 C290 34 385 218 524 126 S745 36 820 126"/><path class="route-dash" d="M145 126 C290 34 385 218 524 126 S745 36 820 126"/>
+          <g class="map-node" transform="translate(145 126)"><circle r="42"/><path d="M-25 10h50M-18 10V-8l18-14 18 14v18M-10 10V-2h20v12M-27-15h54"/><text y="66">进境地 · 转出端</text></g>
+          <g class="map-node road-node" transform="translate(480 126)"><circle r="42"/><path d="M-26 8V-13H7V8M7-7h9l8 9v6h-6M-26 8h5m12 0H6m6-15v9h12M-10 8a5 5 0 1 1-10 0 5 5 0 0 1 10 0m28 0a5 5 0 1 1-10 0 5 5 0 0 1 10 0"/><text y="66">境内承运 · 在途</text></g>
+          <g class="map-node destination-node" transform="translate(820 126)"><circle r="42"/><path d="M-25 13h50M-20 13V-6l20-14 20 14v19M-11 13V-1h22v14M-30-8h60"/><text y="66">指运地 · 到达端</text></g>
+          <text class="map-caption" x="480" y="246" text-anchor="middle">实物交接 × 单证关联 × 海关状态 —— 三条线要能互相核对</text>
+        </svg>
+        <nav class="map-stages" aria-label="转关运输阶段导航">{transitStages.map((stage,i)=><a href={'#step-'+stage.steps[0]}><span>0{i+1}</span><strong>{stage.label}</strong><small>{stage.description}</small></a>)}</nav>
+      </div>
+    </section>
+
+    <section class="transit-columns" aria-labelledby="objects-title">
+      <h2 class="sr-only" id="objects-title">主要校验对象</h2>
+      <article><span class="column-index">01 / CARGO</span><h3>货票与箱</h3><p>同一票货的申报关联，是否指向实际到港和出场的那只箱。</p></article>
+      <article><span class="column-index">02 / CARRIER</span><h3>承运企业与车</h3><p>实际承运主体、车辆和运输任务是否符合适用的备案与海关要求。</p></article>
+      <article><span class="column-index">03 / SEAL</span><h3>封志与现场记录</h3><p>该段应有的封志是否一致、完好；异常是否得到有权主体确认处理。</p></article>
+      <article><span class="column-index">04 / STATUS</span><h3>分别核对状态</h3><p>申请已发出、海关审核、转关放行、运抵、核销、进口放行不可互相替代。</p></article>
+    </section>
+
+    <section class="transit-timeline" aria-labelledby="steps-title">
+      <div class="section-heading"><div><span class="eyebrow">FOLLOW THE HANDOFF</span><h2 id="steps-title">一票进口直转货的七个交接点</h2></div><p>本例采用直转作为教学路径；提前报关和中转方式的申报顺序可能不同。每一站看谁接手、核对什么、异常交给谁。</p></div>
+      <div class="timeline">{customsTransit.steps.map((step,i)=><section class="step-card transit-step" id={'step-'+i}><span class="step-number">{String(i+1).padStart(2,'0')}</span><div><span class="tag">{step.actor}</span><h3>{step.title}</h3><p>{step.action}</p><dl class="step-details"><div><dt>收到什么</dt><dd>{step.input}</dd></div><div><dt>怎样核对</dt><dd>{step.check}</dd></div><div><dt>交出什么</dt><dd>{step.output}</dd></div></dl><div class="exception"><strong>如果卡住</strong><p>{step.exception}</p></div><div class="step-references">相关依据（校验项为教学示例） {step.references.map(id => <a href={'#source-'+id} aria-label={'查看官方依据 ' + referenceNumber.get(id)}>[{referenceNumber.get(id)}]</a>)}</div></div></section>)}</div>
+    </section>
+
+    <section class="status-section" aria-labelledby="status-title"><div class="section-heading"><div><span class="eyebrow">STATUS IS NOT A SINGLE GREEN LIGHT</span><h2 id="status-title">五个状态检查点</h2></div><p>这些是分别核对的业务事项，不是系统状态码，也不是通用申报顺序。操作页面上的“完成”不能代替相应主体的有效确认。</p></div><div class="status-grid">{transitStatuses.map((status,i)=><article><span>0{i+1}</span><h3>{status.label}</h3><p>{status.evidence}</p><small>不代表：{status.limit}</small></article>)}</div></section>
+
+    <section class="comparison-section" aria-labelledby="compare-title"><div class="section-heading"><div><span class="eyebrow">SAME BOX · DIFFERENT BUSINESS</span><h2 id="compare-title">转关与这三个概念有什么不同？</h2></div><p>运输方式、海关监管安排与场所属性是不同维度。同一票货可能同时涉及多项，不是三选一。</p></div><div class="comparison-grid">{transitComparisons.map(item=><article><span class="tag">{item.question}</span><h3>{item.title}</h3><p>{item.distinction}</p>{item.path&&<a class="text-link" href={base+item.path}>{item.label} →</a>}<a class="text-link source-link" href={'#source-'+item.reference}>对照依据 [{referenceNumber.get(item.reference)}]</a></article>)}</div></section>
+
+    <section class="system-note"><div><span class="eyebrow">SYSTEM BOUNDARY</span><h2>电子口岸、单一窗口、港口 TOS 是什么关系？</h2></div><p>本专题不假设所有港口使用同一系统、报文或回执名称。应先确认承运人、场所经营人和申报主体各自的数据职责，再核对海关权威反馈。可以把它理解为三层：场站业务系统记录箱、车和闸口实绩；申报主体经适用渠道向海关申报；海关反馈监管结果。场站已收到指令、已抬杆或已记到场，都不能替代海关反馈。总署2025年第238号公告另就境内承运企业及运输工具备案列出单一窗口功能；这是备案事项，不能据此推定逐票转关申报和港区闸口均使用同一系统。</p><a href={'#source-carrier-filing'}>查看境内承运备案官方依据 →</a><a href={base+'systems/#system-single-window'}>继续了解港口系统和单一窗口 →</a><a href={base+'gate/'}>继续了解闸口核验与抬杆 →</a></section>
+
+    <KnowledgeCheck quiz={customsTransitQuiz}/>
+
+    <section class="scope-box"><span class="eyebrow">TEACHING SCOPE</span><h2>本专题的边界</h2><p>{customsTransit.scope}</p><p>{customsTransit.note}</p><ul><li>转关是海关监管货物从一设关地点运往另一地点办理海关手续的监管安排；不是所有内陆运输都叫转关。</li><li>本例选择进口公路直转；不覆盖出口转关、提前报关或中转方式的完整操作。</li><li>不提供具体时限、申报字段、报文代码、电子口岸菜单或固定系统画面。</li><li>案例为教学虚构，实际业务应由申报主体向相关海关和场所核实当前适用口径。</li></ul></section>
+
+    <section class="references" id="sources" aria-labelledby="sources-title"><div class="section-heading"><div><span class="eyebrow">PRIMARY LEGAL SOURCES</span><h2 id="sources-title">官方原文与本页引用口径</h2></div><p>本页采用海关总署发布、由政府网站收录或刊载的原文。没有独立确认效力的文件仅用来解释其所述模式，不把其中的系统操作写成当前规则。</p></div><ol>{customsTransit.references.map(ref=><li id={'source-'+ref.id}><a href={ref.url} target="_blank" rel="noopener noreferrer">{ref.title} ↗</a><p>{ref.scope}</p></li>)}</ol></section>
+    <a class="back-link" href={base+'flows/'}>← 返回业务全流程</a>
+  </div>
+</Layout>
+<style>
+.transit-page{padding-bottom:76px}.breadcrumbs{display:flex;align-items:center;gap:10px;margin:25px 0;color:var(--muted);font-size:13px}.transit-hero{padding:42px clamp(24px,6vw,80px);border:1px solid var(--line);border-radius:22px;background:linear-gradient(128deg,#fff 55%,#edf2ee);position:relative;overflow:hidden}.transit-hero:after{content:"T / 06";position:absolute;right:25px;bottom:-36px;font-size:150px;font-weight:800;letter-spacing:-.09em;color:#173b4208}.eyebrow,.column-index{font-size:11px;letter-spacing:.12em;color:#607674;font-weight:700}.transit-hero h1{font-size:clamp(32px,5vw,54px);line-height:1.22;max-width:850px;margin:16px 0}.hero-summary{max-width:720px;font-size:17px;color:#455b5b}.teaching-label{display:inline-block;margin:16px 0 0;padding:5px 10px;background:#e8eee9;border-radius:4px;font-size:12px;font-weight:650}.transit-map,.transit-timeline,.status-section,.comparison-section,.references{margin-top:68px}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:22px}.section-heading h2,.system-note h2,.scope-box h2{margin:8px 0 0;font-size:clamp(23px,3vw,32px);line-height:1.35}.section-heading>p{max-width:390px;color:var(--muted);margin:0}.map-frame{border:1px solid var(--line);border-radius:18px;background:#fff;padding:16px 26px 22px}.route-drawing{display:block;width:100%;max-height:280px}.route-drawing .route-line{fill:none;stroke:#9aa9a3;stroke-width:3}.route-drawing .route-dash{fill:none;stroke:#356d68;stroke-width:2;stroke-dasharray:7 10}.map-node circle{fill:#f7f8f4;stroke:#385e59;stroke-width:2}.map-node path{fill:none;stroke:#26494a;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}.map-node text{font-size:15px;text-anchor:middle;fill:#294749;font-weight:700}.road-node circle{fill:#f4eee1;stroke:#aa8255}.destination-node circle{fill:#eaf0eb}.map-caption{font-size:13px;fill:#607674}.map-stages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.map-stages a{display:grid;grid-template-columns:42px 1fr;gap:0 10px;padding:14px;border-top:1px solid var(--line)}.map-stages a>span{grid-row:span 2;color:#6c8580;font-size:12px}.map-stages small{color:var(--muted)}.transit-columns{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}.transit-columns article,.status-grid article,.comparison-grid article{padding:21px;border:1px solid var(--line);border-radius:13px;background:#fff}.transit-columns h3,.comparison-grid h3,.status-grid h3{margin:10px 0 5px;font-size:17px}.transit-columns p,.comparison-grid p,.status-grid p{margin:0;color:#596a68;font-size:14px}.timeline{display:grid;gap:14px}.transit-step:target,.references li:target{outline:2px solid #48706b;outline-offset:3px}.transit-step h3{margin:7px 0;font-size:21px}.transit-step p{margin:0 0 16px;font-size:15px;line-height:1.8}.transit-step .step-details{grid-template-columns:repeat(3,minmax(0,1fr))}.transit-step .step-details div{font-size:14px;color:#455b5b}.transit-step dt{font-weight:700;color:#526864}.transit-step dd{margin:4px 0 0}.transit-step .exception p{font-size:inherit;margin:4px 0 0}.step-references{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;font-size:12px;color:#526864}.step-references a{text-decoration:underline;text-underline-offset:3px}.status-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.status-grid article>span{color:#617d78;font-size:12px}.status-grid small{display:block;margin-top:14px;padding-top:10px;border-top:1px solid var(--line);color:#665943;line-height:1.6}.comparison-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.comparison-grid .text-link{display:inline-block;margin-top:14px;color:#23696a;font-weight:700}.comparison-grid .source-link{display:block;font-size:13px}.system-note{margin-top:54px;padding:26px;border-radius:16px;background:#eaf0ec;border-left:4px solid #46716b}.system-note p,.scope-box p{max-width:900px}.system-note>a,.references a{color:#215e60;text-decoration:underline;text-underline-offset:3px;font-weight:650}.system-note>a{display:block;width:fit-content;margin-top:6px}.scope-box{margin-top:32px;padding:26px;border:1px solid #cdd8d0;border-radius:16px;background:#fff}.scope-box ul{padding-left:20px}.scope-box li{margin:6px 0}.references ol{padding-left:22px}.references li{padding:10px 0 12px 6px}.references li p{margin:4px 0;color:#5b6c69;font-size:14px}.back-link{display:inline-block;margin-top:30px;color:#23696a;font-weight:700}@media(max-width:760px){.section-heading{display:block}.section-heading>p{margin-top:10px}.transit-columns,.status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.comparison-grid{grid-template-columns:1fr}.map-frame{padding:12px}.route-drawing{min-height:185px}.map-node text{font-size:16px}.transit-hero{padding:30px 22px}.transit-step .step-details{grid-template-columns:1fr}.transit-step{padding:17px 14px}.system-note,.scope-box{padding:20px}}@media(max-width:420px){.transit-columns,.status-grid{grid-template-columns:1fr}.route-drawing{min-height:0}.map-node text,.map-caption{display:none}.map-stages a{grid-template-columns:auto;gap:3px;padding:10px 4px;font-size:13px}.map-stages a>span{grid-row:auto}.map-stages small{font-size:11px}}
+</style>

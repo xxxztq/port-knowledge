@@ -42,10 +42,10 @@ test('reading state updates an already open route in another tab', async ({page,
   await expect(page.locator('.route-progress').first()).toContainText('已完成 1 /');
   await article.close();
 });
-test('foundation diagrams work without JavaScript', async ({browser}) => {
-  const context=await browser.newContext({javaScriptEnabled:false});
+test('foundation diagrams work without JavaScript', async ({browser,baseURL}) => {
+  const context=await browser.newContext({javaScriptEnabled:false,baseURL});
   const page=await context.newPage();
-  await page.goto('http://127.0.0.1:4321'+base+'foundations/lifecycle/');
+  await page.goto(base+'foundations/lifecycle/');
   const first=page.locator('.foundation-flow a').first();
   const href=await first.getAttribute('href');
   await first.click();

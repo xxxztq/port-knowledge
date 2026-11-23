@@ -7,8 +7,10 @@ import { vesselSearchEntries } from './vessel-learning.js';
 import { learningSearchEntries } from './learning-search.js';
 import { equipmentVisuals } from './equipment-visuals.js';
 import { learningKey } from './learning-state.js';
+import { customsTransit } from './scenarios/customs-transit.js';
 // Include question destinations in the inline index so navigation also works when the full index is unavailable.
 const questionEntries = [
+ {id:'page:scenarios/customs-transit/',path:'scenarios/customs-transit/',title:customsTransit.title,summary:customsTransit.summary,kind:'专题',domain:'k19',searchText:'监管运输 海关转关 进境地 转出端 指运地 在途 运抵报告 转关核销 进口放行 封志 车辆 换车 到达端 海铁 保税 中转'},
  {id:'page:brands/',path:'brands/',title:'集装箱品牌与港航公司',summary:'从箱体涂装辨认主体，分清承运人、箱体资产、制造商与港口。',kind:'专题',domain:'k02',searchText:'品牌 马士基 中远海运 ONE 洋红色 熊猫 箱主 制造商'},
  {id:'page:gate/',path:'gate/',title:'闸口模拟：杆为什么抬，也为什么不抬？',summary:'核对本次任务的授权、作业条件、道闸和实际通行记录。',kind:'专题',domain:'k19',searchText:'闸口 道闸 抬杆 海关 放行 提箱'},
  {id:'page:economics/',path:'economics/',title:'港口靠什么赚钱：服务、收入与成本',summary:'通过教学测算认识港口经营，并区分服务收入、成本与利润。',kind:'专题',domain:'k24',searchText:'港口 赚钱 收入 成本 利润 经营'},

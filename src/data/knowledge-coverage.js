@@ -1,12 +1,14 @@
 import { articles, domains } from './knowledge.js';
 import { articleDiagrams } from './article-diagrams.js';
+import { shipmentCases, shipmentExceptions } from './shipment-learning.js';
 
 // 本文件只记录站内入口与覆盖边界，不修改原有知识域，也不生成完成度评分。
 // 覆盖依据：knowledge.js / article-diagrams.js、scenarios.js 及对应 Astro 页面。
-// “交互”包含节点图解、步骤导览、操作或判断练习；普通列表筛选不单独计入。
+// 交互类型区分图解、步骤导览、字段探索与可作答练习；普通列表筛选不单独计入。
 // “异常案例”要求有具体异常情景及处置/交接内容，不能仅凭 pitfalls 判定。
 const link = (label, path) => ({ label, path });
 const covered = (note, ...links) => ({ note, links });
+const interactiveLink = (kind, entry) => ({ ...entry, kind });
 const pending = (note) => ({ note, links: [] });
 const scenario = (id, label, anchor = '') => link(label, `scenarios/${id}/${anchor}`);
 const article = (id, label, anchor = '') => link(label, `knowledge/${id}/${anchor}`);
@@ -15,9 +17,19 @@ const diagram = (id, label) => article(id, label, '#visual-explainer');
 export const coverageDimensions = [
   { id: 'foundation', title: '基础介绍', symbol: '01', explanation: '已有概念、对象或适用边界说明。概览也计入，但不等于专题已完整。' },
   { id: 'process', title: '业务流程', symbol: '02', explanation: '能顺着步骤或责任交接阅读。只覆盖入口写明的场景，不外推到整个知识域。' },
-  { id: 'interactive', title: '交互演示', symbol: '03', explanation: '可点节点、切换业务步骤，或操作与作答；具体类型在链接旁注明。' },
+  { id: 'interactive', title: '交互演示', symbol: '03', explanation: '节点图解、字段探索、步骤导览与可作答练习分别标注，不把浏览操作算作答题。' },
   { id: 'exceptions', title: '异常案例', symbol: '04', explanation: '有具体变化、处理方向或恢复交接。普通误区清单不计为案例。' },
 ];
+
+export const interactionNames = {
+  diagram: '节点图解',
+  'field-exploration': '字段探索',
+  walkthrough: '步骤导览',
+  comparison: '交互比较',
+  simulation: '操作模拟',
+  calculator: '参数测算',
+  exercise: '可作答练习',
+};
 
 export const coverageGroups = [
   { id: 'port-network', title: '港口与网络', hint: '认清港口在运输链中的位置', domains: ['k01', 'k02'] },
@@ -43,7 +55,7 @@ const evidence = {
   k02: {
     process: covered('虚构教学案例，逐步核对主体、输入、条件、输出和接续；不替代本港具体程序。', link('航线与腹地选择流程', 'foundations/network-choice/#process')),
     exceptions: covered('包含发现、控制影响、责任方决定、证据、恢复和关闭的完整教学案例。', link('航线与腹地选择异常闭环', 'foundations/network-choice/#exception')),
-    next: '把枢纽、支线和腹地关系延伸为运输方案比较。', tags: '航线 贸易 腹地 枢纽 支线 中转',
+    next: '在既有航线与腹地案例上，增加直达和经枢纽中转两套方案的时窗、转接点与延误责任对照。', tags: '航线 贸易 腹地 枢纽 支线 中转',
     interactive: covered('三道理解题可选择答案并查看解释，范围限于本专题。', link('航线与腹地选择理解练习', 'foundations/network-choice/#checks')),
     interactionKind: 'exercise',
     topics: [link('航线与腹地选择专题', 'foundations/network-choice/'), link('集装箱品牌与航运公司', 'brands/'), link('上海港与宁波舟山港码头案例', 'brands-and-ports/')],
@@ -64,7 +76,7 @@ const evidence = {
   k05: {
     process: covered('虚构教学案例，逐步核对主体、输入、条件、输出和接续；不替代本港具体程序。', link('建设与运行交接流程', 'foundations/lifecycle/#process')),
     exceptions: covered('包含发现、控制影响、责任方决定、证据、恢复和关闭的完整教学案例。', link('建设与运行交接异常闭环', 'foundations/lifecycle/#exception')),
-    next: '增加规划建设阶段的交付物与责任交接。', tags: '规划 投资 建设 资产 生命周期 退役',
+    next: '在既有建设与运行交接案例上，增加分期投用时未完成事项、临时限制及复验责任的交接清单。', tags: '规划 投资 建设 资产 生命周期 退役',
     interactive: covered('三道理解题可选择答案并查看解释，范围限于本专题。', link('建设与运行交接理解练习', 'foundations/lifecycle/#checks')),
     interactionKind: 'exercise',
     topics: [link('建设与运行交接专题', 'foundations/lifecycle/')],
@@ -82,8 +94,9 @@ const evidence = {
   },
   k08: {
     process: covered('九站专题从到港预报，经可选候泊、引航、航道、回旋、靠泊系缆，接到装卸准备。', link('进港靠泊九站旅程', 'berthing/#arrival-journey'), scenario('vessel-berthing-coordination', '船舶靠泊协作')),
-    interactive: covered('操作 / 判断：切换九站水域图与四个等待情景，核对通航、船方、泊位、服务和装卸条件。', link('等待条件演示', 'berthing/#readiness-lab')),
-    interactionKind: 'exercise',
+    interactive: covered('切换水域节点，也可通过四个等待情景观察条件变化如何影响接续。',
+      interactiveLink('walkthrough', link('进港靠泊九站导览', 'berthing/#arrival-journey')),
+      interactiveLink('simulation', link('等待条件演示', 'berthing/#readiness-lab'))),
     exceptions: covered('天气改变、前船占泊和靠妥后未满足接口条件的情景，说明重新核对与协调方向。', link('天气、占泊与未开工情景', 'berthing/#readiness-lab')),
     next: '在进离港概念与协作基础上，深化不同港口及船型的差异案例。', tags: '船舶 引航 拖轮 系缆 靠泊 船型 锚地 候泊 航道 登轮 港池 回旋 水深 吃水 潮汐 ETA ETB ATB VTS AIS 移泊 离港',
     topics: [link('进港与靠泊', 'berthing/'), link('十四种船型', 'vessels/'), link('港口辅助船艇', 'vessels/#support')],
@@ -97,16 +110,17 @@ const evidence = {
   },
   k10: {
     process: covered('已有进口、出口以及空箱、中转等场景；这里给出两条主线。', scenario('import-full-container', '进口重箱'), scenario('export-full-container', '出口重箱')),
-    interactive: covered('操作 / 判断：七站旅程可切换货物、设备和系统图层，并含异常练习。', link('七站互动旅程', 'journey/#journey-map')),
-    interactionKind: 'exercise',
+    interactive: covered('七站旅程可切换节点和图层，也可选择异常情景并查看作答反馈。',
+      interactiveLink('walkthrough', link('七站互动旅程', 'journey/#journey-map')),
+      interactiveLink('exercise', link('进口箱异常挑战', 'journey/#journey-detail'))),
     exceptions: covered('还空被拒场景含箱况与接收地点变化后的处理。', scenario('empty-return-rejected', '还空被拒')),
     next: '在既有专题上深化不同箱属、合同与航线的差异。', tags: '集装箱 箱型 进口 出口 空箱 冷藏 危险品 VGM',
     topics: [link('箱型与箱门信息', 'containers/'), link('贝位与箱位', 'infrastructure/bay/')],
   },
   k11: {
     process: covered('散粮已有卸船入仓到装车交付的流程；矿产总览另有料流与记录链。', scenario('bulk-grain-to-silo', '散粮入仓与出库'), link('矿产作业链', 'cargo/minerals/#bulk-chain')),
-    interactive: covered('操作 / 判断：矿产总览可比较四种疏港方式及其交接关注点。', link('疏港方式交互比较', 'cargo/minerals/#outbound')),
-    interactionKind: 'exercise',
+    interactive: covered('交互比较：切换四种疏港方式，查看各自的交接记录与判断要点，不要求作答。', link('疏港方式交互比较', 'cargo/minerals/#outbound')),
+    interactionKind: 'comparison',
     exceptions: covered('散粮流程明确误入仓、输送堵塞、受潮和数量差异等异常。', scenario('bulk-grain-to-silo', '入仓异常与货批隔离', '#step-2')),
     next: '深化粮种差异与不同矿产品的品质、计量交接。', tags: '干散货 粮食 农产品 大豆 玉米 小麦 矿石 煤炭 铁矿石 铝土矿 铜精矿 镍矿 磷矿石 砂石 石灰石',
     topics: [link('矿产与干散货', 'cargo/minerals/'), link('粮食与农产品', 'cargo/grains/'), link('大豆', 'cargo/grain-soybeans/'), link('玉米', 'cargo/grain-maize/'), link('小麦', 'cargo/grain-wheat/')],
@@ -120,16 +134,17 @@ const evidence = {
   },
   k13: {
     process: covered('液体船罐场景已有匹配储罐、船岸确认、输送、计量与出罐交付步骤；不外推为全部气体工艺。', scenario('liquid-cargo-ship-to-tank', '液体船罐交接')),
-    interactive: covered('步骤导览：可逐步查看液体船罐任务的输入、校验、输出和异常。', scenario('liquid-cargo-ship-to-tank', '船罐流程交互导览')),
-    interactionKind: 'walkthrough',
+    interactive: covered('船罐导览可逐步查看输入和输出；LNG 案例可在船岸接收节点主动模拟异常、选择处理方向并核对理解。',
+      interactiveLink('walkthrough', scenario('liquid-cargo-ship-to-tank', '船罐流程交互导览')),
+      interactiveLink('exercise', link('LNG 船岸接收异常练习', 'shipment/#lng-acceptance'))),
     exceptions: covered('液体场景包含接收条件不齐、通信失效及船岸计量争议。', scenario('liquid-cargo-ship-to-tank', '输送异常与交接', '#step-2')),
-    next: '沿具体介质专题继续看接收条件与计量口径；通用流程不替代专业方案。', tags: '液体散货 气体 石油 石化 化学品 液化天然气 液化石油气 LNG LPG 油品 泵 管线 储罐',
+    next: '对照已有油品、化学品与 LNG 专题，比较交付节点所留记录与计量口径；不套用同一接收程序。', tags: '液体散货 气体 石油 石化 化学品 液化天然气 液化石油气 LNG LPG 油品 泵 管线 储罐',
     topics: [link('液体散货与气体', 'cargo/liquids/'), link('石油与油品', 'cargo/liquid-petroleum/'), link('液体化学品', 'cargo/liquid-chemicals/'), link('LNG', 'cargo/liquid-lng/'), link('LPG', 'cargo/liquid-lpg/')],
   },
   k14: {
     process: covered('已有商品车滚装和客运登离船流程；邮轮仍以概览和船型介绍为主。', scenario('ro-ro-finished-vehicles', '商品车滚装'), scenario('passenger-terminal-boarding', '旅客登离船')),
     exceptions: covered('滚装场景明确车况异常、跳板条件变化和擦碰后的交接。', scenario('ro-ro-finished-vehicles', '滚装擦碰与故障', '#step-3')),
-    next: '深化邮轮靠港服务、人车分流与特殊旅客协作。', tags: '滚装 客滚 邮轮 商品车 汽车 新能源汽车 旅客 客运',
+    next: '对照现有商品车滚装与普通旅客场景，补充车货和旅客交接记录的差异。', tags: '滚装 客滚 邮轮 商品车 汽车 新能源汽车 旅客 客运',
     topics: [link('新能源汽车业务', 'cargo/ev/'), link('船型比较', 'vessels/#compare')],
   },
   k15: {
@@ -141,31 +156,31 @@ const evidence = {
   },
   k16: {
     process: covered('海铁联运场景包括班列匹配、港站交接与内陆到站。', scenario('sea-rail-intermodal', '海铁联运完整场景')),
-    interactive: covered('操作 / 判断：四种疏港方式的比较会同步说明运输与记录变化。', link('汽车、铁路、皮带与水水中转', 'cargo/minerals/#outbound')),
-    interactionKind: 'exercise',
+    interactive: covered('交互比较：切换疏港方式可查看运输与记录变化，不要求作答。', link('汽车、铁路、皮带与水水中转', 'cargo/minerals/#outbound')),
+    interactionKind: 'comparison',
     exceptions: covered('跨码头转运场景提供接船失败及后续协调内容。', scenario('inter-terminal-transfer-missed-connection', '转运接续失败')),
     next: '深化不同运输方式的时间窗口与交付责任比较。', tags: '铁路 海铁联运 多式联运 汽车 水水中转 疏港 班列 驳船',
   },
   k17: {
     process: covered('进口整箱场景包含实物与记录交接；货损货差场景补充差异核对链。', scenario('cargo-damage-and-delivery-dispute', '货差登记与复核')),
-    interactive: covered('操作 / 判断：单证样张可逐栏查看信息来源、校验点和边界。', link('交接单证逐栏解释', 'documents/')),
-    interactionKind: 'exercise',
+    interactive: covered('字段探索：逐栏查看信息来源、校验点和适用边界；本页样张不提供答题判分。', link('交接单证逐栏解释', 'documents/')),
+    interactionKind: 'field-exploration',
     exceptions: covered('场景围绕货损货差保留证据、复核相关方和后续交付。', scenario('cargo-damage-and-delivery-dispute', '货损货差案例')),
     next: '深化不同货类的计量差异与品质交接。', tags: '理货 计量 重量 品质 检验 交接 封志 货差 货损',
   },
   k18: {
     process: covered('闸口消息文章说明任务、识别、业务核对和执行反馈的关系。', article('gate-messages', '消息到业务状态')),
-    interactive: covered('操作 / 判断：单证页有三类教学样张及字段切换。', link('三类单证教学样张', 'documents/')),
-    interactionKind: 'exercise',
+    interactive: covered('字段探索：切换三类教学样张，查看字段来源、状态含义和交接边界；不是答题练习。', link('三类单证教学样张', 'documents/')),
+    interactionKind: 'field-exploration',
     exceptions: covered('系统专题列出报文与状态异常，并给出职责分流。', link('消息与状态异常', 'systems/#system-message-exceptions')),
     next: '深化合同、单证版本与更正记录的关系。', tags: '单证 合同 舱单 提单 EIR 数据 状态 报文 记录',
   },
   k19: {
-    process: covered('查验移箱场景覆盖有效要求、资源安排、实物交接及恢复流转。', scenario('customs-inspection-movement', '查验移箱与恢复')),
-    interactive: covered('操作 / 判断：闸口模拟器分别校验授权、设备反馈、实际通行与记录。', link('闸口校验模拟', 'gate/#sim-title')),
-    interactionKind: 'exercise',
-    exceptions: covered('拆封与重新施封场景追踪旧新封志以及未满足的恢复条件。', scenario('inspection-opening-and-resealing', '查验拆封与重新施封')),
-    next: '深化不同监管业务范围与码头协作边界。', tags: '通关 海关 监管 查验 电子口岸 单一窗口 闸口 放行',
+    process: covered('查验移箱场景覆盖要求、资源与实物交接；转关运输另有转出、在途、运抵与核销链。', scenario('customs-inspection-movement', '查验移箱与恢复'), scenario('customs-transit', '转关运输：从转出到核销')),
+    interactive: covered('操作模拟：闸口模拟器分别反馈授权、设备、实际通行与记录状态。', link('闸口校验模拟', 'gate/#sim-title')),
+    interactionKind: 'simulation',
+    exceptions: covered('查验案例追踪旧新封志；转关案例说明实到但无明确反馈或发现封志差异时如何核对和交接。', scenario('inspection-opening-and-resealing', '查验拆封与重新施封'), scenario('customs-transit', '转关：在途异常与监管交接', '#step-3')),
+    next: '在已有查验与转关案例上，对照查验、转关发运、核销和进口放行分别能证明什么。', tags: '通关 海关 监管 查验 电子口岸 单一窗口 闸口 放行',
   },
   k20: {
     process: covered('岸桥故障流程展示报告、技术处理、重排与生产恢复。', scenario('quay-crane-failure-recovery', '设备故障恢复流程')),
@@ -198,10 +213,18 @@ const evidence = {
   },
   k24: {
     process: covered('完工结算协作案例把生产实绩、服务确认、计费和复核连接起来。', link('完工结算岗位交接', 'roles/#collaboration-completion-settlement')),
-    interactive: covered('操作 / 判断：经营测算可调整虚构参数，观察收入、成本和结果。', link('经营参数测算', 'economics/#profit-title')),
-    interactionKind: 'exercise',
+    interactive: covered('参数测算：调整虚构参数，观察收入、成本和结果，不设标准答案。', link('经营参数测算', 'economics/#profit-title')),
+    interactionKind: 'calculator',
     exceptions: covered('商业风险页有拥堵、计费与索赔情景，争议文章解释证据链。', link('合同计费与争议情景', 'risks/commercial/#recovery'), article('dispute-evidence', '争议证据核对')),
     next: '深化合同计费单位、绩效口径与经营主体的差异。', tags: '商务 财务 经营 费用 利润 成本 结算 绩效 索赔 争议',
+  },
+};
+
+// 独立案例状态只记录已经核对过的具体缺口，不从“有流程/异常链接”自动推断案例完整。
+const independentCaseGaps = {
+  k14: {
+    title: '邮轮母港换客',
+    note: '商品车滚装已有逐车验收、编组、登船与异常案例，普通旅客登离船也有场景；邮轮母港旅客与行李分流、未完事项交接尚缺一条独立业务案例。',
   },
 };
 
@@ -216,15 +239,19 @@ export const knowledgeCoverage = domains.map((domain) => {
     process: detail.process,
     interactive: detail.interactive ?? (hasDiagram
       ? covered('节点图解：既有概览的关系图可点击节点查看说明；它不是可执行的业务模拟器。', diagram(overview.id, '概览关系图解'))
-      : pending('待深化：本领域的交互演示。')),
+      : pending('缺入口：本领域的交互演示尚无已核实链接。')),
     exceptions: detail.exceptions,
   };
+  coverage.interactive.links = coverage.interactive.links.map((entry) =>
+    interactiveLink(entry.kind ?? detail.interactionKind ?? 'diagram', entry));
   const gaps = coverageDimensions.filter((dimension) => !coverage[dimension.id].links.length).map((dimension) => dimension.title);
+  const next = detail.next?.trim() ?? '';
+  const caseGap = independentCaseGaps[domain.id] ?? null;
   return {
     ...domain, groupId: group.id, coverage, gaps,
-    interactionKind: detail.interactionKind ?? 'diagram',
-    next: detail.next, topics: detail.topics ?? [],
-    searchText: [domain.id, domain.title, domain.summary, group.title, detail.tags, ...(detail.topics ?? []).map((item) => item.label)].join(' '),
+    development: { missingEntry: gaps.length > 0, missingCase: caseGap, canDeepen: Boolean(next) },
+    next, topics: detail.topics ?? [],
+    searchText: [domain.id, domain.title, domain.summary, group.title, detail.tags, caseGap?.title, ...(detail.topics ?? []).map((item) => item.label)].filter(Boolean).join(' '),
   };
 });
 
@@ -241,7 +268,26 @@ export const rolePaths = [
 ];
 
 export const learningPaths = [
-  { id: 'first-port', number: '01', title: '第一次认识港口', purpose: '先认空间、船货与参与者，再把它们连成一程。', outcome: '能说清货经过哪里、谁接手，以及哪些条件仍需确认。', steps: [step('认清港口、码头和泊位', '先建立空间层级。', 'knowledge/k01-overview/'), step('认识船与承运对象', '把船型和货物联系起来。', 'vessels/'), step('看船怎样进港靠岸', '认识水域与船岸协作。', 'berthing/'), step('从货类选择业务入口', '了解不同货物为何需要不同安排。', 'cargo/'), step('辨认港口内外的参与者', '知道谁委托、谁计划、谁执行。', 'roles/'), step('走一遍进口箱旅程', '把空间、岗位、设备和系统串起来。', 'journey/')] },
-  { id: 'one-shipment', number: '02', title: '跟一票货', purpose: '从具体货批出发，追踪实物、记录、交付条件与服务。', outcome: '能沿一票货解释交接、阻断与费用记录；案例是教学示意。', steps: [step('先认清这一批货', '以大豆档案识别货批与运输对象。', 'cargo/grain-soybeans/'), step('跟着一票货走', '在大豆或 LNG 教学场景中观察多条线如何接力。', 'shipment/'), step('打开交接单证', '核对每个字段能证明什么。', 'documents/'), step('检查陆侧交付条件', '用闸口例子区分授权、抬杆、通行和记录；不套用为 LNG 管网流程。', 'gate/#sim-title'), step('追踪服务与结算', '把实际服务接到费用与复核记录。', 'roles/#collaboration-completion-settlement')] },
+  { id: 'first-port', number: '01', title: '第一次认识港口', purpose: '先认空间、船货与参与者，再把它们连成一程。', outcome: '能说清货经过哪里、谁接手，以及哪些条件仍需确认。', nextStep: step('继续读一条具体货类业务线', '从货类专题挑选集装箱、散货或件杂货继续学习；这是续读建议，不计入本路线进度。', 'cargo/'), steps: [step('认清港口、码头和泊位', '先建立空间层级。', 'knowledge/k01-overview/'), step('认识船与承运对象', '把船型和货物联系起来。', 'vessels/'), step('看船怎样进港靠岸', '认识水域与船岸协作。', 'berthing/'), step('从货类选择业务入口', '了解不同货物为何需要不同安排。', 'cargo/'), step('辨认港口内外的参与者', '知道谁委托、谁计划、谁执行。', 'roles/'), step('走一遍进口箱旅程', '把空间、岗位、设备和系统串起来。', 'journey/')] },
+  {
+    id: 'one-shipment', number: '02', title: '跟一票货',
+    purpose: '选进口大豆或进口 LNG，沿同一票货走到交付，不在中途换货类。',
+    outcome: '能沿同一票货说明实物、岗位、记录、交付条件和服务如何接力；案例为虚构教学示意。',
+    steps: [],
+    branches: shipmentCases.map((lesson) => ({
+      id: lesson.id,
+      title: lesson.title,
+      description: lesson.subtitle,
+      profile: link(`${lesson.shortTitle}货物档案`, `cargo/${lesson.profile}/`),
+      steps: lesson.stages.map((stage) => ({
+        ...step(stage.title, stage.summary, `shipment/#${lesson.id}-${stage.id}`),
+        hasExercise: shipmentExceptions.some((exception) => exception.caseId === lesson.id && exception.stepId === stage.id),
+      })),
+    })),
+    comparisons: [
+      step('交接单证字段探索', '对照字段来源与校验边界，不把通用样张当作这两票货的实际单证。', 'documents/'),
+      step('集装箱闸口模拟', '对照授权、抬杆、通行与回执；不是大豆提货的必经步骤，也不适用于 LNG 管网交接。', 'gate/#sim-title'),
+    ],
+  },
   { id: 'by-role', number: '03', title: '按岗位', purpose: '选择一个岗位，按“职责 → 交接 → 场景 → 异常”阅读。', outcome: '能说明本岗位收到什么、交出什么，以及异常应交给谁。', steps: [] },
 ];

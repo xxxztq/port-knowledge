@@ -1,5 +1,7 @@
 name: Check external knowledge sources
 on:
+  schedule:
+    - cron: '23 1 * * 1'
   workflow_dispatch:
 permissions:
   contents: read

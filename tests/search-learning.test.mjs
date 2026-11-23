@@ -20,3 +20,18 @@ test('every editorial search question points to an existing catalog destination'
 test('natural language questions navigate to the relevant existing business guide',()=>{const cases=[['粉红色的集装箱','brands/#pink-container'],['熊猫箱','brands/#panda-container'],['道闸为什么不抬杆','gate/#sim-title'],['海关放行后为什么还不能提箱','knowledge/gate-authority/'],['海关已经放行但还是不能提箱','knowledge/gate-authority/'],['ONE粉色箱子是什么','brands/#pink-container'],['为什么道闸不抬杆','gate/#sim-title'],['甩柜怎么办','scenarios/booking-change-and-return/'],['设备坏了谁来协调','scenarios/quay-crane-failure-recovery/'],['港口靠什么赚钱','economics/'],['箱子晚还几天费用算谁的','knowledge/fees-storage/'],['箱子从船上卸下来后去哪了','journey/']];for(const [q,href] of cases){const hits=searchCatalog.map(entry=>matchEntry(entry,{...all,q})).filter(Boolean).sort((a,b)=>b.score-a.score);assert.equal(hits[0]?.href,href,q);}});
 test('question navigation still respects type, domain and saved-item filters',()=>{const gate=searchCatalog.find(entry=>entry.path==='gate/');assert.equal(matchEntry(gate,{q:'道闸为什么不抬杆',kind:'设备',domain:'all'}),null);assert.equal(matchEntry(gate,{q:'道闸为什么不抬杆',kind:'全部',domain:'k02'}),null);assert.ok(matchEntry(gate,{q:'道闸为什么不抬杆',kind:'我的收藏',domain:'k19'},[gate.key]));});
 test('common typo offers a one-click correction without changing unrelated queries',()=>{assert.deepEqual(searchSuggestion('抬杠'),{query:'抬杆',text:'你可能想找道闸“抬杆”的业务。'});assert.equal(searchSuggestion('岸桥'),null);});
+
+const cases = [
+  ['甩柜 无关词', 'scenarios/booking-change-and-return/'],
+  ['免箱期 岸桥', 'knowledge/fees-storage/'],
+];
+test('question shortcuts do not swallow additional search keywords', () => {
+  for (const [q, path] of cases) {
+    const item = searchCatalog.find(entry => entry.path === path);
+    assert.equal(matchEntry(item, {...all, q}), null, q);
+  }
+  const item = searchCatalog.find(entry => entry.path === 'scenarios/booking-change-and-return/');
+  assert.equal(matchEntry(item, {...all, q:'甩柜 退运'})?.href, item.path);
+  const brands = searchCatalog.find(entry => entry.path === 'brands/');
+  assert.equal(matchEntry(brands, {...all, q:'ONE 粉色箱子是什么'})?.href, 'brands/#pink-container');
+});

@@ -1,3 +1,12 @@
+.map-interaction .map-topline,
+.map-interaction .map-legend {
+ color:#405b51;
+ font-size:11px;
+}
+.map-interaction .map-legend small{font-size:inherit}
+.map-interaction .map-legend i{border:1px solid #52695d;flex-shrink:0}
+.map-interaction .map-detail-number{color:#50685e}
+.map-interaction .map-detail p{font-size:12px}
 .map-mobile-stops{display:none}
 .map-interaction .map-hotspot{width:44px;height:44px;display:grid;place-items:center}
 .map-interaction .map-hotspot:focus-visible,.map-stop:focus-visible{outline:3px solid var(--deep);outline-offset:3px;border-radius:8px}

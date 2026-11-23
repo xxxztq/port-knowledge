@@ -5,6 +5,8 @@
 // 官方资料支持相应主题；企业实例、历史公告和国际规则均须结合 scope 阅读。
 // 来源链接包含已有方案的官方指南；上港指南本次返回 403，南沙指南及承运人费用页访问受限。
 // 不能将链接可访问等同逐项专业审核；流程文字是跨资料的教学归纳，未获任何机构认证。
+import { customsTransit } from './scenarios/customs-transit.js';
+
 const sources = {
   manifest: 'https://online.customs.gov.cn/static/pages/guides/000629018002/000629018002.html',
   customsSite: 'https://www.mofcom.gov.cn/zcfb/zgdwjjmywg/art/2019/art_38e4eaa0eb8d4580838245718b185939.html',
@@ -1382,6 +1384,7 @@ export const scenarios = [
     note: '教学简化。工程确认技术条件，生产确认恢复作业，监管与商业授权保持各自职责；设备维修不是解除货物监管或交付限制的依据。',
     sourceUrls: [sources.portSafety, sources.craneService],
   },
+  customsTransit,
 ];
 
 // 协作泳道为教学角色分工，不声明所有企业采用相同部门名称和审批权限。
