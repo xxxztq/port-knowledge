@@ -1,12 +1,65 @@
 ---
-import EquipmentCard from '../components/EquipmentCard.astro';import Layout from '../layouts/Layout.astro';import PageIntro from '../components/PageIntro.astro';import Icon from '../components/Icon.astro';import ArticleCard from '../components/ArticleCard.astro';import {articles,domains} from '../data/knowledge.js';import {cargoSearchEntries} from '../data/cargo-search.js';import {riskSearchEntries} from '../data/risk-learning.js';import {infrastructureSearchEntries} from '../data/infrastructure.js';
-import {vesselSearchEntries} from '../data/vessel-learning.js';
-import {learningSearchEntries} from '../data/learning-search.js';
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
+import {domains} from '../data/knowledge.js';
 import {searchCatalog} from '../data/search-catalog.js';
-const extraEntries=[...learningSearchEntries,...vesselSearchEntries,...cargoSearchEntries,...infrastructureSearchEntries,...riskSearchEntries];
-// Build the text-only index here so the browser does not download the source profiles.
-const searchIndex=searchCatalog;
-const searchIndexJson=JSON.stringify(searchIndex).replace(/</g,'\\u003c');
-const base=import.meta.env.BASE_URL.replace(/\/?$/, '/');
+import {searchQuestions} from '../data/search-guides.js';
+import '../styles/library.css';
+const searchIndexJson = JSON.stringify(searchCatalog).replace(/</g, '\u003c');
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const kinds = ['全部','基础','设备','岗位','业务','监管','经营','箱型','货类','船型','专题','风险','我的收藏'];
+const shortcuts = [
+  ['知识地图与学习路线', 'knowledge-map/'], ['港口基础专题', 'foundations/'], ['一票货全程交互', 'shipment/'],
+  ['集装箱品牌与港航公司', 'brands/'], ['箱型图鉴', 'containers/'], ['船型图鉴', 'vessels/'],
+  ['货类业务', 'cargo/'], ['粮食业务', 'cargo/grains/'], ['液体货类', 'cargo/liquids/'],
+  ['矿产与干散货', 'cargo/minerals/'], ['贝位、堆场与 IT 机房', 'infrastructure/'], ['港口风险与预防', 'risks/'],
+];
 ---
-<Layout title="知识百科" active="library"><PageIntro eyebrow="KNOWLEDGE ATLAS / 知识地图" title="从一个词，读懂一整条业务。" description="按问题搜索，按主题探索。24 个知识域连接岗位、设备、流程与经营逻辑。"><label class="search-box"><Icon name="search"/><input id="knowledge-search" type="search" placeholder="搜索：大豆、LNG、滚装船、铁矿石、风险……" aria-label="搜索知识百科" autocomplete="off"/></label></PageIntro><div class="container page-content"><div class="cargo-search-shortcuts"><a href={base+'foundations/'}>港口基础专题 →</a><a href={base+'knowledge-map/'}>知识地图与学习路线 →</a><a href={base+'shipment/'}>一票货全程交互 →</a><a href={base+'cargo/grains/'}>粮食业务 →</a><a href={base+'cargo/liquids/'}>液体货类 →</a><a href={base+'vessels/'}>14 种船型图鉴 →</a><a href={base+'cargo/minerals/'}>矿产与干散货 →</a><a href={base+'containers/'}>12 种箱型图鉴 →</a><a href={base+'cargo/'}>货类业务与覆盖地图 →</a><a href={base+'infrastructure/'}>贝位、堆场与 IT 机房 →</a><a href={base+'risks/'}>港口风险与预防 →</a></div><div class="filter-bar" aria-label="知识类型">{['全部','基础','设备','岗位','业务','监管','经营','箱型','货类','船型','专题','风险','我的收藏'].map((kind,i)=><button class="filter-chip" data-kind-filter={kind} aria-pressed={i===0?'true':'false'}>{kind}</button>)}</div><p class="search-count" id="search-count" aria-live="polite">共 {articles.length+extraEntries.length} 个知识卡与专题入口</p><p id="search-status" class="search-status" role="status">正在加载完整正文索引……</p><button id="retry-search-index" class="filter-chip" hidden>重试加载正文</button><div class="library-layout"><aside class="domain-list" aria-label="知识领域"><h2>按知识领域浏览</h2><button class="domain-button" data-domain-filter="all" aria-pressed="true">全部领域</button>{domains.map((d,i)=><button class="domain-button" data-domain-filter={d.id} aria-pressed="false"><span>{String(i+1).padStart(2,'0')}</span>{d.title}</button>)}</aside><div><div class="article-grid library-grid" id="knowledge-results">{articles.map(a=>a.kind==='设备'?<EquipmentCard article={a} compact/>:<ArticleCard article={a}/>)}{extraEntries.map(e=><a class="article-card" href={base+e.path} data-search-card data-id={e.id} data-kind={e.kind} data-domain={e.domain}><div class="card-top"><span class="tag">{e.kind}</span></div><h3>{e.title}</h3><p>{e.summary}</p><div class="card-bottom"><span>图解 · 业务说明</span><Icon name="arrow" size={18}/></div></a>)}</div><div class="empty-state" id="empty-results" hidden><Icon name="search" size={32}/><h3>暂时没有匹配的知识卡</h3><p>试试缩短关键词，或切换到“全部”与“全部领域”。收藏只保存在当前浏览器。</p><button class="button outline" id="reset-search">清除筛选</button></div></div></div><div class="notice">这里是可追溯的入门知识库。行业概念、企业案例与教学假设分别标注；专业规范和具体操作细节仍需以适用来源为准。</div></div><script type="application/json" id="knowledge-search-index" set:html={searchIndexJson}/><script>import '../scripts/library';</script><style is:global>.search-result{min-width:0}.search-illustration{width:100%;height:150px;object-fit:contain;background:#f2f2ee;border-radius:8px;margin-bottom:16px}.search-result mark{background:#e6ead8;color:inherit;border-radius:2px}.search-excerpt{overflow-wrap:anywhere}.search-section{display:block;color:var(--muted);margin-top:10px}.search-open{display:block;margin-top:auto;padding-top:20px;font-size:13px}.search-status{font-size:13px;color:var(--muted);margin:8px 0 20px}</style></Layout>
+<Layout title="知识百科" active="library">
+  <div class="knowledge-library">
+    <PageIntro eyebrow="KNOWLEDGE LIBRARY / 从问题出发" title="带着问题，找到答案。" description="用一个日常说法，或一句想问的话，找到相关图解和业务流程。">
+      <label class="search-box"><Icon name="search"/><input id="knowledge-search" type="search" placeholder="试试：粉红色集装箱、道闸为什么不抬杆" aria-label="搜索知识百科" autocomplete="off"/></label>
+      <div class="search-questions" aria-label="常见问题">
+        <span>大家也会问</span>
+        {searchQuestions.map(question => <a href={base+'library/?q='+encodeURIComponent(question)} data-search-question={question}>{question}<span aria-hidden="true"> ↗</span></a>)}
+      </div>
+    </PageIntro>
+    <div class="container page-content">
+      <details class="library-topics">
+        <summary><span><Icon name="grid" size={18}/>按主题探索</span><small>图鉴、流程与学习路线</small><span class="topics-chevron" aria-hidden="true">＋</span></summary>
+        <nav class="library-topic-links" aria-label="专题入口">{shortcuts.map(([label, path]) => <a href={base+path}>{label}<span aria-hidden="true">→</span></a>)}</nav>
+      </details>
+      <noscript><p class="notice">问题搜索、筛选和更多结果需要启用 JavaScript；你也可以直接打开<a href={base+'knowledge-map/'}>知识地图，查看全部知识领域与学习路线</a>。</p></noscript>
+      <div class="library-interactive-controls">
+        <div class="filter-bar library-kind-buttons" aria-label="知识类型">{kinds.map((kind, index) => <button class="filter-chip" data-kind-filter={kind} aria-pressed={index===0?'true':'false'}>{kind}</button>)}</div>
+        <div class="library-mobile-filters">
+          <label>内容类型<select id="kind-select">{kinds.map(kind => <option value={kind}>{kind}</option>)}</select></label>
+          <label>知识领域<select id="domain-select"><option value="all">全部领域</option>{domains.map(domain => <option value={domain.id}>{domain.title}</option>)}</select></label>
+        </div>
+      </div>
+      <div class="library-result-header">
+        <div><p class="search-count" id="search-count" aria-live="polite">共 {searchCatalog.length} 个知识卡与专题入口</p><p id="search-status" class="search-status" role="status">正在加载完整正文索引……</p></div>
+        <button id="clear-search" class="library-clear" type="button" hidden>清除筛选</button>
+      </div>
+      <button id="retry-search-index" class="filter-chip" hidden>重试加载正文</button>
+      <div id="search-suggestion" class="search-suggestion" role="status" aria-live="polite" hidden><p></p><button type="button" class="filter-chip"></button></div>
+      <div class="library-layout">
+        <aside class="domain-list library-domain-list" aria-label="知识领域"><h2>按知识领域浏览</h2><button class="domain-button" data-domain-filter="all" aria-pressed="true">全部领域</button>{domains.map((domain, index) => <button class="domain-button" data-domain-filter={domain.id} aria-pressed="false"><span>{String(index+1).padStart(2, '0')}</span>{domain.title}</button>)}</aside>
+        <div class="library-results-column">
+          <div class="article-grid library-grid" id="knowledge-results">
+            {searchCatalog.slice(0, 12).map(entry => <a class="article-card" href={base+entry.path} data-search-card data-id={entry.id} data-kind={entry.kind} data-domain={entry.domain}>
+              {'image' in entry && entry.image && <img class="search-illustration" src={base+entry.image} width="800" height="480" loading="lazy" alt={entry.title+'结构示意'}/>}
+              <span class="tag">{entry.kind}</span><h3>{entry.title}</h3><p>{entry.summary}</p><span class="search-open">打开阅读 →</span>
+            </a>)}
+          </div>
+          <div class="library-pagination" id="search-pagination" hidden><p id="visible-range" aria-live="polite">已显示 0 条结果</p><button class="button outline" id="load-more-results" type="button" aria-controls="knowledge-results">再看 12 条结果 <span aria-hidden="true">↓</span></button></div>
+          <div class="empty-state" id="empty-results" hidden><Icon name="search" size={32}/><h3>暂时没有匹配的知识卡</h3><p>试试缩短关键词，或切换到“全部”与“全部领域”。收藏只保存在当前浏览器。</p><button class="button outline" id="reset-search">清除筛选</button></div>
+        </div>
+      </div>
+      <div class="notice">行业概念、企业案例与教学假设分别标注。问题导航帮助你找到相关解释；专业规范和具体操作细节仍需以适用来源为准。</div>
+    </div>
+  </div>
+  <script type="application/json" id="knowledge-search-index" set:html={searchIndexJson}/>
+  <script>import '../scripts/library';</script>
+</Layout>

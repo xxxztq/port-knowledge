@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {parse} from 'parse5';
+import {searchGuides} from '../src/data/search-guides.js';
 import {searchCatalog} from '../src/data/search-catalog.js';
 import {learningKey} from '../src/data/learning-state.js';
 const dist=new URL('../dist/',import.meta.url);
@@ -20,5 +21,12 @@ for(const item of searchCatalog){const [route,fragment]=item.path.split('#');con
 const domains={berthing:'k08',journey:'k10',shipment:'k18',roles:'k07',equipment:'k20',systems:'k21',gate:'k19',economics:'k24',documents:'k18',containers:'k10',brands:'k02','brands-and-ports':'k02',infrastructure:'k21',risks:'k22',vessels:'k08',cargo:'k12',flows:'k09',scenarios:'k09',foundations:'k01'};
 const foundationDomains={'network-choice':'k02',governance:'k04',lifecycle:'k05','environment-city':'k23','spatial-levels':'k01'};
 for(const [route,page] of map){if(entries.some(e=>e.path===route))continue;const family=route.split('/')[0];const domain=family==='foundations'?(foundationDomains[route.split('/')[1]]||'k01'):(domains[family]||'k01');entries.push({id:'page:'+route,path:route,key:learningKey(route),title:page.title,summary:page.summary,kind:family==='foundations'?'基础':'专题',domain,sections:sections(page.main),searchText:clean(page.title+' '+text(page.main)).toLowerCase()});}
+// Keep editorial question destinations and their anchors checked during every build.
+for (const guide of searchGuides) for (const target of guide.targets) {
+ const [route, fragment] = target.path.split('#');
+ const page = map.get(route);
+ if (!page || (fragment && !find(page.main, node => attrs(node).id === fragment))) throw new Error('Question target missing: ' + target.path);
+ if (!entries.some(entry => entry.path === route)) throw new Error('Question target not indexed: ' + target.path);
+}
 await fs.writeFile(new URL('search-index.json',dist),JSON.stringify({version:1,entries}));
 console.log('Full-text search: '+entries.length+' entries / '+map.size+' pages, including rendered hidden teaching panels.');

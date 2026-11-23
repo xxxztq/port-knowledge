@@ -7,3 +7,11 @@
 
 .container-source-link{display:inline-block;margin:4px 12px 4px 0}
 .cargo-stage-risks{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:20px 0;font-size:12px}.cargo-stage-risks>span{width:100%;font-size:11px;color:#718078;margin-bottom:3px}.cargo-stage-risks a{padding:6px 10px;border:1px solid #d8dfd6;border-radius:4px;background:#f5f5ee}.cargo-stage-risks a:hover{border-color:#78928a}
+
+/* Cargo atlas related guides: keep the whole card inside a real layout container. */
+.cargo-inline-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:16px;margin:24px 0 30px}
+.cargo-inline-entry{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;box-sizing:border-box;width:100%;min-width:0;min-height:118px;margin:0;padding:20px 24px;border:1px solid #d6e0ce;border-radius:9px;background:#f2f6ea;color:inherit;text-decoration:none;transition:border-color .18s,background-color .18s}
+.cargo-inline-entry:hover{border-color:#8fa98d;background:#eef3e7}
+.cargo-inline-entry strong{display:block;max-width:100%;font-size:15px;line-height:1.6;color:#243f3a}
+.cargo-inline-entry p{max-width:100%;margin:8px 0 0;font-size:12px;line-height:1.8;color:#66776b;overflow-wrap:anywhere}
+@media(max-width:800px){.cargo-inline-grid{grid-template-columns:minmax(0,1fr);gap:10px;margin:18px 0 24px}.cargo-inline-entry{min-height:0;padding:17px 18px}}
